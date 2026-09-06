@@ -1,14 +1,836 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>TrainFlow | لوحة المشرف</title><link rel="stylesheet" href="supervisor-dashboard.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></head><body><div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div><aside class="sidebar"><div class="brand"><div class="brand-icon"><i class="fa-solid fa-user-graduate"></i></div><div><h1>TrainFlow</h1><small>Supervisor Panel</small></div></div><nav class="side-nav"><a href="supervisor-dashboard.html" class="active"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a><a href="add-trainee.html" class=""><i class="fa-solid fa-user-plus"></i><span>إضافة متدرب</span></a><a href="supervisor-dashboard.html#trainees-section" class=""><i class="fa-solid fa-users"></i><span>المتدربون</span></a><a href="supervisor-dashboard.html#tasks-section" class=""><i class="fa-solid fa-list-check"></i><span>المهام</span></a><a href="reports.html" class=""><i class="fa-solid fa-file-lines"></i><span>التقارير اليومية</span></a><a href="profile.html" class=""><i class="fa-solid fa-user"></i><span>الملف الشخصي</span></a></nav><div class="side-bottom"><a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>تسجيل الخروج</span></a></div></aside><main class="dashboard"><header class="dash-head"><div><p class="muted">لوحة المشرف</p><h1 id="welcome">أهلاً بك</h1><p class="muted">تابع متدربيك ومهامهم وتقاريرهم اليومية.</p></div><a class="btn" href="add-trainee.html"><i class="fa-solid fa-user-plus"></i> إضافة متدرب</a></header><section class="stats-grid"><div class="card stat"><div class="ico"><i class="fa-solid fa-users"></i></div><div><span>المتدربون</span><strong id="traineesCount">0</strong></div></div><div class="card stat"><div class="ico"><i class="fa-solid fa-list-check"></i></div><div><span>المهام</span><strong id="tasksCount">0</strong></div></div><div class="card stat"><div class="ico"><i class="fa-solid fa-check"></i></div><div><span>مكتملة</span><strong id="doneCount">0</strong></div></div><div class="card stat"><div class="ico"><i class="fa-solid fa-file-lines"></i></div><div><span>تقارير اليوم</span><strong id="reportsCount">0</strong></div></div></section><section class="dash-grid"><div><section id="trainees-section" class="card" style="margin-bottom:16px"><div class="toolbar"><div class="section-title"><span>المتدربون</span><h2>متدربوك</h2></div><a class="btn secondary" href="add-trainee.html">إضافة متدرب</a></div><div id="traineeList" class="list"></div></section><section id="tasks-section" class="card"><div class="toolbar"><div class="section-title"><span>المهام</span><h2>آخر المهام</h2></div><a class="btn secondary" href="add-task.html">إضافة مهمة</a></div><div id="taskList" class="list"></div></section></div><aside><div class="code-box card"><div class="section-title"><span>كود الربط</span><h2>كودك للمتدربين</h2><p>أرسله فقط للمتدربين الذين تريد ربطهم بحسابك.</p></div><div id="linkCode" class="code"></div><button id="copyCode" class="ghost-btn" style="width:100%"><i class="fa-regular fa-copy"></i> نسخ الكود</button></div><div class="card" style="margin-top:16px"><div class="section-title"><span>التقارير</span><h2>التقارير اليومية</h2></div><a class="btn" style="width:100%" href="reports.html">عرض التقارير</a></div></aside></section></main><script>
-const TF={
- get(k,f=[]){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}},
- set(k,v){localStorage.setItem(k,JSON.stringify(v))},
- users(){return this.get('tf_users',[])}, tasks(){return this.get('tf_tasks',[])}, reports(){return this.get('tf_reports',[])}, invites(){return this.get('tf_invites',[])},
- session(){const id=localStorage.getItem('tf_session');return this.users().find(u=>u.id===id)||null},
- id(p='id'){return p+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7)},
- esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))},
- date(s){if(!s)return '-';return new Date(s+'T00:00:00').toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'})},
- logout(){localStorage.removeItem('tf_session');location.href='login.html'},
- require(role){const u=this.session();if(!u){location.href='login.html';return null}if(role&&u.role!==role){location.href=u.role==='supervisor'?'supervisor-dashboard.html':'trainee-dashboard.html';return null}return u}
-};
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-const u=TF.require('supervisor');if(u){document.getElementById('welcome').textContent='أهلاً '+u.name;document.getElementById('linkCode').textContent=u.supervisorLinkCode;document.getElementById('logoutBtn').onclick=e=>{e.preventDefault();TF.logout()};document.getElementById('copyCode').onclick=async()=>{await navigator.clipboard.writeText(u.supervisorLinkCode);document.getElementById('copyCode').innerHTML='<i class="fa-solid fa-check"></i> تم النسخ'};const trainees=TF.users().filter(x=>x.role==='trainee'&&x.supervisorId===u.id),ids=new Set(trainees.map(x=>x.id)),tasks=TF.tasks().filter(t=>ids.has(t.traineeId)),today=new Date().toISOString().slice(0,10),reports=TF.reports().filter(r=>ids.has(r.traineeId)&&r.date===today);document.getElementById('traineesCount').textContent=trainees.length;document.getElementById('tasksCount').textContent=tasks.length;document.getElementById('doneCount').textContent=tasks.filter(t=>t.status==='completed').length;document.getElementById('reportsCount').textContent=reports.length;document.getElementById('traineeList').innerHTML=trainees.length?trainees.map(x=>`<div class="list-item"><div class="list-main"><h3>${TF.esc(x.name)}</h3><p>${TF.esc(x.email)}${x.trainingField?' • '+TF.esc(x.trainingField):''}</p></div><a class="ghost-btn" href="trainee-details.html?id=${x.id}">عرض التفاصيل</a></div>`).join(''):'<div class="empty"><i class="fa-solid fa-users"></i><h3>لا يوجد متدربون مرتبطون بعد</h3><p>أعطِ كود الربط لمتدربك أو أضف دعوة جديدة.</p></div>';document.getElementById('taskList').innerHTML=tasks.length?tasks.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt)).slice(0,6).map(t=>{const tr=trainees.find(x=>x.id===t.traineeId);return `<div class="list-item"><div class="list-main"><h3>${TF.esc(t.title)}</h3><p>${TF.esc(tr?.name||'')} • ${TF.date(t.dueDate)}</p></div><span class="badge ${t.status}">${t.status==='completed'?'مكتملة':t.status==='progress'?'قيد التنفيذ':'لم تبدأ'}</span></div>`}).join(''):'<div class="empty"><i class="fa-solid fa-list-check"></i><h3>لا توجد مهام</h3><p>أضف أول مهمة لأحد متدربيك.</p></div>'}</script></body></html>
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TrainFlow | لوحة المشرف
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="supervisor-dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div>
+                <strong>TrainFlow</strong>
+                <span>لوحة المشرف</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="supervisor-dashboard.html"
+                class="nav-link active"
+            >
+                <i class="fa-solid fa-house"></i>
+                الرئيسية
+            </a>
+
+
+            <a
+                href="add-trainee.html"
+                class="nav-link"
+            >
+                <i class="fa-solid fa-user-plus"></i>
+                إضافة متدرب
+            </a>
+
+
+            <button
+                type="button"
+                class="nav-link nav-button"
+                id="traineesButton"
+            >
+                <i class="fa-solid fa-users"></i>
+                المتدربون
+            </button>
+
+
+            <a
+                href="reports.html"
+                class="nav-link"
+            >
+                <i class="fa-solid fa-file-lines"></i>
+                التقارير اليومية
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="nav-link"
+            >
+                <i class="fa-regular fa-user"></i>
+                الملف الشخصي
+            </a>
+
+        </nav>
+
+
+        <button
+            type="button"
+            class="logout-button"
+            id="logoutButton"
+        >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            تسجيل الخروج
+        </button>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    لوحة المشرف
+                </span>
+
+                <h1 id="welcomeName">
+                    أهلاً بك
+                </h1>
+
+                <p>
+                    تابع المتدربين والمهام والتقارير اليومية
+                    من مكان واحد.
+                </p>
+
+            </div>
+
+
+            <a
+                href="add-trainee.html"
+                class="add-button"
+            >
+                <i class="fa-solid fa-plus"></i>
+                إضافة متدرب
+            </a>
+
+        </header>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <span>
+                        إجمالي المتدربين
+                    </span>
+
+                    <strong id="traineesCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+                    <span>
+                        إجمالي المهام
+                    </span>
+
+                    <strong id="tasksCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+                    <span>
+                        المهام المكتملة
+                    </span>
+
+                    <strong id="completedCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+                    <span>
+                        نسبة الإنجاز
+                    </span>
+
+                    <strong id="progressPercent">
+                        0%
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-grid">
+
+            <section class="trainees-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <span>
+                            إدارة التدريب
+                        </span>
+
+                        <h2>
+                            المتدربون
+                        </h2>
+                    </div>
+
+
+                    <a href="add-trainee.html">
+                        إضافة متدرب
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="trainees-list"
+                    id="traineesList"
+                >
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="emptyTrainees"
+                >
+
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <h3>
+                        لا يوجد متدربون بعد
+                    </h3>
+
+                    <p>
+                        أضف أول متدرب وحدد له كود الدخول الخاص به.
+                    </p>
+
+                    <a href="add-trainee.html">
+                        إضافة متدرب
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <aside class="side-column">
+
+                <section class="quick-card">
+
+                    <span class="side-label">
+                        وصول سريع
+                    </span>
+
+                    <h3>
+                        الإجراءات
+                    </h3>
+
+
+                    <a href="add-trainee.html">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        <div>
+                            <strong>
+                                إضافة متدرب
+                            </strong>
+
+                            <span>
+                                إنشاء حساب متدرب جديد
+                            </span>
+                        </div>
+
+                    </a>
+
+
+                    <a href="reports.html">
+
+                        <i class="fa-solid fa-file-lines"></i>
+
+                        <div>
+                            <strong>
+                                التقارير اليومية
+                            </strong>
+
+                            <span>
+                                متابعة تقارير المتدربين
+                            </span>
+                        </div>
+
+                    </a>
+
+                </section>
+
+
+                <section class="summary-card">
+
+                    <span class="side-label">
+                        الإنجاز العام
+                    </span>
+
+                    <h3>
+                        مستوى التقدم
+                    </h3>
+
+
+                    <div class="progress-circle" id="progressCircle">
+
+                        <div class="progress-inner">
+
+                            <strong id="circlePercent">
+                                0%
+                            </strong>
+
+                            <span>
+                                مكتمل
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p id="progressDescription">
+                        لا توجد مهام حتى الآن.
+                    </p>
+
+                </section>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const currentUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_current_user"
+                )
+            );
+
+
+        if (
+            !currentUser ||
+            currentUser.role !== "supervisor"
+        ) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        const welcomeName =
+            document.getElementById(
+                "welcomeName"
+            );
+
+
+        const traineesList =
+            document.getElementById(
+                "traineesList"
+            );
+
+
+        const emptyTrainees =
+            document.getElementById(
+                "emptyTrainees"
+            );
+
+
+        const traineesCount =
+            document.getElementById(
+                "traineesCount"
+            );
+
+
+        const tasksCount =
+            document.getElementById(
+                "tasksCount"
+            );
+
+
+        const completedCount =
+            document.getElementById(
+                "completedCount"
+            );
+
+
+        const progressPercent =
+            document.getElementById(
+                "progressPercent"
+            );
+
+
+        const circlePercent =
+            document.getElementById(
+                "circlePercent"
+            );
+
+
+        const progressCircle =
+            document.getElementById(
+                "progressCircle"
+            );
+
+
+        const progressDescription =
+            document.getElementById(
+                "progressDescription"
+            );
+
+
+        const logoutButton =
+            document.getElementById(
+                "logoutButton"
+            );
+
+
+        const traineesButton =
+            document.getElementById(
+                "traineesButton"
+            );
+
+
+        welcomeName.innerText =
+            "أهلاً " + currentUser.name;
+
+
+        loadDashboard();
+
+
+        function loadDashboard() {
+
+            const allTrainees =
+                JSON.parse(
+                    localStorage.getItem(
+                        "trainflow_trainees"
+                    )
+                ) || [];
+
+
+            const allTasks =
+                JSON.parse(
+                    localStorage.getItem(
+                        "trainflow_tasks"
+                    )
+                ) || [];
+
+
+            const myTrainees =
+                allTrainees.filter(
+                    function (trainee) {
+
+                        return (
+                            trainee.supervisorId ===
+                            currentUser.id
+                        );
+
+                    }
+                );
+
+
+            const traineeIds =
+                myTrainees.map(
+                    function (trainee) {
+                        return trainee.id;
+                    }
+                );
+
+
+            const myTasks =
+                allTasks.filter(
+                    function (task) {
+
+                        return traineeIds.includes(
+                            task.traineeId
+                        );
+
+                    }
+                );
+
+
+            const completedTasks =
+                myTasks.filter(
+                    function (task) {
+
+                        return (
+                            task.status ===
+                            "completed"
+                        );
+
+                    }
+                );
+
+
+            let percentage = 0;
+
+
+            if (myTasks.length > 0) {
+
+                percentage =
+                    Math.round(
+                        (
+                            completedTasks.length /
+                            myTasks.length
+                        ) * 100
+                    );
+
+            }
+
+
+            traineesCount.innerText =
+                myTrainees.length;
+
+
+            tasksCount.innerText =
+                myTasks.length;
+
+
+            completedCount.innerText =
+                completedTasks.length;
+
+
+            progressPercent.innerText =
+                percentage + "%";
+
+
+            circlePercent.innerText =
+                percentage + "%";
+
+
+            progressCircle.style.background =
+                "conic-gradient(" +
+                "#4f46e5 0% " +
+                percentage +
+                "%, #e5e7eb " +
+                percentage +
+                "% 100%)";
+
+
+            if (myTasks.length === 0) {
+
+                progressDescription.innerText =
+                    "لا توجد مهام حتى الآن.";
+
+            } else {
+
+                progressDescription.innerText =
+                    "تم إنجاز " +
+                    completedTasks.length +
+                    " من أصل " +
+                    myTasks.length +
+                    " مهام.";
+
+            }
+
+
+            showTrainees(
+                myTrainees,
+                allTasks
+            );
+
+        }
+
+
+        function showTrainees(
+            trainees,
+            allTasks
+        ) {
+
+            traineesList.innerHTML = "";
+
+
+            if (trainees.length === 0) {
+
+                emptyTrainees.style.display =
+                    "flex";
+
+                return;
+
+            }
+
+
+            emptyTrainees.style.display =
+                "none";
+
+
+            trainees.forEach(
+                function (trainee) {
+
+                    const traineeTasks =
+                        allTasks.filter(
+                            function (task) {
+
+                                return (
+                                    task.traineeId ===
+                                    trainee.id
+                                );
+
+                            }
+                        );
+
+
+                    const completed =
+                        traineeTasks.filter(
+                            function (task) {
+
+                                return (
+                                    task.status ===
+                                    "completed"
+                                );
+
+                            }
+                        );
+
+
+                    let progress = 0;
+
+
+                    if (traineeTasks.length > 0) {
+
+                        progress =
+                            Math.round(
+                                (
+                                    completed.length /
+                                    traineeTasks.length
+                                ) * 100
+                            );
+
+                    }
+
+
+                    const firstLetter =
+                        trainee.name
+                            .charAt(0);
+
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    card.className =
+                        "trainee-card";
+
+
+                    card.innerHTML = `
+
+                        <div class="trainee-main">
+
+                            <div class="trainee-avatar">
+                                ${firstLetter}
+                            </div>
+
+                            <div class="trainee-info">
+
+                                <h3>
+                                    ${escapeHTML(trainee.name)}
+                                </h3>
+
+                                <span>
+                                    ${escapeHTML(trainee.email)}
+                                </span>
+
+                                <small>
+                                    ${escapeHTML(
+                                        trainee.trainingField || "غير محدد"
+                                    )}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="trainee-progress">
+
+                            <div class="progress-title">
+
+                                <span>
+                                    نسبة الإنجاز
+                                </span>
+
+                                <strong>
+                                    ${progress}%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    style="width: ${progress}%"
+                                ></div>
+
+                            </div>
+
+                            <small>
+                                ${completed.length}
+                                من
+                                ${traineeTasks.length}
+                                مهام مكتملة
+                            </small>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="view-button"
+                            onclick="openTrainee('${trainee.id}')"
+                        >
+                            عرض التفاصيل
+
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                    `;
+
+
+                    traineesList.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+        function openTrainee(
+            traineeId
+        ) {
+
+            localStorage.setItem(
+                "trainflow_selected_trainee",
+                traineeId
+            );
+
+
+            window.location.href =
+                "trainee-details.html";
+
+        }
+
+
+        traineesButton.addEventListener(
+            "click",
+            function () {
+
+                document
+                    .querySelector(
+                        ".trainees-card"
+                    )
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            }
+        );
+
+
+        logoutButton.addEventListener(
+            "click",
+            function () {
+
+                localStorage.removeItem(
+                    "trainflow_current_user"
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value || "";
+
+
+            return div.innerHTML;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
