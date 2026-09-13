@@ -1,14 +1,771 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>TrainFlow | المهام</title><link rel="stylesheet" href="tasks.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></head><body><div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div><main class="container"><a class="ghost-btn" href="trainee-dashboard.html"><i class="fa-solid fa-arrow-right"></i> العودة للوحة التحكم</a><div class="section-title" style="margin-top:20px"><span>المهام</span><h2>مهامي</h2><p>لا تظهر هنا إلا المهام المرتبطة بحسابك.</p></div><div class="card"><div class="toolbar"><input class="input" id="search" placeholder="ابحث عن مهمة..."><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="ghost-btn filter" data-v="all">الكل</button><button class="ghost-btn filter" data-v="pending">لم تبدأ</button><button class="ghost-btn filter" data-v="progress">قيد التنفيذ</button><button class="ghost-btn filter" data-v="completed">مكتملة</button></div></div><div id="list" class="list"></div></div></main><script>
-const TF={
- get(k,f=[]){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}},
- set(k,v){localStorage.setItem(k,JSON.stringify(v))},
- users(){return this.get('tf_users',[])}, tasks(){return this.get('tf_tasks',[])}, reports(){return this.get('tf_reports',[])}, invites(){return this.get('tf_invites',[])},
- session(){const id=localStorage.getItem('tf_session');return this.users().find(u=>u.id===id)||null},
- id(p='id'){return p+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7)},
- esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))},
- date(s){if(!s)return '-';return new Date(s+'T00:00:00').toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'})},
- logout(){localStorage.removeItem('tf_session');location.href='login.html'},
- require(role){const u=this.session();if(!u){location.href='login.html';return null}if(role&&u.role!==role){location.href=u.role==='supervisor'?'supervisor-dashboard.html':'trainee-dashboard.html';return null}return u}
-};
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-const u=TF.require('trainee');let filter='all';if(u){const list=document.getElementById('list'),search=document.getElementById('search');document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{filter=b.dataset.v;render()});search.oninput=render;function render(){const q=search.value.trim().toLowerCase();const tasks=TF.tasks().filter(t=>t.traineeId===u.id&&(filter==='all'||t.status===filter)&&t.title.toLowerCase().includes(q));list.innerHTML=tasks.length?tasks.map(t=>`<div class="list-item"><div class="list-main"><h3>${TF.esc(t.title)}</h3><p>${TF.esc(t.description)}<br>${TF.date(t.dueDate)}</p></div><div style="display:flex;align-items:center;gap:8px"><label class="check-wrap"><input type="checkbox" data-id="${t.id}" ${t.status==='completed'?'checked':''}> مكتملة</label><a class="ghost-btn" href="task-details.html?id=${t.id}">التفاصيل</a></div></div>`).join(''):'<div class="empty"><i class="fa-solid fa-folder-open"></i><h3>لا توجد مهام</h3><p>لا توجد نتائج مطابقة.</p></div>';document.querySelectorAll('input[type=checkbox][data-id]').forEach(c=>c.onchange=()=>{let all=TF.tasks();const i=all.findIndex(t=>t.id===c.dataset.id&&t.traineeId===u.id);if(i>=0){all[i].status=c.checked?'completed':'progress';all[i].completedAt=c.checked?new Date().toISOString():null;TF.set('tf_tasks',all);render()}})}render()}</script></body></html>
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TrainFlow | مهامي
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="tasks.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <main class="page-container">
+
+        <a
+            href="trainee-dashboard.html"
+            class="back-button"
+        >
+            <i class="fa-solid fa-arrow-right"></i>
+            العودة للوحة المتدرب
+        </a>
+
+
+        <header class="page-header">
+
+            <div>
+
+                <span>
+                    إدارة المهام
+                </span>
+
+                <h1>
+                    مهامي
+                </h1>
+
+                <p>
+                    استعرض مهامك وتابع حالتها ومواعيد التسليم.
+                </p>
+
+            </div>
+
+
+            <div class="header-icon">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+        </header>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>
+                    إجمالي المهام
+                </span>
+
+                <strong id="totalCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    لم تبدأ
+                </span>
+
+                <strong id="pendingCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    قيد التنفيذ
+                </span>
+
+                <strong id="progressCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    مكتملة
+                </span>
+
+                <strong id="completedCount">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="tools-card">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="ابحث عن مهمة..."
+                >
+
+            </div>
+
+
+            <div class="filters">
+
+                <button
+                    type="button"
+                    class="filter-button active"
+                    data-filter="all"
+                >
+                    الكل
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="pending"
+                >
+                    لم تبدأ
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="progress"
+                >
+                    قيد التنفيذ
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="completed"
+                >
+                    مكتملة
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="tasks-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span>
+                        مهام التدريب
+                    </span>
+
+                    <h2>
+                        قائمة المهام
+                    </h2>
+
+                </div>
+
+
+                <span
+                    class="results-count"
+                    id="resultsCount"
+                >
+                    0 مهمة
+                </span>
+
+            </div>
+
+
+            <div
+                class="tasks-list"
+                id="tasksList"
+            >
+            </div>
+
+
+            <div
+                class="empty-state"
+                id="emptyState"
+            >
+
+                <div class="empty-icon">
+                    <i class="fa-regular fa-folder-open"></i>
+                </div>
+
+                <h3>
+                    لا توجد مهام
+                </h3>
+
+                <p id="emptyMessage">
+                    لم يضف المشرف أي مهمة لك حتى الآن.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const currentUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_current_user"
+                )
+            );
+
+
+        if (
+            !currentUser ||
+            currentUser.role !== "trainee"
+        ) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        const allTasks =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_tasks"
+                )
+            ) || [];
+
+
+        const myTasks =
+            allTasks.filter(
+                function (task) {
+
+                    return (
+                        task.traineeId ===
+                        currentUser.id
+                    );
+
+                }
+            );
+
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const filterButtons =
+            document.querySelectorAll(
+                ".filter-button"
+            );
+
+
+        const tasksList =
+            document.getElementById(
+                "tasksList"
+            );
+
+
+        const emptyState =
+            document.getElementById(
+                "emptyState"
+            );
+
+
+        const emptyMessage =
+            document.getElementById(
+                "emptyMessage"
+            );
+
+
+        const resultsCount =
+            document.getElementById(
+                "resultsCount"
+            );
+
+
+        let selectedFilter =
+            "all";
+
+
+        loadStats();
+
+        displayTasks();
+
+
+        function loadStats() {
+
+            const pending =
+                myTasks.filter(
+                    function (task) {
+
+                        return (
+                            task.status ===
+                            "pending"
+                        );
+
+                    }
+                );
+
+
+            const progress =
+                myTasks.filter(
+                    function (task) {
+
+                        return (
+                            task.status ===
+                            "progress"
+                        );
+
+                    }
+                );
+
+
+            const completed =
+                myTasks.filter(
+                    function (task) {
+
+                        return (
+                            task.status ===
+                            "completed"
+                        );
+
+                    }
+                );
+
+
+            document.getElementById(
+                "totalCount"
+            ).innerText =
+                myTasks.length;
+
+
+            document.getElementById(
+                "pendingCount"
+            ).innerText =
+                pending.length;
+
+
+            document.getElementById(
+                "progressCount"
+            ).innerText =
+                progress.length;
+
+
+            document.getElementById(
+                "completedCount"
+            ).innerText =
+                completed.length;
+
+        }
+
+
+        function displayTasks() {
+
+            const searchValue =
+                searchInput
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            let filteredTasks =
+                myTasks.filter(
+                    function (task) {
+
+                        const title =
+                            (
+                                task.title || ""
+                            ).toLowerCase();
+
+
+                        const description =
+                            (
+                                task.description || ""
+                            ).toLowerCase();
+
+
+                        const matchesSearch =
+                            title.includes(
+                                searchValue
+                            ) ||
+                            description.includes(
+                                searchValue
+                            );
+
+
+                        const matchesStatus =
+                            selectedFilter ===
+                            "all" ||
+                            task.status ===
+                            selectedFilter;
+
+
+                        return (
+                            matchesSearch &&
+                            matchesStatus
+                        );
+
+                    }
+                );
+
+
+            filteredTasks =
+                filteredTasks.sort(
+                    function (a, b) {
+
+                        return (
+                            new Date(a.dueDate) -
+                            new Date(b.dueDate)
+                        );
+
+                    }
+                );
+
+
+            tasksList.innerHTML =
+                "";
+
+
+            resultsCount.innerText =
+                filteredTasks.length +
+                " مهمة";
+
+
+            if (
+                filteredTasks.length === 0
+            ) {
+
+                emptyState.style.display =
+                    "flex";
+
+
+                if (
+                    myTasks.length === 0
+                ) {
+
+                    emptyMessage.innerText =
+                        "لم يضف المشرف أي مهمة لك حتى الآن.";
+
+                } else {
+
+                    emptyMessage.innerText =
+                        "لا توجد مهام مطابقة للبحث أو الفلتر.";
+
+                }
+
+
+                return;
+
+            }
+
+
+            emptyState.style.display =
+                "none";
+
+
+            filteredTasks.forEach(
+                function (task) {
+
+                    let statusText =
+                        "لم تبدأ";
+
+
+                    let statusClass =
+                        "pending";
+
+
+                    let statusIcon =
+                        "fa-regular fa-circle";
+
+
+                    if (
+                        task.status ===
+                        "progress"
+                    ) {
+
+                        statusText =
+                            "قيد التنفيذ";
+
+                        statusClass =
+                            "progress";
+
+                        statusIcon =
+                            "fa-regular fa-clock";
+
+                    }
+
+
+                    if (
+                        task.status ===
+                        "completed"
+                    ) {
+
+                        statusText =
+                            "مكتملة";
+
+                        statusClass =
+                            "completed";
+
+                        statusIcon =
+                            "fa-solid fa-check";
+
+                    }
+
+
+                    let priorityText =
+                        "منخفضة";
+
+
+                    let priorityClass =
+                        "low";
+
+
+                    if (
+                        task.priority ===
+                        "medium"
+                    ) {
+
+                        priorityText =
+                            "متوسطة";
+
+                        priorityClass =
+                            "medium";
+
+                    }
+
+
+                    if (
+                        task.priority ===
+                        "high"
+                    ) {
+
+                        priorityText =
+                            "عالية";
+
+                        priorityClass =
+                            "high";
+
+                    }
+
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    card.className =
+                        "task-item";
+
+
+                    card.innerHTML = `
+
+                        <div class="task-status ${statusClass}">
+
+                            <i class="${statusIcon}"></i>
+
+                        </div>
+
+
+                        <div class="task-content">
+
+                            <div class="task-title-row">
+
+                                <h3>
+                                    ${escapeHTML(task.title)}
+                                </h3>
+
+                                <span class="priority ${priorityClass}">
+                                    ${priorityText}
+                                </span>
+
+                            </div>
+
+
+                            <p>
+                                ${escapeHTML(task.description)}
+                            </p>
+
+
+                            <div class="task-meta">
+
+                                <span>
+
+                                    <i class="fa-regular fa-calendar"></i>
+
+                                    ${formatDate(task.dueDate)}
+
+                                </span>
+
+
+                                <span class="status-label ${statusClass}">
+                                    ${statusText}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="details-button"
+                            onclick="openTask('${task.id}')"
+                        >
+
+                            عرض التفاصيل
+
+                            <i class="fa-solid fa-chevron-left"></i>
+
+                        </button>
+
+                    `;
+
+
+                    tasksList.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+        filterButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        filterButtons.forEach(
+                            function (btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        button.classList.add(
+                            "active"
+                        );
+
+
+                        selectedFilter =
+                            button.dataset.filter;
+
+
+                        displayTasks();
+
+                    }
+                );
+
+            }
+        );
+
+
+        searchInput.addEventListener(
+            "input",
+            displayTasks
+        );
+
+
+        function openTask(
+            taskId
+        ) {
+
+            localStorage.setItem(
+                "trainflow_selected_task",
+                taskId
+            );
+
+
+            window.location.href =
+                "task-details.html";
+
+        }
+
+
+        function formatDate(
+            value
+        ) {
+
+            if (!value) {
+                return "-";
+            }
+
+
+            const date =
+                new Date(
+                    value + "T00:00:00"
+                );
+
+
+            return date.toLocaleDateString(
+                "ar-SA",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            );
+
+        }
+
+
+        function escapeHTML(
+            value
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value || "";
+
+
+            return div.innerHTML;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
