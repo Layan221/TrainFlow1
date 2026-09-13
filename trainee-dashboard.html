@@ -1,14 +1,931 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>TrainFlow | لوحة المتدرب</title><link rel="stylesheet" href="trainee-dashboard.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></head><body><div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div><aside class="sidebar"><div class="brand"><div class="brand-icon"><i class="fa-solid fa-user-graduate"></i></div><div><h1>TrainFlow</h1><small>Trainee Panel</small></div></div><nav class="side-nav"><a href="trainee-dashboard.html" class="active"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a><a href="tasks.html" class=""><i class="fa-solid fa-list-check"></i><span>مهامي</span></a><a href="daily-report.html" class=""><i class="fa-solid fa-pen-to-square"></i><span>التقرير اليومي</span></a><a href="profile.html" class=""><i class="fa-solid fa-user"></i><span>الملف الشخصي</span></a></nav><div class="side-bottom"><a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>تسجيل الخروج</span></a></div></aside><main class="dashboard"><header class="dash-head"><div><p class="muted">لوحة المتدرب</p><h1 id="welcome">أهلاً</h1><p class="muted">تابع مهامك واكتب تقريرك اليومي.</p></div><a class="btn" href="daily-report.html"><i class="fa-solid fa-pen-to-square"></i> التقرير اليومي</a></header><section class="stats-grid"><div class="card stat"><div class="ico"><i class="fa-solid fa-list-check"></i></div><div><span>إجمالي مهامي</span><strong id="all">0</strong></div></div><div class="card stat"><div class="ico"><i class="fa-solid fa-check"></i></div><div><span>مكتملة</span><strong id="done">0</strong></div></div><div class="card stat"><div class="ico"><i class="fa-solid fa-clock"></i></div><div><span>قيد التنفيذ</span><strong id="progress">0</strong></div></div><div class="card stat"><div class="ico"><i class="fa-solid fa-chart-line"></i></div><div><span>نسبة الإنجاز</span><strong id="percent">0%</strong></div></div></section><section class="dash-grid"><div class="card"><div class="toolbar"><div class="section-title"><span>مهامي</span><h2>المهام الحالية</h2></div><a class="btn secondary" href="tasks.html">عرض الكل</a></div><div id="taskList" class="list"></div></div><aside><div class="card"><div class="section-title"><span>المشرف</span><h2>المشرف المسؤول</h2></div><div id="supervisorInfo" class="list-main"></div></div><div class="card" style="margin-top:16px"><div class="section-title"><span>اليوم</span><h2>التقرير اليومي</h2><p id="reportState"></p></div><a class="btn" style="width:100%" href="daily-report.html">فتح التقرير</a></div></aside></section></main><script>
-const TF={
- get(k,f=[]){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}},
- set(k,v){localStorage.setItem(k,JSON.stringify(v))},
- users(){return this.get('tf_users',[])}, tasks(){return this.get('tf_tasks',[])}, reports(){return this.get('tf_reports',[])}, invites(){return this.get('tf_invites',[])},
- session(){const id=localStorage.getItem('tf_session');return this.users().find(u=>u.id===id)||null},
- id(p='id'){return p+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7)},
- esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))},
- date(s){if(!s)return '-';return new Date(s+'T00:00:00').toLocaleDateString('ar-SA',{year:'numeric',month:'long',day:'numeric'})},
- logout(){localStorage.removeItem('tf_session');location.href='login.html'},
- require(role){const u=this.session();if(!u){location.href='login.html';return null}if(role&&u.role!==role){location.href=u.role==='supervisor'?'supervisor-dashboard.html':'trainee-dashboard.html';return null}return u}
-};
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-const u=TF.require('trainee');if(u){document.getElementById('logoutBtn').onclick=e=>{e.preventDefault();TF.logout()};document.getElementById('welcome').textContent='أهلاً '+u.name;const sup=TF.users().find(x=>x.id===u.supervisorId),tasks=TF.tasks().filter(t=>t.traineeId===u.id),done=tasks.filter(t=>t.status==='completed').length,prog=tasks.filter(t=>t.status==='progress').length;document.getElementById('all').textContent=tasks.length;document.getElementById('done').textContent=done;document.getElementById('progress').textContent=prog;document.getElementById('percent').textContent=(tasks.length?Math.round(done/tasks.length*100):0)+'%';document.getElementById('supervisorInfo').innerHTML=sup?`<h3>${TF.esc(sup.name)}</h3><p>${TF.esc(sup.email)}</p>`:'<p>لا يوجد مشرف مرتبط</p>';document.getElementById('taskList').innerHTML=tasks.length?tasks.slice().sort((a,b)=>(a.status==='completed')-(b.status==='completed')).slice(0,5).map(t=>`<div class="list-item"><div class="list-main"><h3>${TF.esc(t.title)}</h3><p>${TF.date(t.dueDate)}</p></div><a class="ghost-btn" href="task-details.html?id=${t.id}">فتح</a></div>`).join(''):'<div class="empty"><i class="fa-solid fa-list-check"></i><h3>لا توجد مهام مضافة لك</h3><p>ستظهر هنا المهام التي يضيفها مشرفك.</p></div>';const today=new Date().toISOString().slice(0,10),rep=TF.reports().find(r=>r.traineeId===u.id&&r.date===today);document.getElementById('reportState').textContent=rep?'تم إرسال تقرير اليوم ويمكنك تعديله.':'لم تكتب تقرير اليوم بعد.'}</script></body></html>
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TrainFlow | لوحة المتدرب
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="trainee-dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div>
+                <strong>TrainFlow</strong>
+                <span>لوحة المتدرب</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="trainee-dashboard.html"
+                class="nav-link active"
+            >
+                <i class="fa-solid fa-house"></i>
+                الرئيسية
+            </a>
+
+
+            <a
+                href="tasks.html"
+                class="nav-link"
+            >
+                <i class="fa-solid fa-list-check"></i>
+                مهامي
+            </a>
+
+
+            <a
+                href="daily-report.html"
+                class="nav-link"
+            >
+                <i class="fa-solid fa-file-pen"></i>
+                التقرير اليومي
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="nav-link"
+            >
+                <i class="fa-regular fa-user"></i>
+                الملف الشخصي
+            </a>
+
+        </nav>
+
+
+        <button
+            type="button"
+            class="logout-button"
+            id="logoutButton"
+        >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            تسجيل الخروج
+        </button>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    لوحة المتدرب
+                </span>
+
+                <h1 id="welcomeName">
+                    أهلاً بك
+                </h1>
+
+                <p>
+                    تابع مهامك وإنجازك واكتب تقريرك اليومي.
+                </p>
+
+            </div>
+
+
+            <a
+                href="daily-report.html"
+                class="report-button"
+            >
+                <i class="fa-solid fa-file-pen"></i>
+                كتابة التقرير اليومي
+            </a>
+
+        </header>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+                    <span>
+                        إجمالي المهام
+                    </span>
+
+                    <strong id="tasksCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+                    <span>
+                        المهام المكتملة
+                    </span>
+
+                    <strong id="completedCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+
+                <div>
+                    <span>
+                        قيد التنفيذ
+                    </span>
+
+                    <strong id="progressCount">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+                    <span>
+                        نسبة الإنجاز
+                    </span>
+
+                    <strong id="progressPercent">
+                        0%
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-grid">
+
+            <section class="main-column">
+
+                <section class="supervisor-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <span>
+                                الإشراف التدريبي
+                            </span>
+
+                            <h2>
+                                المشرف المسؤول
+                            </h2>
+                        </div>
+
+                        <div class="section-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="supervisor-info"
+                        id="supervisorInfo"
+                    >
+
+                        <div class="supervisor-avatar">
+                            م
+                        </div>
+
+                        <div>
+
+                            <strong id="supervisorName">
+                                -
+                            </strong>
+
+                            <span id="supervisorEmail">
+                                -
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="tasks-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <span>
+                                مهام التدريب
+                            </span>
+
+                            <h2>
+                                المهام الحالية
+                            </h2>
+                        </div>
+
+
+                        <a href="tasks.html">
+                            عرض جميع المهام
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="tasks-list"
+                        id="tasksList"
+                    >
+                    </div>
+
+
+                    <div
+                        class="empty-state"
+                        id="emptyTasks"
+                    >
+
+                        <div class="empty-icon">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+
+                        <h3>
+                            لا توجد مهام
+                        </h3>
+
+                        <p>
+                            لم يضف المشرف أي مهمة لك حتى الآن.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <aside class="side-column">
+
+                <section class="progress-card">
+
+                    <span class="side-label">
+                        تقدم التدريب
+                    </span>
+
+                    <h3>
+                        نسبة الإنجاز
+                    </h3>
+
+
+                    <div
+                        class="progress-circle"
+                        id="progressCircle"
+                    >
+
+                        <div class="progress-inner">
+
+                            <strong id="circlePercent">
+                                0%
+                            </strong>
+
+                            <span>
+                                مكتمل
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p id="progressDescription">
+                        لا توجد مهام حتى الآن.
+                    </p>
+
+                </section>
+
+
+                <section class="training-card">
+
+                    <span class="side-label">
+                        معلومات التدريب
+                    </span>
+
+                    <h3>
+                        فترة التدريب
+                    </h3>
+
+
+                    <div class="info-row">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <div>
+                            <span>
+                                تاريخ البداية
+                            </span>
+
+                            <strong id="startDate">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <i class="fa-regular fa-calendar-check"></i>
+
+                        <div>
+                            <span>
+                                تاريخ النهاية
+                            </span>
+
+                            <strong id="endDate">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="daily-card">
+
+                    <div class="daily-icon">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </div>
+
+                    <h3>
+                        التقرير اليومي
+                    </h3>
+
+                    <p>
+                        سجّل الأعمال التي أنجزتها اليوم وما تعلمته والتحديات التي واجهتك.
+                    </p>
+
+                    <a href="daily-report.html">
+                        كتابة التقرير
+                    </a>
+
+                </section>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const currentUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_current_user"
+                )
+            );
+
+
+        if (
+            !currentUser ||
+            currentUser.role !== "trainee"
+        ) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        const trainees =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_trainees"
+                )
+            ) || [];
+
+
+        const supervisors =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_supervisors"
+                )
+            ) || [];
+
+
+        const tasks =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_tasks"
+                )
+            ) || [];
+
+
+        const trainee =
+            trainees.find(
+                function (item) {
+
+                    return (
+                        item.id === currentUser.id
+                    );
+
+                }
+            );
+
+
+        if (!trainee) {
+
+            localStorage.removeItem(
+                "trainflow_current_user"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        const supervisor =
+            supervisors.find(
+                function (item) {
+
+                    return (
+                        item.id === trainee.supervisorId
+                    );
+
+                }
+            );
+
+
+        const myTasks =
+            tasks.filter(
+                function (task) {
+
+                    return (
+                        task.traineeId === trainee.id
+                    );
+
+                }
+            );
+
+
+        document.getElementById(
+            "welcomeName"
+        ).innerText =
+            "أهلاً " + trainee.name;
+
+
+        document.getElementById(
+            "startDate"
+        ).innerText =
+            formatDate(
+                trainee.startDate
+            );
+
+
+        document.getElementById(
+            "endDate"
+        ).innerText =
+            formatDate(
+                trainee.endDate
+            );
+
+
+        if (supervisor) {
+
+            document.getElementById(
+                "supervisorName"
+            ).innerText =
+                supervisor.name;
+
+
+            document.getElementById(
+                "supervisorEmail"
+            ).innerText =
+                supervisor.email;
+
+
+            document.querySelector(
+                ".supervisor-avatar"
+            ).innerText =
+                supervisor.name.charAt(0);
+
+        }
+
+
+        loadStats();
+
+        loadRecentTasks();
+
+
+        function loadStats() {
+
+            const completedTasks =
+                myTasks.filter(
+                    function (task) {
+
+                        return (
+                            task.status ===
+                            "completed"
+                        );
+
+                    }
+                );
+
+
+            const progressTasks =
+                myTasks.filter(
+                    function (task) {
+
+                        return (
+                            task.status ===
+                            "progress"
+                        );
+
+                    }
+                );
+
+
+            let percentage = 0;
+
+
+            if (myTasks.length > 0) {
+
+                percentage =
+                    Math.round(
+                        (
+                            completedTasks.length /
+                            myTasks.length
+                        ) * 100
+                    );
+
+            }
+
+
+            document.getElementById(
+                "tasksCount"
+            ).innerText =
+                myTasks.length;
+
+
+            document.getElementById(
+                "completedCount"
+            ).innerText =
+                completedTasks.length;
+
+
+            document.getElementById(
+                "progressCount"
+            ).innerText =
+                progressTasks.length;
+
+
+            document.getElementById(
+                "progressPercent"
+            ).innerText =
+                percentage + "%";
+
+
+            document.getElementById(
+                "circlePercent"
+            ).innerText =
+                percentage + "%";
+
+
+            document.getElementById(
+                "progressCircle"
+            ).style.background =
+                "conic-gradient(" +
+                "#4f46e5 0% " +
+                percentage +
+                "%, #e5e7eb " +
+                percentage +
+                "% 100%)";
+
+
+            if (
+                myTasks.length === 0
+            ) {
+
+                document.getElementById(
+                    "progressDescription"
+                ).innerText =
+                    "لا توجد مهام حتى الآن.";
+
+            } else {
+
+                document.getElementById(
+                    "progressDescription"
+                ).innerText =
+                    "تم إنجاز " +
+                    completedTasks.length +
+                    " من أصل " +
+                    myTasks.length +
+                    " مهام.";
+
+            }
+
+        }
+
+
+        function loadRecentTasks() {
+
+            const tasksList =
+                document.getElementById(
+                    "tasksList"
+                );
+
+
+            const emptyTasks =
+                document.getElementById(
+                    "emptyTasks"
+                );
+
+
+            tasksList.innerHTML = "";
+
+
+            if (myTasks.length === 0) {
+
+                emptyTasks.style.display =
+                    "flex";
+
+                return;
+
+            }
+
+
+            emptyTasks.style.display =
+                "none";
+
+
+            const recentTasks =
+                [...myTasks]
+                    .sort(
+                        function (a, b) {
+
+                            return (
+                                new Date(b.createdAt) -
+                                new Date(a.createdAt)
+                            );
+
+                        }
+                    )
+                    .slice(
+                        0,
+                        4
+                    );
+
+
+            recentTasks.forEach(
+                function (task) {
+
+                    const item =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    item.className =
+                        "task-item";
+
+
+                    let statusText =
+                        "لم تبدأ";
+
+
+                    let statusClass =
+                        "pending";
+
+
+                    let statusIcon =
+                        "fa-regular fa-circle";
+
+
+                    if (
+                        task.status ===
+                        "progress"
+                    ) {
+
+                        statusText =
+                            "قيد التنفيذ";
+
+                        statusClass =
+                            "progress";
+
+                        statusIcon =
+                            "fa-regular fa-clock";
+
+                    }
+
+
+                    if (
+                        task.status ===
+                        "completed"
+                    ) {
+
+                        statusText =
+                            "مكتملة";
+
+                        statusClass =
+                            "completed";
+
+                        statusIcon =
+                            "fa-solid fa-check";
+
+                    }
+
+
+                    item.innerHTML = `
+
+                        <div class="task-icon ${statusClass}">
+
+                            <i class="${statusIcon}"></i>
+
+                        </div>
+
+
+                        <div class="task-info">
+
+                            <h3>
+                                ${escapeHTML(task.title)}
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(task.description)}
+                            </p>
+
+                            <div class="task-meta">
+
+                                <span>
+                                    <i class="fa-regular fa-calendar"></i>
+
+                                    ${formatDate(task.dueDate)}
+                                </span>
+
+                                <span class="${statusClass}">
+                                    ${statusText}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="view-task"
+                            onclick="openTask('${task.id}')"
+                        >
+
+                            <i class="fa-solid fa-chevron-left"></i>
+
+                        </button>
+
+                    `;
+
+
+                    tasksList.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+
+        function openTask(
+            taskId
+        ) {
+
+            localStorage.setItem(
+                "trainflow_selected_task",
+                taskId
+            );
+
+
+            window.location.href =
+                "task-details.html";
+
+        }
+
+
+        document.getElementById(
+            "logoutButton"
+        ).addEventListener(
+            "click",
+            function () {
+
+                localStorage.removeItem(
+                    "trainflow_current_user"
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+
+        function formatDate(
+            value
+        ) {
+
+            if (!value) {
+                return "-";
+            }
+
+
+            const date =
+                new Date(
+                    value + "T00:00:00"
+                );
+
+
+            return date.toLocaleDateString(
+                "ar-SA",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            );
+
+        }
+
+
+        function escapeHTML(
+            value
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                value || "";
+
+
+            return div.innerHTML;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
