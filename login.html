@@ -17,153 +17,178 @@
 
 <body>
 
-    <main class="auth-page">
+    <main class="page">
 
-        <section class="auth-card">
+        <section class="login-card">
 
-            <a href="index.html" class="back-button">
-                <i class="fa-solid fa-arrow-right"></i>
-                الرجوع
-            </a>
+            <!-- الجانب التعريفي -->
+            <div class="info-side">
 
+                <a href="index.html" class="brand">
 
-            <div class="auth-header">
-
-                <div class="brand-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-
-                <span>TrainFlow</span>
-
-                <h1>تسجيل الدخول</h1>
-
-                <p>
-                    اختر نوع الحساب ثم أدخل بيانات الدخول.
-                </p>
-
-            </div>
-
-
-            <div class="role-selector">
-
-                <button
-                    type="button"
-                    class="role-button active"
-                    id="supervisorButton"
-                >
-                    <i class="fa-solid fa-user-tie"></i>
-                    مشرف
-                </button>
-
-
-                <button
-                    type="button"
-                    class="role-button"
-                    id="traineeButton"
-                >
-                    <i class="fa-solid fa-user-graduate"></i>
-                    متدرب
-                </button>
-
-            </div>
-
-
-            <form id="loginForm">
-
-                <div class="form-group">
-
-                    <label for="email">
-                        البريد الإلكتروني
-                    </label>
-
-                    <div class="input-wrapper">
-
-                        <i class="fa-regular fa-envelope"></i>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="example@email.com"
-                            required
-                        >
-
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-layer-group"></i>
                     </div>
 
-                </div>
-
-
-                <div class="form-group" id="passwordGroup">
-
-                    <label for="password">
-                        كلمة المرور
-                    </label>
-
-                    <div class="input-wrapper">
-
-                        <i class="fa-solid fa-lock"></i>
-
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="أدخل كلمة المرور"
-                        >
-
+                    <div>
+                        <strong>TrainFlow</strong>
+                        <span>متابعة التدريب</span>
                     </div>
 
-                </div>
-
-
-                <div
-                    class="form-group"
-                    id="traineeCodeGroup"
-                    style="display: none;"
-                >
-
-                    <label for="traineeCode">
-                        كود الدخول
-                    </label>
-
-                    <div class="input-wrapper">
-
-                        <i class="fa-solid fa-key"></i>
-
-                        <input
-                            type="text"
-                            id="traineeCode"
-                            placeholder="أدخل الكود الذي أعطاك المشرف"
-                        >
-
-                    </div>
-
-                </div>
-
-
-                <p id="message"></p>
-
-
-                <button
-                    type="submit"
-                    class="submit-button"
-                >
-                    تسجيل الدخول
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-
-            </form>
-
-
-            <div
-                class="register-link"
-                id="registerSection"
-            >
-
-                <span>
-                    مشرف جديد؟
-                </span>
-
-                <a href="register.html">
-                    إنشاء حساب مشرف
                 </a>
+
+
+                <div class="info-content">
+
+                    <span class="small-label">
+                        مرحباً بعودتك
+                    </span>
+
+                    <h1>
+                        تابع تدريبك
+                        <span>من مكان واحد.</span>
+                    </h1>
+
+                    <p>
+                        سجّل دخولك للوصول إلى حسابك ومتابعة
+                        التدريب والمهام والتقارير.
+                    </p>
+
+
+                    <div class="visual-card">
+
+                        <div class="visual-icon">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+
+                        <div>
+                            <span>TrainFlow</span>
+                            <strong>تنظيم أبسط للتدريب</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- تسجيل الدخول -->
+            <div class="form-side">
+
+                <a href="index.html" class="back-button">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    العودة للرئيسية
+                </a>
+
+
+                <div class="form-header">
+
+                    <span>
+                        تسجيل الدخول
+                    </span>
+
+                    <h2>
+                        أهلاً بك من جديد
+                    </h2>
+
+                    <p>
+                        أدخل بيانات حسابك للمتابعة.
+                    </p>
+
+                </div>
+
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            البريد الإلكتروني
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="example@email.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="password-label">
+
+                            <label for="password">
+                                كلمة المرور
+                            </label>
+
+                            <a href="forgot-password.html">
+                                نسيت كلمة المرور؟
+                            </a>
+
+                        </div>
+
+
+                        <div class="input-wrapper password-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="أدخل كلمة المرور"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="إظهار كلمة المرور"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <p id="message"></p>
+
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+                        تسجيل الدخول
+
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+
+                </form>
+
+
+                <div class="register-link">
+
+                    ليس لديك حساب؟
+
+                    <a href="register.html">
+                        إنشاء حساب
+                    </a>
+
+                </div>
 
             </div>
 
@@ -174,210 +199,233 @@
 
     <script>
 
-        const supervisorButton =
-            document.getElementById("supervisorButton");
-
-        const traineeButton =
-            document.getElementById("traineeButton");
-
-        const passwordGroup =
-            document.getElementById("passwordGroup");
-
-        const traineeCodeGroup =
-            document.getElementById("traineeCodeGroup");
-
-        const passwordInput =
-            document.getElementById("password");
-
-        const traineeCodeInput =
-            document.getElementById("traineeCode");
-
-        const registerSection =
-            document.getElementById("registerSection");
-
         const loginForm =
             document.getElementById("loginForm");
 
         const message =
             document.getElementById("message");
 
-
-        let selectedRole = "supervisor";
-
-
-        supervisorButton.addEventListener("click", function () {
-
-            selectedRole = "supervisor";
-
-            supervisorButton.classList.add("active");
-            traineeButton.classList.remove("active");
-
-            passwordGroup.style.display = "block";
-            traineeCodeGroup.style.display = "none";
-
-            registerSection.style.display = "block";
-
-            passwordInput.required = true;
-            traineeCodeInput.required = false;
-
-            message.innerText = "";
-
-        });
+        const passwordToggle =
+            document.getElementById("passwordToggle");
 
 
-        traineeButton.addEventListener("click", function () {
+        /*
+            إظهار / إخفاء كلمة المرور
+        */
 
-            selectedRole = "trainee";
+        passwordToggle.addEventListener(
+            "click",
+            function () {
 
-            traineeButton.classList.add("active");
-            supervisorButton.classList.remove("active");
+                const password =
+                    document.getElementById("password");
 
-            passwordGroup.style.display = "none";
-            traineeCodeGroup.style.display = "block";
-
-            registerSection.style.display = "none";
-
-            passwordInput.required = false;
-            traineeCodeInput.required = true;
-
-            message.innerText = "";
-
-        });
+                const icon =
+                    passwordToggle.querySelector("i");
 
 
-        loginForm.addEventListener("submit", function (event) {
+                if (password.type === "password") {
 
-            event.preventDefault();
+                    password.type = "text";
 
+                    icon.className =
+                        "fa-regular fa-eye-slash";
 
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim()
-                    .toLowerCase();
+                } else {
 
+                    password.type = "password";
 
-            if (selectedRole === "supervisor") {
+                    icon.className =
+                        "fa-regular fa-eye";
 
-                loginSupervisor(email);
-
-            } else {
-
-                loginTrainee(email);
+                }
 
             }
-
-        });
-
-
-        function loginSupervisor(email) {
-
-            const password =
-                passwordInput.value;
+        );
 
 
-            const supervisors =
-                JSON.parse(
-                    localStorage.getItem("trainflow_supervisors")
-                ) || [];
+        /*
+            تسجيل الدخول
+        */
+
+        loginForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
 
 
-            const supervisor =
-                supervisors.find(function (item) {
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim()
+                        .toLowerCase();
 
-                    return (
-                        item.email.toLowerCase() === email &&
-                        item.password === password
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                if (!email || !password) {
+
+                    showError(
+                        "يرجى إدخال البريد الإلكتروني وكلمة المرور."
                     );
 
-                });
+                    return;
+
+                }
 
 
-            if (!supervisor) {
-
-                showError(
-                    "البريد الإلكتروني أو كلمة المرور غير صحيحة"
-                );
-
-                return;
-
-            }
+                const supervisors =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "trainflow_supervisors"
+                        )
+                    ) || [];
 
 
-            localStorage.setItem(
-                "trainflow_current_user",
-                JSON.stringify({
-                    id: supervisor.id,
-                    name: supervisor.name,
-                    email: supervisor.email,
-                    role: "supervisor"
-                })
-            );
+                const trainees =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "trainflow_trainees"
+                        )
+                    ) || [];
 
 
-            window.location.href =
-                "supervisor-dashboard.html";
+                /*
+                    البحث أولاً عن حساب مشرف
+                */
 
-        }
+                const supervisor =
+                    supervisors.find(
+                        function (user) {
 
+                            return (
+                                user.email
+                                    .toLowerCase() ===
+                                    email &&
+                                user.password ===
+                                    password
+                            );
 
-        function loginTrainee(email) {
-
-            const code =
-                traineeCodeInput.value.trim();
-
-
-            const trainees =
-                JSON.parse(
-                    localStorage.getItem("trainflow_trainees")
-                ) || [];
-
-
-            const trainee =
-                trainees.find(function (item) {
-
-                    return (
-                        item.email.toLowerCase() === email &&
-                        item.loginCode === code
+                        }
                     );
 
-                });
+
+                if (supervisor) {
+
+                    const sessionUser = {
+
+                        id:
+                            supervisor.id,
+
+                        name:
+                            supervisor.name,
+
+                        email:
+                            supervisor.email,
+
+                        role:
+                            "supervisor"
+
+                    };
 
 
-            if (!trainee) {
+                    localStorage.setItem(
+                        "trainflow_current_user",
+                        JSON.stringify(
+                            sessionUser
+                        )
+                    );
+
+
+                    window.location.href =
+                        "supervisor-dashboard.html";
+
+                    return;
+
+                }
+
+
+                /*
+                    إذا لم يكن مشرفاً، نبحث عن متدرب
+                */
+
+                const trainee =
+                    trainees.find(
+                        function (user) {
+
+                            return (
+                                user.email
+                                    .toLowerCase() ===
+                                    email &&
+                                user.password ===
+                                    password &&
+                                user.accountCreated ===
+                                    true
+                            );
+
+                        }
+                    );
+
+
+                if (trainee) {
+
+                    const sessionUser = {
+
+                        id:
+                            trainee.id,
+
+                        name:
+                            trainee.name,
+
+                        email:
+                            trainee.email,
+
+                        role:
+                            "trainee",
+
+                        supervisorId:
+                            trainee.supervisorId
+
+                    };
+
+
+                    localStorage.setItem(
+                        "trainflow_current_user",
+                        JSON.stringify(
+                            sessionUser
+                        )
+                    );
+
+
+                    window.location.href =
+                        "trainee-dashboard.html";
+
+                    return;
+
+                }
+
 
                 showError(
-                    "البريد الإلكتروني أو كود الدخول غير صحيح"
+                    "البريد الإلكتروني أو كلمة المرور غير صحيحة."
                 );
 
-                return;
-
             }
-
-
-            localStorage.setItem(
-                "trainflow_current_user",
-                JSON.stringify({
-                    id: trainee.id,
-                    name: trainee.name,
-                    email: trainee.email,
-                    role: "trainee",
-                    supervisorId: trainee.supervisorId
-                })
-            );
-
-
-            window.location.href =
-                "trainee-dashboard.html";
-
-        }
+        );
 
 
         function showError(text) {
 
-            message.className = "error-message";
-            message.innerText = text;
+            message.innerText =
+                text;
+
+            message.className =
+                "error-message";
 
         }
 
