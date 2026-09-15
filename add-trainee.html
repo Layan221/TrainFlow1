@@ -3,20 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>TrainFlow | إضافة متدرب</title>
 
-    <title>
-        TrainFlow | إضافة متدرب
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="add-trainee.css"
-    >
+    <link rel="stylesheet" href="add-trainee.css">
 
     <link
         rel="stylesheet"
@@ -25,6 +16,34 @@
 </head>
 
 <body>
+
+    <header class="navbar">
+
+        <a href="supervisor-dashboard.html" class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div>
+                <strong>TrainFlow</strong>
+                <span>متابعة التدريب</span>
+            </div>
+
+        </a>
+
+        <div class="supervisor-info">
+
+            <span>المشرف</span>
+
+            <strong id="supervisorName">
+                -
+            </strong>
+
+        </div>
+
+    </header>
+
 
     <main class="page-container">
 
@@ -37,7 +56,11 @@
         </a>
 
 
-        <header class="page-header">
+        <section class="page-header">
+
+            <div class="header-icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
 
             <div>
 
@@ -46,294 +69,194 @@
                 </span>
 
                 <h1>
-                    إضافة متدرب جديد
+                    إضافة متدرب
                 </h1>
 
                 <p>
-                    أدخل بيانات المتدرب وحدد له كود الدخول الخاص به.
+                    أضف بيانات المتدرب وحدد له كود ربط خاص.
                 </p>
 
             </div>
 
-            <div class="header-icon">
-                <i class="fa-solid fa-user-plus"></i>
+        </section>
+
+
+        <section class="form-card">
+
+            <div class="form-title">
+
+                <span>
+                    بيانات المتدرب
+                </span>
+
+                <h2>
+                    متدرب جديد
+                </h2>
+
             </div>
 
-        </header>
 
+            <form id="addTraineeForm">
 
-        <section class="content-grid">
+                <div class="form-group">
 
-            <section class="form-card">
+                    <label for="traineeName">
+                        اسم المتدرب
+                    </label>
 
-                <div class="card-title">
+                    <div class="input-wrapper">
 
-                    <div class="title-icon">
                         <i class="fa-regular fa-user"></i>
-                    </div>
 
-                    <div>
-                        <span>
-                            بيانات المتدرب
-                        </span>
+                        <input
+                            type="text"
+                            id="traineeName"
+                            placeholder="أدخل اسم المتدرب"
+                            required
+                        >
 
-                        <h2>
-                            المعلومات الأساسية
-                        </h2>
                     </div>
 
                 </div>
 
 
-                <form id="traineeForm">
+                <div class="form-group">
 
-                    <div class="form-group">
+                    <label for="traineeEmail">
+                        البريد الإلكتروني
+                    </label>
 
-                        <label for="traineeName">
-                            الاسم الكامل
-                        </label>
+                    <div class="input-wrapper">
 
-                        <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
 
-                            <i class="fa-regular fa-user"></i>
-
-                            <input
-                                type="text"
-                                id="traineeName"
-                                placeholder="أدخل اسم المتدرب"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="traineeEmail">
-                            البريد الإلكتروني
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-regular fa-envelope"></i>
-
-                            <input
-                                type="email"
-                                id="traineeEmail"
-                                placeholder="trainee@email.com"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="loginCode">
-                            كود دخول المتدرب
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-key"></i>
-
-                            <input
-                                type="text"
-                                id="loginCode"
-                                placeholder="مثال: 2486"
-                                required
-                            >
-
-                        </div>
-
-                        <small>
-                            أنشئ كودًا خاصًا بهذا المتدرب وسيستخدمه مع بريده الإلكتروني عند تسجيل الدخول.
-                        </small>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="trainingField">
-                            مجال التدريب
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-solid fa-graduation-cap"></i>
-
-                            <input
-                                type="text"
-                                id="trainingField"
-                                placeholder="مثال: تطوير الويب"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="dates-grid">
-
-                        <div class="form-group">
-
-                            <label for="startDate">
-                                بداية التدريب
-                            </label>
-
-                            <div class="input-wrapper">
-
-                                <i class="fa-regular fa-calendar"></i>
-
-                                <input
-                                    type="date"
-                                    id="startDate"
-                                    required
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="endDate">
-                                نهاية التدريب
-                            </label>
-
-                            <div class="input-wrapper">
-
-                                <i class="fa-regular fa-calendar-check"></i>
-
-                                <input
-                                    type="date"
-                                    id="endDate"
-                                    required
-                                >
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="notes">
-                            ملاحظات
-                        </label>
-
-                        <textarea
-                            id="notes"
-                            placeholder="أي ملاحظات خاصة بالمتدرب..."
-                        ></textarea>
-
-                    </div>
-
-
-                    <p id="message"></p>
-
-
-                    <div class="form-actions">
-
-                        <button
-                            type="submit"
-                            class="save-button"
+                        <input
+                            type="email"
+                            id="traineeEmail"
+                            placeholder="example@email.com"
+                            required
                         >
-                            <i class="fa-solid fa-user-plus"></i>
-                            إضافة المتدرب
-                        </button>
-
-
-                        <a
-                            href="supervisor-dashboard.html"
-                            class="cancel-button"
-                        >
-                            إلغاء
-                        </a>
 
                     </div>
 
-                </form>
+                    <small>
+                        يجب أن يستخدم المتدرب نفس البريد عند إنشاء حسابه.
+                    </small>
 
-            </section>
-
-
-            <aside class="info-card">
-
-                <div class="info-icon">
-                    <i class="fa-solid fa-key"></i>
                 </div>
 
-                <h3>
-                    كيف يدخل المتدرب؟
-                </h3>
+
+                <div class="form-group">
+
+                    <label for="linkCode">
+                        كود ربط المتدرب
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-key"></i>
+
+                        <input
+                            type="text"
+                            id="linkCode"
+                            placeholder="مثال: 4821"
+                            maxlength="12"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+                    <small>
+                        اختر كودًا خاصًا وأرسله للمتدرب ليستخدمه عند التسجيل.
+                    </small>
+
+                </div>
+
+
+                <div class="report-setting">
+
+                    <div class="setting-info">
+
+                        <div class="setting-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+
+                        <div>
+                            <strong>
+                                التقرير اليومي
+                            </strong>
+
+                            <span>
+                                هل تريد من هذا المتدرب إرسال تقرير يومي؟
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="dailyReportRequired"
+                            checked
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <p id="message"></p>
+
+
+                <div class="form-actions">
+
+                    <a
+                        href="supervisor-dashboard.html"
+                        class="cancel-button"
+                    >
+                        إلغاء
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        إضافة المتدرب
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <section class="help-card">
+
+            <div class="help-icon">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+
+            <div>
+
+                <strong>
+                    كيف يتم الربط؟
+                </strong>
 
                 <p>
-                    بعد إضافة المتدرب، أعطه البريد الإلكتروني المسجل
-                    وكود الدخول الذي اخترته له.
+                    بعد إضافة المتدرب، أعطه كود الربط الذي اخترته.
+                    عند إنشاء حسابه سيستخدم بريده الإلكتروني والكود،
+                    وسيتم ربط حسابه بك تلقائيًا.
                 </p>
 
-
-                <div class="step">
-
-                    <span>1</span>
-
-                    <div>
-                        <strong>
-                            أضف المتدرب
-                        </strong>
-
-                        <p>
-                            أدخل بياناته وحدد كودًا خاصًا به.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="step">
-
-                    <span>2</span>
-
-                    <div>
-                        <strong>
-                            أعطه الكود
-                        </strong>
-
-                        <p>
-                            يستخدم المتدرب بريده والكود لتسجيل الدخول.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="step">
-
-                    <span>3</span>
-
-                    <div>
-                        <strong>
-                            ابدأ المتابعة
-                        </strong>
-
-                        <p>
-                            أضف له المهام وتابع الإنجاز والتقارير.
-                        </p>
-                    </div>
-
-                </div>
-
-            </aside>
+            </div>
 
         </section>
 
@@ -350,6 +273,10 @@
             );
 
 
+        /*
+            حماية الصفحة
+        */
+
         if (
             !currentUser ||
             currentUser.role !== "supervisor"
@@ -361,9 +288,15 @@
         }
 
 
-        const traineeForm =
+        document.getElementById(
+            "supervisorName"
+        ).innerText =
+            currentUser.name || "المشرف";
+
+
+        const form =
             document.getElementById(
-                "traineeForm"
+                "addTraineeForm"
             );
 
 
@@ -373,7 +306,7 @@
             );
 
 
-        traineeForm.addEventListener(
+        form.addEventListener(
             "submit",
             function (event) {
 
@@ -399,71 +332,31 @@
                         .toLowerCase();
 
 
-                const loginCode =
+                const linkCode =
                     document
                         .getElementById(
-                            "loginCode"
+                            "linkCode"
                         )
                         .value
                         .trim();
 
 
-                const trainingField =
+                const dailyReportRequired =
                     document
                         .getElementById(
-                            "trainingField"
+                            "dailyReportRequired"
                         )
-                        .value
-                        .trim();
-
-
-                const startDate =
-                    document
-                        .getElementById(
-                            "startDate"
-                        )
-                        .value;
-
-
-                const endDate =
-                    document
-                        .getElementById(
-                            "endDate"
-                        )
-                        .value;
-
-
-                const notes =
-                    document
-                        .getElementById(
-                            "notes"
-                        )
-                        .value
-                        .trim();
+                        .checked;
 
 
                 if (
                     !name ||
                     !email ||
-                    !loginCode ||
-                    !trainingField ||
-                    !startDate ||
-                    !endDate
+                    !linkCode
                 ) {
 
                     showError(
-                        "يرجى تعبئة جميع الحقول المطلوبة"
-                    );
-
-                    return;
-
-                }
-
-
-                if (loginCode.length < 4) {
-
-                    showError(
-                        "كود الدخول يجب أن يحتوي على 4 خانات على الأقل"
+                        "يرجى تعبئة جميع البيانات."
                     );
 
                     return;
@@ -472,12 +365,11 @@
 
 
                 if (
-                    new Date(endDate) <
-                    new Date(startDate)
+                    linkCode.length < 4
                 ) {
 
                     showError(
-                        "تاريخ نهاية التدريب لا يمكن أن يكون قبل تاريخ البداية"
+                        "كود الربط يجب أن يكون 4 خانات على الأقل."
                     );
 
                     return;
@@ -493,23 +385,53 @@
                     ) || [];
 
 
-                const emailExists =
+                const supervisors =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "trainflow_supervisors"
+                        )
+                    ) || [];
+
+
+                /*
+                    منع استخدام بريد مسجل مسبقاً
+                */
+
+                const traineeEmailExists =
                     trainees.some(
                         function (trainee) {
 
                             return (
                                 trainee.email
-                                    .toLowerCase() === email
+                                    .toLowerCase() ===
+                                email
                             );
 
                         }
                     );
 
 
-                if (emailExists) {
+                const supervisorEmailExists =
+                    supervisors.some(
+                        function (supervisor) {
+
+                            return (
+                                supervisor.email
+                                    .toLowerCase() ===
+                                email
+                            );
+
+                        }
+                    );
+
+
+                if (
+                    traineeEmailExists ||
+                    supervisorEmailExists
+                ) {
 
                     showError(
-                        "يوجد متدرب مسجل بهذا البريد الإلكتروني"
+                        "هذا البريد الإلكتروني مستخدم مسبقاً."
                     );
 
                     return;
@@ -517,13 +439,18 @@
                 }
 
 
+                /*
+                    منع تكرار كود الربط
+                    حتى لا يرتبط متدرب بالكود الخطأ
+                */
+
                 const codeExists =
                     trainees.some(
                         function (trainee) {
 
                             return (
-                                trainee.loginCode ===
-                                loginCode
+                                trainee.linkCode ===
+                                linkCode
                             );
 
                         }
@@ -533,7 +460,7 @@
                 if (codeExists) {
 
                     showError(
-                        "كود الدخول مستخدم لمتدرب آخر، اختر كودًا مختلفًا"
+                        "كود الربط مستخدم لمتدرب آخر، اختر كوداً مختلفاً."
                     );
 
                     return;
@@ -541,14 +468,15 @@
                 }
 
 
+                /*
+                    إنشاء المتدرب
+                */
+
                 const trainee = {
 
                     id:
                         "TRN-" +
                         Date.now(),
-
-                    supervisorId:
-                        currentUser.id,
 
                     name:
                         name,
@@ -556,20 +484,23 @@
                     email:
                         email,
 
-                    loginCode:
-                        loginCode,
+                    supervisorId:
+                        currentUser.id,
 
-                    trainingField:
-                        trainingField,
+                    linkCode:
+                        linkCode,
 
-                    startDate:
-                        startDate,
+                    role:
+                        "trainee",
 
-                    endDate:
-                        endDate,
+                    accountCreated:
+                        false,
 
-                    notes:
-                        notes,
+                    password:
+                        null,
+
+                    dailyReportRequired:
+                        dailyReportRequired,
 
                     createdAt:
                         new Date()
@@ -591,22 +522,26 @@
                 );
 
 
-                message.className =
-                    "success-message";
+                showSuccess(
+                    "تمت إضافة المتدرب بنجاح."
+                );
 
 
-                message.innerText =
-                    "تمت إضافة المتدرب بنجاح";
+                /*
+                    نفتح ملف المتدرب مباشرة
+                */
 
-
-                traineeForm.reset();
+                localStorage.setItem(
+                    "trainflow_selected_trainee",
+                    trainee.id
+                );
 
 
                 setTimeout(
                     function () {
 
                         window.location.href =
-                            "supervisor-dashboard.html";
+                            "trainee-details.html";
 
                     },
                     700
@@ -618,11 +553,22 @@
 
         function showError(text) {
 
+            message.innerText =
+                text;
+
             message.className =
                 "error-message";
 
+        }
+
+
+        function showSuccess(text) {
+
             message.innerText =
                 text;
+
+            message.className =
+                "success-message";
 
         }
 
