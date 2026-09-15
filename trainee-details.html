@@ -3,11 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TrainFlow | ملف المتدرب</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="trainee-details.css">
+    <title>TrainFlow | تفاصيل المتدرب</title>
+
+    <link
+        rel="stylesheet"
+        href="trainee-details.css"
+    >
 
     <link
         rel="stylesheet"
@@ -17,309 +24,526 @@
 
 <body>
 
-<header class="navbar">
+<div class="page-layout">
 
-    <a href="supervisor-dashboard.html" class="brand">
+    <!-- =========================
+         Sidebar
+    ========================== -->
 
-        <div class="brand-icon">
-            <i class="fa-solid fa-layer-group"></i>
-        </div>
+    <aside class="sidebar" id="sidebar">
 
         <div>
-            <strong>TrainFlow</strong>
-            <span>متابعة التدريب</span>
+
+            <a
+                href="supervisor-dashboard.html"
+                class="logo"
+            >
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div class="logo-text">
+                    <strong>TrainFlow</strong>
+                    <span>متابعة التدريب</span>
+                </div>
+
+            </a>
+
+
+            <nav class="nav-menu">
+
+                <a
+                    href="supervisor-dashboard.html"
+                    class="nav-link"
+                >
+                    <i class="fa-solid fa-house"></i>
+                    لوحة المشرف
+                </a>
+
+
+                <a
+                    href="#tasksSection"
+                    class="nav-link active"
+                >
+                    <i class="fa-solid fa-list-check"></i>
+                    المهام
+                </a>
+
+
+                <a
+                    href="#reportsSection"
+                    class="nav-link"
+                >
+                    <i class="fa-regular fa-file-lines"></i>
+                    التقارير
+                </a>
+
+            </nav>
+
         </div>
 
-    </a>
 
-    <div class="navbar-user">
-        <span>المشرف</span>
-        <strong id="supervisorName">-</strong>
-    </div>
+        <a
+            href="supervisor-dashboard.html"
+            class="back-dashboard"
+        >
+            <i class="fa-solid fa-arrow-right"></i>
+            العودة للوحة المشرف
+        </a>
 
-</header>
-
-
-<main class="page-container">
-
-    <a href="supervisor-dashboard.html" class="back-button">
-        <i class="fa-solid fa-arrow-right"></i>
-        العودة للمتدربين
-    </a>
+    </aside>
 
 
-    <!-- معلومات المتدرب -->
+    <!-- =========================
+         Main
+    ========================== -->
 
-    <section class="trainee-header">
+    <main class="main-content">
 
-        <div class="trainee-main">
+        <!-- Topbar -->
 
-            <div class="trainee-avatar" id="traineeAvatar">
-                -
-            </div>
+        <header class="topbar">
 
-            <div>
+            <button
+                type="button"
+                class="menu-button"
+                id="menuButton"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-                <span class="page-label">
+
+            <div class="title">
+
+                <span>
                     ملف المتدرب
                 </span>
 
                 <h1 id="traineeName">
-                    -
+                    المتدرب
                 </h1>
 
-                <p id="traineeEmail">
-                    -
-                </p>
-
             </div>
 
-        </div>
-
-
-        <span
-            class="account-status"
-            id="accountStatus"
-        >
-            -
-        </span>
-
-    </section>
-
-
-    <!-- إعدادات المتدرب -->
-
-    <section class="settings-grid">
-
-        <!-- كود الربط -->
-
-        <div class="setting-card">
-
-            <div class="setting-heading">
-
-                <div class="setting-icon blue">
-                    <i class="fa-solid fa-link"></i>
-                </div>
-
-                <div>
-                    <span>ربط الحساب</span>
-                    <h2>كود المتدرب</h2>
-                </div>
-
-            </div>
-
-
-            <div class="code-area">
-
-                <input
-                    type="text"
-                    id="linkCode"
-                    maxlength="12"
-                >
-
-                <button
-                    type="button"
-                    id="saveCodeButton"
-                >
-                    حفظ
-                </button>
-
-            </div>
-
-            <p id="codeMessage"></p>
-
-        </div>
-
-
-        <!-- التقرير -->
-
-        <div class="setting-card">
-
-            <div class="setting-heading">
-
-                <div class="setting-icon purple">
-                    <i class="fa-regular fa-file-lines"></i>
-                </div>
-
-                <div>
-                    <span>إعداد المتابعة</span>
-                    <h2>التقرير اليومي</h2>
-                </div>
-
-            </div>
-
-
-            <div class="report-setting">
-
-                <div>
-                    <strong id="reportStatusText">
-                        مطلوب
-                    </strong>
-
-                    <span>
-                        تحديد ما إذا كان المتدرب مطالبًا بإرسال تقرير.
-                    </span>
-                </div>
-
-
-                <label class="switch">
-
-                    <input
-                        type="checkbox"
-                        id="reportToggle"
-                    >
-
-                    <span class="slider"></span>
-
-                </label>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- المهام -->
-
-    <section class="content-card">
-
-        <div class="section-header">
-
-            <div>
-                <span>متابعة العمل</span>
-                <h2>مهام المتدرب</h2>
-            </div>
 
             <button
                 type="button"
-                class="primary-button"
-                id="showTaskFormButton"
+                class="add-task-button"
+                id="openTaskModal"
             >
                 <i class="fa-solid fa-plus"></i>
                 إضافة مهمة
             </button>
 
-        </div>
+        </header>
 
 
-        <!-- نموذج المهمة -->
+        <!-- =========================
+             بيانات المتدرب
+        ========================== -->
 
-        <form
-            id="taskForm"
-            class="task-form hidden"
-        >
+        <section class="profile-card">
 
-            <div class="form-grid">
+            <div class="profile-main">
 
-                <div class="form-group full">
-
-                    <label for="taskTitle">
-                        عنوان المهمة
-                    </label>
-
-                    <input
-                        type="text"
-                        id="taskTitle"
-                        placeholder="مثال: إعداد واجهة الصفحة الرئيسية"
-                        required
-                    >
-
+                <div class="avatar">
+                    م
                 </div>
 
 
-                <div class="form-group full">
+                <div class="profile-info">
 
-                    <label for="taskDescription">
-                        وصف المهمة
-                    </label>
+                    <span>
+                        المتدرب
+                    </span>
 
-                    <textarea
-                        id="taskDescription"
-                        placeholder="اكتب تفاصيل المهمة..."
-                        required
-                    ></textarea>
+                    <h2 id="profileName">
+                        —
+                    </h2>
 
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="dueDate">
-                        تاريخ التسليم
-                    </label>
-
-                    <input
-                        type="date"
-                        id="dueDate"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="priority">
-                        الأولوية
-                    </label>
-
-                    <select id="priority">
-
-                        <option value="low">
-                            منخفضة
-                        </option>
-
-                        <option
-                            value="medium"
-                            selected
-                        >
-                            متوسطة
-                        </option>
-
-                        <option value="high">
-                            عالية
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label for="supervisorNotes">
-                        ملاحظة للمتدرب
-                        <span class="optional">(اختياري)</span>
-                    </label>
-
-                    <textarea
-                        id="supervisorNotes"
-                        placeholder="أي تعليمات إضافية..."
-                    ></textarea>
+                    <p id="profileEmail">
+                        —
+                    </p>
 
                 </div>
 
             </div>
 
 
-            <p id="taskMessage"></p>
+            <div class="profile-settings">
+
+                <!-- كود الربط -->
+
+                <div class="setting-item">
+
+                    <span>
+                        كود الربط
+                    </span>
+
+                    <div class="code-row">
+
+                        <strong id="linkCode">
+                            —
+                        </strong>
+
+                        <button
+                            type="button"
+                            id="changeCodeButton"
+                        >
+                            تغيير
+                        </button>
+
+                    </div>
+
+                </div>
 
 
-            <div class="form-actions">
+                <!-- التقرير -->
+
+                <div class="setting-item">
+
+                    <span>
+                        التقرير اليومي
+                    </span>
+
+                    <div class="switch-row">
+
+                        <strong id="reportStatus">
+                            مطلوب
+                        </strong>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="reportToggle"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             الإحصائيات
+        ========================== -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+                    <span>إجمالي المهام</span>
+                    <strong id="totalTasks">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div>
+                    <span>المكتملة</span>
+                    <strong id="completedTasks">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+
+                <div>
+                    <span>قيد التنفيذ</span>
+                    <strong id="pendingTasks">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             المهام
+        ========================== -->
+
+        <section
+            class="content-card"
+            id="tasksSection"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        متابعة الإنجاز
+                    </span>
+
+                    <h2>
+                        مهام المتدرب
+                    </h2>
+
+                    <p>
+                        المهام المخصصة لهذا المتدرب فقط.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="secondary-add"
+                    id="secondAddTask"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    مهمة جديدة
+                </button>
+
+            </div>
+
+
+            <!-- حالة فارغة -->
+
+            <div
+                class="empty-state"
+                id="tasksEmpty"
+            >
+
+                <div class="empty-icon">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                </div>
+
+                <h3>
+                    لا توجد مهام
+                </h3>
+
+                <p>
+                    لم تتم إضافة مهام لهذا المتدرب بعد.
+                </p>
+
+            </div>
+
+
+            <!-- Supabase سيضع المهام هنا -->
+
+            <div
+                class="tasks-list"
+                id="tasksList"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             التقارير
+        ========================== -->
+
+        <section
+            class="content-card"
+            id="reportsSection"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        التقارير
+                    </span>
+
+                    <h2>
+                        التقارير اليومية
+                    </h2>
+
+                    <p>
+                        التقارير التي أرسلها هذا المتدرب.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="empty-state reports-empty"
+                id="reportsEmpty"
+            >
+
+                <div class="empty-icon purple">
+
+                    <i class="fa-regular fa-file-lines"></i>
+
+                </div>
+
+                <h3>
+                    لا توجد تقارير
+                </h3>
+
+                <p>
+                    لم يرسل المتدرب أي تقرير حتى الآن.
+                </p>
+
+            </div>
+
+
+            <div
+                class="reports-list"
+                id="reportsList"
+            ></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- ===================================
+     نافذة إضافة مهمة
+=================================== -->
+
+<div
+    class="modal-overlay"
+    id="taskModal"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span>مهمة جديدة</span>
+                <h2>إضافة مهمة</h2>
+            </div>
+
+
+            <button
+                type="button"
+                class="close-button"
+                id="closeTaskModal"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <form id="taskForm">
+
+            <div class="form-group">
+
+                <label for="taskTitle">
+                    عنوان المهمة
+                </label>
+
+                <input
+                    type="text"
+                    id="taskTitle"
+                    placeholder="مثال: إعداد الصفحة الرئيسية"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="taskDescription">
+                    وصف المهمة
+                </label>
+
+                <textarea
+                    id="taskDescription"
+                    placeholder="اكتب تفاصيل المهمة..."
+                    rows="5"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="taskDueDate">
+                    تاريخ التسليم
+                </label>
+
+                <input
+                    type="date"
+                    id="taskDueDate"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="supervisorNote">
+                    ملاحظة للمتدرب
+                </label>
+
+                <textarea
+                    id="supervisorNote"
+                    placeholder="اختياري"
+                    rows="3"
+                ></textarea>
+
+            </div>
+
+
+            <div
+                class="message"
+                id="taskMessage"
+            ></div>
+
+
+            <div class="modal-actions">
 
                 <button
                     type="button"
                     class="cancel-button"
-                    id="cancelTaskButton"
+                    id="cancelTask"
                 >
                     إلغاء
                 </button>
 
+
                 <button
                     type="submit"
-                    class="save-task-button"
+                    class="save-button"
                 >
+                    <i class="fa-solid fa-plus"></i>
                     إضافة المهمة
                 </button>
 
@@ -327,1094 +551,516 @@
 
         </form>
 
+    </div>
 
-        <!-- قائمة المهام -->
-
-        <div
-            class="tasks-list"
-            id="tasksList"
-        >
-        </div>
+</div>
 
 
-        <div
-            class="empty-box"
-            id="tasksEmpty"
-        >
-            <i class="fa-regular fa-clipboard"></i>
+<!-- ===================================
+     نافذة تغيير الكود
+=================================== -->
 
-            <strong>
-                لا توجد مهام
-            </strong>
+<div
+    class="modal-overlay"
+    id="codeModal"
+>
 
-            <span>
-                لم تتم إضافة مهام لهذا المتدرب حتى الآن.
-            </span>
-        </div>
+    <div class="modal small-modal">
 
-    </section>
-
-
-    <!-- التقارير -->
-
-    <section class="content-card">
-
-        <div class="section-header">
+        <div class="modal-header">
 
             <div>
-                <span>متابعة الأيام</span>
-                <h2>تقارير المتدرب</h2>
+                <span>كود الربط</span>
+                <h2>تغيير الكود</h2>
             </div>
 
-            <span
-                class="count-badge"
-                id="reportsCount"
+
+            <button
+                type="button"
+                class="close-button"
+                id="closeCodeModal"
             >
-                0 تقرير
-            </span>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
         </div>
 
 
-        <div
-            class="reports-list"
-            id="reportsList"
-        >
-        </div>
+        <p class="modal-description">
+            بعد تغيير الكود لن يعمل الكود السابق لتفعيل الحساب.
+        </p>
 
 
-        <div
-            class="empty-box"
-            id="reportsEmpty"
-        >
+        <form id="codeForm">
 
-            <i class="fa-regular fa-file-lines"></i>
+            <div class="form-group">
 
-            <strong>
-                لا توجد تقارير
-            </strong>
+                <label for="newCode">
+                    الكود الجديد
+                </label>
 
-            <span>
-                لم يرسل المتدرب أي تقرير حتى الآن.
-            </span>
+                <input
+                    type="text"
+                    id="newCode"
+                    minlength="4"
+                    placeholder="اكتب الكود الجديد"
+                    required
+                >
 
-        </div>
+            </div>
 
-    </section>
 
-</main>
+            <div
+                class="message"
+                id="codeMessage"
+            ></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    id="cancelCode"
+                >
+                    إلغاء
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    حفظ التغيير
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
 
 
 <script>
 
-    const currentUser =
-        JSON.parse(
-            localStorage.getItem(
-                "trainflow_current_user"
-            )
-        );
+    /* =========================
+       Sidebar
+    ========================== */
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const overlay =
+        document.getElementById("sidebarOverlay");
 
 
-    if (
-        !currentUser ||
-        currentUser.role !== "supervisor"
-    ) {
+    document
+        .getElementById("menuButton")
+        .addEventListener(
+            "click",
+            function () {
 
-        window.location.href =
-            "login.html";
+                sidebar.classList.add("open");
 
-    }
-
-
-    const selectedTraineeId =
-        localStorage.getItem(
-            "trainflow_selected_trainee"
-        );
-
-
-    if (!selectedTraineeId) {
-
-        window.location.href =
-            "supervisor-dashboard.html";
-
-    }
-
-
-    let trainees =
-        JSON.parse(
-            localStorage.getItem(
-                "trainflow_trainees"
-            )
-        ) || [];
-
-
-    let trainee =
-        trainees.find(
-            function (item) {
-
-                return (
-                    item.id ===
-                    selectedTraineeId
-                );
+                overlay.classList.add("show");
 
             }
         );
 
 
-    /*
-        مهم:
-        المشرف لا يستطيع فتح متدرب
-        تابع لمشرف آخر.
-    */
-
-    if (
-        !trainee ||
-        trainee.supervisorId !==
-        currentUser.id
-    ) {
-
-        window.location.href =
-            "supervisor-dashboard.html";
-
-    }
-
-
-    document.getElementById(
-        "supervisorName"
-    ).innerText =
-        currentUser.name;
-
-
-    document.getElementById(
-        "traineeName"
-    ).innerText =
-        trainee.name;
-
-
-    document.getElementById(
-        "traineeEmail"
-    ).innerText =
-        trainee.email;
-
-
-    document.getElementById(
-        "traineeAvatar"
-    ).innerText =
-        trainee.name
-            ? trainee.name.charAt(0)
-            : "م";
-
-
-    /*
-        حالة الحساب
-    */
-
-    const accountStatus =
-        document.getElementById(
-            "accountStatus"
-        );
-
-
-    if (trainee.accountCreated) {
-
-        accountStatus.innerHTML = `
-            <i class="fa-solid fa-check"></i>
-            مرتبط
-        `;
-
-        accountStatus.className =
-            "account-status active";
-
-    } else {
-
-        accountStatus.innerText =
-            "بانتظار التسجيل";
-
-        accountStatus.className =
-            "account-status waiting";
-
-    }
-
-
-    /*
-        كود الربط
-    */
-
-    const linkCodeInput =
-        document.getElementById(
-            "linkCode"
-        );
-
-
-    linkCodeInput.value =
-        trainee.linkCode || "";
-
-
-    document.getElementById(
-        "saveCodeButton"
-    ).addEventListener(
+    overlay.addEventListener(
         "click",
         function () {
 
-            const newCode =
-                linkCodeInput
-                    .value
-                    .trim();
+            sidebar.classList.remove("open");
 
-
-            const codeMessage =
-                document.getElementById(
-                    "codeMessage"
-                );
-
-
-            if (
-                newCode.length < 4
-            ) {
-
-                codeMessage.innerText =
-                    "الكود يجب أن يكون 4 خانات على الأقل.";
-
-                codeMessage.className =
-                    "error-message";
-
-                return;
-
-            }
-
-
-            const usedByAnother =
-                trainees.some(
-                    function (item) {
-
-                        return (
-                            item.id !==
-                                trainee.id &&
-                            item.linkCode ===
-                                newCode
-                        );
-
-                    }
-                );
-
-
-            if (usedByAnother) {
-
-                codeMessage.innerText =
-                    "هذا الكود مستخدم لمتدرب آخر.";
-
-                codeMessage.className =
-                    "error-message";
-
-                return;
-
-            }
-
-
-            trainee.linkCode =
-                newCode;
-
-
-            saveTrainee();
-
-
-            codeMessage.innerText =
-                "تم حفظ الكود.";
-
-            codeMessage.className =
-                "success-message";
+            overlay.classList.remove("show");
 
         }
     );
 
 
-    /*
-        إعداد التقرير
-    */
+    /* =========================
+       التقرير اليومي
+    ========================== */
 
     const reportToggle =
-        document.getElementById(
-            "reportToggle"
-        );
+        document.getElementById("reportToggle");
 
-
-    const reportStatusText =
-        document.getElementById(
-            "reportStatusText"
-        );
-
-
-    reportToggle.checked =
-        trainee.dailyReportRequired ===
-        true;
-
-
-    updateReportStatus();
+    const reportStatus =
+        document.getElementById("reportStatus");
 
 
     reportToggle.addEventListener(
         "change",
         function () {
 
-            trainee.dailyReportRequired =
-                reportToggle.checked;
+            if (reportToggle.checked) {
 
+                reportStatus.textContent =
+                    "مطلوب";
 
-            saveTrainee();
+                reportStatus.classList.remove(
+                    "off"
+                );
 
-            updateReportStatus();
+            }
+
+            else {
+
+                reportStatus.textContent =
+                    "غير مطلوب";
+
+                reportStatus.classList.add(
+                    "off"
+                );
+
+            }
+
+            /*
+                بعد Supabase:
+                يتم تحديث إعداد المتدرب
+                في قاعدة البيانات.
+            */
 
         }
     );
 
 
-    function updateReportStatus() {
+    /* =========================
+       Task Modal
+    ========================== */
 
-        if (reportToggle.checked) {
+    const taskModal =
+        document.getElementById("taskModal");
 
-            reportStatusText.innerText =
-                "التقرير مطلوب";
 
-            reportStatusText.className =
-                "enabled-text";
+    document
+        .getElementById("openTaskModal")
+        .addEventListener(
+            "click",
+            openTaskModal
+        );
 
-        } else {
 
-            reportStatusText.innerText =
-                "التقرير غير مطلوب";
+    document
+        .getElementById("secondAddTask")
+        .addEventListener(
+            "click",
+            openTaskModal
+        );
 
-            reportStatusText.className =
-                "disabled-text";
 
-        }
+    document
+        .getElementById("closeTaskModal")
+        .addEventListener(
+            "click",
+            closeTaskModal
+        );
+
+
+    document
+        .getElementById("cancelTask")
+        .addEventListener(
+            "click",
+            closeTaskModal
+        );
+
+
+    function openTaskModal() {
+
+        taskModal.classList.add("show");
+
+        document.body.classList.add(
+            "no-scroll"
+        );
 
     }
 
 
-    function saveTrainee() {
+    function closeTaskModal() {
 
-        trainees =
-            trainees.map(
-                function (item) {
+        taskModal.classList.remove("show");
 
-                    if (
-                        item.id ===
-                        trainee.id
-                    ) {
-
-                        return trainee;
-
-                    }
-
-                    return item;
-
-                }
-            );
-
-
-        localStorage.setItem(
-            "trainflow_trainees",
-            JSON.stringify(
-                trainees
-            )
+        document.body.classList.remove(
+            "no-scroll"
         );
-
-    }
-
-
-    /*
-        نموذج إضافة المهمة
-    */
-
-    const taskForm =
-        document.getElementById(
-            "taskForm"
-        );
-
-
-    document.getElementById(
-        "showTaskFormButton"
-    ).addEventListener(
-        "click",
-        function () {
-
-            taskForm.classList.remove(
-                "hidden"
-            );
-
-
-            document.getElementById(
-                "taskTitle"
-            ).focus();
-
-        }
-    );
-
-
-    document.getElementById(
-        "cancelTaskButton"
-    ).addEventListener(
-        "click",
-        function () {
-
-            taskForm.reset();
-
-            taskForm.classList.add(
-                "hidden"
-            );
-
-        }
-    );
-
-
-    taskForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const title =
-                document
-                    .getElementById(
-                        "taskTitle"
-                    )
-                    .value
-                    .trim();
-
-
-            const description =
-                document
-                    .getElementById(
-                        "taskDescription"
-                    )
-                    .value
-                    .trim();
-
-
-            const dueDate =
-                document
-                    .getElementById(
-                        "dueDate"
-                    )
-                    .value;
-
-
-            const priority =
-                document
-                    .getElementById(
-                        "priority"
-                    )
-                    .value;
-
-
-            const supervisorNotes =
-                document
-                    .getElementById(
-                        "supervisorNotes"
-                    )
-                    .value
-                    .trim();
-
-
-            if (
-                !title ||
-                !description ||
-                !dueDate
-            ) {
-
-                return;
-
-            }
-
-
-            let tasks =
-                JSON.parse(
-                    localStorage.getItem(
-                        "trainflow_tasks"
-                    )
-                ) || [];
-
-
-            const task = {
-
-                id:
-                    "TASK-" +
-                    Date.now(),
-
-                traineeId:
-                    trainee.id,
-
-                supervisorId:
-                    currentUser.id,
-
-                title:
-                    title,
-
-                description:
-                    description,
-
-                dueDate:
-                    dueDate,
-
-                priority:
-                    priority,
-
-                supervisorNotes:
-                    supervisorNotes,
-
-                traineeNotes:
-                    "",
-
-                status:
-                    "pending",
-
-                createdAt:
-                    new Date()
-                        .toISOString(),
-
-                completedAt:
-                    null
-
-            };
-
-
-            tasks.push(task);
-
-
-            localStorage.setItem(
-                "trainflow_tasks",
-                JSON.stringify(
-                    tasks
-                )
-            );
-
-
-            taskForm.reset();
-
-            taskForm.classList.add(
-                "hidden"
-            );
-
-
-            displayTasks();
-
-        }
-    );
-
-
-    /*
-        عرض مهام هذا المتدرب فقط
-    */
-
-    function displayTasks() {
-
-        const allTasks =
-            JSON.parse(
-                localStorage.getItem(
-                    "trainflow_tasks"
-                )
-            ) || [];
-
-
-        const myTasks =
-            allTasks
-                .filter(
-                    function (task) {
-
-                        return (
-                            task.traineeId ===
-                                trainee.id &&
-                            task.supervisorId ===
-                                currentUser.id
-                        );
-
-                    }
-                )
-                .sort(
-                    function (a, b) {
-
-                        return (
-                            new Date(b.createdAt) -
-                            new Date(a.createdAt)
-                        );
-
-                    }
-                );
-
-
-        const list =
-            document.getElementById(
-                "tasksList"
-            );
-
-
-        const empty =
-            document.getElementById(
-                "tasksEmpty"
-            );
-
-
-        list.innerHTML = "";
-
-
-        if (
-            myTasks.length === 0
-        ) {
-
-            empty.style.display =
-                "flex";
-
-            return;
-
-        }
-
-
-        empty.style.display =
-            "none";
-
-
-        myTasks.forEach(
-            function (task) {
-
-                const status =
-                    getStatusData(
-                        task.status
-                    );
-
-
-                const priority =
-                    getPriorityData(
-                        task.priority
-                    );
-
-
-                const item =
-                    document.createElement(
-                        "article"
-                    );
-
-
-                item.className =
-                    "task-item";
-
-
-                item.innerHTML = `
-
-                    <div class="task-icon ${status.className}">
-                        <i class="${status.icon}"></i>
-                    </div>
-
-
-                    <div class="task-info">
-
-                        <div class="task-title-line">
-
-                            <h3>
-                                ${escapeHTML(task.title)}
-                            </h3>
-
-                            <span class="priority ${priority.className}">
-                                ${priority.text}
-                            </span>
-
-                        </div>
-
-
-                        <p>
-                            ${escapeHTML(task.description)}
-                        </p>
-
-
-                        <div class="task-meta">
-
-                            <span>
-                                <i class="fa-regular fa-calendar"></i>
-                                ${formatDate(task.dueDate)}
-                            </span>
-
-                            <span class="${status.className}">
-                                ${status.text}
-                            </span>
-
-                        </div>
-
-
-                        ${
-                            task.traineeNotes
-                            ?
-                            `
-                            <div class="trainee-task-note">
-
-                                <strong>
-                                    ملاحظة المتدرب:
-                                </strong>
-
-                                ${escapeHTML(
-                                    task.traineeNotes
-                                )}
-
-                            </div>
-                            `
-                            :
-                            ""
-                        }
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="delete-task"
-                        data-id="${task.id}"
-                        title="حذف المهمة"
-                    >
-                        <i class="fa-regular fa-trash-can"></i>
-                    </button>
-
-                `;
-
-
-                list.appendChild(
-                    item
-                );
-
-            }
-        );
-
 
         document
-            .querySelectorAll(
-                ".delete-task"
-            )
-            .forEach(
-                function (button) {
+            .getElementById("taskForm")
+            .reset();
 
-                    button.addEventListener(
-                        "click",
-                        function () {
-
-                            deleteTask(
-                                button.dataset.id
-                            );
-
-                        }
-                    );
-
-                }
-            );
+        clearTaskMessage();
 
     }
 
 
-    function deleteTask(taskId) {
+    taskModal.addEventListener(
+        "click",
+        function (event) {
 
-        const confirmed =
-            confirm(
-                "هل تريد حذف هذه المهمة؟"
-            );
+            if (event.target === taskModal) {
 
+                closeTaskModal();
 
-        if (!confirmed) {
-            return;
+            }
+
         }
+    );
 
 
-        let tasks =
-            JSON.parse(
-                localStorage.getItem(
-                    "trainflow_tasks"
-                )
-            ) || [];
+    /* =========================
+       إضافة مهمة
+    ========================== */
+
+    document
+        .getElementById("taskForm")
+        .addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
 
 
-        tasks =
-            tasks.filter(
-                function (task) {
+                const title =
+                    document
+                        .getElementById("taskTitle")
+                        .value
+                        .trim();
 
-                    return !(
-                        task.id === taskId &&
-                        task.traineeId === trainee.id &&
-                        task.supervisorId === currentUser.id
+
+                const description =
+                    document
+                        .getElementById("taskDescription")
+                        .value
+                        .trim();
+
+
+                if (!title || !description) {
+
+                    showTaskError(
+                        "يرجى كتابة عنوان المهمة ووصفها."
                     );
+
+                    return;
 
                 }
-            );
 
 
-        localStorage.setItem(
-            "trainflow_tasks",
-            JSON.stringify(
-                tasks
-            )
-        );
-
-
-        displayTasks();
-
-    }
-
-
-    /*
-        التقارير
-    */
-
-    function displayReports() {
-
-        const reports =
-            JSON.parse(
-                localStorage.getItem(
-                    "trainflow_reports"
-                )
-            ) || [];
-
-
-        const traineeReports =
-            reports
-                .filter(
-                    function (report) {
-
-                        return (
-                            report.traineeId ===
-                                trainee.id &&
-                            report.supervisorId ===
-                                currentUser.id
-                        );
-
-                    }
-                )
-                .sort(
-                    function (a, b) {
-
-                        return (
-                            new Date(b.createdAt) -
-                            new Date(a.createdAt)
-                        );
-
-                    }
-                );
-
-
-        document.getElementById(
-            "reportsCount"
-        ).innerText =
-            traineeReports.length +
-            " تقرير";
-
-
-        const list =
-            document.getElementById(
-                "reportsList"
-            );
-
-
-        const empty =
-            document.getElementById(
-                "reportsEmpty"
-            );
-
-
-        list.innerHTML = "";
-
-
-        if (
-            traineeReports.length === 0
-        ) {
-
-            empty.style.display =
-                "flex";
-
-            return;
-
-        }
-
-
-        empty.style.display =
-            "none";
-
-
-        traineeReports.forEach(
-            function (report) {
-
-                const item =
-                    document.createElement(
-                        "article"
-                    );
-
-
-                item.className =
-                    "report-item";
-
-
-                item.innerHTML = `
-
-                    <div class="report-date">
-
-                        <i class="fa-regular fa-calendar-check"></i>
-
-                        <div>
-                            <span>تقرير</span>
-                            <strong>
-                                ${formatDate(report.date)}
-                            </strong>
-                        </div>
-
-                    </div>
-
-
-                    <div class="report-content">
-
-                        <strong>
-                            ما تم إنجازه
-                        </strong>
-
-                        <p>
-                            ${escapeHTML(
-                                report.achievements
-                            )}
-                        </p>
-
-                        ${
-                            report.notes
-                            ?
-                            `
-                            <strong>
-                                ملاحظات
-                            </strong>
-
-                            <p>
-                                ${escapeHTML(
-                                    report.notes
-                                )}
-                            </p>
-                            `
-                            :
-                            ""
-                        }
-
-                    </div>
-
-                `;
-
-
-                list.appendChild(
-                    item
+                showTaskInfo(
+                    "سيتم حفظ المهمة بعد ربط قاعدة البيانات."
                 );
 
             }
         );
 
-    }
+
+    /* =========================
+       Code Modal
+    ========================== */
+
+    const codeModal =
+        document.getElementById("codeModal");
 
 
-    function getStatusData(status) {
+    document
+        .getElementById("changeCodeButton")
+        .addEventListener(
+            "click",
+            function () {
 
-        if (status === "completed") {
+                codeModal.classList.add(
+                    "show"
+                );
 
-            return {
-                text: "مكتملة",
-                className: "completed",
-                icon: "fa-solid fa-check"
-            };
+                document.body.classList.add(
+                    "no-scroll"
+                );
 
-        }
-
-
-        if (status === "progress") {
-
-            return {
-                text: "قيد التنفيذ",
-                className: "progress",
-                icon: "fa-regular fa-clock"
-            };
-
-        }
-
-
-        return {
-            text: "لم تبدأ",
-            className: "pending",
-            icon: "fa-regular fa-circle"
-        };
-
-    }
-
-
-    function getPriorityData(priority) {
-
-        if (priority === "high") {
-
-            return {
-                text: "عالية",
-                className: "high"
-            };
-
-        }
-
-
-        if (priority === "medium") {
-
-            return {
-                text: "متوسطة",
-                className: "medium"
-            };
-
-        }
-
-
-        return {
-            text: "منخفضة",
-            className: "low"
-        };
-
-    }
-
-
-    function formatDate(value) {
-
-        if (!value) {
-            return "-";
-        }
-
-
-        const date =
-            new Date(
-                value + "T00:00:00"
-            );
-
-
-        return date.toLocaleDateString(
-            "ar-SA",
-            {
-                year: "numeric",
-                month: "short",
-                day: "numeric"
             }
         );
 
+
+    document
+        .getElementById("closeCodeModal")
+        .addEventListener(
+            "click",
+            closeCodeModal
+        );
+
+
+    document
+        .getElementById("cancelCode")
+        .addEventListener(
+            "click",
+            closeCodeModal
+        );
+
+
+    function closeCodeModal() {
+
+        codeModal.classList.remove("show");
+
+        document.body.classList.remove(
+            "no-scroll"
+        );
+
+        document
+            .getElementById("codeForm")
+            .reset();
+
+        clearCodeMessage();
+
     }
 
 
-    function escapeHTML(value) {
+    codeModal.addEventListener(
+        "click",
+        function (event) {
 
-        const div =
-            document.createElement(
-                "div"
+            if (event.target === codeModal) {
+
+                closeCodeModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       تغيير الكود
+    ========================== */
+
+    document
+        .getElementById("codeForm")
+        .addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const newCode =
+                    document
+                        .getElementById("newCode")
+                        .value
+                        .trim();
+
+
+                if (newCode.length < 4) {
+
+                    showCodeError(
+                        "الكود يجب أن يكون 4 خانات على الأقل."
+                    );
+
+                    return;
+
+                }
+
+
+                showCodeInfo(
+                    "سيتم حفظ الكود الجديد بعد ربط قاعدة البيانات."
+                );
+
+            }
+        );
+
+
+    /* =========================
+       Messages
+    ========================== */
+
+    function showTaskError(text) {
+
+        const element =
+            document.getElementById(
+                "taskMessage"
             );
 
+        element.textContent = text;
 
-        div.textContent =
-            value || "";
-
-
-        return div.innerHTML;
+        element.className =
+            "message error";
 
     }
 
 
-    displayTasks();
+    function showTaskInfo(text) {
 
-    displayReports();
+        const element =
+            document.getElementById(
+                "taskMessage"
+            );
+
+        element.textContent = text;
+
+        element.className =
+            "message info";
+
+    }
+
+
+    function clearTaskMessage() {
+
+        const element =
+            document.getElementById(
+                "taskMessage"
+            );
+
+        element.textContent = "";
+
+        element.className =
+            "message";
+
+    }
+
+
+    function showCodeError(text) {
+
+        const element =
+            document.getElementById(
+                "codeMessage"
+            );
+
+        element.textContent = text;
+
+        element.className =
+            "message error";
+
+    }
+
+
+    function showCodeInfo(text) {
+
+        const element =
+            document.getElementById(
+                "codeMessage"
+            );
+
+        element.textContent = text;
+
+        element.className =
+            "message info";
+
+    }
+
+
+    function clearCodeMessage() {
+
+        const element =
+            document.getElementById(
+                "codeMessage"
+            );
+
+        element.textContent = "";
+
+        element.className =
+            "message";
+
+    }
 
 </script>
 
