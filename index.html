@@ -3,11 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>TrainFlow | متابعة التدريب</title>
 
-    <link rel="stylesheet" href="index.css">
+    <link
+        rel="stylesheet"
+        href="index.css"
+    >
 
     <link
         rel="stylesheet"
@@ -15,219 +22,450 @@
     >
 </head>
 
+
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
+    <div class="page">
 
-        <a href="index.html" class="logo">
+        <!-- =========================
+             Header
+        ========================== -->
 
-            <div class="logo-icon">
-                <i class="fa-solid fa-layer-group"></i>
-            </div>
+        <header class="navbar">
 
-            <div class="logo-text">
-                <strong>TrainFlow</strong>
-                <span>متابعة التدريب</span>
-            </div>
+            <a
+                href="index.html"
+                class="brand"
+            >
 
-        </a>
+                <div class="brand-icon">
 
-
-        <a href="login.html" class="nav-login">
-            تسجيل الدخول
-            <i class="fa-solid fa-arrow-left"></i>
-        </a>
-
-    </nav>
-
-
-    <!-- Hero -->
-    <main class="hero">
-
-        <section class="hero-content">
-
-            <div class="hero-badge">
-                <i class="fa-solid fa-sparkles"></i>
-                منصة لتنظيم ومتابعة التدريب
-            </div>
-
-
-            <h1>
-                متابعة التدريب
-                <span>بشكل أبسط.</span>
-            </h1>
-
-
-            <p class="hero-description">
-                مساحة واحدة تجمع المشرف والمتدرب لمتابعة المهام،
-                التقارير اليومية، وحالة التدريب بطريقة منظمة وواضحة.
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a href="login.html" class="primary-button">
-                    تسجيل الدخول
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-
-                <a href="register.html" class="secondary-button">
-                    إنشاء حساب
-                </a>
-
-            </div>
-
-
-            <div class="features">
-
-                <div class="feature">
-
-                    <div class="feature-icon blue">
-                        <i class="fa-solid fa-list-check"></i>
-                    </div>
-
-                    <div>
-                        <strong>إدارة المهام</strong>
-                        <span>متابعة واضحة لكل متدرب</span>
-                    </div>
+                    <i class="fa-solid fa-layer-group"></i>
 
                 </div>
 
 
-                <div class="feature">
+                <div class="brand-text">
 
-                    <div class="feature-icon purple">
-                        <i class="fa-regular fa-file-lines"></i>
-                    </div>
+                    <strong>
+                        TrainFlow
+                    </strong>
 
-                    <div>
-                        <strong>التقارير اليومية</strong>
-                        <span>حسب إعدادات المشرف</span>
-                    </div>
+                    <span>
+                        متابعة التدريب
+                    </span>
+
+                </div>
+
+            </a>
+
+        </header>
+
+
+        <!-- =========================
+             Main
+        ========================== -->
+
+        <main class="hero">
+
+
+            <!-- =====================
+                 النص الرئيسي
+            ====================== -->
+
+            <section class="hero-content">
+
+                <div class="hero-badge">
+
+                    <i class="fa-solid fa-sparkles"></i>
+
+                    منصة لتنظيم ومتابعة التدريب
 
                 </div>
 
 
-                <div class="feature">
+                <h1>
 
-                    <div class="feature-icon green">
-                        <i class="fa-solid fa-link"></i>
-                    </div>
+                    متابعة التدريب
 
-                    <div>
-                        <strong>ربط مباشر</strong>
-                        <span>كود خاص لكل متدرب</span>
-                    </div>
+                    <span>
+                        بشكل أبسط.
+                    </span>
 
-                </div>
-
-            </div>
-
-        </section>
+                </h1>
 
 
-        <!-- Visual Card -->
-        <section class="hero-visual">
+                <p class="hero-description">
 
-            <div class="visual-glow"></div>
+                    مساحة واحدة تجمع المشرف والمتدرب لمتابعة
+                    المهام، التقارير اليومية، وحالة التدريب
+                    بطريقة منظمة وواضحة.
 
-
-            <div class="dashboard-preview">
-
-                <div class="preview-header">
-
-                    <div>
-                        <span class="preview-label">
-                            لوحة التدريب
-                        </span>
-
-                        <h3>
-                            متابعة منظمة وواضحة
-                        </h3>
-                    </div>
+                </p>
 
 
-                    <div class="preview-logo">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
+                <!-- الأزرار الأساسية فقط -->
 
-                </div>
+                <div class="hero-actions">
+
+                    <a
+                        href="login.html"
+                        class="primary-button"
+                    >
+
+                        تسجيل الدخول
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                    </a>
 
 
-                <div class="status-preview">
+                    <a
+                        href="register.html"
+                        class="secondary-button"
+                    >
 
-                    <div class="status-dot"></div>
+                        إنشاء حساب
 
-                    <div>
-                        <span>حالة المشرف</span>
-                        <strong>موجود في المكتب</strong>
-                    </div>
+                    </a>
 
                 </div>
 
 
-                <div class="preview-row">
+                <!-- المميزات -->
 
-                    <div class="mini-card">
+                <div class="features">
 
-                        <div class="mini-icon blue">
+
+                    <div class="feature">
+
+                        <div class="feature-icon blue">
+
                             <i class="fa-solid fa-list-check"></i>
+
                         </div>
 
-                        <span>المهام</span>
 
-                        <div class="fake-line long"></div>
-                        <div class="fake-line short"></div>
+                        <div>
+
+                            <strong>
+                                إدارة المهام
+                            </strong>
+
+                            <span>
+                                متابعة واضحة لكل متدرب
+                            </span>
+
+                        </div>
 
                     </div>
 
 
-                    <div class="mini-card">
+                    <div class="feature">
 
-                        <div class="mini-icon purple">
+                        <div class="feature-icon purple">
+
                             <i class="fa-regular fa-file-lines"></i>
+
                         </div>
 
-                        <span>التقرير اليومي</span>
 
-                        <div class="fake-line long"></div>
-                        <div class="fake-line short"></div>
+                        <div>
+
+                            <strong>
+                                التقارير اليومية
+                            </strong>
+
+                            <span>
+                                حسب إعدادات المشرف
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon green">
+
+                            <i class="fa-solid fa-link"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                ربط مباشر
+                            </strong>
+
+                            <span>
+                                كود خاص لكل متدرب
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </div>
 
+            </section>
 
-                <div class="trainee-preview">
 
-                    <div class="avatar">
-                        م
+            <!-- =====================
+                 نموذج لوحة التحكم
+            ====================== -->
+
+            <section class="preview-area">
+
+
+                <div class="glow glow-one"></div>
+
+                <div class="glow glow-two"></div>
+
+
+                <div class="dashboard-preview">
+
+
+                    <!-- أعلى الكرت -->
+
+                    <div class="preview-header">
+
+
+                        <div>
+
+                            <span>
+                                لوحة التدريب
+                            </span>
+
+                            <h2>
+                                متابعة منظمة وواضحة
+                            </h2>
+
+                        </div>
+
+
+                        <div class="preview-logo">
+
+                            <i class="fa-solid fa-layer-group"></i>
+
+                        </div>
+
                     </div>
 
-                    <div class="trainee-lines">
-                        <div class="fake-line name-line"></div>
-                        <div class="fake-line email-line"></div>
+
+                    <!-- حالة المشرف -->
+
+                    <div class="status-card">
+
+
+                        <div>
+
+                            <span>
+                                حالة المشرف
+                            </span>
+
+                            <strong>
+                                موجود في المكتب
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-circle">
+
+                            <span></span>
+
+                        </div>
+
                     </div>
 
-                    <div class="connected-badge">
-                        <i class="fa-solid fa-check"></i>
-                        مرتبط
+
+                    <!-- الكروت -->
+
+                    <div class="preview-grid">
+
+
+                        <div class="mini-card">
+
+
+                            <div class="mini-icon blue">
+
+                                <i class="fa-solid fa-list-check"></i>
+
+                            </div>
+
+
+                            <strong>
+                                المهام
+                            </strong>
+
+
+                            <div class="fake-lines">
+
+                                <span></span>
+
+                                <span></span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-card">
+
+
+                            <div class="mini-icon purple">
+
+                                <i class="fa-regular fa-file-lines"></i>
+
+                            </div>
+
+
+                            <strong>
+                                التقرير اليومي
+                            </strong>
+
+
+                            <div class="fake-lines">
+
+                                <span></span>
+
+                                <span></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- متدرب -->
+
+                    <div class="trainee-preview">
+
+
+                        <div class="fake-user">
+
+                            م
+
+                        </div>
+
+
+                        <div class="fake-user-info">
+
+                            <span></span>
+
+                            <span></span>
+
+                        </div>
+
+
+                        <div class="linked-badge">
+
+                            <i class="fa-solid fa-check"></i>
+
+                            مرتبط
+
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+            </section>
 
-        </section>
-
-    </main>
+        </main>
 
 
-    <footer class="footer">
-        <span>TrainFlow</span>
-        <span>منصة متابعة التدريب</span>
-    </footer>
+        <!-- =========================
+             Footer
+        ========================== -->
+
+        <footer>
+
+            <span>
+                TrainFlow
+            </span>
+
+            <span>
+                منصة متابعة التدريب
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        /*
+            إذا كان المستخدم مسجل دخوله مسبقاً،
+            زر تسجيل الدخول يفتح لوحته مباشرة.
+        */
+
+        const currentUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "trainflow_current_user"
+                )
+            );
+
+
+        const loginButton =
+            document.querySelector(
+                ".primary-button"
+            );
+
+
+        if (
+            currentUser &&
+            loginButton
+        ) {
+
+            if (
+                currentUser.role ===
+                "supervisor"
+            ) {
+
+                loginButton.href =
+                    "supervisor-dashboard.html";
+
+
+                loginButton.innerHTML = `
+
+                    لوحة المشرف
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                `;
+
+            }
+
+
+            else if (
+                currentUser.role ===
+                "trainee"
+            ) {
+
+                loginButton.href =
+                    "trainee-dashboard.html";
+
+
+                loginButton.innerHTML = `
+
+                    لوحة المتدرب
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                `;
+
+            }
+
+        }
+
+    </script>
 
 </body>
 
