@@ -17,33 +17,68 @@
 
 <body>
 
-    <header class="navbar">
+<div class="dashboard-layout">
 
-        <a href="supervisor-dashboard.html" class="brand">
+    <!-- =========================
+         القائمة الجانبية
+    ========================== -->
 
-            <div class="brand-icon">
-                <i class="fa-solid fa-layer-group"></i>
-            </div>
+    <aside class="sidebar" id="sidebar">
 
-            <div>
-                <strong>TrainFlow</strong>
-                <span>متابعة التدريب</span>
-            </div>
+        <div class="sidebar-top">
 
-        </a>
+            <a href="supervisor-dashboard.html" class="logo">
 
-
-        <div class="navbar-actions">
-
-            <div class="user-info">
-
-                <div class="user-text">
-                    <span>المشرف</span>
-                    <strong id="supervisorName">-</strong>
+                <div class="logo-icon">
+                    <i class="fa-solid fa-layer-group"></i>
                 </div>
 
-                <div class="user-avatar" id="supervisorAvatar">
+                <div class="logo-text">
+                    <strong>TrainFlow</strong>
+                    <span>متابعة التدريب</span>
+                </div>
+
+            </a>
+
+
+            <nav class="nav-menu">
+
+                <a href="#" class="nav-link active">
+                    <i class="fa-solid fa-house"></i>
+                    <span>الرئيسية</span>
+                </a>
+
+                <a href="#traineesSection" class="nav-link">
+                    <i class="fa-solid fa-users"></i>
+                    <span>المتدربون</span>
+                </a>
+
+                <a href="#reportsSection" class="nav-link">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span>التقارير</span>
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-user">
+
+                <div class="user-avatar">
                     م
+                </div>
+
+                <div class="user-info">
+                    <strong id="sidebarName">
+                        المشرف
+                    </strong>
+
+                    <span>
+                        حساب مشرف
+                    </span>
                 </div>
 
             </div>
@@ -53,133 +88,182 @@
                 type="button"
                 class="logout-button"
                 id="logoutButton"
-                title="تسجيل الخروج"
             >
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                تسجيل الخروج
             </button>
 
         </div>
 
-    </header>
+    </aside>
 
 
-    <main class="page-container">
+    <!-- =========================
+         المحتوى
+    ========================== -->
 
-        <!-- أعلى الصفحة -->
+    <main class="main-content">
 
-        <section class="welcome-section">
+        <!-- Header -->
 
-            <div>
+        <header class="topbar">
 
-                <span class="page-label">
+            <button
+                type="button"
+                class="menu-button"
+                id="menuButton"
+                aria-label="فتح القائمة"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <div class="topbar-title">
+
+                <span>
                     لوحة المشرف
                 </span>
 
                 <h1>
-                    مرحباً،
-                    <span id="welcomeName">-</span>
+                    مرحباً بك
                 </h1>
 
-                <p>
-                    تابع المتدربين المرتبطين بحسابك من هنا.
-                </p>
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="office-control">
+
+                    <div>
+
+                        <span>
+                            حالة المكتب
+                        </span>
+
+                        <strong id="officeText">
+                            غير موجود
+                        </strong>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="officeToggle"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="add-button"
+                    id="openAddTrainee"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    إضافة متدرب
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             الإحصائيات
+        ========================== -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <span>المتدربون</span>
+                    <strong id="traineesCount">0</strong>
+                </div>
 
             </div>
 
 
-            <a
-                href="add-trainee.html"
-                class="add-trainee-button"
-            >
-                <i class="fa-solid fa-plus"></i>
-                إضافة متدرب
-            </a>
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+                    <span>المهام الحالية</span>
+                    <strong id="tasksCount">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div>
+                    <span>المهام المكتملة</span>
+                    <strong id="completedCount">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-regular fa-file-lines"></i>
+                </div>
+
+                <div>
+                    <span>تقارير اليوم</span>
+                    <strong id="reportsCount">0</strong>
+                </div>
+
+            </div>
 
         </section>
 
 
-        <!-- المعلومات الأساسية -->
+        <!-- =========================
+             المتدربون
+        ========================== -->
 
-        <section class="summary-grid">
-
-            <!-- حالة المشرف -->
-
-            <div class="summary-card office-card">
-
-                <div class="summary-icon office-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-
-
-                <div class="summary-content">
-
-                    <span>
-                        حالة التواجد
-                    </span>
-
-                    <strong id="officeStatusText">
-                        غير موجود في المكتب
-                    </strong>
-
-                </div>
-
-
-                <label class="switch">
-
-                    <input
-                        type="checkbox"
-                        id="officeStatusToggle"
-                    >
-
-                    <span class="slider"></span>
-
-                </label>
-
-            </div>
-
-
-            <!-- عدد المتدربين -->
-
-            <div class="summary-card">
-
-                <div class="summary-icon trainees-icon">
-                    <i class="fa-solid fa-user-graduate"></i>
-                </div>
-
-
-                <div class="summary-content">
-
-                    <span>
-                        المتدربون
-                    </span>
-
-                    <strong>
-                        <span id="traineesCount">0</span>
-                        متدرب
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- المتدربون -->
-
-        <section class="trainees-section">
+        <section
+            class="content-card"
+            id="traineesSection"
+        >
 
             <div class="section-header">
 
                 <div>
 
-                    <span>
-                        المتدربون المرتبطون
+                    <span class="section-label">
+                        إدارة التدريب
                     </span>
 
                     <h2>
-                        متدربيني
+                        المتدربون
                     </h2>
+
+                    <p>
+                        أضف المتدربين وتابع مهام كل متدرب بشكل مستقل.
+                    </p>
 
                 </div>
 
@@ -189,9 +273,9 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
 
                     <input
-                        type="text"
-                        id="searchInput"
-                        placeholder="ابحث بالاسم أو البريد..."
+                        type="search"
+                        id="traineeSearch"
+                        placeholder="بحث عن متدرب..."
                     >
 
                 </div>
@@ -199,36 +283,88 @@
             </div>
 
 
-            <div
-                class="trainees-list"
-                id="traineesList"
-            >
-            </div>
-
-
-            <!-- تظهر إذا ما فيه متدربين -->
+            <!-- لا توجد بيانات -->
 
             <div
                 class="empty-state"
-                id="emptyState"
+                id="traineesEmpty"
             >
 
                 <div class="empty-icon">
+
                     <i class="fa-solid fa-user-plus"></i>
+
                 </div>
 
                 <h3>
-                    لا يوجد متدربون حتى الآن
+                    لا يوجد متدربون بعد
                 </h3>
 
                 <p>
-                    أضف أول متدرب وحدد له كود الربط الخاص به.
+                    أضف أول متدرب ليتم إنشاء كود ربط خاص به.
                 </p>
 
-                <a href="add-trainee.html">
+                <button
+                    type="button"
+                    class="empty-add-button"
+                    id="emptyAddButton"
+                >
                     <i class="fa-solid fa-plus"></i>
                     إضافة متدرب
-                </a>
+                </button>
+
+            </div>
+
+
+            <!-- القائمة ستُعبأ لاحقاً من Supabase -->
+
+            <div
+                class="trainees-list"
+                id="traineesList"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             التقارير
+        ========================== -->
+
+        <section
+            class="content-card"
+            id="reportsSection"
+        >
+
+            <div class="section-header simple">
+
+                <div>
+
+                    <span class="section-label">
+                        المتابعة اليومية
+                    </span>
+
+                    <h2>
+                        أحدث التقارير
+                    </h2>
+
+                    <p>
+                        تظهر هنا التقارير التي يرسلها المتدربون.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reports-empty">
+
+                <div class="small-empty-icon">
+                    <i class="fa-regular fa-file-lines"></i>
+                </div>
+
+                <span>
+                    لا توجد تقارير حتى الآن.
+                </span>
 
             </div>
 
@@ -236,483 +372,526 @@
 
     </main>
 
-
-    <script>
-
-        /*
-            التأكد أن المستخدم مشرف
-        */
-
-        const currentUser =
-            JSON.parse(
-                localStorage.getItem(
-                    "trainflow_current_user"
-                )
-            );
+</div>
 
 
-        if (
-            !currentUser ||
-            currentUser.role !== "supervisor"
-        ) {
+<!-- خلفية الجوال -->
 
-            window.location.href =
-                "login.html";
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- =========================
+     نافذة إضافة متدرب
+========================== -->
+
+<div
+    class="modal-overlay"
+    id="traineeModal"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span>
+                    متدرب جديد
+                </span>
+
+                <h2>
+                    إضافة متدرب
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="close-button"
+                id="closeModal"
+                aria-label="إغلاق"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <p class="modal-description">
+            أدخل بيانات المتدرب واختر له كود ربط خاص.
+        </p>
+
+
+        <form id="addTraineeForm">
+
+            <div class="form-group">
+
+                <label for="traineeName">
+                    اسم المتدرب
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-regular fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="traineeName"
+                        placeholder="اسم المتدرب"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="traineeEmail">
+                    البريد الإلكتروني
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="traineeEmail"
+                        placeholder="example@email.com"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="linkCode">
+                    كود الربط
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-link"></i>
+
+                    <input
+                        type="text"
+                        id="linkCode"
+                        placeholder="اختر كوداً للمتدرب"
+                        minlength="4"
+                        required
+                    >
+
+                </div>
+
+                <small>
+                    سيستخدم المتدرب هذا الكود عند تفعيل حسابه.
+                </small>
+
+            </div>
+
+
+            <div class="form-group report-setting">
+
+                <div>
+
+                    <label for="dailyReportRequired">
+                        التقرير اليومي
+                    </label>
+
+                    <p>
+                        هل تريد من هذا المتدرب إرسال تقرير يومي؟
+                    </p>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="dailyReportRequired"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="modalMessage"
+                class="modal-message"
+            ></div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    id="cancelButton"
+                >
+                    إلغاء
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    إضافة المتدرب
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /*
+        ==========================
+        القائمة في الجوال
+        ==========================
+    */
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const sidebarOverlay =
+        document.getElementById("sidebarOverlay");
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            sidebar.classList.add("open");
+
+            sidebarOverlay.classList.add("show");
 
         }
+    );
 
 
-        /*
-            قراءة بيانات المشرف الكاملة
-        */
-
-        let supervisors =
-            JSON.parse(
-                localStorage.getItem(
-                    "trainflow_supervisors"
-                )
-            ) || [];
+    sidebarOverlay.addEventListener(
+        "click",
+        closeSidebar
+    );
 
 
-        let currentSupervisor =
-            supervisors.find(
-                function (supervisor) {
+    function closeSidebar() {
 
-                    return (
-                        supervisor.id ===
-                        currentUser.id
-                    );
+        sidebar.classList.remove("open");
 
-                }
-            );
+        sidebarOverlay.classList.remove("show");
+
+    }
 
 
-        if (!currentSupervisor) {
+    /*
+        ==========================
+        حالة المشرف
+        ==========================
 
-            localStorage.removeItem(
-                "trainflow_current_user"
-            );
+        بعد Supabase:
+        نحفظ القيمة في حساب المشرف
+        ويشاهدها المتدرب مباشرة.
+    */
 
-            window.location.href =
-                "login.html";
+    const officeToggle =
+        document.getElementById("officeToggle");
 
-        }
-
-
-        /*
-            عرض بيانات المشرف
-        */
-
-        document.getElementById(
-            "supervisorName"
-        ).innerText =
-            currentSupervisor.name;
+    const officeText =
+        document.getElementById("officeText");
 
 
-        document.getElementById(
-            "welcomeName"
-        ).innerText =
-            currentSupervisor.name;
+    officeToggle.addEventListener(
+        "change",
+        function () {
 
+            if (officeToggle.checked) {
 
-        document.getElementById(
-            "supervisorAvatar"
-        ).innerText =
-            getFirstLetter(
-                currentSupervisor.name
-            );
-
-
-        /*
-            حالة وجود المشرف في المكتب
-        */
-
-        const officeStatusToggle =
-            document.getElementById(
-                "officeStatusToggle"
-            );
-
-
-        const officeStatusText =
-            document.getElementById(
-                "officeStatusText"
-            );
-
-
-        officeStatusToggle.checked =
-            currentSupervisor.officeStatus === true;
-
-
-        updateOfficeStatusText();
-
-
-        officeStatusToggle.addEventListener(
-            "change",
-            function () {
-
-                currentSupervisor.officeStatus =
-                    officeStatusToggle.checked;
-
-
-                supervisors =
-                    supervisors.map(
-                        function (supervisor) {
-
-                            if (
-                                supervisor.id ===
-                                currentSupervisor.id
-                            ) {
-
-                                return currentSupervisor;
-
-                            }
-
-                            return supervisor;
-
-                        }
-                    );
-
-
-                localStorage.setItem(
-                    "trainflow_supervisors",
-                    JSON.stringify(
-                        supervisors
-                    )
-                );
-
-
-                updateOfficeStatusText();
-
-            }
-        );
-
-
-        function updateOfficeStatusText() {
-
-            if (
-                currentSupervisor.officeStatus
-            ) {
-
-                officeStatusText.innerText =
+                officeText.textContent =
                     "موجود في المكتب";
 
-                officeStatusText.className =
-                    "available";
-
-            } else {
-
-                officeStatusText.innerText =
-                    "غير موجود في المكتب";
-
-                officeStatusText.className =
-                    "unavailable";
-
-            }
-
-        }
-
-
-        /*
-            تحميل متدربي هذا المشرف فقط
-        */
-
-        const traineesList =
-            document.getElementById(
-                "traineesList"
-            );
-
-
-        const emptyState =
-            document.getElementById(
-                "emptyState"
-            );
-
-
-        const searchInput =
-            document.getElementById(
-                "searchInput"
-            );
-
-
-        function getMyTrainees() {
-
-            const allTrainees =
-                JSON.parse(
-                    localStorage.getItem(
-                        "trainflow_trainees"
-                    )
-                ) || [];
-
-
-            return allTrainees.filter(
-                function (trainee) {
-
-                    return (
-                        trainee.supervisorId ===
-                        currentSupervisor.id
-                    );
-
-                }
-            );
-
-        }
-
-
-        function displayTrainees() {
-
-            const myTrainees =
-                getMyTrainees();
-
-
-            document.getElementById(
-                "traineesCount"
-            ).innerText =
-                myTrainees.length;
-
-
-            const searchValue =
-                searchInput
-                    .value
-                    .trim()
-                    .toLowerCase();
-
-
-            const filteredTrainees =
-                myTrainees.filter(
-                    function (trainee) {
-
-                        const name =
-                            (
-                                trainee.name || ""
-                            ).toLowerCase();
-
-
-                        const email =
-                            (
-                                trainee.email || ""
-                            ).toLowerCase();
-
-
-                        return (
-                            name.includes(
-                                searchValue
-                            ) ||
-                            email.includes(
-                                searchValue
-                            )
-                        );
-
-                    }
+                officeText.classList.add(
+                    "online-text"
                 );
 
-
-            traineesList.innerHTML = "";
-
-
-            if (
-                myTrainees.length === 0
-            ) {
-
-                emptyState.style.display =
-                    "flex";
-
-                traineesList.style.display =
-                    "none";
-
-                return;
-
             }
 
+            else {
 
-            emptyState.style.display =
-                "none";
+                officeText.textContent =
+                    "غير موجود";
 
-            traineesList.style.display =
-                "grid";
-
-
-            if (
-                filteredTrainees.length === 0
-            ) {
-
-                traineesList.innerHTML = `
-
-                    <div class="no-results">
-
-                        <i class="fa-solid fa-magnifying-glass"></i>
-
-                        <span>
-                            لا توجد نتائج مطابقة للبحث.
-                        </span>
-
-                    </div>
-
-                `;
-
-                return;
-
-            }
-
-
-            filteredTrainees.forEach(
-                function (trainee) {
-
-                    const card =
-                        document.createElement(
-                            "article"
-                        );
-
-
-                    card.className =
-                        "trainee-card";
-
-
-                    const accountStatus =
-                        trainee.accountCreated
-                            ? `
-                                <span class="account-status active">
-                                    <i class="fa-solid fa-check"></i>
-                                    مرتبط
-                                </span>
-                              `
-                            : `
-                                <span class="account-status waiting">
-                                    بانتظار التسجيل
-                                </span>
-                              `;
-
-
-                    card.innerHTML = `
-
-                        <div class="trainee-top">
-
-                            <div class="trainee-avatar">
-                                ${escapeHTML(
-                                    getFirstLetter(
-                                        trainee.name
-                                    )
-                                )}
-                            </div>
-
-
-                            ${accountStatus}
-
-                        </div>
-
-
-                        <div class="trainee-info">
-
-                            <h3>
-                                ${escapeHTML(
-                                    trainee.name
-                                )}
-                            </h3>
-
-                            <p>
-                                ${escapeHTML(
-                                    trainee.email
-                                )}
-                            </p>
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            class="open-trainee-button"
-                            data-id="${escapeHTML(
-                                trainee.id
-                            )}"
-                        >
-                            فتح ملف المتدرب
-
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </button>
-
-                    `;
-
-
-                    traineesList.appendChild(
-                        card
-                    );
-
-                }
-            );
-
-
-            document
-                .querySelectorAll(
-                    ".open-trainee-button"
-                )
-                .forEach(
-                    function (button) {
-
-                        button.addEventListener(
-                            "click",
-                            function () {
-
-                                openTrainee(
-                                    button.dataset.id
-                                );
-
-                            }
-                        );
-
-                    }
+                officeText.classList.remove(
+                    "online-text"
                 );
 
-        }
-
-
-        /*
-            فتح متدرب معين
-        */
-
-        function openTrainee(
-            traineeId
-        ) {
-
-            localStorage.setItem(
-                "trainflow_selected_trainee",
-                traineeId
-            );
-
-
-            window.location.href =
-                "trainee-details.html";
+            }
 
         }
+    );
 
 
-        /*
-            البحث
-        */
+    /*
+        ==========================
+        نافذة إضافة المتدرب
+        ==========================
+    */
 
-        searchInput.addEventListener(
-            "input",
-            displayTrainees
+    const traineeModal =
+        document.getElementById("traineeModal");
+
+
+    const openAddTrainee =
+        document.getElementById("openAddTrainee");
+
+
+    const emptyAddButton =
+        document.getElementById("emptyAddButton");
+
+
+    const closeModalButton =
+        document.getElementById("closeModal");
+
+
+    const cancelButton =
+        document.getElementById("cancelButton");
+
+
+    openAddTrainee.addEventListener(
+        "click",
+        openModal
+    );
+
+
+    emptyAddButton.addEventListener(
+        "click",
+        openModal
+    );
+
+
+    closeModalButton.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    cancelButton.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    traineeModal.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target ===
+                traineeModal
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    function openModal() {
+
+        traineeModal.classList.add(
+            "show"
+        );
+
+        document.body.classList.add(
+            "no-scroll"
+        );
+
+    }
+
+
+    function closeModal() {
+
+        traineeModal.classList.remove(
+            "show"
+        );
+
+        document.body.classList.remove(
+            "no-scroll"
+        );
+
+        document
+            .getElementById(
+                "addTraineeForm"
+            )
+            .reset();
+
+
+        document
+            .getElementById(
+                "dailyReportRequired"
+            )
+            .checked = true;
+
+
+        clearModalMessage();
+
+    }
+
+
+    /*
+        ==========================
+        إضافة المتدرب
+        ==========================
+
+        الآن نتحقق من النموذج فقط.
+
+        لا نضع localStorage لأننا سنربطه
+        مباشرة بـ Supabase.
+    */
+
+    document
+        .getElementById(
+            "addTraineeForm"
+        )
+        .addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                clearModalMessage();
+
+
+                const name =
+                    document
+                        .getElementById(
+                            "traineeName"
+                        )
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById(
+                            "traineeEmail"
+                        )
+                        .value
+                        .trim();
+
+
+                const code =
+                    document
+                        .getElementById(
+                            "linkCode"
+                        )
+                        .value
+                        .trim();
+
+
+                if (
+                    !name ||
+                    !email ||
+                    !code
+                ) {
+
+                    showModalError(
+                        "يرجى تعبئة جميع البيانات المطلوبة."
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    code.length < 4
+                ) {
+
+                    showModalError(
+                        "كود الربط يجب أن يتكون من 4 خانات على الأقل."
+                    );
+
+                    return;
+
+                }
+
+
+                showModalInfo(
+                    "سيتم حفظ المتدرب فعلياً بعد ربط قاعدة البيانات."
+                );
+
+            }
         );
 
 
-        /*
-            تسجيل الخروج
-        */
+    /*
+        ==========================
+        البحث
+        ==========================
+    */
 
-        document.getElementById(
-            "logoutButton"
-        ).addEventListener(
-            "click",
+    document
+        .getElementById(
+            "traineeSearch"
+        )
+        .addEventListener(
+            "input",
             function () {
 
-                localStorage.removeItem(
-                    "trainflow_current_user"
-                );
+                /*
+                    بعد Supabase:
+                    سنبحث داخل المتدربين
+                    الخاصين بهذا المشرف فقط.
+                */
+
+            }
+        );
 
 
-                localStorage.removeItem(
-                    "trainflow_selected_trainee"
-                );
+    /*
+        ==========================
+        تسجيل الخروج
+        ==========================
 
+        بعد Supabase:
+        سنستخدم signOut()
+    */
+
+    document
+        .getElementById(
+            "logoutButton"
+        )
+        .addEventListener(
+            "click",
+            function () {
 
                 window.location.href =
                     "login.html";
@@ -721,41 +900,55 @@
         );
 
 
-        function getFirstLetter(
-            value
-        ) {
+    /*
+        الرسائل
+    */
 
-            if (!value) {
-                return "م";
-            }
+    function showModalError(text) {
 
-            return value
-                .trim()
-                .charAt(0);
+        const message =
+            document.getElementById(
+                "modalMessage"
+            );
 
-        }
+        message.textContent = text;
 
+        message.className =
+            "modal-message error";
 
-        function escapeHTML(
-            value
-        ) {
-
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-            div.textContent =
-                value || "";
-
-            return div.innerHTML;
-
-        }
+    }
 
 
-        displayTrainees();
+    function showModalInfo(text) {
 
-    </script>
+        const message =
+            document.getElementById(
+                "modalMessage"
+            );
+
+        message.textContent = text;
+
+        message.className =
+            "modal-message info";
+
+    }
+
+
+    function clearModalMessage() {
+
+        const message =
+            document.getElementById(
+                "modalMessage"
+            );
+
+        message.textContent = "";
+
+        message.className =
+            "modal-message";
+
+    }
+
+</script>
 
 </body>
 
