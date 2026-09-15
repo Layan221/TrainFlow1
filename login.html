@@ -17,256 +17,348 @@
 
 <body>
 
-    <main class="page">
+<main class="login-page">
 
-        <section class="login-card">
+    <!-- =========================
+         قسم تسجيل الدخول
+    ========================== -->
 
-            <!-- الجانب التعريفي -->
-            <div class="info-side">
+    <section class="form-section">
 
-                <a href="index.html" class="brand">
+        <div class="form-container">
 
-                    <div class="brand-icon">
-                        <i class="fa-solid fa-layer-group"></i>
+            <!-- الشعار -->
+
+            <a href="index.html" class="logo">
+
+                <div class="logo-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div class="logo-text">
+                    <strong>TrainFlow</strong>
+                    <span>متابعة التدريب</span>
+                </div>
+
+            </a>
+
+
+            <!-- العودة -->
+
+            <a href="index.html" class="back-link">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+                العودة للرئيسية
+
+            </a>
+
+
+            <!-- العنوان -->
+
+            <div class="heading">
+
+                <span class="heading-label">
+                    مرحباً بعودتك
+                </span>
+
+                <h1>
+                    تسجيل الدخول
+                </h1>
+
+                <p>
+                    أدخل بريدك الإلكتروني وكلمة المرور للمتابعة.
+                </p>
+
+            </div>
+
+
+            <!-- النموذج -->
+
+            <form id="loginForm">
+
+                <!-- البريد -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        البريد الإلكتروني
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="example@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- كلمة المرور -->
+
+                <div class="form-group">
+
+                    <div class="label-row">
+
+                        <label for="password">
+                            كلمة المرور
+                        </label>
+
+                        <a
+                            href="forgot-password.html"
+                            class="forgot-link"
+                        >
+                            نسيت كلمة المرور؟
+                        </a>
+
+                    </div>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="أدخل كلمة المرور"
+                            autocomplete="current-password"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="showPassword"
+                            aria-label="إظهار كلمة المرور"
+                        >
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- الرسائل -->
+
+                <div
+                    id="message"
+                    class="message"
+                ></div>
+
+
+                <!-- الدخول -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+
+                    تسجيل الدخول
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- إنشاء حساب -->
+
+            <p class="register-text">
+
+                ليس لديك حساب؟
+
+                <a href="register.html">
+                    إنشاء حساب
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         الجانب البصري
+    ========================== -->
+
+    <section class="visual-section">
+
+        <div class="visual-content">
+
+            <div class="visual-icon">
+
+                <i class="fa-solid fa-layer-group"></i>
+
+            </div>
+
+
+            <span>
+                TrainFlow
+            </span>
+
+
+            <h2>
+
+                متابعة أوضح،
+
+                <strong>
+                    تدريب أكثر تنظيماً.
+                </strong>
+
+            </h2>
+
+
+            <p>
+                تابع مهامك وتقاريرك وتواصل مع المشرف
+                من خلال مساحة تدريب واحدة ومنظمة.
+            </p>
+
+
+            <!-- بطاقة توضيحية -->
+
+            <div class="mini-preview">
+
+                <div class="preview-top">
+
+                    <div class="preview-avatar">
+                        <i class="fa-solid fa-user-graduate"></i>
                     </div>
 
                     <div>
-                        <strong>TrainFlow</strong>
-                        <span>متابعة التدريب</span>
+                        <strong>مساحة التدريب</strong>
+                        <span>كل شيء في مكان واحد</span>
                     </div>
 
-                </a>
+                </div>
 
 
-                <div class="info-content">
+                <div class="preview-features">
 
-                    <span class="small-label">
-                        مرحباً بعودتك
-                    </span>
+                    <div>
+                        <i class="fa-solid fa-list-check"></i>
+                        المهام
+                    </div>
 
-                    <h1>
-                        تابع تدريبك
-                        <span>من مكان واحد.</span>
-                    </h1>
+                    <div>
+                        <i class="fa-regular fa-file-lines"></i>
+                        التقارير
+                    </div>
 
-                    <p>
-                        سجّل دخولك للوصول إلى حسابك ومتابعة
-                        التدريب والمهام والتقارير.
-                    </p>
-
-
-                    <div class="visual-card">
-
-                        <div class="visual-icon">
-                            <i class="fa-solid fa-layer-group"></i>
-                        </div>
-
-                        <div>
-                            <span>TrainFlow</span>
-                            <strong>تنظيم أبسط للتدريب</strong>
-                        </div>
-
+                    <div>
+                        <i class="fa-solid fa-user-tie"></i>
+                        المشرف
                     </div>
 
                 </div>
 
             </div>
 
-
-            <!-- تسجيل الدخول -->
-            <div class="form-side">
-
-                <a href="index.html" class="back-button">
-                    <i class="fa-solid fa-arrow-right"></i>
-                    العودة للرئيسية
-                </a>
+        </div>
 
 
-                <div class="form-header">
+        <div class="circle circle-one"></div>
+        <div class="circle circle-two"></div>
 
-                    <span>
-                        تسجيل الدخول
-                    </span>
+    </section>
 
-                    <h2>
-                        أهلاً بك من جديد
-                    </h2>
-
-                    <p>
-                        أدخل بيانات حسابك للمتابعة.
-                    </p>
-
-                </div>
+</main>
 
 
-                <form id="loginForm">
+<script>
 
-                    <div class="form-group">
+    /*
+        إظهار وإخفاء كلمة المرور
+    */
 
-                        <label for="email">
-                            البريد الإلكتروني
-                        </label>
+    const passwordInput =
+        document.getElementById("password");
 
-                        <div class="input-wrapper">
-
-                            <i class="fa-regular fa-envelope"></i>
-
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="example@email.com"
-                                autocomplete="email"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
+    const showPasswordButton =
+        document.getElementById("showPassword");
 
 
-                    <div class="form-group">
+    showPasswordButton.addEventListener(
+        "click",
+        function () {
 
-                        <div class="password-label">
-
-                            <label for="password">
-                                كلمة المرور
-                            </label>
-
-                            <a href="forgot-password.html">
-                                نسيت كلمة المرور؟
-                            </a>
-
-                        </div>
+            const icon =
+                showPasswordButton.querySelector("i");
 
 
-                        <div class="input-wrapper password-wrapper">
+            if (passwordInput.type === "password") {
 
-                            <i class="fa-solid fa-lock"></i>
+                passwordInput.type = "text";
 
-                            <input
-                                type="password"
-                                id="password"
-                                placeholder="أدخل كلمة المرور"
-                                autocomplete="current-password"
-                                required
-                            >
+                icon.className =
+                    "fa-regular fa-eye-slash";
 
-                            <button
-                                type="button"
-                                class="password-toggle"
-                                id="passwordToggle"
-                                aria-label="إظهار كلمة المرور"
-                            >
-                                <i class="fa-regular fa-eye"></i>
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <p id="message"></p>
-
-
-                    <button
-                        type="submit"
-                        class="login-button"
-                    >
-                        تسجيل الدخول
-
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-
-                </form>
-
-
-                <div class="register-link">
-
-                    ليس لديك حساب؟
-
-                    <a href="register.html">
-                        إنشاء حساب
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <script>
-
-        const loginForm =
-            document.getElementById("loginForm");
-
-        const message =
-            document.getElementById("message");
-
-        const passwordToggle =
-            document.getElementById("passwordToggle");
-
-
-        /*
-            إظهار / إخفاء كلمة المرور
-        */
-
-        passwordToggle.addEventListener(
-            "click",
-            function () {
-
-                const password =
-                    document.getElementById("password");
-
-                const icon =
-                    passwordToggle.querySelector("i");
-
-
-                if (password.type === "password") {
-
-                    password.type = "text";
-
-                    icon.className =
-                        "fa-regular fa-eye-slash";
-
-                } else {
-
-                    password.type = "password";
-
-                    icon.className =
-                        "fa-regular fa-eye";
-
-                }
+                showPasswordButton.setAttribute(
+                    "aria-label",
+                    "إخفاء كلمة المرور"
+                );
 
             }
-        );
+
+            else {
+
+                passwordInput.type = "password";
+
+                icon.className =
+                    "fa-regular fa-eye";
+
+                showPasswordButton.setAttribute(
+                    "aria-label",
+                    "إظهار كلمة المرور"
+                );
+
+            }
+
+        }
+    );
 
 
-        /*
-            تسجيل الدخول
-        */
+    /*
+        التحقق من المدخلات
 
-        loginForm.addEventListener(
+        تسجيل الدخول الحقيقي سيتم
+        ربطه بـ Supabase لاحقاً.
+    */
+
+    document
+        .getElementById("loginForm")
+        .addEventListener(
             "submit",
             function (event) {
 
                 event.preventDefault();
+
+                clearMessage();
 
 
                 const email =
                     document
                         .getElementById("email")
                         .value
-                        .trim()
-                        .toLowerCase();
+                        .trim();
 
 
                 const password =
-                    document
-                        .getElementById("password")
-                        .value;
+                    passwordInput.value;
 
 
                 if (!email || !password) {
@@ -280,156 +372,68 @@
                 }
 
 
-                const supervisors =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "trainflow_supervisors"
-                        )
-                    ) || [];
+                if (password.length < 6) {
 
-
-                const trainees =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "trainflow_trainees"
-                        )
-                    ) || [];
-
-
-                /*
-                    البحث أولاً عن حساب مشرف
-                */
-
-                const supervisor =
-                    supervisors.find(
-                        function (user) {
-
-                            return (
-                                user.email
-                                    .toLowerCase() ===
-                                    email &&
-                                user.password ===
-                                    password
-                            );
-
-                        }
+                    showError(
+                        "يرجى التأكد من كلمة المرور."
                     );
-
-
-                if (supervisor) {
-
-                    const sessionUser = {
-
-                        id:
-                            supervisor.id,
-
-                        name:
-                            supervisor.name,
-
-                        email:
-                            supervisor.email,
-
-                        role:
-                            "supervisor"
-
-                    };
-
-
-                    localStorage.setItem(
-                        "trainflow_current_user",
-                        JSON.stringify(
-                            sessionUser
-                        )
-                    );
-
-
-                    window.location.href =
-                        "supervisor-dashboard.html";
 
                     return;
 
                 }
 
 
-                /*
-                    إذا لم يكن مشرفاً، نبحث عن متدرب
-                */
-
-                const trainee =
-                    trainees.find(
-                        function (user) {
-
-                            return (
-                                user.email
-                                    .toLowerCase() ===
-                                    email &&
-                                user.password ===
-                                    password &&
-                                user.accountCreated ===
-                                    true
-                            );
-
-                        }
-                    );
-
-
-                if (trainee) {
-
-                    const sessionUser = {
-
-                        id:
-                            trainee.id,
-
-                        name:
-                            trainee.name,
-
-                        email:
-                            trainee.email,
-
-                        role:
-                            "trainee",
-
-                        supervisorId:
-                            trainee.supervisorId
-
-                    };
-
-
-                    localStorage.setItem(
-                        "trainflow_current_user",
-                        JSON.stringify(
-                            sessionUser
-                        )
-                    );
-
-
-                    window.location.href =
-                        "trainee-dashboard.html";
-
-                    return;
-
-                }
-
-
-                showError(
-                    "البريد الإلكتروني أو كلمة المرور غير صحيحة."
+                showInfo(
+                    "سيتم تفعيل تسجيل الدخول بعد ربط قاعدة البيانات."
                 );
 
             }
         );
 
 
-        function showError(text) {
+    /*
+        الرسائل
+    */
 
-            message.innerText =
-                text;
+    function showError(text) {
 
-            message.className =
-                "error-message";
+        const message =
+            document.getElementById("message");
 
-        }
+        message.textContent = text;
 
-    </script>
+        message.className =
+            "message error";
+
+    }
+
+
+    function showInfo(text) {
+
+        const message =
+            document.getElementById("message");
+
+        message.textContent = text;
+
+        message.className =
+            "message info";
+
+    }
+
+
+    function clearMessage() {
+
+        const message =
+            document.getElementById("message");
+
+        message.textContent = "";
+
+        message.className =
+            "message";
+
+    }
+
+</script>
 
 </body>
 
