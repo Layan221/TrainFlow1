@@ -15,18 +15,7 @@ body {
 
     color: #172033;
 
-    background:
-        radial-gradient(
-            circle at top right,
-            rgba(59, 130, 246, 0.14),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at bottom left,
-            rgba(124, 58, 237, 0.11),
-            transparent 30%
-        ),
-        #f7f9fc;
+    background: #f8fafc;
 }
 
 a {
@@ -39,108 +28,44 @@ input {
 }
 
 
-/* Page */
+/* الصفحة */
 
 .page {
-    width: 100%;
     min-height: 100vh;
-
-    padding: 35px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* Main card */
-
-.register-card {
-    width: 100%;
-    max-width: 980px;
-    min-height: 650px;
 
     display: grid;
 
     grid-template-columns:
-        0.8fr 1.2fr;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(226, 232, 240, 0.9);
-
-    border-radius: 25px;
-
-    background:
-        rgba(255, 255, 255, 0.93);
-
-    box-shadow:
-        0 30px 80px
-        rgba(15, 23, 42, 0.09);
+        0.85fr 1.15fr;
 }
 
 
-/* =========================
-   Info side
-========================= */
+/* ======================
+   الجانب التعريفي
+====================== */
 
-.info-side {
+.visual-side {
     position: relative;
 
-    padding: 32px;
+    min-height: 100vh;
+
+    padding: 38px 45px;
+
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
 
-    overflow: hidden;
-
     background:
         linear-gradient(
-            150deg,
+            145deg,
             #172554,
             #312e81 55%,
-            #5b21b6
+            #4c1d95
         );
 
     color: white;
 }
-
-.info-side::before {
-    content: "";
-
-    position: absolute;
-
-    width: 280px;
-    height: 280px;
-
-    top: -100px;
-    left: -100px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.07);
-}
-
-.info-side::after {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    bottom: -90px;
-    right: -80px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.05);
-}
-
 
 .brand {
     position: relative;
@@ -150,32 +75,33 @@ input {
     display: flex;
     align-items: center;
 
-    gap: 10px;
+    gap: 9px;
+
+    width: fit-content;
 
     color: white;
 }
 
 .brand-icon {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 11px;
+    border-radius: 10px;
 
     background:
-        rgba(255, 255, 255, 0.13);
+        rgba(255, 255, 255, 0.15);
 
-    backdrop-filter:
-        blur(8px);
+    backdrop-filter: blur(10px);
 }
 
 .brand strong {
     display: block;
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .brand span {
@@ -184,174 +110,170 @@ input {
     margin-top: 2px;
 
     color:
-        rgba(255, 255, 255, 0.58);
+        rgba(255, 255, 255, 0.65);
 
     font-size: 7px;
 }
 
 
-.info-content {
+.visual-content {
     position: relative;
 
     z-index: 2;
 
+    max-width: 410px;
+
     margin: auto 0;
 }
 
-.small-label {
+.small-title {
     display: block;
 
-    margin-bottom: 9px;
+    margin-bottom: 10px;
 
     color: #bfdbfe;
 
     font-size: 8px;
-
-    font-weight: 600;
 }
 
-.info-content h1 {
-    margin-bottom: 15px;
+.visual-content h1 {
+    margin-bottom: 13px;
 
-    font-size: 32px;
+    font-size: 36px;
 
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
-.info-content h1 span {
+.visual-content h1 span {
     display: block;
 
-    color: #bfdbfe;
+    color: #c4b5fd;
 }
 
-.info-content > p {
-    margin-bottom: 30px;
+.visual-content p {
+    max-width: 350px;
 
     color:
-        rgba(255, 255, 255, 0.66);
+        rgba(255, 255, 255, 0.67);
 
     font-size: 9px;
 
-    line-height: 1.9;
+    line-height: 2;
 }
 
 
-/* Info points */
+/* Decoration */
 
-.info-points {
-    display: flex;
+.decoration {
+    position: absolute;
 
-    flex-direction: column;
+    border-radius: 50%;
 
-    gap: 18px;
+    filter: blur(2px);
 }
 
-.info-point {
-    display: flex;
+.decoration-one {
+    width: 280px;
+    height: 280px;
 
-    align-items: center;
+    left: -110px;
+    bottom: -100px;
 
-    gap: 10px;
+    background:
+        rgba(96, 165, 250, 0.15);
 }
 
-.info-point > i {
-    width: 36px;
-    height: 36px;
+.decoration-two {
+    width: 220px;
+    height: 220px;
+
+    right: -80px;
+    top: 100px;
+
+    background:
+        rgba(167, 139, 250, 0.12);
+}
+
+
+/* ======================
+   النموذج
+====================== */
+
+.form-side {
+    min-height: 100vh;
+
+    padding: 45px 30px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    flex-shrink: 0;
-
-    border-radius: 10px;
-
     background:
-        rgba(255, 255, 255, 0.10);
-
-    color: #dbeafe;
-
-    font-size: 8px;
+        radial-gradient(
+            circle at top right,
+            rgba(59, 130, 246, 0.08),
+            transparent 30%
+        ),
+        #f8fafc;
 }
 
-.info-point strong {
-    display: block;
-
-    margin-bottom: 3px;
-
-    font-size: 8px;
+.form-container {
+    width: 100%;
+    max-width: 480px;
 }
 
-.info-point span {
-    display: block;
+.back-link {
+    margin-bottom: 26px;
 
-    color:
-        rgba(255, 255, 255, 0.52);
-
-    font-size: 7px;
-}
-
-
-/* =========================
-   Form side
-========================= */
-
-.form-side {
-    padding:
-        27px 43px 35px;
-}
-
-.back-button {
     display: inline-flex;
-
     align-items: center;
 
     gap: 6px;
 
-    margin-bottom: 20px;
-
     color: #94a3b8;
 
-    font-size: 8px;
+    font-size: 7px;
 }
 
-.back-button:hover {
+.back-link:hover {
     color: #2563eb;
 }
 
 
-.form-header {
+/* Heading */
+
+.form-heading {
     margin-bottom: 20px;
 }
 
-.form-header > span {
+.form-heading > span {
     display: block;
 
     margin-bottom: 4px;
 
     color: #2563eb;
 
-    font-size: 8px;
+    font-size: 7px;
 
     font-weight: 600;
 }
 
-.form-header h2 {
+.form-heading h2 {
     margin-bottom: 5px;
 
-    font-size: 22px;
+    font-size: 26px;
 }
 
-.form-header p {
+.form-heading p {
     color: #94a3b8;
 
     font-size: 8px;
 }
 
 
-/* =========================
-   Role selector
-========================= */
+/* ======================
+   Role
+====================== */
 
 .role-selector {
     display: grid;
@@ -365,26 +287,24 @@ input {
 }
 
 .role-button {
-    min-height: 64px;
+    min-height: 67px;
 
-    padding: 10px;
+    padding: 11px;
 
     display: flex;
-
     align-items: center;
 
     gap: 9px;
 
     text-align: right;
 
-    border:
-        1px solid #e2e8f0;
+    border: 1px solid #e2e8f0;
 
     border-radius: 11px;
 
-    background: #f8fafc;
+    background: white;
 
-    color: #64748b;
+    color: #475569;
 
     cursor: pointer;
 
@@ -393,30 +313,21 @@ input {
 
 .role-button:hover {
     border-color: #bfdbfe;
-
-    background: #f8fbff;
 }
 
 .role-button.active {
-    border-color: #93c5fd;
+    border-color: #818cf8;
 
-    background:
-        linear-gradient(
-            135deg,
-            #eff6ff,
-            #f5f3ff
-        );
-
-    color: #2563eb;
+    background: #f5f3ff;
 
     box-shadow:
-        0 0 0 2px
-        rgba(59, 130, 246, 0.05);
+        0 0 0 3px
+        rgba(99, 102, 241, 0.06);
 }
 
 .role-icon {
-    width: 34px;
-    height: 34px;
+    width: 35px;
+    height: 35px;
 
     display: flex;
     align-items: center;
@@ -426,17 +337,23 @@ input {
 
     border-radius: 9px;
 
-    background: white;
+    background: #f1f5f9;
 
-    font-size: 9px;
+    color: #64748b;
+}
+
+.role-button.active .role-icon {
+    background: #e0e7ff;
+
+    color: #4f46e5;
 }
 
 .role-button strong {
     display: block;
 
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 
-    font-size: 9px;
+    font-size: 8px;
 }
 
 .role-button span {
@@ -448,9 +365,9 @@ input {
 }
 
 
-/* =========================
-   Form
-========================= */
+/* ======================
+   Inputs
+====================== */
 
 .form-group {
     margin-bottom: 13px;
@@ -463,7 +380,7 @@ input {
 
     color: #475569;
 
-    font-size: 8px;
+    font-size: 7px;
 
     font-weight: 600;
 }
@@ -485,8 +402,6 @@ input {
     color: #94a3b8;
 
     font-size: 8px;
-
-    pointer-events: none;
 }
 
 .input-wrapper input {
@@ -494,44 +409,43 @@ input {
     height: 100%;
 
     padding:
-        0 37px 0 12px;
+        0 38px 0 40px;
 
-    border:
-        1px solid #e2e8f0;
+    border: 1px solid #e2e8f0;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
     outline: none;
 
-    background: #f8fafc;
+    background: white;
 
     color: #334155;
 
-    font-size: 9px;
-
-    transition: 0.2s;
-}
-
-.input-wrapper input::placeholder {
-    color: #b7c0ce;
+    font-size: 8px;
 }
 
 .input-wrapper input:focus {
     border-color: #60a5fa;
 
-    background: white;
-
     box-shadow:
         0 0 0 3px
-        rgba(59, 130, 246, 0.07);
+        rgba(59, 130, 246, 0.06);
+}
+
+.form-group small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 6px;
+
+    line-height: 1.6;
 }
 
 
-/* Password */
-
-.password-wrapper input {
-    padding-left: 40px;
-}
+/* Password eye */
 
 .password-toggle {
     position: absolute;
@@ -547,51 +461,20 @@ input {
 
     border: none;
 
-    border-radius: 7px;
-
     background: transparent;
 
     color: #94a3b8;
 
-    font-size: 8px;
-
     cursor: pointer;
-}
-
-.password-toggle:hover {
-    background: #f1f5f9;
-
-    color: #2563eb;
-}
-
-
-/* Field note */
-
-.field-note {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #94a3b8;
-
-    font-size: 6px;
-}
-
-
-/* Hide */
-
-.hidden {
-    display: none;
 }
 
 
 /* Message */
 
 #message {
-    min-height: 17px;
+    min-height: 18px;
 
-    margin:
-        3px 0 5px;
+    margin-top: 2px;
 
     font-size: 7px;
 }
@@ -605,14 +488,13 @@ input {
 }
 
 
-/* Register button */
+/* Register */
 
 .register-button {
     width: 100%;
-    min-height: 44px;
+    min-height: 43px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -620,7 +502,7 @@ input {
 
     border: none;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
     background:
         linear-gradient(
@@ -631,7 +513,7 @@ input {
 
     color: white;
 
-    font-size: 9px;
+    font-size: 8px;
 
     font-weight: 600;
 
@@ -639,25 +521,18 @@ input {
 
     box-shadow:
         0 9px 22px
-        rgba(79, 70, 229, 0.18);
-
-    transition: 0.2s;
+        rgba(79, 70, 229, 0.16);
 }
 
 .register-button:hover {
-    transform:
-        translateY(-1px);
-
-    box-shadow:
-        0 12px 26px
-        rgba(79, 70, 229, 0.24);
+    transform: translateY(-1px);
 }
 
 
 /* Login */
 
 .login-link {
-    margin-top: 15px;
+    margin-top: 17px;
 
     text-align: center;
 
@@ -667,63 +542,78 @@ input {
 }
 
 .login-link a {
+    margin-right: 3px;
+
     color: #2563eb;
 
     font-weight: 600;
 }
 
 
-/* =========================
+/* Hidden */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ======================
    Responsive
-========================= */
+====================== */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
-    .register-card {
-        max-width: 600px;
-
+    .page {
         grid-template-columns: 1fr;
     }
 
-    .info-side {
-        min-height: 260px;
+    .visual-side {
+        min-height: 230px;
+
+        padding: 25px 30px;
     }
 
-    .info-content {
-        margin:
-            35px 0 10px;
+    .visual-content {
+        margin-top: 45px;
     }
 
-    .info-points {
+    .visual-content h1 {
+        font-size: 27px;
+    }
+
+    .visual-content p {
         display: none;
+    }
+
+    .form-side {
+        min-height: auto;
+
+        padding: 35px 25px 55px;
     }
 
 }
 
 
-@media (max-width: 550px) {
+@media (max-width: 500px) {
 
-    .page {
-        padding: 15px;
+    .visual-side {
+        min-height: 180px;
+
+        padding: 20px;
     }
 
-    .register-card {
-        border-radius: 18px;
+    .visual-content {
+        margin-top: 28px;
     }
 
-    .info-side {
-        min-height: 210px;
-
-        padding: 25px;
-    }
-
-    .info-content h1 {
-        font-size: 26px;
+    .visual-content h1 {
+        font-size: 22px;
     }
 
     .form-side {
         padding:
-            25px 20px 30px;
+            30px 16px
+            50px;
     }
 
     .role-selector {
