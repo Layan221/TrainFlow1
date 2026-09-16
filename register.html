@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>TrainFlow | إنشاء حساب مشرف</title>
 
-    <!-- ملف CSS منفصل -->
-    <link rel="stylesheet" href="register.css">
+    <link
+        rel="stylesheet"
+        href="register.css"
+    >
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
 </head>
 
 
@@ -31,7 +36,6 @@
 
     <header class="top-header">
 
-        <!-- الشعار -->
         <a href="index.html" class="brand">
 
             <div class="brand-icon">
@@ -39,24 +43,34 @@
             </div>
 
             <div class="brand-text">
-                <strong>TrainFlow</strong>
-                <span>متابعة التدريب</span>
+
+                <strong>
+                    TrainFlow
+                </strong>
+
+                <span>
+                    متابعة التدريب
+                </span>
+
             </div>
 
         </a>
 
 
-        <!-- العودة للرئيسية -->
-        <a href="index.html" class="home-button">
+        <a
+            href="index.html"
+            class="home-button"
+        >
 
             <i class="fa-solid fa-arrow-right"></i>
 
-            <span>العودة للرئيسية</span>
+            <span>
+                العودة للرئيسية
+            </span>
 
         </a>
 
     </header>
-
 
 
     <!-- =========================
@@ -72,19 +86,27 @@
 
         <section class="register-card">
 
+
             <div class="form-header">
 
                 <div class="form-icon">
+
                     <i class="fa-solid fa-user-tie"></i>
+
                 </div>
 
+
                 <span class="welcome">
+
                     أهلاً بك في TrainFlow
+
                 </span>
+
 
                 <h1>
                     إنشاء حساب مشرف
                 </h1>
+
 
                 <p>
                     أدخل بياناتك لإنشاء حساب المشرف
@@ -94,7 +116,9 @@
             </div>
 
 
-            <!-- FORM -->
+            <!-- =========================
+                 FORM
+            ========================== -->
 
             <form id="registerForm">
 
@@ -107,14 +131,18 @@
                         الاسم الكامل
                     </label>
 
+
                     <div class="input-box">
 
-                        <i class="fa-regular fa-user input-icon"></i>
+                        <i
+                            class="fa-regular fa-user input-icon"
+                        ></i>
 
                         <input
                             type="text"
                             id="fullName"
                             placeholder="أدخل اسمك الكامل"
+                            autocomplete="name"
                             required
                         >
 
@@ -123,8 +151,7 @@
                 </div>
 
 
-
-                <!-- البريد الإلكتروني -->
+                <!-- البريد -->
 
                 <div class="form-group">
 
@@ -132,21 +159,24 @@
                         البريد الإلكتروني
                     </label>
 
+
                     <div class="input-box">
 
-                        <i class="fa-regular fa-envelope input-icon"></i>
+                        <i
+                            class="fa-regular fa-envelope input-icon"
+                        ></i>
 
                         <input
                             type="email"
                             id="email"
                             placeholder="name@example.com"
+                            autocomplete="email"
                             required
                         >
 
                     </div>
 
                 </div>
-
 
 
                 <!-- كود المنشأة -->
@@ -157,25 +187,32 @@
                         كود المنشأة
                     </label>
 
+
                     <div class="input-box">
 
-                        <i class="fa-solid fa-building input-icon"></i>
+                        <i
+                            class="fa-solid fa-building input-icon"
+                        ></i>
 
                         <input
-                            type="text"
+                            type="password"
                             id="organizationCode"
                             placeholder="أدخل كود المنشأة"
+                            autocomplete="off"
                             required
                         >
 
                     </div>
 
+
                     <small class="help-text">
-                        يستخدم للتحقق من صلاحية إنشاء حساب المشرف.
+
+                        يستخدم للتحقق من صلاحية
+                        إنشاء حساب المشرف.
+
                     </small>
 
                 </div>
-
 
 
                 <!-- كلمة المرور -->
@@ -186,22 +223,29 @@
                         كلمة المرور
                     </label>
 
+
                     <div class="input-box">
 
-                        <i class="fa-solid fa-lock input-icon"></i>
+                        <i
+                            class="fa-solid fa-lock input-icon"
+                        ></i>
+
 
                         <input
                             type="password"
                             id="password"
                             placeholder="أنشئ كلمة مرور"
+                            autocomplete="new-password"
                             required
                         >
+
 
                         <button
                             type="button"
                             class="show-password"
                             id="showPassword"
-                            aria-label="إظهار كلمة المرور">
+                            aria-label="إظهار كلمة المرور"
+                        >
 
                             <i class="fa-regular fa-eye"></i>
 
@@ -210,7 +254,6 @@
                     </div>
 
                 </div>
-
 
 
                 <!-- تأكيد كلمة المرور -->
@@ -221,22 +264,29 @@
                         تأكيد كلمة المرور
                     </label>
 
+
                     <div class="input-box">
 
-                        <i class="fa-solid fa-shield-halved input-icon"></i>
+                        <i
+                            class="fa-solid fa-shield-halved input-icon"
+                        ></i>
+
 
                         <input
                             type="password"
                             id="confirmPassword"
                             placeholder="أعد كتابة كلمة المرور"
+                            autocomplete="new-password"
                             required
                         >
+
 
                         <button
                             type="button"
                             class="show-password"
                             id="showConfirmPassword"
-                            aria-label="إظهار تأكيد كلمة المرور">
+                            aria-label="إظهار تأكيد كلمة المرور"
+                        >
 
                             <i class="fa-regular fa-eye"></i>
 
@@ -247,20 +297,23 @@
                 </div>
 
 
-                <!-- رسائل الخطأ -->
+                <!-- الرسائل -->
 
-                <div id="formMessage"
-                     class="form-message">
-                </div>
+                <div
+                    id="formMessage"
+                    class="form-message"
+                ></div>
 
 
-                <!-- إنشاء الحساب -->
+                <!-- زر إنشاء الحساب -->
 
                 <button
                     type="submit"
-                    class="register-button">
+                    class="register-button"
+                    id="registerButton"
+                >
 
-                    <span>
+                    <span id="registerButtonText">
                         إنشاء حساب المشرف
                     </span>
 
@@ -269,7 +322,6 @@
                 </button>
 
             </form>
-
 
 
             <!-- تسجيل الدخول -->
@@ -291,14 +343,16 @@
 
 
         <!-- =========================
-             LEFT SIDE
+             INFORMATION SIDE
         ========================== -->
 
         <section class="info-section">
 
 
             <div class="info-badge">
+
                 منصة تنظيم ومتابعة التدريب
+
             </div>
 
 
@@ -322,7 +376,6 @@
             </p>
 
 
-
             <!-- المميزات -->
 
             <div class="features">
@@ -335,6 +388,7 @@
                         <i class="fa-solid fa-list-check"></i>
 
                     </div>
+
 
                     <div class="feature-text">
 
@@ -351,7 +405,6 @@
                 </div>
 
 
-
                 <div class="feature">
 
                     <div class="feature-icon purple">
@@ -359,6 +412,7 @@
                         <i class="fa-regular fa-file-lines"></i>
 
                     </div>
+
 
                     <div class="feature-text">
 
@@ -375,7 +429,6 @@
                 </div>
 
 
-
                 <div class="feature">
 
                     <div class="feature-icon green">
@@ -383,6 +436,7 @@
                         <i class="fa-solid fa-link"></i>
 
                     </div>
+
 
                     <div class="feature-text">
 
@@ -402,12 +456,15 @@
 
 
 
-            <!-- معاينة لوحة التدريب -->
+            <!-- =========================
+                 PREVIEW
+            ========================== -->
 
             <div class="preview">
 
 
                 <div class="preview-header">
+
 
                     <div>
 
@@ -431,10 +488,10 @@
                 </div>
 
 
-
                 <!-- حالة المشرف -->
 
                 <div class="status">
+
 
                     <div class="status-text">
 
@@ -458,8 +515,7 @@
                 </div>
 
 
-
-                <!-- المهام والتقارير -->
+                <!-- المهام -->
 
                 <div class="preview-items">
 
@@ -477,7 +533,6 @@
                         </span>
 
                     </div>
-
 
 
                     <div class="preview-item">
@@ -510,137 +565,373 @@
 
     <script>
 
-        const password =
+        /* =========================
+           العناصر
+        ========================== */
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+        const fullNameInput =
+            document.getElementById("fullName");
+
+        const emailInput =
+            document.getElementById("email");
+
+        const organizationCodeInput =
+            document.getElementById("organizationCode");
+
+        const passwordInput =
             document.getElementById("password");
 
-        const confirmPassword =
+        const confirmPasswordInput =
             document.getElementById("confirmPassword");
 
-        const showPassword =
+        const showPasswordButton =
             document.getElementById("showPassword");
 
-        const showConfirmPassword =
+        const showConfirmPasswordButton =
             document.getElementById("showConfirmPassword");
 
+        const formMessage =
+            document.getElementById("formMessage");
 
-        /* إظهار كلمة المرور */
+        const registerButton =
+            document.getElementById("registerButton");
 
-        showPassword.addEventListener("click", function () {
+        const registerButtonText =
+            document.getElementById("registerButtonText");
 
-            if (password.type === "password") {
 
-                password.type = "text";
+        /* =========================
+           إظهار كلمة المرور
+        ========================== */
 
-                this.innerHTML =
-                    '<i class="fa-regular fa-eye-slash"></i>';
+        showPasswordButton.addEventListener(
+            "click",
+            function () {
+
+                togglePassword(
+                    passwordInput,
+                    showPasswordButton
+                );
+
+            }
+        );
+
+
+        showConfirmPasswordButton.addEventListener(
+            "click",
+            function () {
+
+                togglePassword(
+                    confirmPasswordInput,
+                    showConfirmPasswordButton
+                );
+
+            }
+        );
+
+
+        function togglePassword(input, button) {
+
+            const icon =
+                button.querySelector("i");
+
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("fa-eye");
+
+                icon.classList.add("fa-eye-slash");
 
             } else {
 
-                password.type = "password";
+                input.type = "password";
 
-                this.innerHTML =
-                    '<i class="fa-regular fa-eye"></i>';
+                icon.classList.remove("fa-eye-slash");
 
-            }
-
-        });
-
-
-        /* إظهار تأكيد كلمة المرور */
-
-        showConfirmPassword.addEventListener("click", function () {
-
-            if (confirmPassword.type === "password") {
-
-                confirmPassword.type = "text";
-
-                this.innerHTML =
-                    '<i class="fa-regular fa-eye-slash"></i>';
-
-            } else {
-
-                confirmPassword.type = "password";
-
-                this.innerHTML =
-                    '<i class="fa-regular fa-eye"></i>';
+                icon.classList.add("fa-eye");
 
             }
 
-        });
+        }
 
 
-        /* التحقق من النموذج */
+        /* =========================
+           رسائل
+        ========================== */
 
-        document
-            .getElementById("registerForm")
-            .addEventListener("submit", function (event) {
+        function showError(text) {
+
+            formMessage.textContent = text;
+
+            formMessage.className =
+                "form-message error";
+
+        }
+
+
+        function showSuccess(text) {
+
+            formMessage.textContent = text;
+
+            formMessage.className =
+                "form-message success";
+
+        }
+
+
+        /* =========================
+           إنشاء الحساب
+        ========================== */
+
+        registerForm.addEventListener(
+            "submit",
+            function (event) {
 
                 event.preventDefault();
 
+
                 const fullName =
-                    document.getElementById("fullName").value.trim();
+                    fullNameInput.value.trim();
 
                 const email =
-                    document.getElementById("email").value.trim();
+                    emailInput.value
+                        .trim()
+                        .toLowerCase();
 
                 const organizationCode =
-                    document.getElementById("organizationCode").value.trim();
+                    organizationCodeInput.value.trim();
 
-                const message =
-                    document.getElementById("formMessage");
+                const password =
+                    passwordInput.value;
+
+                const confirmPassword =
+                    confirmPasswordInput.value;
 
 
-                message.className = "form-message";
+                /* تنظيف الرسالة */
+
+                formMessage.textContent = "";
+
+                formMessage.className =
+                    "form-message";
+
+
+                /* =========================
+                   التحقق من الحقول
+                ========================== */
+
+                if (
+                    !fullName ||
+                    !email ||
+                    !organizationCode ||
+                    !password ||
+                    !confirmPassword
+                ) {
+
+                    showError(
+                        "يرجى تعبئة جميع البيانات."
+                    );
+
+                    return;
+                }
+
+
+                /* =========================
+                   التحقق من البريد
+                ========================== */
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (!emailPattern.test(email)) {
+
+                    showError(
+                        "يرجى إدخال بريد إلكتروني صحيح."
+                    );
+
+                    return;
+                }
+
+
+                /* =========================
+                   كود المنشأة
+                ========================== */
+
+                const correctOrganizationCode =
+                    "5566";
 
 
                 if (
-                    fullName === "" ||
-                    email === "" ||
-                    organizationCode === "" ||
-                    password.value === "" ||
-                    confirmPassword.value === ""
+                    organizationCode !==
+                    correctOrganizationCode
                 ) {
 
-                    message.textContent =
-                        "يرجى تعبئة جميع البيانات.";
-
-                    message.classList.add("error");
+                    showError(
+                        "كود المنشأة غير صحيح."
+                    );
 
                     return;
                 }
 
 
-                if (password.value.length < 6) {
+                /* =========================
+                   كلمة المرور
+                ========================== */
 
-                    message.textContent =
-                        "كلمة المرور يجب أن تحتوي على 6 أحرف على الأقل.";
+                if (password.length < 6) {
 
-                    message.classList.add("error");
+                    showError(
+                        "كلمة المرور يجب أن تكون 6 أحرف أو أرقام على الأقل."
+                    );
 
                     return;
                 }
 
 
                 if (
-                    password.value !==
-                    confirmPassword.value
+                    password !==
+                    confirmPassword
                 ) {
 
-                    message.textContent =
-                        "كلمتا المرور غير متطابقتين.";
-
-                    message.classList.add("error");
+                    showError(
+                        "كلمتا المرور غير متطابقتين."
+                    );
 
                     return;
                 }
 
 
-                message.textContent =
-                    "تم التحقق من البيانات بنجاح.";
+                /* =========================
+                   التأكد أن الحساب غير موجود
+                ========================== */
 
-                message.classList.add("success");
+                const existingAccount =
+                    localStorage.getItem(
+                        "trainflowSupervisor"
+                    );
 
-            });
+
+                if (existingAccount) {
+
+                    const account =
+                        JSON.parse(existingAccount);
+
+
+                    if (
+                        account.email === email
+                    ) {
+
+                        showError(
+                            "يوجد حساب مشرف بهذا البريد الإلكتروني بالفعل."
+                        );
+
+                        return;
+                    }
+
+                }
+
+
+                /* =========================
+                   إنشاء بيانات المشرف
+                ========================== */
+
+                const supervisor = {
+
+                    id:
+                        "SUP-" + Date.now(),
+
+                    name:
+                        fullName,
+
+                    email:
+                        email,
+
+                    password:
+                        password,
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
+
+
+                /* =========================
+                   حفظ الحساب
+                ========================== */
+
+                localStorage.setItem(
+                    "trainflowSupervisor",
+                    JSON.stringify(supervisor)
+                );
+
+
+                /* =========================
+                   تسجيل الدخول
+                ========================== */
+
+                localStorage.setItem(
+                    "trainflowCurrentUser",
+                    JSON.stringify({
+
+                        id:
+                            supervisor.id,
+
+                        name:
+                            supervisor.name,
+
+                        email:
+                            supervisor.email,
+
+                        role:
+                            "supervisor"
+
+                    })
+                );
+
+
+                localStorage.setItem(
+                    "supervisorLoggedIn",
+                    "true"
+                );
+
+
+                /* =========================
+                   نجاح
+                ========================== */
+
+                showSuccess(
+                    "تم إنشاء الحساب بنجاح، جاري الدخول..."
+                );
+
+
+                registerButton.disabled = true;
+
+                registerButtonText.textContent =
+                    "جاري الدخول...";
+
+
+                /* =========================
+                   الانتقال للوحة المشرف
+                ========================== */
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "supervisor-dashboard.html";
+
+                    },
+                    700
+                );
+
+            }
+        );
 
     </script>
 
