@@ -17,42 +17,61 @@
 
 <body>
 
-<main class="login-page">
+    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-two"></div>
 
     <!-- =========================
-         الجهة اليمنى
+         HEADER
     ========================== -->
 
-    <section class="login-section">
+    <header class="top-header">
 
-        <a href="index.html" class="back-home">
-            العودة للرئيسية
-            <i class="fa-solid fa-arrow-left"></i>
+        <a href="index.html" class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div class="brand-text">
+                <strong>TrainFlow</strong>
+                <span>متابعة التدريب</span>
+            </div>
+
         </a>
 
 
-        <div class="login-card">
+        <a href="index.html" class="back-home">
+            <i class="fa-solid fa-arrow-right"></i>
+            العودة للرئيسية
+        </a>
 
-            <!-- Logo -->
+    </header>
 
-            <div class="brand">
 
-                <div class="brand-icon">
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- =====================
+             LOGIN CARD
+        ====================== -->
+
+        <section class="login-card">
+
+            <div class="card-logo">
+
+                <div class="card-logo-icon">
                     <i class="fa-solid fa-layer-group"></i>
                 </div>
-
-                <strong>TrainFlow</strong>
-
-                <span>متابعة التدريب</span>
 
             </div>
 
 
-            <!-- Heading -->
-
             <div class="login-heading">
 
-                <span>
+                <span class="small-label">
                     مرحباً بعودتك
                 </span>
 
@@ -67,8 +86,6 @@
             </div>
 
 
-            <!-- Form -->
-
             <form id="loginForm">
 
                 <!-- Email -->
@@ -79,9 +96,9 @@
                         البريد الإلكتروني
                     </label>
 
-                    <div class="input-box">
+                    <div class="input-wrapper">
 
-                        <i class="fa-regular fa-envelope input-icon"></i>
+                        <i class="fa-regular fa-envelope field-icon"></i>
 
                         <input
                             type="email"
@@ -100,22 +117,25 @@
 
                 <div class="form-group">
 
-                    <div class="password-label">
+                    <div class="label-row">
 
                         <label for="password">
                             كلمة المرور
                         </label>
 
-                        <a href="forgot-password.html">
+                        <a
+                            href="forgot-password.html"
+                            class="forgot-link"
+                        >
                             نسيت كلمة المرور؟
                         </a>
 
                     </div>
 
 
-                    <div class="input-box">
+                    <div class="input-wrapper">
 
-                        <i class="fa-solid fa-lock input-icon"></i>
+                        <i class="fa-solid fa-lock field-icon"></i>
 
                         <input
                             type="password"
@@ -128,13 +148,11 @@
 
                         <button
                             type="button"
-                            class="eye-button"
-                            id="eyeButton"
+                            class="password-toggle"
+                            id="passwordToggle"
                             aria-label="إظهار كلمة المرور"
                         >
-
                             <i class="fa-regular fa-eye"></i>
-
                         </button>
 
                     </div>
@@ -142,13 +160,15 @@
                 </div>
 
 
+                <!-- Message -->
+
                 <div
-                    class="form-message"
                     id="formMessage"
+                    class="form-message"
                 ></div>
 
 
-                <!-- Login Button -->
+                <!-- Login -->
 
                 <button
                     type="submit"
@@ -166,7 +186,7 @@
             </form>
 
 
-            <!-- Divider -->
+            <!-- Register -->
 
             <div class="divider">
 
@@ -179,207 +199,176 @@
             </div>
 
 
-            <!-- Register -->
-
             <a
                 href="register.html"
                 class="register-button"
             >
 
-                <i class="fa-solid fa-user-plus"></i>
+                <div class="register-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
 
-                <span>
-                    ليس لديك حساب؟
-                    <strong>إنشاء حساب جديد</strong>
-                </span>
+                <div class="register-text">
+
+                    <span>
+                        ليس لديك حساب؟
+                    </span>
+
+                    <strong>
+                        إنشاء حساب جديد
+                    </strong>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-left register-arrow"></i>
 
             </a>
 
-        </div>
+        </section>
 
 
-        <!-- Footer -->
+        <!-- =====================
+             SIDE INFO
+        ====================== -->
 
-        <div class="login-footer">
+        <section class="info-card">
 
-            <strong>
-                منصة متابعة التدريب — TrainFlow
-            </strong>
-
-            <span>
-                معاً نحو تجربة تدريبية أفضل
-                <i class="fa-solid fa-heart"></i>
-            </span>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         الجهة اليسرى
-    ========================== -->
-
-    <section class="visual-section">
-
-        <!-- Decorations -->
-
-        <div class="circle circle-one"></div>
-        <div class="circle circle-two"></div>
-        <div class="outline-circle"></div>
-
-
-        <!-- Logo -->
-
-        <div class="visual-brand">
-
-            <div class="visual-brand-icon">
-                <i class="fa-solid fa-layer-group"></i>
+            <div class="info-badge">
+                منصة تنظيم ومتابعة التدريب
             </div>
 
-            <div>
-                <strong>TrainFlow</strong>
-                <span>متابعة التدريب</span>
-            </div>
-
-        </div>
-
-
-        <!-- Content -->
-
-        <div class="visual-content">
 
             <h2>
-                تدريبك،
-                <br>
+                متابعة التدريب
                 <strong>
-                    بشكل أكثر تنظيماً.
+                    بشكل أبسط.
                 </strong>
             </h2>
 
+
             <p>
-                مساحة موحّدة تساعد المتدرب والمشرف على متابعة
-                المهام والتقارير اليومية والتواصل بطريقة واضحة وسهلة.
+                تابع مهامك وتقاريرك اليومية وتواصل مع المشرف
+                من مساحة واحدة واضحة ومنظمة.
             </p>
 
 
-            <!-- Dashboard Preview -->
+            <div class="features">
 
-            <div class="dashboard-preview">
+                <div class="feature">
 
-                <div class="preview-sidebar">
-
-                    <div class="preview-side-icon active">
-                        <i class="fa-solid fa-house"></i>
-                    </div>
-
-                    <div class="preview-side-icon">
+                    <div class="feature-icon blue">
                         <i class="fa-solid fa-list-check"></i>
                     </div>
 
-                    <div class="preview-side-icon">
-                        <i class="fa-regular fa-file-lines"></i>
-                    </div>
-
-                    <div class="preview-side-icon">
-                        <i class="fa-solid fa-users"></i>
+                    <div>
+                        <strong>إدارة المهام</strong>
+                        <span>مهام خاصة لكل متدرب</span>
                     </div>
 
                 </div>
 
 
-                <div class="preview-main">
+                <div class="feature">
 
-                    <div class="preview-heading">
+                    <div class="feature-icon purple">
+                        <i class="fa-regular fa-file-lines"></i>
+                    </div>
 
-                        <strong>
-                            لوحة التدريب
-                        </strong>
+                    <div>
+                        <strong>التقارير اليومية</strong>
+                        <span>متابعة يومية منظمة</span>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon green">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+
+                    <div>
+                        <strong>ربط المتدرب</strong>
+                        <span>كود خاص لكل متدرب</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mini preview -->
+
+            <div class="mini-preview">
+
+                <div class="preview-top">
+
+                    <div>
 
                         <span>
-                            متابعة واضحة وبسيطة
+                            لوحة التدريب
+                        </span>
+
+                        <strong>
+                            متابعة منظمة وواضحة
+                        </strong>
+
+                    </div>
+
+
+                    <div class="preview-logo">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+
+                </div>
+
+
+                <div class="supervisor-status">
+
+                    <div>
+
+                        <span>
+                            حالة المشرف
+                        </span>
+
+                        <strong>
+                            موجود في المكتب
+                        </strong>
+
+                    </div>
+
+                    <div class="online-circle">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="preview-boxes">
+
+                    <div class="preview-box">
+
+                        <div class="preview-box-icon blue">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+
+                        <span>
+                            المهام
                         </span>
 
                     </div>
 
 
-                    <div class="preview-cards">
+                    <div class="preview-box">
 
-                        <div class="preview-card">
-
-                            <div class="preview-icon blue">
-                                <i class="fa-solid fa-list-check"></i>
-                            </div>
-
-                            <strong>
-                                المهام
-                            </strong>
-
-                            <span>
-                                متابعة وإنجاز
-                            </span>
-
+                        <div class="preview-box-icon purple">
+                            <i class="fa-regular fa-file-lines"></i>
                         </div>
 
-
-                        <div class="preview-card">
-
-                            <div class="preview-icon purple">
-                                <i class="fa-regular fa-file-lines"></i>
-                            </div>
-
-                            <strong>
-                                التقارير
-                            </strong>
-
-                            <span>
-                                تقارير يومية
-                            </span>
-
-                        </div>
-
-
-                        <div class="preview-card">
-
-                            <div class="preview-icon green">
-                                <i class="fa-solid fa-user-tie"></i>
-                            </div>
-
-                            <strong>
-                                المشرف
-                            </strong>
-
-                            <span>
-                                تواصل مباشر
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="preview-status">
-
-                        <div>
-
-                            <span class="online-dot"></span>
-
-                            <div>
-                                <strong>
-                                    حالة المشرف
-                                </strong>
-
-                                <small>
-                                    موجود في المكتب
-                                </small>
-                            </div>
-
-                        </div>
-
-
-                        <div class="profile-circle">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
+                        <span>
+                            التقرير اليومي
+                        </span>
 
                     </div>
 
@@ -387,173 +376,175 @@
 
             </div>
 
+        </section>
 
-            <div class="preview-note">
-
-                <span>
-                    كل ما تحتاجه
-                    <br>
-                    في مكان واحد
-                </span>
-
-                <i class="fa-solid fa-arrow-turn-down"></i>
-
-            </div>
-
-        </div>
+    </main>
 
 
-        <!-- Quote -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-        <div class="visual-quote">
+    <footer>
 
-            <i class="fa-solid fa-quote-right"></i>
+        <span>
+            TrainFlow
+        </span>
 
-            <span>
-                تدريب اليوم ... فرص أكبر لغد أفضل
-            </span>
+        <span>
+            منصة متابعة التدريب
+        </span>
 
-            <i class="fa-solid fa-quote-left"></i>
-
-        </div>
-
-    </section>
-
-</main>
+    </footer>
 
 
-<script>
+    <script>
 
-    const loginForm =
-        document.getElementById("loginForm");
+        const loginForm =
+            document.getElementById("loginForm");
 
-    const emailInput =
-        document.getElementById("email");
+        const emailInput =
+            document.getElementById("email");
 
-    const passwordInput =
-        document.getElementById("password");
+        const passwordInput =
+            document.getElementById("password");
 
-    const eyeButton =
-        document.getElementById("eyeButton");
+        const passwordToggle =
+            document.getElementById("passwordToggle");
 
-    const formMessage =
-        document.getElementById("formMessage");
+        const formMessage =
+            document.getElementById("formMessage");
 
 
-    /* =========================
-       إظهار كلمة المرور
-    ========================== */
+        /* =========================
+           إظهار كلمة المرور
+        ========================== */
 
-    eyeButton.addEventListener(
-        "click",
-        function () {
+        passwordToggle.addEventListener(
+            "click",
+            function () {
 
-            const icon =
-                eyeButton.querySelector("i");
+                const icon =
+                    passwordToggle.querySelector("i");
 
-            if (passwordInput.type === "password") {
 
-                passwordInput.type = "text";
+                if (passwordInput.type === "password") {
 
-                icon.className =
-                    "fa-regular fa-eye-slash";
+                    passwordInput.type = "text";
 
-            } else {
+                    icon.className =
+                        "fa-regular fa-eye-slash";
 
-                passwordInput.type = "password";
+                }
 
-                icon.className =
-                    "fa-regular fa-eye";
+                else {
+
+                    passwordInput.type = "password";
+
+                    icon.className =
+                        "fa-regular fa-eye";
+
+                }
 
             }
-
-        }
-    );
+        );
 
 
-    /* =========================
-       تسجيل الدخول
-    ========================== */
+        /* =========================
+           تسجيل الدخول
+        ========================== */
 
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
+        loginForm.addEventListener(
+            "submit",
+            function (event) {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            clearMessage();
-
-
-            const email =
-                emailInput.value.trim();
-
-            const password =
-                passwordInput.value;
+                clearMessage();
 
 
-            if (!email) {
+                const email =
+                    emailInput.value.trim();
 
-                showError(
-                    "يرجى إدخال البريد الإلكتروني."
+                const password =
+                    passwordInput.value;
+
+
+                if (!email) {
+
+                    showError(
+                        "يرجى إدخال البريد الإلكتروني."
+                    );
+
+                    emailInput.focus();
+
+                    return;
+                }
+
+
+                if (!password) {
+
+                    showError(
+                        "يرجى إدخال كلمة المرور."
+                    );
+
+                    passwordInput.focus();
+
+                    return;
+                }
+
+
+                /*
+                    بعد ربط Supabase:
+
+                    1- تسجيل الدخول.
+                    2- قراءة نوع الحساب.
+                    3- إذا Supervisor:
+                       supervisor-dashboard.html
+
+                    4- إذا Trainee:
+                       trainee-dashboard.html
+                */
+
+
+                showInfo(
+                    "سيتم تفعيل تسجيل الدخول بعد ربط قاعدة البيانات."
                 );
 
-                return;
             }
+        );
 
 
-            if (!password) {
+        function showError(text) {
 
-                showError(
-                    "يرجى إدخال كلمة المرور."
-                );
+            formMessage.textContent = text;
 
-                return;
-            }
-
-
-            /*
-                تسجيل الدخول الحقيقي
-                سنربطه بـ Supabase لاحقاً.
-            */
-
-            showInfo(
-                "سيتم تفعيل تسجيل الدخول بعد ربط قاعدة البيانات."
-            );
+            formMessage.className =
+                "form-message error";
 
         }
-    );
 
 
-    function showError(text) {
+        function showInfo(text) {
 
-        formMessage.textContent = text;
+            formMessage.textContent = text;
 
-        formMessage.className =
-            "form-message error";
+            formMessage.className =
+                "form-message info";
 
-    }
-
-
-    function showInfo(text) {
-
-        formMessage.textContent = text;
-
-        formMessage.className =
-            "form-message info";
-
-    }
+        }
 
 
-    function clearMessage() {
+        function clearMessage() {
 
-        formMessage.textContent = "";
+            formMessage.textContent = "";
 
-        formMessage.className =
-            "form-message";
+            formMessage.className =
+                "form-message";
 
-    }
+        }
 
-</script>
+    </script>
 
 </body>
 
