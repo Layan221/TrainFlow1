@@ -1,67 +1,1650 @@
-<div class="add-trainee-section">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-    <h2>إضافة متدرب</h2>
+<head>
 
-    <p>أدخل بيانات المتدرب وحدد له كود الدخول الخاص به.</p>
+    <meta charset="UTF-8">
 
-    <form id="addTraineeForm">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-        <div class="form-group">
-            <label for="traineeName">اسم المتدرب</label>
+    <title>TrainFlow | لوحة المشرف</title>
 
-            <input
-                type="text"
-                id="traineeName"
-                placeholder="أدخل اسم المتدرب"
-                required
-            >
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="supervisor-dashboard.css"
+    >
+
+    <!-- Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="top-header">
+
+    <a
+        href="index.html"
+        class="brand"
+    >
+
+        <div class="brand-icon">
+
+            <i class="fa-solid fa-layer-group"></i>
+
         </div>
 
 
-        <div class="form-group">
-            <label for="traineeEmail">البريد الإلكتروني</label>
+        <div class="brand-text">
 
-            <input
-                type="email"
-                id="traineeEmail"
-                placeholder="name@example.com"
-                required
-            >
+            <strong>
+                TrainFlow
+            </strong>
+
+            <span>
+                متابعة التدريب
+            </span>
+
         </div>
 
-
-        <div class="form-group">
-            <label for="traineeCode">كود المتدرب</label>
-
-            <input
-                type="text"
-                id="traineeCode"
-                placeholder="مثال: 1025"
-                required
-            >
-
-            <small>
-                اختر كودًا خاصًا للمتدرب، وسيستخدمه عند تسجيل الدخول.
-            </small>
-        </div>
+    </a>
 
 
-        <div
-            id="traineeMessage"
-            class="form-message">
+    <div class="header-actions">
+
+
+        <div class="supervisor-info">
+
+            <div class="supervisor-avatar">
+
+                <i class="fa-regular fa-user"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong id="supervisorName">
+                    المشرف
+                </strong>
+
+                <span>
+                    مشرف التدريب
+                </span>
+
+            </div>
+
         </div>
 
 
         <button
-            type="submit"
-            class="add-trainee-btn">
+            type="button"
+            class="logout-btn"
+            id="logoutButton"
+        >
 
-            <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
 
-            إضافة المتدرب
+            تسجيل الخروج
 
         </button>
 
-    </form>
+    </div>
 
-</div>
+</header>
+
+
+
+<!-- ==================================================
+     MAIN
+================================================== -->
+
+<main class="dashboard-container">
+
+
+    <!-- ==================================================
+         WELCOME
+    ================================================== -->
+
+    <section class="welcome-section">
+
+        <div>
+
+            <span class="welcome-badge">
+                لوحة المشرف
+            </span>
+
+
+            <h1>
+
+                أهلاً بك،
+
+                <span id="welcomeSupervisorName">
+                    المشرف
+                </span>
+
+            </h1>
+
+
+            <p>
+                تابع المتدربين والمهام والتقارير اليومية من مكان واحد.
+            </p>
+
+        </div>
+
+
+        <!-- حالة المشرف -->
+
+        <div class="presence-card">
+
+            <div>
+
+                <span class="presence-label">
+                    حالتك الآن
+                </span>
+
+                <strong id="presenceText">
+                    موجود في المكتب
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="presence-button active"
+                id="presenceButton"
+            >
+
+                <span
+                    class="presence-dot"
+                    id="presenceDot"
+                ></span>
+
+                <span id="presenceButtonText">
+                    موجود
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         STATISTICS
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    المتدربون
+                </span>
+
+                <strong id="totalTrainees">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+
+                <i class="fa-solid fa-list-check"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    المهام
+                </span>
+
+                <strong id="totalTasks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+
+                <i class="fa-regular fa-file-lines"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    التقارير
+                </span>
+
+                <strong id="totalReports">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         CONTENT GRID
+    ================================================== -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- ==================================================
+             ADD TRAINEE
+        ================================================== -->
+
+        <section class="dashboard-card add-trainee-section">
+
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <span class="section-label">
+                        إدارة المتدربين
+                    </span>
+
+                    <h2>
+                        إضافة متدرب
+                    </h2>
+
+                    <p>
+                        أدخل بيانات المتدرب واختر له كود الدخول الخاص به.
+                    </p>
+
+                </div>
+
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FORM -->
+
+            <form id="addTraineeForm">
+
+
+                <!-- الاسم -->
+
+                <div class="form-group">
+
+                    <label for="traineeName">
+                        اسم المتدرب
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i
+                            class="fa-regular fa-user input-icon"
+                        ></i>
+
+
+                        <input
+                            type="text"
+                            id="traineeName"
+                            placeholder="أدخل اسم المتدرب"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- البريد -->
+
+                <div class="form-group">
+
+                    <label for="traineeEmail">
+                        البريد الإلكتروني
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i
+                            class="fa-regular fa-envelope input-icon"
+                        ></i>
+
+
+                        <input
+                            type="email"
+                            id="traineeEmail"
+                            placeholder="name@example.com"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- الكود -->
+
+                <div class="form-group">
+
+                    <label for="traineeCode">
+                        كود المتدرب
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i
+                            class="fa-solid fa-key input-icon"
+                        ></i>
+
+
+                        <input
+                            type="text"
+                            id="traineeCode"
+                            placeholder="اختر كودًا للمتدرب"
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+
+                    <small class="help-text">
+
+                        سيستخدم المتدرب بريده الإلكتروني
+                        وهذا الكود عند تسجيل الدخول.
+
+                    </small>
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="traineeMessage"
+                    class="form-message"
+                ></div>
+
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="add-trainee-btn"
+                    id="addTraineeButton"
+                >
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    <span>
+                        إضافة المتدرب
+                    </span>
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             QUICK ACTIONS
+        ================================================== -->
+
+        <section class="dashboard-card quick-actions-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        إدارة التدريب
+                    </span>
+
+                    <h2>
+                        الإجراءات
+                    </h2>
+
+                </div>
+
+
+                <div class="section-icon">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="quick-actions">
+
+
+                <a
+                    href="supervisor-tasks.html"
+                    class="quick-action"
+                >
+
+                    <div class="quick-icon blue">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            إدارة المهام
+                        </strong>
+
+                        <span>
+                            إضافة ومتابعة مهام المتدربين
+                        </span>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-chevron-left arrow"></i>
+
+                </a>
+
+
+
+                <a
+                    href="supervisor-reports.html"
+                    class="quick-action"
+                >
+
+                    <div class="quick-icon purple">
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            التقارير اليومية
+                        </strong>
+
+                        <span>
+                            الاطلاع على تقارير المتدربين
+                        </span>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-chevron-left arrow"></i>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         TRAINEES
+    ================================================== -->
+
+    <section class="dashboard-card trainees-section">
+
+
+        <div class="section-header">
+
+
+            <div>
+
+                <span class="section-label">
+                    فريق التدريب
+                </span>
+
+                <h2>
+                    المتدربون
+                </h2>
+
+                <p>
+                    المتدربون المرتبطون بحسابك.
+                </p>
+
+            </div>
+
+
+            <div class="trainees-count">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span id="traineesCount">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="trainee-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="traineeSearch"
+                placeholder="البحث باسم المتدرب أو البريد..."
+            >
+
+        </div>
+
+
+
+        <!-- LIST -->
+
+        <div
+            id="traineesList"
+            class="trainees-list"
+        ></div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+/* ==================================================
+   SUPERVISOR
+================================================== */
+
+const currentUser =
+    JSON.parse(
+        localStorage.getItem("trainflowCurrentUser")
+        || "null"
+    );
+
+
+if (
+    currentUser &&
+    currentUser.role === "supervisor"
+) {
+
+    document.getElementById(
+        "supervisorName"
+    ).textContent =
+        currentUser.name || "المشرف";
+
+
+    document.getElementById(
+        "welcomeSupervisorName"
+    ).textContent =
+        currentUser.name || "المشرف";
+
+}
+
+
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const addTraineeForm =
+    document.getElementById("addTraineeForm");
+
+const traineeNameInput =
+    document.getElementById("traineeName");
+
+const traineeEmailInput =
+    document.getElementById("traineeEmail");
+
+const traineeCodeInput =
+    document.getElementById("traineeCode");
+
+const traineeMessage =
+    document.getElementById("traineeMessage");
+
+const traineesList =
+    document.getElementById("traineesList");
+
+const traineesCount =
+    document.getElementById("traineesCount");
+
+const totalTrainees =
+    document.getElementById("totalTrainees");
+
+const traineeSearch =
+    document.getElementById("traineeSearch");
+
+
+
+/* ==================================================
+   GET TRAINEES
+================================================== */
+
+function getTrainees() {
+
+    const saved =
+        localStorage.getItem(
+            "trainflowTrainees"
+        );
+
+
+    if (!saved) {
+
+        return [];
+
+    }
+
+
+    try {
+
+        const trainees =
+            JSON.parse(saved);
+
+
+        if (Array.isArray(trainees)) {
+
+            return trainees;
+
+        }
+
+
+        return [];
+
+    }
+
+    catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+
+/* ==================================================
+   SAVE TRAINEES
+================================================== */
+
+function saveTrainees(trainees) {
+
+    localStorage.setItem(
+        "trainflowTrainees",
+        JSON.stringify(trainees)
+    );
+
+}
+
+
+
+/* ==================================================
+   ERROR MESSAGE
+================================================== */
+
+function showTraineeError(message) {
+
+    traineeMessage.textContent =
+        message;
+
+    traineeMessage.className =
+        "form-message error";
+
+}
+
+
+
+/* ==================================================
+   SUCCESS MESSAGE
+================================================== */
+
+function showTraineeSuccess(message) {
+
+    traineeMessage.textContent =
+        message;
+
+    traineeMessage.className =
+        "form-message success";
+
+}
+
+
+
+/* ==================================================
+   ADD TRAINEE
+================================================== */
+
+addTraineeForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            traineeNameInput.value.trim();
+
+
+        const email =
+            traineeEmailInput.value
+                .trim()
+                .toLowerCase();
+
+
+        const code =
+            traineeCodeInput.value.trim();
+
+
+
+        /* تنظيف الرسالة */
+
+        traineeMessage.textContent = "";
+
+        traineeMessage.className =
+            "form-message";
+
+
+
+        /* =========================================
+           FIELDS
+        ========================================= */
+
+        if (
+            name === "" ||
+            email === "" ||
+            code === ""
+        ) {
+
+            showTraineeError(
+                "يرجى تعبئة جميع بيانات المتدرب."
+            );
+
+            return;
+
+        }
+
+
+
+        /* =========================================
+           EMAIL
+        ========================================= */
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (!emailPattern.test(email)) {
+
+            showTraineeError(
+                "يرجى إدخال بريد إلكتروني صحيح."
+            );
+
+            return;
+
+        }
+
+
+
+        /* =========================================
+           CODE
+        ========================================= */
+
+        if (code.length < 4) {
+
+            showTraineeError(
+                "كود المتدرب يجب أن يكون 4 خانات على الأقل."
+            );
+
+            return;
+
+        }
+
+
+
+        let trainees =
+            getTrainees();
+
+
+
+        /* =========================================
+           DUPLICATE EMAIL
+        ========================================= */
+
+        const emailExists =
+            trainees.some(
+                function (trainee) {
+
+                    return (
+                        trainee.email === email
+                    );
+
+                }
+            );
+
+
+        if (emailExists) {
+
+            showTraineeError(
+                "هذا البريد مرتبط بمتدرب مسبقًا."
+            );
+
+            return;
+
+        }
+
+
+
+        /* =========================================
+           DUPLICATE CODE
+        ========================================= */
+
+        const codeExists =
+            trainees.some(
+                function (trainee) {
+
+                    return (
+                        trainee.code === code
+                    );
+
+                }
+            );
+
+
+        if (codeExists) {
+
+            showTraineeError(
+                "هذا الكود مستخدم، اختر كودًا آخر."
+            );
+
+            return;
+
+        }
+
+
+
+        /* =========================================
+           CREATE TRAINEE
+        ========================================= */
+
+        const newTrainee = {
+
+            id:
+                "TR-" + Date.now(),
+
+            supervisorId:
+                currentUser
+                    ? currentUser.id
+                    : null,
+
+            name:
+                name,
+
+            email:
+                email,
+
+            code:
+                code,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+
+        /* =========================================
+           ADD
+        ========================================= */
+
+        trainees.push(
+            newTrainee
+        );
+
+
+
+        /* =========================================
+           SAVE
+        ========================================= */
+
+        saveTrainees(
+            trainees
+        );
+
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        addTraineeForm.reset();
+
+
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        showTraineeSuccess(
+            "تمت إضافة المتدرب بنجاح."
+        );
+
+
+
+        /* =========================================
+           UPDATE LIST
+        ========================================= */
+
+        renderTrainees();
+
+    }
+);
+
+
+
+/* ==================================================
+   RENDER TRAINEES
+================================================== */
+
+function renderTrainees(
+    searchText = ""
+) {
+
+    const trainees =
+        getTrainees();
+
+
+    /* عدد المتدربين */
+
+    traineesCount.textContent =
+        trainees.length;
+
+
+    totalTrainees.textContent =
+        trainees.length;
+
+
+    traineesList.innerHTML = "";
+
+
+
+    /* =========================================
+       SEARCH
+    ========================================= */
+
+    const search =
+        searchText
+            .trim()
+            .toLowerCase();
+
+
+    const filteredTrainees =
+        trainees.filter(
+            function (trainee) {
+
+                const name =
+                    trainee.name
+                        .toLowerCase();
+
+
+                const email =
+                    trainee.email
+                        .toLowerCase();
+
+
+                return (
+                    name.includes(search) ||
+                    email.includes(search)
+                );
+
+            }
+        );
+
+
+
+    /* =========================================
+       EMPTY
+    ========================================= */
+
+    if (
+        filteredTrainees.length === 0
+    ) {
+
+        traineesList.innerHTML = `
+
+            <div class="empty-trainees">
+
+                <div class="empty-icon">
+
+                    <i class="fa-regular fa-user"></i>
+
+                </div>
+
+
+                <h3>
+
+                    ${
+                        search
+                        ? "لا توجد نتائج"
+                        : "لا يوجد متدربون حتى الآن"
+                    }
+
+                </h3>
+
+
+                <p>
+
+                    ${
+                        search
+                        ? "جرّب البحث باسم أو بريد مختلف."
+                        : "أضف أول متدرب من النموذج بالأعلى."
+                    }
+
+                </p>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    /* =========================================
+       CARDS
+    ========================================= */
+
+    filteredTrainees.forEach(
+        function (trainee) {
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "trainee-card";
+
+
+            card.innerHTML = `
+
+
+                <div class="trainee-info">
+
+
+                    <div class="trainee-avatar">
+
+                        <i class="fa-regular fa-user"></i>
+
+                    </div>
+
+
+                    <div class="trainee-details">
+
+                        <h3>
+                            ${escapeHTML(trainee.name)}
+                        </h3>
+
+                        <p>
+                            ${escapeHTML(trainee.email)}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="trainee-code">
+
+                    <span>
+                        كود الدخول
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(trainee.code)}
+                    </strong>
+
+                </div>
+
+
+
+                <div class="trainee-actions">
+
+
+                    <button
+                        type="button"
+                        class="edit-code-btn"
+                        onclick="changeTraineeCode('${trainee.id}')"
+                    >
+
+                        <i class="fa-solid fa-key"></i>
+
+                        تغيير الكود
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="delete-trainee-btn"
+                        onclick="deleteTrainee('${trainee.id}')"
+                    >
+
+                        <i class="fa-regular fa-trash-can"></i>
+
+                        حذف
+
+                    </button>
+
+
+                </div>
+
+            `;
+
+
+            traineesList.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   CHANGE TRAINEE CODE
+================================================== */
+
+function changeTraineeCode(id) {
+
+    const trainees =
+        getTrainees();
+
+
+    const trainee =
+        trainees.find(
+            function (item) {
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if (!trainee) {
+
+        return;
+
+    }
+
+
+
+    const newCode =
+        prompt(
+            "أدخل الكود الجديد للمتدب " +
+            trainee.name +
+            ":",
+            trainee.code
+        );
+
+
+
+    /* إلغاء */
+
+    if (newCode === null) {
+
+        return;
+
+    }
+
+
+
+    const cleanCode =
+        newCode.trim();
+
+
+
+    /* فارغ */
+
+    if (cleanCode === "") {
+
+        alert(
+            "لا يمكن ترك كود المتدرب فارغًا."
+        );
+
+        return;
+
+    }
+
+
+
+    /* أقل من 4 */
+
+    if (cleanCode.length < 4) {
+
+        alert(
+            "الكود يجب أن يكون 4 خانات على الأقل."
+        );
+
+        return;
+
+    }
+
+
+
+    /* تكرار */
+
+    const codeExists =
+        trainees.some(
+            function (item) {
+
+                return (
+                    item.id !== id &&
+                    item.code === cleanCode
+                );
+
+            }
+        );
+
+
+    if (codeExists) {
+
+        alert(
+            "هذا الكود مستخدم لمتدرب آخر."
+        );
+
+        return;
+
+    }
+
+
+
+    /* تحديث */
+
+    trainee.code =
+        cleanCode;
+
+
+
+    /* حفظ */
+
+    saveTrainees(
+        trainees
+    );
+
+
+
+    /* تحديث */
+
+    renderTrainees(
+        traineeSearch.value
+    );
+
+
+    showTraineeSuccess(
+        "تم تغيير كود المتدرب بنجاح."
+    );
+
+}
+
+
+
+/* ==================================================
+   DELETE TRAINEE
+================================================== */
+
+function deleteTrainee(id) {
+
+    const trainees =
+        getTrainees();
+
+
+    const trainee =
+        trainees.find(
+            function (item) {
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if (!trainee) {
+
+        return;
+
+    }
+
+
+
+    const confirmed =
+        confirm(
+            "هل أنت متأكد من حذف المتدرب " +
+            trainee.name +
+            "؟"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+
+    const updatedTrainees =
+        trainees.filter(
+            function (item) {
+
+                return item.id !== id;
+
+            }
+        );
+
+
+
+    saveTrainees(
+        updatedTrainees
+    );
+
+
+
+    renderTrainees(
+        traineeSearch.value
+    );
+
+
+    showTraineeSuccess(
+        "تم حذف المتدرب."
+    );
+
+}
+
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+traineeSearch.addEventListener(
+    "input",
+    function () {
+
+        renderTrainees(
+            traineeSearch.value
+        );
+
+    }
+);
+
+
+
+/* ==================================================
+   SUPERVISOR PRESENCE
+================================================== */
+
+const presenceButton =
+    document.getElementById(
+        "presenceButton"
+    );
+
+const presenceText =
+    document.getElementById(
+        "presenceText"
+    );
+
+const presenceButtonText =
+    document.getElementById(
+        "presenceButtonText"
+    );
+
+
+let supervisorPresence =
+    localStorage.getItem(
+        "trainflowSupervisorPresence"
+    );
+
+
+if (supervisorPresence === null) {
+
+    supervisorPresence =
+        "present";
+
+}
+
+
+
+/* تحديث الحالة */
+
+function updatePresence() {
+
+    if (
+        supervisorPresence === "present"
+    ) {
+
+        presenceText.textContent =
+            "موجود في المكتب";
+
+        presenceButtonText.textContent =
+            "موجود";
+
+        presenceButton.classList.add(
+            "active"
+        );
+
+    }
+
+    else {
+
+        presenceText.textContent =
+            "غير موجود في المكتب";
+
+        presenceButtonText.textContent =
+            "غير موجود";
+
+        presenceButton.classList.remove(
+            "active"
+        );
+
+    }
+
+}
+
+
+
+presenceButton.addEventListener(
+    "click",
+    function () {
+
+        if (
+            supervisorPresence === "present"
+        ) {
+
+            supervisorPresence =
+                "away";
+
+        }
+
+        else {
+
+            supervisorPresence =
+                "present";
+
+        }
+
+
+        localStorage.setItem(
+            "trainflowSupervisorPresence",
+            supervisorPresence
+        );
+
+
+        updatePresence();
+
+    }
+);
+
+
+
+/* ==================================================
+   LOGOUT
+================================================== */
+
+document
+    .getElementById("logoutButton")
+    .addEventListener(
+        "click",
+        function () {
+
+            localStorage.removeItem(
+                "trainflowCurrentUser"
+            );
+
+            localStorage.removeItem(
+                "supervisorLoggedIn"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+
+
+/* ==================================================
+   ESCAPE HTML
+================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+
+/* ==================================================
+   START PAGE
+================================================== */
+
+updatePresence();
+
+renderTrainees();
+
+
+</script>
+
+
+</body>
+
+</html>
