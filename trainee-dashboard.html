@@ -9,14 +9,13 @@
 
     <title>TrainFlow | لوحة المتدرب</title>
 
-    <!-- نفس ملف CSS الحالي -->
+    <!-- ملف CSS -->
     <link rel="stylesheet" href="trainee-dashboard.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 
 <body>
 
@@ -52,7 +51,6 @@
             </div>
 
             <div>
-
                 <strong id="headerTraineeName">
                     المتدرب
                 </strong>
@@ -60,7 +58,6 @@
                 <span>
                     متدرب
                 </span>
-
             </div>
 
         </div>
@@ -104,13 +101,10 @@
             </span>
 
             <h1>
-
                 أهلاً بك،
-
                 <span id="welcomeTraineeName">
                     المتدرب
                 </span>
-
             </h1>
 
             <p>
@@ -122,9 +116,7 @@
 
 
         <div class="welcome-decoration">
-
             <i class="fa-solid fa-graduation-cap"></i>
-
         </div>
 
     </section>
@@ -138,9 +130,7 @@
     <section class="supervisor-card">
 
         <div class="supervisor-icon">
-
             <i class="fa-solid fa-user-tie"></i>
-
         </div>
 
 
@@ -151,13 +141,11 @@
             </span>
 
 
-            <!-- اسم المشرف -->
             <h3 id="supervisorName">
                 جاري تحميل اسم المشرف...
             </h3>
 
 
-            <!-- حالة المشرف -->
             <div class="supervisor-presence">
 
                 <span
@@ -189,13 +177,10 @@
         <div class="stat-card">
 
             <div class="stat-icon blue">
-
                 <i class="fa-solid fa-list-check"></i>
-
             </div>
 
             <div>
-
                 <span>
                     مهامي
                 </span>
@@ -203,7 +188,6 @@
                 <strong id="totalTasks">
                     0
                 </strong>
-
             </div>
 
         </div>
@@ -215,13 +199,10 @@
         <div class="stat-card">
 
             <div class="stat-icon green">
-
                 <i class="fa-solid fa-check"></i>
-
             </div>
 
             <div>
-
                 <span>
                     المهام المكتملة
                 </span>
@@ -229,7 +210,6 @@
                 <strong id="completedTasks">
                     0
                 </strong>
-
             </div>
 
         </div>
@@ -241,13 +221,10 @@
         <div class="stat-card">
 
             <div class="stat-icon purple">
-
                 <i class="fa-regular fa-file-lines"></i>
-
             </div>
 
             <div>
-
                 <span>
                     تقاريري
                 </span>
@@ -255,7 +232,6 @@
                 <strong id="totalReports">
                     0
                 </strong>
-
             </div>
 
         </div>
@@ -283,8 +259,7 @@
                 </h2>
 
                 <p>
-                    يمكنك الوصول إلى جميع مهامك
-                    وتقاريرك من هنا.
+                    يمكنك الوصول إلى جميع مهامك وتقاريرك من هنا.
                 </p>
 
             </div>
@@ -296,17 +271,13 @@
         <div class="quick-actions">
 
 
-            <!-- ==========================================
-                 كل المهام
-            =========================================== -->
+            <!-- كل المهام -->
 
             <a href="trainee-tasks.html"
                class="quick-action">
 
                 <div class="quick-icon blue">
-
                     <i class="fa-solid fa-list-check"></i>
-
                 </div>
 
 
@@ -329,17 +300,13 @@
 
 
 
-            <!-- ==========================================
-                 التقرير اليومي
-            =========================================== -->
+            <!-- التقرير اليومي -->
 
             <a href="daily-report.html"
                class="quick-action">
 
                 <div class="quick-icon purple">
-
                     <i class="fa-regular fa-file-lines"></i>
-
                 </div>
 
 
@@ -372,7 +339,6 @@
 
     <section class="dashboard-card tasks-section">
 
-
         <div class="section-header">
 
             <div>
@@ -381,31 +347,24 @@
                     المهام
                 </span>
 
-
                 <h2>
                     مهامي الحالية
                 </h2>
 
-
                 <p>
-                    تظهر هنا المهام الجديدة
-                    والمهام التي لم يتم إنجازها بعد.
+                    تظهر هنا المهام الجديدة والمهام التي لم يتم إنجازها بعد.
                 </p>
 
             </div>
 
-
-            <a href="trainee-tasks.html"
-               class="view-all-btn">
-
-                عرض جميع المهام
-
-            </a>
-
         </div>
 
 
-        <!-- المهام الحالية -->
+        <!--
+            هنا تظهر المهام الحالية فقط.
+            حذفنا زر "عرض جميع المهام" من هذا القسم.
+        -->
+
         <div
             id="tasksList"
             class="tasks-list">
@@ -433,18 +392,15 @@ function readArray(key) {
 
     try {
 
-        const data =
-            JSON.parse(
-                localStorage.getItem(key) || "[]"
-            );
+        const data = JSON.parse(
+            localStorage.getItem(key) || "[]"
+        );
 
         return Array.isArray(data)
             ? data
             : [];
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.error(
             "خطأ في قراءة:",
@@ -461,7 +417,7 @@ function readArray(key) {
 
 
 /* =====================================================
-   توحيد النصوص للمقارنة
+   توحيد النصوص
 ===================================================== */
 
 function normalize(value) {
@@ -475,7 +431,7 @@ function normalize(value) {
 
 
 /* =====================================================
-   قراءة المستخدم الحالي
+   المستخدم الحالي
 ===================================================== */
 
 let currentTrainee = null;
@@ -483,16 +439,13 @@ let currentTrainee = null;
 
 try {
 
-    currentTrainee =
-        JSON.parse(
-            localStorage.getItem(
-                "trainflowCurrentUser"
-            ) || "null"
-        );
+    currentTrainee = JSON.parse(
+        localStorage.getItem(
+            "trainflowCurrentUser"
+        ) || "null"
+    );
 
-}
-
-catch (error) {
+} catch (error) {
 
     console.error(
         "خطأ في قراءة المستخدم الحالي",
@@ -577,20 +530,16 @@ const tasksList =
 
 
 /* =====================================================
-   جلب بيانات المتدرب الأصلية
+   جلب بيانات المتدرب
 ===================================================== */
 
 function getOriginalTrainee() {
 
     const trainees = [
 
-        ...readArray(
-            "trainflowTrainees"
-        ),
+        ...readArray("trainflowTrainees"),
 
-        ...readArray(
-            "trainees"
-        )
+        ...readArray("trainees")
 
     ];
 
@@ -599,63 +548,56 @@ function getOriginalTrainee() {
 
 
 
-    /* البحث بواسطة ID */
+    /* البحث بالـ ID */
 
     if (
         currentTrainee &&
         currentTrainee.id !== undefined
     ) {
 
-        trainee =
-            trainees.find(item => {
+        trainee = trainees.find(item => {
 
-                const itemId =
-
-                    item.id ||
-                    item.traineeId ||
-                    item.userId;
+            const itemId =
+                item.id ||
+                item.traineeId ||
+                item.userId;
 
 
-                return (
+            return (
+                itemId !== undefined &&
+                String(itemId) ===
+                String(currentTrainee.id)
+            );
 
-                    itemId !== undefined &&
-
-                    String(itemId) ===
-                    String(currentTrainee.id)
-
-                );
-
-            });
+        });
 
     }
 
 
 
-    /* البحث بواسطة البريد */
+    /* البحث بالبريد */
 
     if (
         !trainee &&
         currentTrainee?.email
     ) {
 
-        trainee =
-            trainees.find(item =>
+        trainee = trainees.find(item =>
 
-                normalize(item.email) ===
-                normalize(currentTrainee.email)
+            normalize(item.email) ===
+            normalize(currentTrainee.email)
 
-            );
+        );
 
     }
 
 
 
-    /* البحث بواسطة كود الربط */
+    /* البحث بكود الربط */
 
     if (!trainee) {
 
         const currentCode =
-
             currentTrainee?.linkCode ||
             currentTrainee?.code ||
             currentTrainee?.traineeCode;
@@ -663,24 +605,20 @@ function getOriginalTrainee() {
 
         if (currentCode) {
 
-            trainee =
-                trainees.find(item => {
+            trainee = trainees.find(item => {
 
-                    const itemCode =
-
-                        item.linkCode ||
-                        item.code ||
-                        item.traineeCode;
+                const itemCode =
+                    item.linkCode ||
+                    item.code ||
+                    item.traineeCode;
 
 
-                    return (
+                return (
+                    normalize(itemCode) ===
+                    normalize(currentCode)
+                );
 
-                        normalize(itemCode) ===
-                        normalize(currentCode)
-
-                    );
-
-                });
+            });
 
         }
 
@@ -698,7 +636,7 @@ function getOriginalTrainee() {
 
 
 /* =====================================================
-   عرض اسم المتدرب
+   اسم المتدرب
 ===================================================== */
 
 function loadTraineeName() {
@@ -708,7 +646,6 @@ function loadTraineeName() {
 
 
     const name =
-
         trainee.name ||
         trainee.fullName ||
         currentTrainee?.name ||
@@ -728,28 +665,20 @@ function loadTraineeName() {
 
 
 /* =====================================================
-   جلب المشرفين
+   جميع المشرفين
 ===================================================== */
 
 function getAllSupervisors() {
 
     return [
 
-        ...readArray(
-            "trainflowUsers"
-        ),
+        ...readArray("trainflowUsers"),
 
-        ...readArray(
-            "trainflowSupervisors"
-        ),
+        ...readArray("trainflowSupervisors"),
 
-        ...readArray(
-            "supervisors"
-        ),
+        ...readArray("supervisors"),
 
-        ...readArray(
-            "users"
-        )
+        ...readArray("users")
 
     ];
 
@@ -758,7 +687,7 @@ function getAllSupervisors() {
 
 
 /* =====================================================
-   معرفة المشرف المرتبط بالمتدرب
+   معرفة المشرف المرتبط
 ===================================================== */
 
 function findLinkedSupervisor() {
@@ -772,33 +701,19 @@ function findLinkedSupervisor() {
 
 
 
-    /* ===============================================
-       رقم المشرف يأتي من بيانات الربط
-    =============================================== */
-
     const supervisorId =
-
         trainee.supervisorId ||
-
         trainee.supervisorID ||
-
         trainee.supervisor_id ||
-
         trainee.linkedSupervisorId ||
-
         trainee.assignedSupervisorId ||
-
         currentTrainee?.supervisorId ||
-
         currentTrainee?.supervisorID ||
-
         null;
 
 
 
-    /* ===============================================
-       البحث عن حساب المشرف بالـ ID
-    =============================================== */
+    /* البحث بالـ ID */
 
     if (supervisorId) {
 
@@ -806,23 +721,16 @@ function findLinkedSupervisor() {
             supervisors.find(user => {
 
                 const userId =
-
                     user.id ||
-
                     user.userId ||
-
                     user.supervisorId ||
-
                     user.supervisorID;
 
 
                 return (
-
                     userId !== undefined &&
-
                     String(userId) ===
                     String(supervisorId)
-
                 );
 
             });
@@ -850,16 +758,11 @@ function findLinkedSupervisor() {
 
 
 
-    /* ===============================================
-       البحث بالبريد إذا كان الربط محفوظ بالبريد
-    =============================================== */
+    /* البحث ببريد المشرف */
 
     const supervisorEmail =
-
         trainee.supervisorEmail ||
-
         trainee.linkedSupervisorEmail ||
-
         currentTrainee?.supervisorEmail;
 
 
@@ -896,11 +799,7 @@ function findLinkedSupervisor() {
 
 
 
-    /*
-       يوجد supervisorId
-       إذًا المتدرب مربوط،
-       حتى لو لم نجد بيانات الحساب.
-    */
+    /* يوجد رقم مشرف لكن لم نجد الحساب */
 
     if (supervisorId) {
 
@@ -933,7 +832,7 @@ function findLinkedSupervisor() {
 
 
 /* =====================================================
-   جلب اسم المشرف
+   اسم المشرف
 ===================================================== */
 
 function getSupervisorName(supervisor) {
@@ -946,17 +845,11 @@ function getSupervisorName(supervisor) {
 
 
     return (
-
         supervisor.name ||
-
         supervisor.fullName ||
-
         supervisor.displayName ||
-
         supervisor.username ||
-
         null
-
     );
 
 }
@@ -964,7 +857,7 @@ function getSupervisorName(supervisor) {
 
 
 /* =====================================================
-   جلب حالة المشرف
+   حالة المشرف
 ===================================================== */
 
 function getSupervisorPresence(
@@ -1005,22 +898,14 @@ function getSupervisorPresence(
 
 
 
-    /* الحالة داخل بيانات المشرف */
-
     if (supervisor) {
 
         return (
-
             supervisor.presence ||
-
             supervisor.officeStatus ||
-
             supervisor.status ||
-
             supervisor.availability ||
-
             null
-
         );
 
     }
@@ -1045,23 +930,14 @@ function isSupervisorPresent(value) {
     return [
 
         "present",
-
         "available",
-
         "online",
-
         "office",
-
         "in-office",
-
         "inoffice",
-
         "موجود",
-
         "موجود في المكتب",
-
         "true",
-
         "1"
 
     ].includes(status);
@@ -1083,19 +959,12 @@ function isSupervisorAway(value) {
     return [
 
         "away",
-
         "offline",
-
         "absent",
-
         "out",
-
         "غير موجود",
-
         "غير موجود في المكتب",
-
         "false",
-
         "0"
 
     ].includes(status);
@@ -1105,7 +974,7 @@ function isSupervisorAway(value) {
 
 
 /* =====================================================
-   عرض بيانات المشرف
+   عرض المشرف
 ===================================================== */
 
 function loadSupervisorInformation() {
@@ -1115,7 +984,7 @@ function loadSupervisorInformation() {
 
 
 
-    /* لا يوجد ربط */
+    /* غير مربوط */
 
     if (!link.linked) {
 
@@ -1137,9 +1006,7 @@ function loadSupervisorInformation() {
 
 
 
-    /* ===============================================
-       اسم المشرف
-    =============================================== */
+    /* اسم المشرف */
 
     const supervisorName =
         getSupervisorName(
@@ -1152,15 +1019,7 @@ function loadSupervisorInformation() {
         supervisorNameElement.textContent =
             supervisorName;
 
-    }
-
-    else {
-
-        /*
-            مهم:
-            المتدرب مربوط فعلًا،
-            لذلك لا نكتب غير مرتبط.
-        */
+    } else {
 
         supervisorNameElement.textContent =
             "مشرف التدريب";
@@ -1169,17 +1028,12 @@ function loadSupervisorInformation() {
 
 
 
-    /* ===============================================
-       حالة نفس المشرف
-    =============================================== */
+    /* حالة المشرف */
 
     const presence =
         getSupervisorPresence(
-
             link.id,
-
             link.supervisor
-
         );
 
 
@@ -1198,7 +1052,6 @@ function loadSupervisorInformation() {
 
     }
 
-
     else if (
         isSupervisorAway(
             presence
@@ -1213,7 +1066,6 @@ function loadSupervisorInformation() {
             "status-dot offline";
 
     }
-
 
     else {
 
@@ -1231,7 +1083,7 @@ function loadSupervisorInformation() {
 
 
 /* =====================================================
-   جلب جميع مهام هذا المتدرب
+   جلب مهام المتدرب
 ===================================================== */
 
 function getMyTasks() {
@@ -1242,41 +1094,29 @@ function getMyTasks() {
 
     const allTasks = [
 
-        ...readArray(
-            "trainflowTasks"
-        ),
+        ...readArray("trainflowTasks"),
 
-        ...readArray(
-            "tasks"
-        )
+        ...readArray("tasks")
 
     ];
 
 
     const traineeId =
-
         trainee.id ||
-
         trainee.traineeId ||
-
         trainee.userId;
 
 
     return allTasks.filter(task => {
 
         const taskTraineeId =
-
             task.traineeId ||
-
             task.assignedTo ||
-
             task.userId;
 
 
 
-        /* ===========================================
-           المطابقة بالـ ID
-        =========================================== */
+        /* المطابقة بالـ ID */
 
         if (
             traineeId !== undefined &&
@@ -1291,9 +1131,7 @@ function getMyTasks() {
 
 
 
-        /* ===========================================
-           المطابقة بالبريد
-        =========================================== */
+        /* المطابقة بالبريد */
 
         if (
             trainee.email &&
@@ -1326,19 +1164,12 @@ function isTaskCompleted(task) {
 
 
     return (
-
         status === "completed" ||
-
         status === "done" ||
-
         status === "مكتملة" ||
-
         status === "منجز" ||
-
         status === "منجزة" ||
-
         status === "تم الإنجاز"
-
     );
 
 }
@@ -1346,37 +1177,22 @@ function isTaskCompleted(task) {
 
 
 /* =====================================================
-   حماية النص
+   حماية النصوص
 ===================================================== */
 
 function escapeHTML(value) {
 
     return String(value ?? "")
 
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
+        .replaceAll("&", "&amp;")
 
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
+        .replaceAll("<", "&lt;")
 
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
+        .replaceAll(">", "&gt;")
 
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
+        .replaceAll('"', "&quot;")
 
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
+        .replaceAll("'", "&#039;");
 
 }
 
@@ -1384,45 +1200,35 @@ function escapeHTML(value) {
 
 /* =====================================================
    عرض المهام
-
-   مهم جدًا:
-
-   totalTasks = جميع المهام
-
-   completedTasks = المنجزة
-
-   currentTasks = غير المنجزة فقط
 ===================================================== */
 
 function renderTasks() {
 
-    /* ===============================================
-       كل مهام التدريب
-    =============================================== */
+    /*
+        جميع المهام الخاصة بالمتدرب
+    */
 
     const allMyTasks =
         getMyTasks();
 
 
 
-    /* ===============================================
-       إجمالي جميع المهام
-    =============================================== */
+    /*
+        إجمالي المهام
+    */
 
     totalTasksElement.textContent =
         allMyTasks.length;
 
 
 
-    /* ===============================================
-       المهام المكتملة
-    =============================================== */
+    /*
+        المهام المكتملة
+    */
 
     const completedTasks =
         allMyTasks.filter(task =>
-
             isTaskCompleted(task)
-
         );
 
 
@@ -1431,17 +1237,15 @@ function renderTasks() {
 
 
 
-    /* ===============================================
-       المهام الحالية
+    /*
+        المهام الحالية فقط
 
-       أي مهمة لم تنجز بعد
-    =============================================== */
+        أي مهمة لم يتم إنجازها
+    */
 
     const currentTasks =
         allMyTasks.filter(task =>
-
             !isTaskCompleted(task)
-
         );
 
 
@@ -1450,9 +1254,7 @@ function renderTasks() {
 
 
 
-    /* ===============================================
-       لا توجد مهام حالية
-    =============================================== */
+    /* لا توجد مهام حالية */
 
     if (currentTasks.length === 0) {
 
@@ -1466,11 +1268,9 @@ function renderTasks() {
 
                 </div>
 
-
                 <h3>
                     لا توجد مهام حالية
                 </h3>
-
 
                 <p>
                     أي مهمة جديدة يسندها لك
@@ -1488,9 +1288,9 @@ function renderTasks() {
 
 
 
-    /* ===============================================
-       نعرض أحدث 3 مهام حالية فقط
-    =============================================== */
+    /*
+        أحدث 3 مهام حالية
+    */
 
     const latestTasks =
         [...currentTasks]
@@ -1511,27 +1311,17 @@ function renderTasks() {
             "task-item";
 
 
-
         const title =
-
             task.title ||
-
             task.taskTitle ||
-
             task.name ||
-
             "مهمة";
 
 
-
         const description =
-
             task.description ||
-
             task.details ||
-
             "مهمة مسندة إليك";
-
 
 
         taskElement.innerHTML = `
@@ -1546,25 +1336,18 @@ function renderTasks() {
             <div class="task-info">
 
                 <strong>
-
                     ${escapeHTML(title)}
-
                 </strong>
 
-
                 <span>
-
                     ${escapeHTML(description)}
-
                 </span>
 
             </div>
 
 
             <span class="task-status">
-
-                جديدة
-
+                حالية
             </span>
 
         `;
@@ -1592,23 +1375,16 @@ function loadReportsCount() {
 
     const reports = [
 
-        ...readArray(
-            "trainflowReports"
-        ),
+        ...readArray("trainflowReports"),
 
-        ...readArray(
-            "reports"
-        )
+        ...readArray("reports")
 
     ];
 
 
     const traineeId =
-
         trainee.id ||
-
         trainee.traineeId ||
-
         trainee.userId;
 
 
@@ -1617,12 +1393,11 @@ function loadReportsCount() {
         reports.filter(report => {
 
             const reportTraineeId =
-
                 report.traineeId ||
-
                 report.userId;
 
 
+            /* المطابقة بالـ ID */
 
             if (
                 traineeId !== undefined &&
@@ -1636,6 +1411,7 @@ function loadReportsCount() {
             }
 
 
+            /* المطابقة بالبريد */
 
             if (
                 trainee.email &&
@@ -1663,7 +1439,7 @@ function loadReportsCount() {
 
 
 /* =====================================================
-   تحديث الصفحة
+   تحديث لوحة المتدرب
 ===================================================== */
 
 function refreshDashboard() {
@@ -1689,8 +1465,7 @@ refreshDashboard();
 
 
 /* =====================================================
-   تحديث تلقائي إذا تغيرت البيانات
-   من تبويب آخر
+   إذا تغيرت البيانات من صفحة ثانية
 ===================================================== */
 
 window.addEventListener(
@@ -1705,7 +1480,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   تحديث عند الرجوع للصفحة
+   عند الرجوع للصفحة
 ===================================================== */
 
 window.addEventListener(
