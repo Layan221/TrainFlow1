@@ -43,7 +43,7 @@
             </a>
 
 
-            <!-- العودة -->
+            <!-- الرجوع -->
 
             <a href="index.html" class="back-link">
 
@@ -67,13 +67,15 @@
                 </h1>
 
                 <p>
-                    أدخل بريدك الإلكتروني وكلمة المرور للمتابعة.
+                    أدخل بيانات حسابك للوصول إلى مساحة التدريب.
                 </p>
 
             </div>
 
 
-            <!-- النموذج -->
+            <!-- =========================
+                 النموذج
+            ========================== -->
 
             <form id="loginForm">
 
@@ -159,14 +161,16 @@
                 ></div>
 
 
-                <!-- الدخول -->
+                <!-- زر الدخول -->
 
                 <button
                     type="submit"
-                    class="submit-button"
+                    class="login-button"
                 >
 
-                    تسجيل الدخول
+                    <span>
+                        تسجيل الدخول
+                    </span>
 
                     <i class="fa-solid fa-arrow-left"></i>
 
@@ -175,17 +179,58 @@
             </form>
 
 
+            <!-- فاصل -->
+
+            <div class="divider">
+
+                <span></span>
+
+                <p>
+                    أو
+                </p>
+
+                <span></span>
+
+            </div>
+
+
             <!-- إنشاء حساب -->
 
-            <p class="register-text">
+            <div class="register-box">
 
-                ليس لديك حساب؟
+                <div class="register-box-icon">
 
-                <a href="register.html">
+                    <i class="fa-regular fa-user"></i>
+
+                </div>
+
+
+                <div class="register-box-text">
+
+                    <strong>
+                        ليس لديك حساب؟
+                    </strong>
+
+                    <span>
+                        أنشئ حساباً جديداً للبدء باستخدام TrainFlow.
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="register-button"
+                    id="goToRegister"
+                >
+
                     إنشاء حساب
-                </a>
 
-            </p>
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -207,14 +252,14 @@
             </div>
 
 
-            <span>
+            <span class="visual-label">
                 TrainFlow
             </span>
 
 
             <h2>
 
-                متابعة أوضح،
+                متابعة أسهل،
 
                 <strong>
                     تدريب أكثر تنظيماً.
@@ -223,45 +268,86 @@
             </h2>
 
 
-            <p>
-                تابع مهامك وتقاريرك وتواصل مع المشرف
-                من خلال مساحة تدريب واحدة ومنظمة.
+            <p class="visual-description">
+
+                مساحة واحدة تجمع المتدرب والمشرف
+                لتنظيم المهام والتقارير ومتابعة الإنجاز.
+
             </p>
 
 
-            <!-- بطاقة توضيحية -->
+            <!-- بطاقة -->
 
-            <div class="mini-preview">
+            <div class="preview-card">
 
-                <div class="preview-top">
+                <div class="preview-header">
 
                     <div class="preview-avatar">
-                        <i class="fa-solid fa-user-graduate"></i>
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
                     </div>
 
+
                     <div>
-                        <strong>مساحة التدريب</strong>
-                        <span>كل شيء في مكان واحد</span>
+
+                        <strong>
+                            مساحة التدريب
+                        </strong>
+
+                        <span>
+                            كل ما تحتاجه في مكان واحد
+                        </span>
+
                     </div>
 
                 </div>
 
 
-                <div class="preview-features">
+                <div class="preview-grid">
 
-                    <div>
-                        <i class="fa-solid fa-list-check"></i>
-                        المهام
+                    <div class="preview-item">
+
+                        <div class="preview-item-icon">
+
+                            <i class="fa-solid fa-list-check"></i>
+
+                        </div>
+
+                        <span>
+                            المهام
+                        </span>
+
                     </div>
 
-                    <div>
-                        <i class="fa-regular fa-file-lines"></i>
-                        التقارير
+
+                    <div class="preview-item">
+
+                        <div class="preview-item-icon">
+
+                            <i class="fa-regular fa-file-lines"></i>
+
+                        </div>
+
+                        <span>
+                            التقارير
+                        </span>
+
                     </div>
 
-                    <div>
-                        <i class="fa-solid fa-user-tie"></i>
-                        المشرف
+
+                    <div class="preview-item">
+
+                        <div class="preview-item-icon">
+
+                            <i class="fa-solid fa-user-tie"></i>
+
+                        </div>
+
+                        <span>
+                            المشرف
+                        </span>
+
                     </div>
 
                 </div>
@@ -271,8 +357,15 @@
         </div>
 
 
+        <!-- الزخارف -->
+
         <div class="circle circle-one"></div>
+
         <div class="circle circle-two"></div>
+
+        <div class="small-circle small-circle-one"></div>
+
+        <div class="small-circle small-circle-two"></div>
 
     </section>
 
@@ -281,16 +374,52 @@
 
 <script>
 
-    /*
-        إظهار وإخفاء كلمة المرور
-    */
+    /* =====================================
+       عناصر الصفحة
+    ===================================== */
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+
+    const emailInput =
+        document.getElementById("email");
+
 
     const passwordInput =
         document.getElementById("password");
 
+
     const showPasswordButton =
         document.getElementById("showPassword");
 
+
+    const message =
+        document.getElementById("message");
+
+
+    const goToRegister =
+        document.getElementById("goToRegister");
+
+
+    /* =====================================
+       الانتقال لإنشاء حساب
+    ===================================== */
+
+    goToRegister.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "register.html";
+
+        }
+    );
+
+
+    /* =====================================
+       إظهار كلمة المرور
+    ===================================== */
 
     showPasswordButton.addEventListener(
         "click",
@@ -300,7 +429,9 @@
                 showPasswordButton.querySelector("i");
 
 
-            if (passwordInput.type === "password") {
+            if (
+                passwordInput.type === "password"
+            ) {
 
                 passwordInput.type = "text";
 
@@ -332,73 +463,97 @@
     );
 
 
-    /*
-        التحقق من المدخلات
+    /* =====================================
+       تسجيل الدخول
+    ===================================== */
 
-        تسجيل الدخول الحقيقي سيتم
-        ربطه بـ Supabase لاحقاً.
-    */
+    loginForm.addEventListener(
+        "submit",
+        function (event) {
 
-    document
-        .getElementById("loginForm")
-        .addEventListener(
-            "submit",
-            function (event) {
+            event.preventDefault();
 
-                event.preventDefault();
-
-                clearMessage();
+            clearMessage();
 
 
-                const email =
-                    document
-                        .getElementById("email")
-                        .value
-                        .trim();
+            const email =
+                emailInput.value
+                    .trim()
+                    .toLowerCase();
 
 
-                const password =
-                    passwordInput.value;
+            const password =
+                passwordInput.value;
 
 
-                if (!email || !password) {
+            if (!email) {
 
-                    showError(
-                        "يرجى إدخال البريد الإلكتروني وكلمة المرور."
-                    );
-
-                    return;
-
-                }
-
-
-                if (password.length < 6) {
-
-                    showError(
-                        "يرجى التأكد من كلمة المرور."
-                    );
-
-                    return;
-
-                }
-
-
-                showInfo(
-                    "سيتم تفعيل تسجيل الدخول بعد ربط قاعدة البيانات."
+                showError(
+                    "يرجى إدخال البريد الإلكتروني."
                 );
 
+                emailInput.focus();
+
+                return;
+
             }
-        );
 
 
-    /*
-        الرسائل
-    */
+            if (!password) {
+
+                showError(
+                    "يرجى إدخال كلمة المرور."
+                );
+
+                passwordInput.focus();
+
+                return;
+
+            }
+
+
+            if (password.length < 6) {
+
+                showError(
+                    "يرجى التأكد من كلمة المرور."
+                );
+
+                passwordInput.focus();
+
+                return;
+
+            }
+
+
+            /*
+                بعد ربط Supabase سنضع هنا:
+
+                signInWithPassword()
+
+                ثم نقرأ نوع الحساب:
+
+                supervisor
+                أو
+                trainee
+
+                وننقل المستخدم تلقائياً
+                إلى اللوحة المناسبة.
+            */
+
+
+            showInfo(
+                "سيتم تفعيل الدخول بعد ربط قاعدة البيانات."
+            );
+
+        }
+    );
+
+
+    /* =====================================
+       الرسائل
+    ===================================== */
 
     function showError(text) {
-
-        const message =
-            document.getElementById("message");
 
         message.textContent = text;
 
@@ -410,9 +565,6 @@
 
     function showInfo(text) {
 
-        const message =
-            document.getElementById("message");
-
         message.textContent = text;
 
         message.className =
@@ -422,9 +574,6 @@
 
 
     function clearMessage() {
-
-        const message =
-            document.getElementById("message");
 
         message.textContent = "";
 
