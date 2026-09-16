@@ -17,25 +17,25 @@
 
 <body>
 
-<main class="login-page">
+<main class="auth-page">
 
     <!-- =========================
-         قسم تسجيل الدخول
+         جهة تسجيل الدخول
     ========================== -->
 
-    <section class="form-section">
+    <section class="auth-side">
 
-        <div class="form-container">
+        <div class="auth-container">
 
-            <!-- الشعار -->
+            <!-- Logo -->
 
-            <a href="index.html" class="logo">
+            <a href="index.html" class="brand">
 
-                <div class="logo-icon">
+                <div class="brand-icon">
                     <i class="fa-solid fa-layer-group"></i>
                 </div>
 
-                <div class="logo-text">
+                <div class="brand-text">
                     <strong>TrainFlow</strong>
                     <span>متابعة التدريب</span>
                 </div>
@@ -43,22 +43,19 @@
             </a>
 
 
-            <!-- الرجوع -->
+            <!-- Back -->
 
             <a href="index.html" class="back-link">
-
                 <i class="fa-solid fa-arrow-right"></i>
-
                 العودة للرئيسية
-
             </a>
 
 
-            <!-- العنوان -->
+            <!-- Heading -->
 
-            <div class="heading">
+            <div class="auth-heading">
 
-                <span class="heading-label">
+                <span class="eyebrow">
                     مرحباً بعودتك
                 </span>
 
@@ -73,13 +70,11 @@
             </div>
 
 
-            <!-- =========================
-                 النموذج
-            ========================== -->
+            <!-- Login form -->
 
-            <form id="loginForm">
+            <form id="loginForm" class="login-form">
 
-                <!-- البريد -->
+                <!-- Email -->
 
                 <div class="form-group">
 
@@ -87,14 +82,14 @@
                         البريد الإلكتروني
                     </label>
 
-                    <div class="input-box">
+                    <div class="input-wrapper">
 
-                        <i class="fa-regular fa-envelope"></i>
+                        <i class="fa-regular fa-envelope field-icon"></i>
 
                         <input
                             type="email"
                             id="email"
-                            placeholder="example@email.com"
+                            placeholder="name@example.com"
                             autocomplete="email"
                             required
                         >
@@ -104,7 +99,7 @@
                 </div>
 
 
-                <!-- كلمة المرور -->
+                <!-- Password -->
 
                 <div class="form-group">
 
@@ -116,7 +111,7 @@
 
                         <a
                             href="forgot-password.html"
-                            class="forgot-link"
+                            class="forgot-password"
                         >
                             نسيت كلمة المرور؟
                         </a>
@@ -124,9 +119,9 @@
                     </div>
 
 
-                    <div class="input-box">
+                    <div class="input-wrapper">
 
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-lock field-icon"></i>
 
                         <input
                             type="password"
@@ -136,16 +131,13 @@
                             required
                         >
 
-
                         <button
                             type="button"
-                            class="show-password"
-                            id="showPassword"
+                            class="password-toggle"
+                            id="passwordToggle"
                             aria-label="إظهار كلمة المرور"
                         >
-
                             <i class="fa-regular fa-eye"></i>
-
                         </button>
 
                     </div>
@@ -153,84 +145,50 @@
                 </div>
 
 
-                <!-- الرسائل -->
+                <!-- Message -->
 
                 <div
-                    id="message"
-                    class="message"
+                    class="form-message"
+                    id="formMessage"
                 ></div>
 
 
-                <!-- زر الدخول -->
+                <!-- Login -->
 
                 <button
                     type="submit"
-                    class="login-button"
+                    class="primary-button"
                 >
-
-                    <span>
-                        تسجيل الدخول
-                    </span>
+                    <span>تسجيل الدخول</span>
 
                     <i class="fa-solid fa-arrow-left"></i>
-
                 </button>
 
             </form>
 
 
-            <!-- فاصل -->
+            <!-- Register -->
 
-            <div class="divider">
+            <div class="register-area">
 
-                <span></span>
+                <span>
+                    ليس لديك حساب؟
+                </span>
 
-                <p>
-                    أو
-                </p>
-
-                <span></span>
-
-            </div>
-
-
-            <!-- إنشاء حساب -->
-
-            <div class="register-box">
-
-                <div class="register-box-icon">
-
-                    <i class="fa-regular fa-user"></i>
-
-                </div>
-
-
-                <div class="register-box-text">
-
-                    <strong>
-                        ليس لديك حساب؟
-                    </strong>
-
-                    <span>
-                        أنشئ حساباً جديداً للبدء باستخدام TrainFlow.
-                    </span>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="register-button"
-                    id="goToRegister"
+                <a
+                    href="register.html"
+                    class="register-link"
+                    id="registerLink"
                 >
-
-                    إنشاء حساب
-
-                    <i class="fa-solid fa-arrow-left"></i>
-
-                </button>
+                    إنشاء حساب جديد
+                </a>
 
             </div>
+
+
+            <p class="footer-text">
+                TrainFlow — منصة متابعة التدريب
+            </p>
 
         </div>
 
@@ -238,115 +196,99 @@
 
 
     <!-- =========================
-         الجانب البصري
+         الجهة البصرية
     ========================== -->
 
-    <section class="visual-section">
+    <section class="visual-side">
 
-        <div class="visual-content">
+        <div class="visual-decoration decoration-one"></div>
+        <div class="visual-decoration decoration-two"></div>
 
-            <div class="visual-icon">
+        <div class="visual-container">
 
+            <div class="visual-logo">
                 <i class="fa-solid fa-layer-group"></i>
-
             </div>
 
-
-            <span class="visual-label">
+            <span class="visual-name">
                 TrainFlow
             </span>
 
-
             <h2>
-
-                متابعة أسهل،
-
-                <strong>
-                    تدريب أكثر تنظيماً.
-                </strong>
-
+                تدريبك،
+                <br>
+                <strong>بشكل أكثر تنظيمًا.</strong>
             </h2>
 
-
-            <p class="visual-description">
-
-                مساحة واحدة تجمع المتدرب والمشرف
-                لتنظيم المهام والتقارير ومتابعة الإنجاز.
-
+            <p>
+                مساحة موحّدة تساعد المشرف والمتدرب على
+                متابعة المهام والتقارير اليومية والتواصل
+                بطريقة واضحة وسهلة.
             </p>
 
 
-            <!-- بطاقة -->
+            <!-- Preview -->
 
-            <div class="preview-card">
+            <div class="mini-dashboard">
 
-                <div class="preview-header">
-
-                    <div class="preview-avatar">
-
-                        <i class="fa-solid fa-graduation-cap"></i>
-
-                    </div>
-
+                <div class="mini-header">
 
                     <div>
+                        <span>لوحة التدريب</span>
+                        <strong>متابعة واضحة وبسيطة</strong>
+                    </div>
 
-                        <strong>
-                            مساحة التدريب
-                        </strong>
-
-                        <span>
-                            كل ما تحتاجه في مكان واحد
-                        </span>
-
+                    <div class="mini-logo">
+                        <i class="fa-solid fa-layer-group"></i>
                     </div>
 
                 </div>
 
 
-                <div class="preview-grid">
+                <div class="status-card">
 
-                    <div class="preview-item">
+                    <div class="status-content">
 
-                        <div class="preview-item-icon">
+                        <span>حالة المشرف</span>
 
+                        <strong>
+                            <i></i>
+                            موجود في المكتب
+                        </strong>
+
+                    </div>
+
+                    <i class="fa-solid fa-user-tie status-user"></i>
+
+                </div>
+
+
+                <div class="mini-cards">
+
+                    <div class="mini-card">
+
+                        <div class="mini-card-icon blue">
                             <i class="fa-solid fa-list-check"></i>
-
                         </div>
 
-                        <span>
-                            المهام
-                        </span>
+                        <div>
+                            <strong>المهام</strong>
+                            <span>متابعة المهام بسهولة</span>
+                        </div>
 
                     </div>
 
 
-                    <div class="preview-item">
+                    <div class="mini-card">
 
-                        <div class="preview-item-icon">
-
+                        <div class="mini-card-icon purple">
                             <i class="fa-regular fa-file-lines"></i>
-
                         </div>
 
-                        <span>
-                            التقارير
-                        </span>
-
-                    </div>
-
-
-                    <div class="preview-item">
-
-                        <div class="preview-item-icon">
-
-                            <i class="fa-solid fa-user-tie"></i>
-
+                        <div>
+                            <strong>التقارير</strong>
+                            <span>تقارير يومية منظمة</span>
                         </div>
-
-                        <span>
-                            المشرف
-                        </span>
 
                     </div>
 
@@ -355,17 +297,6 @@
             </div>
 
         </div>
-
-
-        <!-- الزخارف -->
-
-        <div class="circle circle-one"></div>
-
-        <div class="circle circle-two"></div>
-
-        <div class="small-circle small-circle-one"></div>
-
-        <div class="small-circle small-circle-two"></div>
 
     </section>
 
@@ -374,212 +305,111 @@
 
 <script>
 
-    /* =====================================
-       عناصر الصفحة
-    ===================================== */
-
     const loginForm =
         document.getElementById("loginForm");
-
 
     const emailInput =
         document.getElementById("email");
 
-
     const passwordInput =
         document.getElementById("password");
 
+    const passwordToggle =
+        document.getElementById("passwordToggle");
 
-    const showPasswordButton =
-        document.getElementById("showPassword");
-
-
-    const message =
-        document.getElementById("message");
+    const formMessage =
+        document.getElementById("formMessage");
 
 
-    const goToRegister =
-        document.getElementById("goToRegister");
+    /* إظهار وإخفاء كلمة المرور */
 
+    passwordToggle.addEventListener("click", function () {
 
-    /* =====================================
-       الانتقال لإنشاء حساب
-    ===================================== */
+        const icon =
+            passwordToggle.querySelector("i");
 
-    goToRegister.addEventListener(
-        "click",
-        function () {
+        if (passwordInput.type === "password") {
 
-            window.location.href =
-                "register.html";
+            passwordInput.type = "text";
 
+            icon.className =
+                "fa-regular fa-eye-slash";
+
+        } else {
+
+            passwordInput.type = "password";
+
+            icon.className =
+                "fa-regular fa-eye";
         }
-    );
+
+    });
 
 
-    /* =====================================
-       إظهار كلمة المرور
-    ===================================== */
+    /* تسجيل الدخول */
 
-    showPasswordButton.addEventListener(
-        "click",
-        function () {
+    loginForm.addEventListener("submit", function (event) {
 
-            const icon =
-                showPasswordButton.querySelector("i");
+        event.preventDefault();
+
+        formMessage.textContent = "";
+        formMessage.className = "form-message";
 
 
-            if (
-                passwordInput.type === "password"
-            ) {
+        const email =
+            emailInput.value.trim();
 
-                passwordInput.type = "text";
-
-                icon.className =
-                    "fa-regular fa-eye-slash";
-
-                showPasswordButton.setAttribute(
-                    "aria-label",
-                    "إخفاء كلمة المرور"
-                );
-
-            }
-
-            else {
-
-                passwordInput.type = "password";
-
-                icon.className =
-                    "fa-regular fa-eye";
-
-                showPasswordButton.setAttribute(
-                    "aria-label",
-                    "إظهار كلمة المرور"
-                );
-
-            }
-
-        }
-    );
+        const password =
+            passwordInput.value;
 
 
-    /* =====================================
-       تسجيل الدخول
-    ===================================== */
+        if (!email) {
 
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-            clearMessage();
-
-
-            const email =
-                emailInput.value
-                    .trim()
-                    .toLowerCase();
-
-
-            const password =
-                passwordInput.value;
-
-
-            if (!email) {
-
-                showError(
-                    "يرجى إدخال البريد الإلكتروني."
-                );
-
-                emailInput.focus();
-
-                return;
-
-            }
-
-
-            if (!password) {
-
-                showError(
-                    "يرجى إدخال كلمة المرور."
-                );
-
-                passwordInput.focus();
-
-                return;
-
-            }
-
-
-            if (password.length < 6) {
-
-                showError(
-                    "يرجى التأكد من كلمة المرور."
-                );
-
-                passwordInput.focus();
-
-                return;
-
-            }
-
-
-            /*
-                بعد ربط Supabase سنضع هنا:
-
-                signInWithPassword()
-
-                ثم نقرأ نوع الحساب:
-
-                supervisor
-                أو
-                trainee
-
-                وننقل المستخدم تلقائياً
-                إلى اللوحة المناسبة.
-            */
-
-
-            showInfo(
-                "سيتم تفعيل الدخول بعد ربط قاعدة البيانات."
+            showError(
+                "يرجى إدخال البريد الإلكتروني."
             );
 
+            return;
         }
-    );
 
 
-    /* =====================================
-       الرسائل
-    ===================================== */
+        if (!password) {
+
+            showError(
+                "يرجى إدخال كلمة المرور."
+            );
+
+            return;
+        }
+
+
+        /*
+            هنا سنضع تسجيل الدخول الحقيقي
+            باستخدام Supabase لاحقاً.
+        */
+
+        showInfo(
+            "سيتم تفعيل تسجيل الدخول بعد ربط قاعدة البيانات."
+        );
+
+    });
+
 
     function showError(text) {
 
-        message.textContent = text;
+        formMessage.textContent = text;
 
-        message.className =
-            "message error";
-
+        formMessage.className =
+            "form-message error";
     }
 
 
     function showInfo(text) {
 
-        message.textContent = text;
+        formMessage.textContent = text;
 
-        message.className =
-            "message info";
-
-    }
-
-
-    function clearMessage() {
-
-        message.textContent = "";
-
-        message.className =
-            "message";
-
+        formMessage.className =
+            "form-message info";
     }
 
 </script>
