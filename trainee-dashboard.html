@@ -3,21 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>TrainFlow | لوحة المتدرب</title>
 
-    <link rel="stylesheet" href="trainee-dashboard.css">
-
+    <!-- ملف CSS -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+          href="trainee-dashboard.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
+
 <body>
+
+
+<!-- ================================
+     HEADER
+================================ -->
 
 <header class="top-header">
 
     <a href="index.html" class="brand">
+
         <div class="brand-icon">
             <i class="fa-solid fa-layer-group"></i>
         </div>
@@ -26,24 +38,38 @@
             <strong>TrainFlow</strong>
             <span>متابعة التدريب</span>
         </div>
+
     </a>
+
 
     <div class="header-actions">
 
         <div class="trainee-info">
+
             <div class="trainee-avatar">
                 <i class="fa-regular fa-user"></i>
             </div>
 
             <div>
-                <strong id="headerTraineeName">المتدرب</strong>
+                <strong id="headerTraineeName">
+                    المتدرب
+                </strong>
+
                 <span>متدرب</span>
             </div>
+
         </div>
 
-        <button type="button" class="logout-btn" id="logoutButton">
+
+        <button
+            type="button"
+            class="logout-btn"
+            id="logoutButton">
+
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
             تسجيل الخروج
+
         </button>
 
     </div>
@@ -51,24 +77,43 @@
 </header>
 
 
+
+<!-- ================================
+     MAIN
+================================ -->
+
 <main class="dashboard-container">
 
-    <!-- الترحيب -->
+
+    <!-- ================================
+         WELCOME
+    ================================= -->
 
     <section class="welcome-section">
 
         <div>
-            <span class="welcome-badge">لوحة المتدرب</span>
+
+            <span class="welcome-badge">
+                لوحة المتدرب
+            </span>
 
             <h1>
+
                 أهلاً بك،
-                <span id="welcomeTraineeName">المتدرب</span>
+
+                <span id="welcomeTraineeName">
+                    المتدرب
+                </span>
+
             </h1>
 
             <p>
-                تابع مهامك وسجّل تقريرك اليومي واطلع على حالة مشرفك.
+                تابع مهامك وسجّل تقريرك اليومي
+                واطلع على حالة مشرفك.
             </p>
+
         </div>
+
 
         <div class="welcome-decoration">
             <i class="fa-solid fa-graduation-cap"></i>
@@ -77,7 +122,10 @@
     </section>
 
 
-    <!-- المشرف -->
+
+    <!-- ================================
+         SUPERVISOR
+    ================================= -->
 
     <section class="supervisor-card">
 
@@ -85,15 +133,22 @@
             <i class="fa-solid fa-user-tie"></i>
         </div>
 
+
         <div class="supervisor-information">
 
             <span class="supervisor-label">
                 مشرف التدريب
             </span>
 
+
+            <!-- اسم المشرف يظهر هنا -->
+
             <h3 id="supervisorName">
                 جاري تحميل اسم المشرف...
             </h3>
+
+
+            <!-- حالة المشرف -->
 
             <div class="supervisor-presence">
 
@@ -101,6 +156,7 @@
                     id="supervisorStatusDot"
                     class="status-dot offline">
                 </span>
+
 
                 <strong id="supervisorStatus">
                     جاري التحقق من حالة المشرف...
@@ -113,9 +169,15 @@
     </section>
 
 
-    <!-- الإحصائيات -->
+
+    <!-- ================================
+         STATISTICS
+    ================================= -->
 
     <section class="stats-grid">
+
+
+        <!-- المهام -->
 
         <div class="stat-card">
 
@@ -124,12 +186,22 @@
             </div>
 
             <div>
-                <span>مهامي</span>
-                <strong id="totalTasks">0</strong>
+
+                <span>
+                    مهامي
+                </span>
+
+                <strong id="totalTasks">
+                    0
+                </strong>
+
             </div>
 
         </div>
 
+
+
+        <!-- المهام المكتملة -->
 
         <div class="stat-card">
 
@@ -138,12 +210,22 @@
             </div>
 
             <div>
-                <span>المهام المكتملة</span>
-                <strong id="completedTasks">0</strong>
+
+                <span>
+                    المهام المكتملة
+                </span>
+
+                <strong id="completedTasks">
+                    0
+                </strong>
+
             </div>
 
         </div>
 
+
+
+        <!-- التقارير -->
 
         <div class="stat-card">
 
@@ -152,121 +234,217 @@
             </div>
 
             <div>
-                <span>تقاريري</span>
-                <strong id="totalReports">0</strong>
+
+                <span>
+                    تقاريري
+                </span>
+
+                <strong id="totalReports">
+                    0
+                </strong>
+
             </div>
 
         </div>
+
 
     </section>
 
 
-    <!-- الإجراءات -->
+
+    <!-- ================================
+         QUICK ACTIONS
+    ================================= -->
 
     <section class="dashboard-card">
+
 
         <div class="section-header">
 
             <div>
-                <span class="section-label">التدريب</span>
-                <h2>ماذا تريد أن تفعل؟</h2>
-                <p>يمكنك الوصول إلى مهامك وتقاريرك من هنا.</p>
+
+                <span class="section-label">
+                    التدريب
+                </span>
+
+                <h2>
+                    ماذا تريد أن تفعل؟
+                </h2>
+
+                <p>
+                    يمكنك الوصول إلى مهامك وتقاريرك من هنا.
+                </p>
+
             </div>
 
         </div>
+
 
 
         <div class="quick-actions">
 
-            <a href="trainee-tasks.html" class="quick-action">
+
+            <!-- المهام -->
+
+            <a href="trainee-tasks.html"
+               class="quick-action">
 
                 <div class="quick-icon blue">
+
                     <i class="fa-solid fa-list-check"></i>
+
                 </div>
 
+
                 <div>
-                    <strong>مهامي</strong>
-                    <span>عرض المهام المسندة إليك</span>
+
+                    <strong>
+                        مهامي
+                    </strong>
+
+                    <span>
+                        عرض المهام المسندة إليك
+                    </span>
+
                 </div>
+
 
                 <i class="fa-solid fa-chevron-left arrow"></i>
 
             </a>
 
 
-            <a href="daily-report.html" class="quick-action">
+
+            <!-- التقرير -->
+
+            <a href="daily-report.html"
+               class="quick-action">
 
                 <div class="quick-icon purple">
+
                     <i class="fa-regular fa-file-lines"></i>
+
                 </div>
 
+
                 <div>
-                    <strong>التقرير اليومي</strong>
-                    <span>تسجيل ما تم إنجازه اليوم</span>
+
+                    <strong>
+                        التقرير اليومي
+                    </strong>
+
+                    <span>
+                        تسجيل ما تم إنجازه اليوم
+                    </span>
+
                 </div>
+
 
                 <i class="fa-solid fa-chevron-left arrow"></i>
 
             </a>
+
 
         </div>
 
     </section>
 
 
-    <!-- المهام -->
+
+    <!-- ================================
+         CURRENT TASKS
+    ================================= -->
 
     <section class="dashboard-card tasks-section">
+
 
         <div class="section-header">
 
             <div>
-                <span class="section-label">المهام</span>
 
-                <h2>مهامي الحالية</h2>
+                <span class="section-label">
+                    المهام
+                </span>
+
+
+                <h2>
+                    مهامي الحالية
+                </h2>
+
 
                 <p>
-                    تظهر هنا المهام التي قام مشرفك بإسنادها إليك.
+                    تظهر هنا المهام التي قام مشرفك
+                    بإسنادها إليك.
                 </p>
+
             </div>
 
-            <a href="trainee-tasks.html" class="view-all-btn">
+
+            <a href="trainee-tasks.html"
+               class="view-all-btn">
+
                 عرض جميع المهام
+
             </a>
 
         </div>
 
-        <div id="tasksList" class="tasks-list"></div>
+
+        <div
+            id="tasksList"
+            class="tasks-list">
+        </div>
+
 
     </section>
+
 
 </main>
 
 
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
 <script>
 
-/* ================================
-   أدوات التخزين
-================================ */
+
+/* ==================================================
+   قراءة Array من LocalStorage
+================================================== */
 
 function readArray(key) {
 
     try {
 
-        const data = JSON.parse(
-            localStorage.getItem(key) || "[]"
+        const value =
+            JSON.parse(
+                localStorage.getItem(key) || "[]"
+            );
+
+        return Array.isArray(value)
+            ? value
+            : [];
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "خطأ في قراءة " + key,
+            error
         );
-
-        return Array.isArray(data) ? data : [];
-
-    } catch (error) {
-
-        console.error("خطأ في قراءة:", key, error);
 
         return [];
     }
 }
 
+
+
+/* ==================================================
+   توحيد النصوص
+================================================== */
 
 function normalize(value) {
 
@@ -276,416 +454,889 @@ function normalize(value) {
 }
 
 
-/* ================================
-   المستخدم الحالي
-================================ */
 
-const currentTrainee = JSON.parse(
-    localStorage.getItem("trainflowCurrentUser") || "null"
-);
+/* ==================================================
+   قراءة المستخدم الحالي
+================================================== */
+
+let currentTrainee = null;
 
 
-/* حماية الصفحة */
+try {
 
-if (
-    !currentTrainee ||
-    normalize(currentTrainee.role) !== "trainee"
-) {
+    currentTrainee =
+        JSON.parse(
+            localStorage.getItem(
+                "trainflowCurrentUser"
+            ) || "null"
+        );
 
-    window.location.replace("login.html");
+}
 
-    throw new Error("لا يوجد متدرب مسجل الدخول");
+catch (error) {
+
+    console.error(
+        "تعذر قراءة المستخدم الحالي",
+        error
+    );
 }
 
 
-/* ================================
+
+/* ==================================================
+   حماية الصفحة
+================================================== */
+
+if (!currentTrainee) {
+
+    window.location.replace(
+        "login.html"
+    );
+
+}
+
+
+else if (
+    currentTrainee.role &&
+    normalize(currentTrainee.role) !== "trainee"
+) {
+
+    window.location.replace(
+        "login.html"
+    );
+
+}
+
+
+
+/* ==================================================
    عناصر الصفحة
-================================ */
+================================================== */
 
 const headerTraineeName =
-    document.getElementById("headerTraineeName");
+    document.getElementById(
+        "headerTraineeName"
+    );
+
 
 const welcomeTraineeName =
-    document.getElementById("welcomeTraineeName");
+    document.getElementById(
+        "welcomeTraineeName"
+    );
+
 
 const supervisorNameElement =
-    document.getElementById("supervisorName");
+    document.getElementById(
+        "supervisorName"
+    );
+
 
 const supervisorStatusElement =
-    document.getElementById("supervisorStatus");
+    document.getElementById(
+        "supervisorStatus"
+    );
+
 
 const supervisorStatusDot =
-    document.getElementById("supervisorStatusDot");
+    document.getElementById(
+        "supervisorStatusDot"
+    );
+
 
 const totalTasksElement =
-    document.getElementById("totalTasks");
+    document.getElementById(
+        "totalTasks"
+    );
+
 
 const completedTasksElement =
-    document.getElementById("completedTasks");
+    document.getElementById(
+        "completedTasks"
+    );
+
 
 const totalReportsElement =
-    document.getElementById("totalReports");
+    document.getElementById(
+        "totalReports"
+    );
+
 
 const tasksList =
-    document.getElementById("tasksList");
+    document.getElementById(
+        "tasksList"
+    );
 
 
-/* ================================
-   إيجاد بيانات المتدرب
-================================ */
+
+/* ==================================================
+   جلب بيانات المتدرب الأصلية
+================================================== */
 
 function getOriginalTrainee() {
 
-    const trainees =
-        readArray("trainflowTrainees");
+
+    const trainees = [
+
+        ...readArray(
+            "trainflowTrainees"
+        ),
+
+        ...readArray(
+            "trainees"
+        )
+
+    ];
+
 
     let trainee = null;
 
 
-    /* أولاً: ID */
 
-    if (currentTrainee.id !== undefined) {
+    /* =========================
+       البحث بالـ ID
+    ========================= */
 
-        trainee = trainees.find(item =>
+    if (
+        currentTrainee &&
+        currentTrainee.id !== undefined
+    ) {
 
-            String(item.id) ===
-            String(currentTrainee.id)
+        trainee =
+            trainees.find(item => {
 
-        );
+                const itemId =
+                    item.id ||
+                    item.traineeId ||
+                    item.userId;
 
-    }
+                return (
+                    String(itemId) ===
+                    String(currentTrainee.id)
+                );
 
-
-    /* ثانياً: البريد */
-
-    if (!trainee && currentTrainee.email) {
-
-        trainee = trainees.find(item =>
-
-            normalize(item.email) ===
-            normalize(currentTrainee.email)
-
-        );
-
-    }
-
-
-    /* ثالثاً: كود الربط */
-
-    if (!trainee && currentTrainee.linkCode) {
-
-        trainee = trainees.find(item =>
-
-            normalize(
-                item.linkCode ||
-                item.code ||
-                item.traineeCode
-            )
-            ===
-            normalize(currentTrainee.linkCode)
-
-        );
+            });
 
     }
 
 
-    return trainee || currentTrainee;
+
+    /* =========================
+       البحث بالبريد
+    ========================= */
+
+    if (
+        !trainee &&
+        currentTrainee &&
+        currentTrainee.email
+    ) {
+
+        trainee =
+            trainees.find(item =>
+
+                normalize(item.email) ===
+                normalize(
+                    currentTrainee.email
+                )
+
+            );
+
+    }
+
+
+
+    /* =========================
+       البحث بكود المتدرب
+    ========================= */
+
+    if (
+        !trainee &&
+        currentTrainee
+    ) {
+
+        const currentCode =
+
+            currentTrainee.linkCode ||
+            currentTrainee.code ||
+            currentTrainee.traineeCode;
+
+
+        if (currentCode) {
+
+            trainee =
+                trainees.find(item => {
+
+                    const itemCode =
+
+                        item.linkCode ||
+                        item.code ||
+                        item.traineeCode;
+
+                    return (
+                        normalize(itemCode) ===
+                        normalize(currentCode)
+                    );
+
+                });
+
+        }
+
+    }
+
+
+
+    return (
+        trainee ||
+        currentTrainee ||
+        {}
+    );
+
 }
 
 
-const trainee =
-    getOriginalTrainee();
+
+/* ==================================================
+   عرض اسم المتدرب
+================================================== */
+
+function loadTraineeName() {
 
 
-/* ================================
-   اسم المتدرب
-================================ */
-
-const traineeName =
-    trainee.name ||
-    trainee.fullName ||
-    currentTrainee.name ||
-    "المتدرب";
-
-
-headerTraineeName.textContent =
-    traineeName;
-
-welcomeTraineeName.textContent =
-    traineeName;
-
-
-/* ================================
-   البحث عن المشرف
-================================ */
-
-function getSupervisors() {
-
-    return [
-        ...readArray("trainflowSupervisors"),
-        ...readArray("supervisors")
-    ];
-
-}
-
-
-function findSupervisor() {
-
-    const traineeData =
+    const trainee =
         getOriginalTrainee();
 
-    const supervisors =
-        getSupervisors();
 
+    const name =
+
+        trainee.name ||
+        trainee.fullName ||
+        currentTrainee?.name ||
+        currentTrainee?.fullName ||
+        "المتدرب";
+
+
+    headerTraineeName.textContent =
+        name;
+
+
+    welcomeTraineeName.textContent =
+        name;
+
+}
+
+
+
+/* ==================================================
+   جلب جميع حسابات المشرفين
+================================================== */
+
+function getAllSupervisors() {
+
+
+    const allUsers = [
+
+        ...readArray(
+            "trainflowUsers"
+        ),
+
+        ...readArray(
+            "trainflowSupervisors"
+        ),
+
+        ...readArray(
+            "supervisors"
+        ),
+
+        ...readArray(
+            "users"
+        )
+
+    ];
+
+
+
+    /*
+       نحذف التكرار قدر الإمكان
+    */
+
+    const result = [];
+
+
+    allUsers.forEach(user => {
+
+
+        const alreadyExists =
+            result.some(item => {
+
+
+                if (
+                    item.id !== undefined &&
+                    user.id !== undefined
+                ) {
+
+                    return (
+                        String(item.id) ===
+                        String(user.id)
+                    );
+
+                }
+
+
+                if (
+                    item.email &&
+                    user.email
+                ) {
+
+                    return (
+                        normalize(item.email) ===
+                        normalize(user.email)
+                    );
+
+                }
+
+
+                return false;
+
+            });
+
+
+        if (!alreadyExists) {
+
+            result.push(user);
+
+        }
+
+    });
+
+
+    return result;
+
+}
+
+
+
+/* ==================================================
+   معرفة المشرف المرتبط بالمتدرب
+
+   مهم:
+   الاسم لا يؤخذ من المتدرب.
+   نستخدم الربط للوصول إلى حساب المشرف،
+   وبعدها نأخذ الاسم من حساب المشرف.
+================================================== */
+
+function findLinkedSupervisor() {
+
+
+    const trainee =
+        getOriginalTrainee();
+
+
+    const supervisors =
+        getAllSupervisors();
+
+
+
+    /* ==================================================
+       1 - معرفة ID المشرف من الربط
+    ================================================== */
 
     const supervisorId =
-        traineeData.supervisorId ||
-        traineeData.supervisorID ||
-        traineeData.supervisor_id ||
-        currentTrainee.supervisorId;
+
+        trainee.supervisorId ||
+
+        trainee.supervisorID ||
+
+        trainee.supervisor_id ||
+
+        trainee.linkedSupervisorId ||
+
+        trainee.assignedSupervisorId ||
+
+        currentTrainee?.supervisorId ||
+
+        currentTrainee?.supervisorID ||
+
+        currentTrainee?.supervisor_id ||
+
+        null;
 
 
-    const supervisorEmail =
-        traineeData.supervisorEmail ||
-        currentTrainee.supervisorEmail;
 
-
-    const supervisorName =
-        traineeData.supervisorName ||
-        currentTrainee.supervisorName;
-
-
-    let supervisor = null;
-
-
-    /* البحث بالـ ID */
+    /* ==================================================
+       2 - لو عندنا supervisorId
+       نبحث عن حساب المشرف
+    ================================================== */
 
     if (supervisorId) {
 
-        supervisor = supervisors.find(item =>
 
-            String(
-                item.id ||
-                item.supervisorId ||
-                item.userId
-            )
-            ===
-            String(supervisorId)
+        const supervisor =
+            supervisors.find(user => {
 
-        );
+
+                const userId =
+
+                    user.id ||
+
+                    user.userId ||
+
+                    user.supervisorId ||
+
+                    user.supervisorID;
+
+
+                return (
+                    userId !== undefined &&
+                    String(userId) ===
+                    String(supervisorId)
+                );
+
+            });
+
+
+
+        if (supervisor) {
+
+            return {
+
+                linked: true,
+
+                id:
+                    supervisor.id ||
+                    supervisor.userId ||
+                    supervisor.supervisorId ||
+                    supervisorId,
+
+                supervisor:
+                    supervisor
+
+            };
+
+        }
 
     }
 
 
-    /* البحث بالبريد */
 
-    if (!supervisor && supervisorEmail) {
+    /* ==================================================
+       3 - بعض الأكواد تحفظ البريد بدل ID
+    ================================================== */
 
-        supervisor = supervisors.find(item =>
+    const supervisorEmail =
 
-            normalize(item.email) ===
-            normalize(supervisorEmail)
+        trainee.supervisorEmail ||
 
-        );
+        trainee.linkedSupervisorEmail ||
+
+        currentTrainee?.supervisorEmail ||
+
+        null;
+
+
+
+    if (supervisorEmail) {
+
+
+        const supervisor =
+            supervisors.find(user =>
+
+                normalize(user.email) ===
+                normalize(supervisorEmail)
+
+            );
+
+
+        if (supervisor) {
+
+            return {
+
+                linked: true,
+
+                id:
+                    supervisor.id ||
+                    supervisor.userId ||
+                    supervisor.supervisorId ||
+                    supervisorEmail,
+
+                supervisor:
+                    supervisor
+
+            };
+
+        }
 
     }
 
 
-    /* البحث بالاسم */
 
-    if (!supervisor && supervisorName) {
+    /* ==================================================
+       4 - لو المتدرب عنده supervisorId
+       لكن حساب المشرف لم يوجد في Array
+       
+       هذا يعني أنه مربوط، لذلك لا نقول:
+       "لم يتم ربط مشرف"
+    ================================================== */
 
-        supervisor = supervisors.find(item =>
+    if (supervisorId) {
 
-            normalize(
-                item.name ||
-                item.fullName
-            )
-            ===
-            normalize(supervisorName)
+        return {
 
-        );
+            linked: true,
+
+            id:
+                supervisorId,
+
+            supervisor:
+                null
+
+        };
 
     }
 
+
+
+    /* ==================================================
+       لا يوجد أي ربط
+    ================================================== */
 
     return {
 
-        supervisor,
+        linked: false,
 
-        supervisorId:
-            supervisor?.id ||
-            supervisor?.supervisorId ||
-            supervisorId ||
-            null,
+        id: null,
 
-        supervisorName:
-            supervisor?.name ||
-            supervisor?.fullName ||
-            supervisorName ||
-            null
+        supervisor: null
 
     };
 
 }
 
 
-/* ================================
-   حالة المشرف
-================================ */
 
-function loadSupervisorInformation() {
+/* ==================================================
+   اسم المشرف من حساب المشرف المرتبط
+================================================== */
 
-    const data =
-        findSupervisor();
+function getSupervisorName(supervisor) {
 
 
-    /* الاسم */
+    if (!supervisor) {
 
-    if (data.supervisorName) {
-
-        supervisorNameElement.textContent =
-            data.supervisorName;
-
-    } else {
-
-        supervisorNameElement.textContent =
-            "لم يتم ربط مشرف بحسابك";
+        return null;
 
     }
 
 
-    /* لا يوجد مشرف */
+    return (
 
-    if (!data.supervisorId) {
+        supervisor.name ||
 
-        supervisorStatusElement.textContent =
-            "غير مرتبط بمشرف";
+        supervisor.fullName ||
 
-        supervisorStatusDot.className =
-            "status-dot offline";
+        supervisor.displayName ||
 
-        return;
-    }
+        supervisor.username ||
+
+        supervisor.supervisorName ||
+
+        null
+
+    );
+
+}
+
+
+
+/* ==================================================
+   قراءة حالة المشرف
+================================================== */
+
+function getSupervisorPresence(
+    supervisorId,
+    supervisor
+) {
 
 
     /*
-       نحاول قراءة الحالة بأكثر من مفتاح
-       حتى يتوافق مع لوحة المشرف الحالية.
+       أولاً:
+       نحاول قراءة الحالة من المفتاح
+       المرتبط بـ ID المشرف
     */
 
-    const possibleKeys = [
+
+    const keys = [
 
         "trainflowPresence_" +
-        data.supervisorId,
+        supervisorId,
 
         "supervisorPresence_" +
-        data.supervisorId,
+        supervisorId,
 
         "presence_" +
-        data.supervisorId
+        supervisorId
 
     ];
 
 
-    let presence = null;
 
+    for (const key of keys) {
 
-    for (const key of possibleKeys) {
 
         const value =
             localStorage.getItem(key);
 
-        if (value !== null) {
 
-            presence = value;
+        if (
+            value !== null &&
+            value !== ""
+        ) {
 
-            break;
+            return value;
+
         }
+
     }
+
 
 
     /*
-       إذا كانت الحالة محفوظة داخل
-       بيانات المشرف نفسه.
+       ثانياً:
+       لو الحالة محفوظة داخل حساب المشرف
     */
 
-    if (
-        !presence &&
-        data.supervisor
-    ) {
+    if (supervisor) {
 
-        presence =
-            data.supervisor.presence ||
-            data.supervisor.status ||
-            data.supervisor.officeStatus ||
-            null;
+
+        const value =
+
+            supervisor.presence ||
+
+            supervisor.officeStatus ||
+
+            supervisor.status ||
+
+            supervisor.availability;
+
+
+        if (value !== undefined) {
+
+            return value;
+
+        }
 
     }
 
 
-    const normalizedPresence =
-        normalize(presence);
+
+    return null;
+
+}
+
+
+
+/* ==================================================
+   هل الحالة تعني موجود؟
+================================================== */
+
+function isSupervisorPresent(value) {
+
+
+    const status =
+        normalize(value);
 
 
     const presentValues = [
+
         "present",
         "available",
         "online",
         "office",
         "in-office",
+        "inoffice",
         "موجود",
         "موجود في المكتب",
         "true",
         "1"
+
     ];
 
 
+    return presentValues.includes(
+        status
+    );
+
+}
+
+
+
+/* ==================================================
+   هل الحالة تعني غير موجود؟
+================================================== */
+
+function isSupervisorAway(value) {
+
+
+    const status =
+        normalize(value);
+
+
     const awayValues = [
+
         "away",
         "offline",
         "absent",
         "out",
         "not-present",
+        "notpresent",
         "غير موجود",
         "غير موجود في المكتب",
         "false",
         "0"
+
     ];
 
 
+    return awayValues.includes(
+        status
+    );
+
+}
+
+
+
+/* ==================================================
+   عرض المشرف المرتبط
+================================================== */
+
+function loadSupervisorInformation() {
+
+
+    const link =
+        findLinkedSupervisor();
+
+
+
+    /* ==================================================
+       المتدرب غير مربوط فعلًا
+    ================================================== */
+
+    if (!link.linked) {
+
+
+        supervisorNameElement.textContent =
+            "غير مرتبط بمشرف";
+
+
+        supervisorStatusElement.textContent =
+            "لا يوجد مشرف مرتبط بالحساب";
+
+
+        supervisorStatusDot.className =
+            "status-dot offline";
+
+
+        return;
+
+    }
+
+
+
+    /* ==================================================
+       المتدرب مربوط
+    ================================================== */
+
+
+    const supervisorName =
+        getSupervisorName(
+            link.supervisor
+        );
+
+
+
+    /*
+       إذا وجدنا حساب المشرف:
+       نعرض اسمه الحقيقي.
+    */
+
+    if (supervisorName) {
+
+
+        supervisorNameElement.textContent =
+            supervisorName;
+
+    }
+
+    else {
+
+
+        /*
+           مهم جدًا:
+           لا نكتب "غير مربوط"
+           لأن الربط موجود بالفعل.
+        */
+
+        supervisorNameElement.textContent =
+            "مشرف التدريب";
+
+    }
+
+
+
+    /* ==================================================
+       قراءة حالة نفس المشرف المرتبط
+    ================================================== */
+
+
+    const presence =
+        getSupervisorPresence(
+
+            link.id,
+
+            link.supervisor
+
+        );
+
+
+
     if (
-        presentValues.includes(
-            normalizedPresence
+        isSupervisorPresent(
+            presence
         )
     ) {
 
+
         supervisorStatusElement.textContent =
             "موجود في المكتب";
+
 
         supervisorStatusDot.className =
             "status-dot online";
 
     }
 
+
     else if (
-        awayValues.includes(
-            normalizedPresence
+        isSupervisorAway(
+            presence
         )
     ) {
 
+
         supervisorStatusElement.textContent =
             "غير موجود في المكتب";
+
 
         supervisorStatusDot.className =
             "status-dot offline";
 
     }
 
+
     else {
+
 
         supervisorStatusElement.textContent =
             "حالة المشرف غير محددة";
+
 
         supervisorStatusDot.className =
             "status-dot offline";
@@ -695,47 +1346,86 @@ function loadSupervisorInformation() {
 }
 
 
-/* ================================
-   المهام
-================================ */
+
+/* ==================================================
+   مهام المتدرب
+================================================== */
 
 function getMyTasks() {
 
-    const allTasks =
-        readArray("trainflowTasks");
 
-
-    const traineeData =
+    const trainee =
         getOriginalTrainee();
+
+
+    const allTasks = [
+
+        ...readArray(
+            "trainflowTasks"
+        ),
+
+        ...readArray(
+            "tasks"
+        )
+
+    ];
+
 
 
     return allTasks.filter(task => {
 
 
-        /* ربط المهمة بالـ ID */
+        /* =========================
+           الربط بالـ ID
+        ========================= */
+
+        const traineeId =
+
+            trainee.id ||
+
+            trainee.traineeId ||
+
+            trainee.userId;
+
+
+        const taskTraineeId =
+
+            task.traineeId ||
+
+            task.assignedTo ||
+
+            task.userId;
+
+
 
         if (
-            task.traineeId !== undefined &&
-            traineeData.id !== undefined &&
-            String(task.traineeId) ===
-            String(traineeData.id)
+            traineeId !== undefined &&
+            taskTraineeId !== undefined &&
+            String(traineeId) ===
+            String(taskTraineeId)
         ) {
 
             return true;
+
         }
 
 
-        /* أو بالبريد */
+
+        /* =========================
+           الربط بالبريد
+        ========================= */
 
         if (
+            trainee.email &&
             task.traineeEmail &&
-            traineeData.email &&
-            normalize(task.traineeEmail) ===
-            normalize(traineeData.email)
+            normalize(trainee.email) ===
+            normalize(task.traineeEmail)
         ) {
 
             return true;
+
         }
+
 
 
         return false;
@@ -745,71 +1435,139 @@ function getMyTasks() {
 }
 
 
-/* حماية النصوص */
+
+/* ==================================================
+   حماية النصوص
+================================================== */
 
 function escapeHTML(value) {
 
+
     return String(value ?? "")
 
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
 }
 
 
-/* عرض المهام */
+
+/* ==================================================
+   عرض المهام
+================================================== */
 
 function renderTasks() {
+
 
     const myTasks =
         getMyTasks();
 
 
+
+    /* عدد جميع المهام */
+
     totalTasksElement.textContent =
         myTasks.length;
 
 
+
+    /* عدد المكتملة */
+
     const completedTasks =
-        myTasks.filter(task =>
+        myTasks.filter(task => {
 
-            normalize(task.status) ===
-            "completed"
 
-        );
+            const status =
+                normalize(
+                    task.status
+                );
+
+
+            return (
+
+                status === "completed" ||
+
+                status === "done" ||
+
+                status === "مكتملة"
+
+            );
+
+        });
+
 
 
     completedTasksElement.textContent =
         completedTasks.length;
 
 
+
     tasksList.innerHTML = "";
 
 
+
+    /* ==================================================
+       لا توجد مهام
+    ================================================== */
+
     if (myTasks.length === 0) {
+
 
         tasksList.innerHTML = `
 
             <div class="empty-tasks">
 
                 <div class="empty-icon">
+
                     <i class="fa-solid fa-list-check"></i>
+
                 </div>
 
-                <h3>لا توجد مهام حاليًا</h3>
+
+                <h3>
+                    لا توجد مهام حاليًا
+                </h3>
+
 
                 <p>
-                    عندما يضيف لك المشرف مهمة ستظهر هنا.
+                    عندما يضيف لك المشرف مهمة
+                    ستظهر هنا.
                 </p>
 
             </div>
 
         `;
 
+
         return;
+
     }
 
+
+
+    /* آخر 3 مهام */
 
     const latestTasks =
         [...myTasks]
@@ -817,19 +1575,49 @@ function renderTasks() {
             .slice(0, 3);
 
 
+
     latestTasks.forEach(task => {
 
+
         const taskElement =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         taskElement.className =
             "task-item";
 
 
-        const completed =
-            normalize(task.status) ===
-            "completed";
+
+        const status =
+            normalize(
+                task.status
+            );
+
+
+        const completed = (
+
+            status === "completed" ||
+
+            status === "done" ||
+
+            status === "مكتملة"
+
+        );
+
+
+
+        const title =
+
+            task.title ||
+
+            task.taskTitle ||
+
+            task.name ||
+
+            "مهمة";
+
 
 
         taskElement.innerHTML = `
@@ -838,33 +1626,36 @@ function renderTasks() {
 
                 <i class="fa-solid ${
                     completed
-                    ? "fa-check"
-                    : "fa-list-check"
+                        ? "fa-check"
+                        : "fa-list-check"
                 }"></i>
 
             </div>
 
+
             <div class="task-info">
 
                 <strong>
-                    ${escapeHTML(
-                        task.title ||
-                        task.taskTitle ||
-                        "مهمة"
-                    )}
+
+                    ${escapeHTML(title)}
+
                 </strong>
 
+
                 <span>
+
                     ${
                         completed
-                        ? "مكتملة"
-                        : "قيد التنفيذ"
+                            ? "مكتملة"
+                            : "قيد التنفيذ"
                     }
+
                 </span>
 
             </div>
 
         `;
+
 
 
         tasksList.appendChild(
@@ -876,48 +1667,84 @@ function renderTasks() {
 }
 
 
-/* ================================
+
+/* ==================================================
    التقارير
-================================ */
+================================================== */
 
 function loadReportsCount() {
 
-    const reports =
-        readArray("trainflowReports");
 
-    const traineeData =
+    const trainee =
         getOriginalTrainee();
+
+
+    const reports = [
+
+        ...readArray(
+            "trainflowReports"
+        ),
+
+        ...readArray(
+            "reports"
+        )
+
+    ];
+
 
 
     const myReports =
         reports.filter(report => {
 
 
+            const traineeId =
+
+                trainee.id ||
+
+                trainee.traineeId ||
+
+                trainee.userId;
+
+
+
+            const reportTraineeId =
+
+                report.traineeId ||
+
+                report.userId;
+
+
+
             if (
-                report.traineeId !== undefined &&
-                traineeData.id !== undefined &&
-                String(report.traineeId) ===
-                String(traineeData.id)
+                traineeId !== undefined &&
+                reportTraineeId !== undefined &&
+                String(traineeId) ===
+                String(reportTraineeId)
             ) {
 
                 return true;
+
             }
 
 
+
             if (
+                trainee.email &&
                 report.traineeEmail &&
-                traineeData.email &&
-                normalize(report.traineeEmail) ===
-                normalize(traineeData.email)
+                normalize(trainee.email) ===
+                normalize(report.traineeEmail)
             ) {
 
                 return true;
+
             }
+
 
 
             return false;
 
         });
+
 
 
     totalReportsElement.textContent =
@@ -926,66 +1753,97 @@ function loadReportsCount() {
 }
 
 
-/* ================================
-   تحديث الصفحة
-================================ */
+
+/* ==================================================
+   تحديث لوحة المتدرب
+================================================== */
 
 function refreshDashboard() {
 
+
+    loadTraineeName();
+
+
     loadSupervisorInformation();
 
+
     renderTasks();
+
 
     loadReportsCount();
 
 }
 
 
+
+/* تشغيل الصفحة */
+
 refreshDashboard();
 
 
-/*
-    لو غيّر المشرف حالته من تبويب آخر
-*/
+
+/* ==================================================
+   إذا غير المشرف حالته من تبويب آخر
+================================================== */
 
 window.addEventListener(
     "storage",
-    refreshDashboard
+    function () {
+
+        refreshDashboard();
+
+    }
 );
 
 
-/*
-    عند الرجوع للصفحة
-*/
+
+/* ==================================================
+   عند الرجوع للصفحة
+================================================== */
 
 window.addEventListener(
     "focus",
-    refreshDashboard
+    function () {
+
+        refreshDashboard();
+
+    }
 );
 
 
-/* ================================
+
+/* ==================================================
    تسجيل الخروج
-================================ */
+================================================== */
 
 document
-    .getElementById("logoutButton")
-    .addEventListener("click", function () {
+    .getElementById(
+        "logoutButton"
+    )
+    .addEventListener(
+        "click",
+        function () {
 
-        localStorage.removeItem(
-            "trainflowCurrentUser"
-        );
 
-        localStorage.removeItem(
-            "traineeLoggedIn"
-        );
+            localStorage.removeItem(
+                "trainflowCurrentUser"
+            );
 
-        window.location.href =
-            "login.html";
 
-    });
+            localStorage.removeItem(
+                "traineeLoggedIn"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
 
 </script>
+
 
 </body>
 </html>
