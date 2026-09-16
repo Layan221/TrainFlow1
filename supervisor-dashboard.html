@@ -12,13 +12,11 @@
 
     <title>TrainFlow | لوحة المشرف</title>
 
-    <!-- CSS -->
     <link
         rel="stylesheet"
         href="supervisor-dashboard.css"
     >
 
-    <!-- Icons -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -63,6 +61,7 @@
     </a>
 
 
+
     <div class="header-actions">
 
 
@@ -88,6 +87,7 @@
             </div>
 
         </div>
+
 
 
         <button
@@ -121,6 +121,7 @@
 
     <section class="welcome-section">
 
+
         <div>
 
             <span class="welcome-badge">
@@ -144,6 +145,7 @@
             </p>
 
         </div>
+
 
 
         <!-- حالة المشرف -->
@@ -201,7 +203,6 @@
 
             </div>
 
-
             <div>
 
                 <span>
@@ -217,6 +218,7 @@
         </div>
 
 
+
         <div class="stat-card">
 
             <div class="stat-icon purple">
@@ -224,7 +226,6 @@
                 <i class="fa-solid fa-list-check"></i>
 
             </div>
-
 
             <div>
 
@@ -241,6 +242,7 @@
         </div>
 
 
+
         <div class="stat-card">
 
             <div class="stat-icon green">
@@ -248,7 +250,6 @@
                 <i class="fa-regular fa-file-lines"></i>
 
             </div>
-
 
             <div>
 
@@ -264,12 +265,13 @@
 
         </div>
 
+
     </section>
 
 
 
     <!-- ==================================================
-         CONTENT GRID
+         CONTENT
     ================================================== -->
 
     <div class="dashboard-grid">
@@ -283,7 +285,6 @@
 
 
             <div class="section-header">
-
 
                 <div>
 
@@ -312,8 +313,6 @@
 
 
 
-            <!-- FORM -->
-
             <form id="addTraineeForm">
 
 
@@ -331,7 +330,6 @@
                         <i
                             class="fa-regular fa-user input-icon"
                         ></i>
-
 
                         <input
                             type="text"
@@ -362,7 +360,6 @@
                             class="fa-regular fa-envelope input-icon"
                         ></i>
 
-
                         <input
                             type="email"
                             id="traineeEmail"
@@ -392,7 +389,6 @@
                             class="fa-solid fa-key input-icon"
                         ></i>
 
-
                         <input
                             type="text"
                             id="traineeCode"
@@ -415,16 +411,12 @@
 
 
 
-                <!-- MESSAGE -->
-
                 <div
                     id="traineeMessage"
                     class="form-message"
                 ></div>
 
 
-
-                <!-- BUTTON -->
 
                 <button
                     type="submit"
@@ -492,7 +484,6 @@
 
                     </div>
 
-
                     <div>
 
                         <strong>
@@ -504,7 +495,6 @@
                         </span>
 
                     </div>
-
 
                     <i class="fa-solid fa-chevron-left arrow"></i>
 
@@ -523,7 +513,6 @@
 
                     </div>
 
-
                     <div>
 
                         <strong>
@@ -535,7 +524,6 @@
                         </span>
 
                     </div>
-
 
                     <i class="fa-solid fa-chevron-left arrow"></i>
 
@@ -591,8 +579,6 @@
 
 
 
-        <!-- SEARCH -->
-
         <div class="trainee-search">
 
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -606,8 +592,6 @@
         </div>
 
 
-
-        <!-- LIST -->
 
         <div
             id="traineesList"
@@ -630,33 +614,47 @@
 
 
 /* ==================================================
-   SUPERVISOR
+   CURRENT SUPERVISOR
 ================================================== */
 
 const currentUser =
     JSON.parse(
-        localStorage.getItem("trainflowCurrentUser")
-        || "null"
+        localStorage.getItem(
+            "trainflowCurrentUser"
+        ) || "null"
     );
 
 
+/*
+    حماية الصفحة
+*/
+
 if (
-    currentUser &&
-    currentUser.role === "supervisor"
+    !currentUser ||
+    currentUser.role !== "supervisor"
 ) {
 
-    document.getElementById(
-        "supervisorName"
-    ).textContent =
-        currentUser.name || "المشرف";
-
-
-    document.getElementById(
-        "welcomeSupervisorName"
-    ).textContent =
-        currentUser.name || "المشرف";
+    window.location.href =
+        "login.html";
 
 }
+
+
+
+/* ==================================================
+   SUPERVISOR INFORMATION
+================================================== */
+
+document.getElementById(
+    "supervisorName"
+).textContent =
+    currentUser.name || "المشرف";
+
+
+document.getElementById(
+    "welcomeSupervisorName"
+).textContent =
+    currentUser.name || "المشرف";
 
 
 
@@ -665,39 +663,65 @@ if (
 ================================================== */
 
 const addTraineeForm =
-    document.getElementById("addTraineeForm");
+    document.getElementById(
+        "addTraineeForm"
+    );
+
 
 const traineeNameInput =
-    document.getElementById("traineeName");
+    document.getElementById(
+        "traineeName"
+    );
+
 
 const traineeEmailInput =
-    document.getElementById("traineeEmail");
+    document.getElementById(
+        "traineeEmail"
+    );
+
 
 const traineeCodeInput =
-    document.getElementById("traineeCode");
+    document.getElementById(
+        "traineeCode"
+    );
+
 
 const traineeMessage =
-    document.getElementById("traineeMessage");
+    document.getElementById(
+        "traineeMessage"
+    );
+
 
 const traineesList =
-    document.getElementById("traineesList");
+    document.getElementById(
+        "traineesList"
+    );
+
 
 const traineesCount =
-    document.getElementById("traineesCount");
+    document.getElementById(
+        "traineesCount"
+    );
+
 
 const totalTrainees =
-    document.getElementById("totalTrainees");
+    document.getElementById(
+        "totalTrainees"
+    );
+
 
 const traineeSearch =
-    document.getElementById("traineeSearch");
+    document.getElementById(
+        "traineeSearch"
+    );
 
 
 
 /* ==================================================
-   GET TRAINEES
+   GET ALL TRAINEES
 ================================================== */
 
-function getTrainees() {
+function getAllTrainees() {
 
     const saved =
         localStorage.getItem(
@@ -718,22 +742,47 @@ function getTrainees() {
             JSON.parse(saved);
 
 
-        if (Array.isArray(trainees)) {
-
-            return trainees;
-
-        }
-
-
-        return [];
+        return Array.isArray(trainees)
+            ? trainees
+            : [];
 
     }
 
     catch (error) {
 
+        console.error(
+            "خطأ في قراءة المتدربين",
+            error
+        );
+
         return [];
 
     }
+
+}
+
+
+
+/* ==================================================
+   GET CURRENT SUPERVISOR TRAINEES
+================================================== */
+
+function getMyTrainees() {
+
+    const trainees =
+        getAllTrainees();
+
+
+    return trainees.filter(
+        function (trainee) {
+
+            return (
+                String(trainee.supervisorId) ===
+                String(currentUser.id)
+            );
+
+        }
+    );
 
 }
 
@@ -755,8 +804,18 @@ function saveTrainees(trainees) {
 
 
 /* ==================================================
-   ERROR MESSAGE
+   MESSAGES
 ================================================== */
+
+function clearTraineeMessage() {
+
+    traineeMessage.textContent = "";
+
+    traineeMessage.className =
+        "form-message";
+
+}
+
 
 function showTraineeError(message) {
 
@@ -768,11 +827,6 @@ function showTraineeError(message) {
 
 }
 
-
-
-/* ==================================================
-   SUCCESS MESSAGE
-================================================== */
 
 function showTraineeSuccess(message) {
 
@@ -797,6 +851,9 @@ addTraineeForm.addEventListener(
         event.preventDefault();
 
 
+        clearTraineeMessage();
+
+
         const name =
             traineeNameInput.value.trim();
 
@@ -812,23 +869,14 @@ addTraineeForm.addEventListener(
 
 
 
-        /* تنظيف الرسالة */
-
-        traineeMessage.textContent = "";
-
-        traineeMessage.className =
-            "form-message";
-
-
-
         /* =========================================
-           FIELDS
+           EMPTY FIELDS
         ========================================= */
 
         if (
-            name === "" ||
-            email === "" ||
-            code === ""
+            !name ||
+            !email ||
+            !code
         ) {
 
             showTraineeError(
@@ -849,7 +897,9 @@ addTraineeForm.addEventListener(
             /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-        if (!emailPattern.test(email)) {
+        if (
+            !emailPattern.test(email)
+        ) {
 
             showTraineeError(
                 "يرجى إدخال بريد إلكتروني صحيح."
@@ -865,7 +915,9 @@ addTraineeForm.addEventListener(
            CODE
         ========================================= */
 
-        if (code.length < 4) {
+        if (
+            code.length < 4
+        ) {
 
             showTraineeError(
                 "كود المتدرب يجب أن يكون 4 خانات على الأقل."
@@ -877,8 +929,8 @@ addTraineeForm.addEventListener(
 
 
 
-        let trainees =
-            getTrainees();
+        const trainees =
+            getAllTrainees();
 
 
 
@@ -891,7 +943,12 @@ addTraineeForm.addEventListener(
                 function (trainee) {
 
                     return (
-                        trainee.email === email
+                        String(
+                            trainee.email || ""
+                        )
+                        .trim()
+                        .toLowerCase()
+                        === email
                     );
 
                 }
@@ -919,7 +976,10 @@ addTraineeForm.addEventListener(
                 function (trainee) {
 
                     return (
-                        trainee.code === code
+                        String(
+                            trainee.code || ""
+                        ).trim()
+                        === code
                     );
 
                 }
@@ -940,6 +1000,8 @@ addTraineeForm.addEventListener(
 
         /* =========================================
            CREATE TRAINEE
+
+           هنا الربط الحقيقي بالمشرف
         ========================================= */
 
         const newTrainee = {
@@ -947,19 +1009,34 @@ addTraineeForm.addEventListener(
             id:
                 "TR-" + Date.now(),
 
-            supervisorId:
-                currentUser
-                    ? currentUser.id
-                    : null,
 
             name:
                 name,
 
+
             email:
                 email,
 
+
             code:
                 code,
+
+
+            /* المشرف */
+
+            supervisorId:
+                currentUser.id,
+
+
+            supervisorName:
+                currentUser.name ||
+                "المشرف",
+
+
+            supervisorEmail:
+                currentUser.email ||
+                "",
+
 
             createdAt:
                 new Date().toISOString()
@@ -969,18 +1046,13 @@ addTraineeForm.addEventListener(
 
 
         /* =========================================
-           ADD
+           SAVE
         ========================================= */
 
         trainees.push(
             newTrainee
         );
 
-
-
-        /* =========================================
-           SAVE
-        ========================================= */
 
         saveTrainees(
             trainees
@@ -995,20 +1067,10 @@ addTraineeForm.addEventListener(
         addTraineeForm.reset();
 
 
-
-        /* =========================================
-           MESSAGE
-        ========================================= */
-
         showTraineeSuccess(
-            "تمت إضافة المتدرب بنجاح."
+            "تمت إضافة المتدرب وربطه بحسابك بنجاح."
         );
 
-
-
-        /* =========================================
-           UPDATE LIST
-        ========================================= */
 
         renderTrainees();
 
@@ -1025,11 +1087,14 @@ function renderTrainees(
     searchText = ""
 ) {
 
+    /*
+        مهم:
+        نعرض متدربي هذا المشرف فقط.
+    */
+
     const trainees =
-        getTrainees();
+        getMyTrainees();
 
-
-    /* عدد المتدربين */
 
     traineesCount.textContent =
         trainees.length;
@@ -1043,14 +1108,11 @@ function renderTrainees(
 
 
 
-    /* =========================================
-       SEARCH
-    ========================================= */
-
     const search =
         searchText
             .trim()
             .toLowerCase();
+
 
 
     const filteredTrainees =
@@ -1058,13 +1120,17 @@ function renderTrainees(
             function (trainee) {
 
                 const name =
-                    trainee.name
-                        .toLowerCase();
+                    String(
+                        trainee.name || ""
+                    )
+                    .toLowerCase();
 
 
                 const email =
-                    trainee.email
-                        .toLowerCase();
+                    String(
+                        trainee.email || ""
+                    )
+                    .toLowerCase();
 
 
                 return (
@@ -1137,7 +1203,9 @@ function renderTrainees(
 
 
             const card =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             card.className =
@@ -1234,20 +1302,24 @@ function renderTrainees(
 
 
 /* ==================================================
-   CHANGE TRAINEE CODE
+   CHANGE CODE
 ================================================== */
 
 function changeTraineeCode(id) {
 
     const trainees =
-        getTrainees();
+        getAllTrainees();
 
 
     const trainee =
         trainees.find(
             function (item) {
 
-                return item.id === id;
+                return (
+                    item.id === id &&
+                    String(item.supervisorId) ===
+                    String(currentUser.id)
+                );
 
             }
         );
@@ -1263,22 +1335,20 @@ function changeTraineeCode(id) {
 
     const newCode =
         prompt(
-            "أدخل الكود الجديد للمتدب " +
+            "أدخل الكود الجديد للمتدرب " +
             trainee.name +
             ":",
             trainee.code
         );
 
 
-
-    /* إلغاء */
-
-    if (newCode === null) {
+    if (
+        newCode === null
+    ) {
 
         return;
 
     }
-
 
 
     const cleanCode =
@@ -1286,9 +1356,7 @@ function changeTraineeCode(id) {
 
 
 
-    /* فارغ */
-
-    if (cleanCode === "") {
+    if (!cleanCode) {
 
         alert(
             "لا يمكن ترك كود المتدرب فارغًا."
@@ -1300,9 +1368,9 @@ function changeTraineeCode(id) {
 
 
 
-    /* أقل من 4 */
-
-    if (cleanCode.length < 4) {
+    if (
+        cleanCode.length < 4
+    ) {
 
         alert(
             "الكود يجب أن يكون 4 خانات على الأقل."
@@ -1314,15 +1382,14 @@ function changeTraineeCode(id) {
 
 
 
-    /* تكرار */
-
     const codeExists =
         trainees.some(
             function (item) {
 
                 return (
                     item.id !== id &&
-                    item.code === cleanCode
+                    String(item.code) ===
+                    cleanCode
                 );
 
             }
@@ -1341,22 +1408,14 @@ function changeTraineeCode(id) {
 
 
 
-    /* تحديث */
-
     trainee.code =
         cleanCode;
 
-
-
-    /* حفظ */
 
     saveTrainees(
         trainees
     );
 
-
-
-    /* تحديث */
 
     renderTrainees(
         traineeSearch.value
@@ -1378,14 +1437,18 @@ function changeTraineeCode(id) {
 function deleteTrainee(id) {
 
     const trainees =
-        getTrainees();
+        getAllTrainees();
 
 
     const trainee =
         trainees.find(
             function (item) {
 
-                return item.id === id;
+                return (
+                    item.id === id &&
+                    String(item.supervisorId) ===
+                    String(currentUser.id)
+                );
 
             }
         );
@@ -1419,17 +1482,17 @@ function deleteTrainee(id) {
         trainees.filter(
             function (item) {
 
-                return item.id !== id;
+                return (
+                    item.id !== id
+                );
 
             }
         );
 
 
-
     saveTrainees(
         updatedTrainees
     );
-
 
 
     renderTrainees(
@@ -1471,10 +1534,12 @@ const presenceButton =
         "presenceButton"
     );
 
+
 const presenceText =
     document.getElementById(
         "presenceText"
     );
+
 
 const presenceButtonText =
     document.getElementById(
@@ -1482,34 +1547,68 @@ const presenceButtonText =
     );
 
 
+
+/*
+    أهم تعديل:
+
+    بدل:
+    trainflowSupervisorPresence
+
+    صار لكل مشرف مفتاح خاص.
+*/
+
+const presenceKey =
+    "trainflowPresence_" +
+    currentUser.id;
+
+
+
 let supervisorPresence =
     localStorage.getItem(
-        "trainflowSupervisorPresence"
+        presenceKey
     );
 
 
-if (supervisorPresence === null) {
+
+/*
+    أول مرة يدخل المشرف
+*/
+
+if (
+    supervisorPresence === null
+) {
 
     supervisorPresence =
         "present";
+
+
+    localStorage.setItem(
+        presenceKey,
+        supervisorPresence
+    );
 
 }
 
 
 
-/* تحديث الحالة */
+/* ==================================================
+   UPDATE PRESENCE
+================================================== */
 
 function updatePresence() {
 
     if (
-        supervisorPresence === "present"
+        supervisorPresence ===
+        "present"
     ) {
 
         presenceText.textContent =
             "موجود في المكتب";
 
+
         presenceButtonText.textContent =
             "موجود";
+
 
         presenceButton.classList.add(
             "active"
@@ -1522,8 +1621,10 @@ function updatePresence() {
         presenceText.textContent =
             "غير موجود في المكتب";
 
+
         presenceButtonText.textContent =
             "غير موجود";
+
 
         presenceButton.classList.remove(
             "active"
@@ -1535,12 +1636,18 @@ function updatePresence() {
 
 
 
+/* ==================================================
+   CHANGE PRESENCE
+================================================== */
+
 presenceButton.addEventListener(
     "click",
     function () {
 
+
         if (
-            supervisorPresence === "present"
+            supervisorPresence ===
+            "present"
         ) {
 
             supervisorPresence =
@@ -1556,8 +1663,12 @@ presenceButton.addEventListener(
         }
 
 
+        /*
+            نحفظ حالة هذا المشرف تحديدًا
+        */
+
         localStorage.setItem(
-            "trainflowSupervisorPresence",
+            presenceKey,
             supervisorPresence
         );
 
@@ -1574,14 +1685,18 @@ presenceButton.addEventListener(
 ================================================== */
 
 document
-    .getElementById("logoutButton")
+    .getElementById(
+        "logoutButton"
+    )
     .addEventListener(
         "click",
         function () {
 
+
             localStorage.removeItem(
                 "trainflowCurrentUser"
             );
+
 
             localStorage.removeItem(
                 "supervisorLoggedIn"
@@ -1634,7 +1749,7 @@ function escapeHTML(value) {
 
 
 /* ==================================================
-   START PAGE
+   START
 ================================================== */
 
 updatePresence();
