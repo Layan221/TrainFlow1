@@ -1267,3 +1267,121 @@ textarea {
     }
 
 }
+/* =========================================
+   SUPERVISOR CARD
+========================================= */
+
+.supervisor-card {
+    width: 100%;
+
+    margin-bottom: 24px;
+    padding: 22px 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    border: 1px solid #e5e9f2;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 30px
+        rgba(45, 60, 100, 0.06);
+}
+
+
+.supervisor-icon {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #edf1ff;
+
+    color: #596fe8;
+
+    font-size: 18px;
+}
+
+
+.supervisor-information {
+    flex: 1;
+}
+
+
+.supervisor-label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #98a4b7;
+
+    font-size: 10px;
+}
+
+
+.supervisor-information h3 {
+    margin: 0 0 8px;
+
+    color: #273249;
+
+    font-size: 15px;
+}
+
+
+.supervisor-presence {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.supervisor-presence strong {
+    color: #7c8799;
+
+    font-size: 10px;
+}
+
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #94a3b8;
+}
+
+
+.status-dot.online {
+    background: #22c66f;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(34, 198, 111, 0.12);
+}
+
+
+.status-dot.online + strong {
+    color: #159455;
+}
+
+
+.status-dot.offline {
+    background: #94a3b8;
+}
+
+
+.status-dot.offline + strong {
+    color: #7c8799;
+}
