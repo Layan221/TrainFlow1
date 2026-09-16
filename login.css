@@ -1,11 +1,17 @@
-/* =========================
+/* =========================================
    Reset
-========================= */
+========================================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+
+html,
+body {
+    min-height: 100%;
 }
 
 
@@ -35,11 +41,12 @@ input {
 }
 
 
-/* =========================
-   Layout
-========================= */
+/* =========================================
+   الصفحة
+========================================= */
 
 .login-page {
+    width: 100%;
     min-height: 100vh;
 
     display: grid;
@@ -49,14 +56,14 @@ input {
 }
 
 
-/* =========================
-   Form Section
-========================= */
+/* =========================================
+   جهة النموذج
+========================================= */
 
 .form-section {
     min-height: 100vh;
 
-    padding: 45px 35px;
+    padding: 40px 50px;
 
     display: flex;
     align-items: center;
@@ -64,9 +71,9 @@ input {
 
     background:
         radial-gradient(
-            circle at top right,
-            rgba(59, 130, 246, 0.08),
-            transparent 30%
+            circle at 90% 5%,
+            rgba(59, 130, 246, 0.07),
+            transparent 28%
         ),
         #f8fafc;
 }
@@ -74,18 +81,18 @@ input {
 
 .form-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 490px;
 }
 
 
-/* =========================
-   Logo
-========================= */
+/* =========================================
+   الشعار
+========================================= */
 
 .logo {
     width: fit-content;
 
-    margin-bottom: 40px;
+    margin-bottom: 36px;
 
     display: flex;
     align-items: center;
@@ -104,6 +111,8 @@ input {
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 13px;
 
     background:
@@ -118,7 +127,7 @@ input {
     font-size: 14px;
 
     box-shadow:
-        0 10px 24px
+        0 10px 25px
         rgba(79, 70, 229, 0.18);
 }
 
@@ -126,14 +135,18 @@ input {
 .logo-text strong {
     display: block;
 
+    color: #172033;
+
     font-size: 16px;
+
+    line-height: 1.2;
 }
 
 
 .logo-text span {
     display: block;
 
-    margin-top: 2px;
+    margin-top: 3px;
 
     color: #94a3b8;
 
@@ -141,14 +154,14 @@ input {
 }
 
 
-/* =========================
-   Back
-========================= */
+/* =========================================
+   الرجوع
+========================================= */
 
 .back-link {
     width: fit-content;
 
-    margin-bottom: 23px;
+    margin-bottom: 24px;
 
     display: flex;
     align-items: center;
@@ -157,7 +170,9 @@ input {
 
     color: #94a3b8;
 
-    font-size: 11px;
+    font-size: 10px;
+
+    transition: 0.2s;
 }
 
 
@@ -166,12 +181,12 @@ input {
 }
 
 
-/* =========================
-   Heading
-========================= */
+/* =========================================
+   العنوان
+========================================= */
 
 .heading {
-    margin-bottom: 30px;
+    margin-bottom: 29px;
 }
 
 
@@ -182,7 +197,7 @@ input {
 
     color: #2563eb;
 
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 600;
 }
@@ -191,36 +206,48 @@ input {
 .heading h1 {
     margin-bottom: 7px;
 
-    font-size: 34px;
+    color: #172033;
+
+    font-size: 33px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
 }
 
 
 .heading p {
     color: #94a3b8;
 
-    font-size: 12px;
+    font-size: 11px;
 
     line-height: 1.8;
 }
 
 
-/* =========================
-   Form
-========================= */
+/* =========================================
+   الحقول
+========================================= */
 
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 17px;
 }
 
 
-.form-group label {
+.form-group > label,
+.label-row label {
     display: block;
 
     color: #475569;
 
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 600;
+}
+
+
+.form-group > label {
+    margin-bottom: 7px;
 }
 
 
@@ -235,15 +262,10 @@ input {
 }
 
 
-.form-group > label {
-    margin-bottom: 7px;
-}
-
-
 .forgot-link {
     color: #2563eb;
 
-    font-size: 10px;
+    font-size: 9px;
 
     font-weight: 500;
 }
@@ -254,13 +276,14 @@ input {
 }
 
 
-/* =========================
+/* =========================================
    Input
-========================= */
+========================================= */
 
 .input-box {
     position: relative;
 
+    width: 100%;
     height: 49px;
 
     display: flex;
@@ -273,9 +296,13 @@ input {
 
     right: 15px;
 
+    z-index: 2;
+
     color: #94a3b8;
 
-    font-size: 12px;
+    font-size: 11px;
+
+    pointer-events: none;
 }
 
 
@@ -296,9 +323,11 @@ input {
 
     color: #334155;
 
-    font-size: 12px;
+    font-size: 11px;
 
-    transition: 0.2s;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 }
 
 
@@ -307,26 +336,33 @@ input {
 }
 
 
+.input-box input:hover {
+    border-color: #cbd5e1;
+}
+
+
 .input-box input:focus {
     border-color: #60a5fa;
 
     box-shadow:
         0 0 0 3px
-        rgba(59, 130, 246, 0.06);
+        rgba(59, 130, 246, 0.07);
 }
 
 
-/* =========================
-   Password
-========================= */
+/* =========================================
+   إظهار كلمة المرور
+========================================= */
 
 .show-password {
     position: absolute;
 
     left: 8px;
 
-    width: 32px;
-    height: 32px;
+    z-index: 3;
+
+    width: 34px;
+    height: 34px;
 
     display: flex;
     align-items: center;
@@ -334,24 +370,37 @@ input {
 
     border: none;
 
+    border-radius: 8px;
+
     background: transparent;
 
     color: #94a3b8;
+
+    font-size: 11px;
 
     cursor: pointer;
 }
 
 
-/* =========================
-   Message
-========================= */
+.show-password:hover {
+    background: #f8fafc;
+
+    color: #475569;
+}
+
+
+/* =========================================
+   الرسائل
+========================================= */
 
 .message {
     min-height: 27px;
 
-    margin-top: 2px;
+    padding-top: 1px;
 
-    font-size: 10px;
+    font-size: 9px;
+
+    line-height: 1.5;
 }
 
 
@@ -365,11 +414,11 @@ input {
 }
 
 
-/* =========================
-   Submit
-========================= */
+/* =========================================
+   زر تسجيل الدخول
+========================================= */
 
-.submit-button {
+.login-button {
     width: 100%;
     height: 49px;
 
@@ -392,7 +441,7 @@ input {
 
     color: white;
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: 600;
 
@@ -402,53 +451,173 @@ input {
         0 10px 25px
         rgba(79, 70, 229, 0.18);
 
-    transition: 0.2s;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
 }
 
 
-.submit-button:hover {
+.login-button:hover {
     transform: translateY(-1px);
 
     box-shadow:
         0 14px 30px
-        rgba(79, 70, 229, 0.22);
+        rgba(79, 70, 229, 0.24);
 }
 
 
-/* =========================
-   Register
-========================= */
-
-.register-text {
-    margin-top: 20px;
-
-    text-align: center;
-
-    color: #94a3b8;
-
-    font-size: 10px;
+.login-button:active {
+    transform: translateY(0);
 }
 
 
-.register-text a {
-    margin-right: 3px;
+/* =========================================
+   الفاصل
+========================================= */
+
+.divider {
+    margin: 22px 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.divider span {
+    height: 1px;
+
+    flex: 1;
+
+    background: #e7ebf1;
+}
+
+
+.divider p {
+    color: #b0bac8;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   إنشاء الحساب
+========================================= */
+
+.register-box {
+    padding: 13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    border: 1px solid #e7ebf1;
+
+    border-radius: 12px;
+
+    background: white;
+}
+
+
+.register-box-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
 
     color: #2563eb;
 
-    font-weight: 600;
+    font-size: 11px;
 }
 
 
-/* =========================
-   Visual Section
-========================= */
+.register-box-text {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.register-box-text strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #334155;
+
+    font-size: 9px;
+}
+
+
+.register-box-text span {
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+}
+
+
+.register-button {
+    min-height: 35px;
+
+    padding: 0 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #dbeafe;
+
+    border-radius: 8px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.register-button:hover {
+    border-color: #bfdbfe;
+
+    background: #dbeafe;
+}
+
+
+/* =========================================
+   الجانب البنفسجي
+========================================= */
 
 .visual-section {
     position: relative;
 
     min-height: 100vh;
 
-    padding: 50px;
+    padding: 55px;
 
     overflow: hidden;
 
@@ -459,9 +628,9 @@ input {
     background:
         linear-gradient(
             145deg,
-            #172554,
-            #312e81 55%,
-            #4c1d95
+            #172554 0%,
+            #312e81 52%,
+            #4c1d95 100%
         );
 
     color: white;
@@ -471,16 +640,20 @@ input {
 .visual-content {
     position: relative;
 
-    z-index: 2;
+    z-index: 5;
 
     width: 100%;
-    max-width: 420px;
+    max-width: 410px;
 }
 
 
+/* =========================================
+   Visual Logo
+========================================= */
+
 .visual-icon {
-    width: 60px;
-    height: 60px;
+    width: 58px;
+    height: 58px;
 
     margin-bottom: 20px;
 
@@ -488,34 +661,50 @@ input {
     align-items: center;
     justify-content: center;
 
-    border-radius: 17px;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 16px;
 
     background:
-        rgba(255, 255, 255, 0.14);
+        rgba(255, 255, 255, 0.11);
 
-    font-size: 20px;
+    color: white;
+
+    font-size: 19px;
 
     backdrop-filter: blur(10px);
 }
 
 
-.visual-content > span {
+.visual-label {
     display: block;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 
     color: #bfdbfe;
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: 600;
+
+    letter-spacing: 0.3px;
 }
 
 
-.visual-content h2 {
-    margin-bottom: 17px;
+/* =========================================
+   Visual Heading
+========================================= */
 
-    font-size: 39px;
+.visual-content h2 {
+    margin-bottom: 16px;
+
+    color: white;
+
+    font-size: 38px;
+
+    font-weight: 700;
 
     line-height: 1.45;
 }
@@ -525,56 +714,62 @@ input {
     display: block;
 
     color: #c4b5fd;
+
+    font-weight: 700;
 }
 
 
-.visual-content > p {
-    max-width: 360px;
+.visual-description {
+    max-width: 350px;
 
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 
     color:
-        rgba(255, 255, 255, 0.68);
+        rgba(255, 255, 255, 0.65);
 
-    font-size: 12px;
+    font-size: 11px;
 
     line-height: 2;
 }
 
 
-/* =========================
-   Preview
-========================= */
+/* =========================================
+   Preview Card
+========================================= */
 
-.mini-preview {
-    padding: 18px;
+.preview-card {
+    padding: 17px;
 
     border:
         1px solid
         rgba(255, 255, 255, 0.12);
 
-    border-radius: 17px;
+    border-radius: 16px;
 
     background:
         rgba(255, 255, 255, 0.08);
 
-    backdrop-filter: blur(10px);
+    box-shadow:
+        0 20px 45px
+        rgba(15, 23, 42, 0.12);
+
+    backdrop-filter: blur(12px);
 }
 
 
-.preview-top {
-    margin-bottom: 17px;
+.preview-header {
+    margin-bottom: 15px;
 
     display: flex;
     align-items: center;
 
-    gap: 10px;
+    gap: 9px;
 }
 
 
 .preview-avatar {
-    width: 39px;
-    height: 39px;
+    width: 38px;
+    height: 38px;
 
     display: flex;
     align-items: center;
@@ -583,32 +778,40 @@ input {
     border-radius: 10px;
 
     background:
-        rgba(255, 255, 255, 0.13);
+        rgba(255, 255, 255, 0.11);
 
     color: #ddd6fe;
+
+    font-size: 11px;
 }
 
 
-.preview-top strong {
+.preview-header strong {
     display: block;
 
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 
-    font-size: 10px;
+    color: white;
+
+    font-size: 9px;
 }
 
 
-.preview-top span {
+.preview-header span {
     display: block;
 
     color:
-        rgba(255, 255, 255, 0.55);
+        rgba(255, 255, 255, 0.48);
 
-    font-size: 8px;
+    font-size: 7px;
 }
 
 
-.preview-features {
+/* =========================================
+   Preview Grid
+========================================= */
+
+.preview-grid {
     display: grid;
 
     grid-template-columns:
@@ -618,76 +821,152 @@ input {
 }
 
 
-.preview-features div {
-    min-height: 48px;
+.preview-item {
+    min-height: 65px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    gap: 5px;
+    gap: 6px;
 
-    border-radius: 9px;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.05);
+
+    border-radius: 10px;
 
     background:
-        rgba(255, 255, 255, 0.07);
+        rgba(255, 255, 255, 0.055);
 
     color:
-        rgba(255, 255, 255, 0.75);
+        rgba(255, 255, 255, 0.68);
 
-    font-size: 8px;
+    font-size: 7px;
 }
 
 
-.preview-features i {
+.preview-item-icon {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(196, 181, 253, 0.10);
+
     color: #c4b5fd;
+
+    font-size: 9px;
 }
 
 
-/* =========================
-   Decoration
-========================= */
+/* =========================================
+   زخارف الخلفية
+========================================= */
 
-.circle {
+.circle,
+.small-circle {
     position: absolute;
 
     border-radius: 50%;
+
+    pointer-events: none;
 }
 
 
 .circle-one {
-    width: 320px;
-    height: 320px;
+    width: 330px;
+    height: 330px;
 
-    top: -100px;
-    left: -100px;
+    top: -115px;
+    left: -115px;
 
     background:
-        rgba(96, 165, 250, 0.10);
+        rgba(96, 165, 250, 0.09);
 }
 
 
 .circle-two {
-    width: 350px;
-    height: 350px;
+    width: 380px;
+    height: 380px;
 
-    right: -130px;
-    bottom: -120px;
+    right: -160px;
+    bottom: -150px;
 
     background:
-        rgba(167, 139, 250, 0.12);
+        rgba(167, 139, 250, 0.11);
 }
 
 
-/* =========================
-   Tablet
-========================= */
+.small-circle-one {
+    width: 80px;
+    height: 80px;
 
-@media (max-width: 900px) {
+    top: 13%;
+    right: 8%;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.05);
+}
+
+
+.small-circle-two {
+    width: 120px;
+    height: 120px;
+
+    left: 12%;
+    bottom: 11%;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================
+   Laptop / Tablet
+========================================= */
+
+@media (max-width: 1000px) {
 
     .login-page {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr 0.8fr;
+    }
+
+
+    .form-section {
+        padding: 35px;
+    }
+
+
+    .visual-section {
+        padding: 35px;
+    }
+
+
+    .visual-content h2 {
+        font-size: 32px;
+    }
+
+}
+
+
+/* =========================================
+   Tablet
+========================================= */
+
+@media (max-width: 800px) {
+
+    .login-page {
+        display: block;
     }
 
 
@@ -695,34 +974,90 @@ input {
         display: none;
     }
 
+
+    .form-section {
+        width: 100%;
+
+        min-height: 100vh;
+
+        padding: 35px 25px;
+    }
+
+
+    .form-container {
+        max-width: 520px;
+    }
+
 }
 
 
-/* =========================
+/* =========================================
    Mobile
-========================= */
+========================================= */
 
 @media (max-width: 550px) {
 
     .form-section {
         padding:
-            25px 16px
-            45px;
+            24px 16px
+            40px;
     }
 
 
     .logo {
-        margin-bottom: 30px;
+        margin-bottom: 28px;
     }
 
 
-    .heading h1 {
-        font-size: 28px;
+    .back-link {
+        margin-bottom: 21px;
     }
 
 
     .heading {
         margin-bottom: 25px;
+    }
+
+
+    .heading h1 {
+        font-size: 27px;
+    }
+
+
+    .heading p {
+        font-size: 10px;
+    }
+
+
+    .input-box {
+        height: 48px;
+    }
+
+
+    .login-button {
+        height: 48px;
+    }
+
+
+    .register-box {
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+
+    .register-box-text {
+        width:
+            calc(100% - 50px);
+    }
+
+
+    .register-button {
+        width: 100%;
+
+        min-height: 40px;
+
+        margin-top: 3px;
     }
 
 }
