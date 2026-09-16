@@ -9,9 +9,8 @@
 
     <title>TrainFlow | لوحة المتدرب</title>
 
-    <!-- ملف CSS -->
-    <link rel="stylesheet"
-          href="trainee-dashboard.css">
+    <!-- نفس ملف CSS الحالي -->
+    <link rel="stylesheet" href="trainee-dashboard.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -22,12 +21,13 @@
 <body>
 
 
-<!-- ================================
+<!-- =====================================================
      HEADER
-================================ -->
+===================================================== -->
 
 <header class="top-header">
 
+    <!-- الشعار -->
     <a href="index.html" class="brand">
 
         <div class="brand-icon">
@@ -42,6 +42,7 @@
     </a>
 
 
+    <!-- بيانات المتدرب -->
     <div class="header-actions">
 
         <div class="trainee-info">
@@ -51,16 +52,21 @@
             </div>
 
             <div>
+
                 <strong id="headerTraineeName">
                     المتدرب
                 </strong>
 
-                <span>متدرب</span>
+                <span>
+                    متدرب
+                </span>
+
             </div>
 
         </div>
 
 
+        <!-- تسجيل الخروج -->
         <button
             type="button"
             class="logout-btn"
@@ -78,16 +84,16 @@
 
 
 
-<!-- ================================
+<!-- =====================================================
      MAIN
-================================ -->
+===================================================== -->
 
 <main class="dashboard-container">
 
 
-    <!-- ================================
-         WELCOME
-    ================================= -->
+    <!-- =================================================
+         الترحيب
+    ================================================= -->
 
     <section class="welcome-section">
 
@@ -116,21 +122,25 @@
 
 
         <div class="welcome-decoration">
+
             <i class="fa-solid fa-graduation-cap"></i>
+
         </div>
 
     </section>
 
 
 
-    <!-- ================================
-         SUPERVISOR
-    ================================= -->
+    <!-- =================================================
+         المشرف
+    ================================================= -->
 
     <section class="supervisor-card">
 
         <div class="supervisor-icon">
+
             <i class="fa-solid fa-user-tie"></i>
+
         </div>
 
 
@@ -141,15 +151,13 @@
             </span>
 
 
-            <!-- اسم المشرف يظهر هنا -->
-
+            <!-- اسم المشرف -->
             <h3 id="supervisorName">
                 جاري تحميل اسم المشرف...
             </h3>
 
 
             <!-- حالة المشرف -->
-
             <div class="supervisor-presence">
 
                 <span
@@ -157,9 +165,8 @@
                     class="status-dot offline">
                 </span>
 
-
                 <strong id="supervisorStatus">
-                    جاري التحقق من حالة المشرف...
+                    جاري التحقق من الحالة...
                 </strong>
 
             </div>
@@ -170,19 +177,21 @@
 
 
 
-    <!-- ================================
-         STATISTICS
-    ================================= -->
+    <!-- =================================================
+         الإحصائيات
+    ================================================= -->
 
     <section class="stats-grid">
 
 
-        <!-- المهام -->
+        <!-- جميع المهام -->
 
         <div class="stat-card">
 
             <div class="stat-icon blue">
+
                 <i class="fa-solid fa-list-check"></i>
+
             </div>
 
             <div>
@@ -206,7 +215,9 @@
         <div class="stat-card">
 
             <div class="stat-icon green">
+
                 <i class="fa-solid fa-check"></i>
+
             </div>
 
             <div>
@@ -230,7 +241,9 @@
         <div class="stat-card">
 
             <div class="stat-icon purple">
+
                 <i class="fa-regular fa-file-lines"></i>
+
             </div>
 
             <div>
@@ -247,17 +260,15 @@
 
         </div>
 
-
     </section>
 
 
 
-    <!-- ================================
-         QUICK ACTIONS
-    ================================= -->
+    <!-- =================================================
+         ماذا تريد أن تفعل؟
+    ================================================= -->
 
     <section class="dashboard-card">
-
 
         <div class="section-header">
 
@@ -272,7 +283,8 @@
                 </h2>
 
                 <p>
-                    يمكنك الوصول إلى مهامك وتقاريرك من هنا.
+                    يمكنك الوصول إلى جميع مهامك
+                    وتقاريرك من هنا.
                 </p>
 
             </div>
@@ -284,7 +296,9 @@
         <div class="quick-actions">
 
 
-            <!-- المهام -->
+            <!-- ==========================================
+                 كل المهام
+            =========================================== -->
 
             <a href="trainee-tasks.html"
                class="quick-action">
@@ -303,7 +317,7 @@
                     </strong>
 
                     <span>
-                        عرض المهام المسندة إليك
+                        عرض جميع مهام التدريب
                     </span>
 
                 </div>
@@ -315,7 +329,9 @@
 
 
 
-            <!-- التقرير -->
+            <!-- ==========================================
+                 التقرير اليومي
+            =========================================== -->
 
             <a href="daily-report.html"
                class="quick-action">
@@ -344,16 +360,15 @@
 
             </a>
 
-
         </div>
 
     </section>
 
 
 
-    <!-- ================================
-         CURRENT TASKS
-    ================================= -->
+    <!-- =================================================
+         المهام الحالية
+    ================================================= -->
 
     <section class="dashboard-card tasks-section">
 
@@ -373,8 +388,8 @@
 
 
                 <p>
-                    تظهر هنا المهام التي قام مشرفك
-                    بإسنادها إليك.
+                    تظهر هنا المهام الجديدة
+                    والمهام التي لم يتم إنجازها بعد.
                 </p>
 
             </div>
@@ -390,11 +405,11 @@
         </div>
 
 
+        <!-- المهام الحالية -->
         <div
             id="tasksList"
             class="tasks-list">
         </div>
-
 
     </section>
 
@@ -403,28 +418,28 @@
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      JAVASCRIPT
-================================================== -->
+===================================================== -->
 
 <script>
 
 
-/* ==================================================
+/* =====================================================
    قراءة Array من LocalStorage
-================================================== */
+===================================================== */
 
 function readArray(key) {
 
     try {
 
-        const value =
+        const data =
             JSON.parse(
                 localStorage.getItem(key) || "[]"
             );
 
-        return Array.isArray(value)
-            ? value
+        return Array.isArray(data)
+            ? data
             : [];
 
     }
@@ -432,32 +447,36 @@ function readArray(key) {
     catch (error) {
 
         console.error(
-            "خطأ في قراءة " + key,
+            "خطأ في قراءة:",
+            key,
             error
         );
 
         return [];
+
     }
+
 }
 
 
 
-/* ==================================================
-   توحيد النصوص
-================================================== */
+/* =====================================================
+   توحيد النصوص للمقارنة
+===================================================== */
 
 function normalize(value) {
 
     return String(value ?? "")
         .trim()
         .toLowerCase();
+
 }
 
 
 
-/* ==================================================
+/* =====================================================
    قراءة المستخدم الحالي
-================================================== */
+===================================================== */
 
 let currentTrainee = null;
 
@@ -476,16 +495,17 @@ try {
 catch (error) {
 
     console.error(
-        "تعذر قراءة المستخدم الحالي",
+        "خطأ في قراءة المستخدم الحالي",
         error
     );
+
 }
 
 
 
-/* ==================================================
+/* =====================================================
    حماية الصفحة
-================================================== */
+===================================================== */
 
 if (!currentTrainee) {
 
@@ -496,22 +516,10 @@ if (!currentTrainee) {
 }
 
 
-else if (
-    currentTrainee.role &&
-    normalize(currentTrainee.role) !== "trainee"
-) {
 
-    window.location.replace(
-        "login.html"
-    );
-
-}
-
-
-
-/* ==================================================
+/* =====================================================
    عناصر الصفحة
-================================================== */
+===================================================== */
 
 const headerTraineeName =
     document.getElementById(
@@ -568,12 +576,11 @@ const tasksList =
 
 
 
-/* ==================================================
+/* =====================================================
    جلب بيانات المتدرب الأصلية
-================================================== */
+===================================================== */
 
 function getOriginalTrainee() {
-
 
     const trainees = [
 
@@ -592,9 +599,7 @@ function getOriginalTrainee() {
 
 
 
-    /* =========================
-       البحث بالـ ID
-    ========================= */
+    /* البحث بواسطة ID */
 
     if (
         currentTrainee &&
@@ -605,13 +610,19 @@ function getOriginalTrainee() {
             trainees.find(item => {
 
                 const itemId =
+
                     item.id ||
                     item.traineeId ||
                     item.userId;
 
+
                 return (
+
+                    itemId !== undefined &&
+
                     String(itemId) ===
                     String(currentTrainee.id)
+
                 );
 
             });
@@ -620,23 +631,18 @@ function getOriginalTrainee() {
 
 
 
-    /* =========================
-       البحث بالبريد
-    ========================= */
+    /* البحث بواسطة البريد */
 
     if (
         !trainee &&
-        currentTrainee &&
-        currentTrainee.email
+        currentTrainee?.email
     ) {
 
         trainee =
             trainees.find(item =>
 
                 normalize(item.email) ===
-                normalize(
-                    currentTrainee.email
-                )
+                normalize(currentTrainee.email)
 
             );
 
@@ -644,20 +650,15 @@ function getOriginalTrainee() {
 
 
 
-    /* =========================
-       البحث بكود المتدرب
-    ========================= */
+    /* البحث بواسطة كود الربط */
 
-    if (
-        !trainee &&
-        currentTrainee
-    ) {
+    if (!trainee) {
 
         const currentCode =
 
-            currentTrainee.linkCode ||
-            currentTrainee.code ||
-            currentTrainee.traineeCode;
+            currentTrainee?.linkCode ||
+            currentTrainee?.code ||
+            currentTrainee?.traineeCode;
 
 
         if (currentCode) {
@@ -671,9 +672,12 @@ function getOriginalTrainee() {
                         item.code ||
                         item.traineeCode;
 
+
                     return (
+
                         normalize(itemCode) ===
                         normalize(currentCode)
+
                     );
 
                 });
@@ -681,7 +685,6 @@ function getOriginalTrainee() {
         }
 
     }
-
 
 
     return (
@@ -694,12 +697,11 @@ function getOriginalTrainee() {
 
 
 
-/* ==================================================
+/* =====================================================
    عرض اسم المتدرب
-================================================== */
+===================================================== */
 
 function loadTraineeName() {
-
 
     const trainee =
         getOriginalTrainee();
@@ -725,14 +727,13 @@ function loadTraineeName() {
 
 
 
-/* ==================================================
-   جلب جميع حسابات المشرفين
-================================================== */
+/* =====================================================
+   جلب المشرفين
+===================================================== */
 
 function getAllSupervisors() {
 
-
-    const allUsers = [
+    return [
 
         ...readArray(
             "trainflowUsers"
@@ -752,79 +753,15 @@ function getAllSupervisors() {
 
     ];
 
-
-
-    /*
-       نحذف التكرار قدر الإمكان
-    */
-
-    const result = [];
-
-
-    allUsers.forEach(user => {
-
-
-        const alreadyExists =
-            result.some(item => {
-
-
-                if (
-                    item.id !== undefined &&
-                    user.id !== undefined
-                ) {
-
-                    return (
-                        String(item.id) ===
-                        String(user.id)
-                    );
-
-                }
-
-
-                if (
-                    item.email &&
-                    user.email
-                ) {
-
-                    return (
-                        normalize(item.email) ===
-                        normalize(user.email)
-                    );
-
-                }
-
-
-                return false;
-
-            });
-
-
-        if (!alreadyExists) {
-
-            result.push(user);
-
-        }
-
-    });
-
-
-    return result;
-
 }
 
 
 
-/* ==================================================
+/* =====================================================
    معرفة المشرف المرتبط بالمتدرب
-
-   مهم:
-   الاسم لا يؤخذ من المتدرب.
-   نستخدم الربط للوصول إلى حساب المشرف،
-   وبعدها نأخذ الاسم من حساب المشرف.
-================================================== */
+===================================================== */
 
 function findLinkedSupervisor() {
-
 
     const trainee =
         getOriginalTrainee();
@@ -835,9 +772,9 @@ function findLinkedSupervisor() {
 
 
 
-    /* ==================================================
-       1 - معرفة ID المشرف من الربط
-    ================================================== */
+    /* ===============================================
+       رقم المشرف يأتي من بيانات الربط
+    =============================================== */
 
     const supervisorId =
 
@@ -855,23 +792,18 @@ function findLinkedSupervisor() {
 
         currentTrainee?.supervisorID ||
 
-        currentTrainee?.supervisor_id ||
-
         null;
 
 
 
-    /* ==================================================
-       2 - لو عندنا supervisorId
-       نبحث عن حساب المشرف
-    ================================================== */
+    /* ===============================================
+       البحث عن حساب المشرف بالـ ID
+    =============================================== */
 
     if (supervisorId) {
 
-
         const supervisor =
             supervisors.find(user => {
-
 
                 const userId =
 
@@ -885,13 +817,15 @@ function findLinkedSupervisor() {
 
 
                 return (
+
                     userId !== undefined &&
+
                     String(userId) ===
                     String(supervisorId)
+
                 );
 
             });
-
 
 
         if (supervisor) {
@@ -903,7 +837,6 @@ function findLinkedSupervisor() {
                 id:
                     supervisor.id ||
                     supervisor.userId ||
-                    supervisor.supervisorId ||
                     supervisorId,
 
                 supervisor:
@@ -917,9 +850,9 @@ function findLinkedSupervisor() {
 
 
 
-    /* ==================================================
-       3 - بعض الأكواد تحفظ البريد بدل ID
-    ================================================== */
+    /* ===============================================
+       البحث بالبريد إذا كان الربط محفوظ بالبريد
+    =============================================== */
 
     const supervisorEmail =
 
@@ -927,14 +860,10 @@ function findLinkedSupervisor() {
 
         trainee.linkedSupervisorEmail ||
 
-        currentTrainee?.supervisorEmail ||
-
-        null;
-
+        currentTrainee?.supervisorEmail;
 
 
     if (supervisorEmail) {
-
 
         const supervisor =
             supervisors.find(user =>
@@ -954,7 +883,6 @@ function findLinkedSupervisor() {
                 id:
                     supervisor.id ||
                     supervisor.userId ||
-                    supervisor.supervisorId ||
                     supervisorEmail,
 
                 supervisor:
@@ -968,13 +896,11 @@ function findLinkedSupervisor() {
 
 
 
-    /* ==================================================
-       4 - لو المتدرب عنده supervisorId
-       لكن حساب المشرف لم يوجد في Array
-       
-       هذا يعني أنه مربوط، لذلك لا نقول:
-       "لم يتم ربط مشرف"
-    ================================================== */
+    /*
+       يوجد supervisorId
+       إذًا المتدرب مربوط،
+       حتى لو لم نجد بيانات الحساب.
+    */
 
     if (supervisorId) {
 
@@ -982,21 +908,15 @@ function findLinkedSupervisor() {
 
             linked: true,
 
-            id:
-                supervisorId,
+            id: supervisorId,
 
-            supervisor:
-                null
+            supervisor: null
 
         };
 
     }
 
 
-
-    /* ==================================================
-       لا يوجد أي ربط
-    ================================================== */
 
     return {
 
@@ -1012,12 +932,11 @@ function findLinkedSupervisor() {
 
 
 
-/* ==================================================
-   اسم المشرف من حساب المشرف المرتبط
-================================================== */
+/* =====================================================
+   جلب اسم المشرف
+===================================================== */
 
 function getSupervisorName(supervisor) {
-
 
     if (!supervisor) {
 
@@ -1036,8 +955,6 @@ function getSupervisorName(supervisor) {
 
         supervisor.username ||
 
-        supervisor.supervisorName ||
-
         null
 
     );
@@ -1046,22 +963,14 @@ function getSupervisorName(supervisor) {
 
 
 
-/* ==================================================
-   قراءة حالة المشرف
-================================================== */
+/* =====================================================
+   جلب حالة المشرف
+===================================================== */
 
 function getSupervisorPresence(
     supervisorId,
     supervisor
 ) {
-
-
-    /*
-       أولاً:
-       نحاول قراءة الحالة من المفتاح
-       المرتبط بـ ID المشرف
-    */
-
 
     const keys = [
 
@@ -1077,9 +986,7 @@ function getSupervisorPresence(
     ];
 
 
-
     for (const key of keys) {
-
 
         const value =
             localStorage.getItem(key);
@@ -1098,15 +1005,11 @@ function getSupervisorPresence(
 
 
 
-    /*
-       ثانياً:
-       لو الحالة محفوظة داخل حساب المشرف
-    */
+    /* الحالة داخل بيانات المشرف */
 
     if (supervisor) {
 
-
-        const value =
+        return (
 
             supervisor.presence ||
 
@@ -1114,17 +1017,13 @@ function getSupervisorPresence(
 
             supervisor.status ||
 
-            supervisor.availability;
+            supervisor.availability ||
 
+            null
 
-        if (value !== undefined) {
-
-            return value;
-
-        }
+        );
 
     }
-
 
 
     return null;
@@ -1133,94 +1032,92 @@ function getSupervisorPresence(
 
 
 
-/* ==================================================
-   هل الحالة تعني موجود؟
-================================================== */
+/* =====================================================
+   هل المشرف موجود؟
+===================================================== */
 
 function isSupervisorPresent(value) {
 
-
     const status =
         normalize(value);
 
 
-    const presentValues = [
+    return [
 
         "present",
+
         "available",
+
         "online",
+
         "office",
+
         "in-office",
+
         "inoffice",
+
         "موجود",
+
         "موجود في المكتب",
+
         "true",
+
         "1"
 
-    ];
-
-
-    return presentValues.includes(
-        status
-    );
+    ].includes(status);
 
 }
 
 
 
-/* ==================================================
-   هل الحالة تعني غير موجود؟
-================================================== */
+/* =====================================================
+   هل المشرف غير موجود؟
+===================================================== */
 
 function isSupervisorAway(value) {
 
-
     const status =
         normalize(value);
 
 
-    const awayValues = [
+    return [
 
         "away",
+
         "offline",
+
         "absent",
+
         "out",
-        "not-present",
-        "notpresent",
+
         "غير موجود",
+
         "غير موجود في المكتب",
+
         "false",
+
         "0"
 
-    ];
-
-
-    return awayValues.includes(
-        status
-    );
+    ].includes(status);
 
 }
 
 
 
-/* ==================================================
-   عرض المشرف المرتبط
-================================================== */
+/* =====================================================
+   عرض بيانات المشرف
+===================================================== */
 
 function loadSupervisorInformation() {
-
 
     const link =
         findLinkedSupervisor();
 
 
 
-    /* ==================================================
-       المتدرب غير مربوط فعلًا
-    ================================================== */
+    /* لا يوجد ربط */
 
     if (!link.linked) {
-
 
         supervisorNameElement.textContent =
             "غير مرتبط بمشرف";
@@ -1240,10 +1137,9 @@ function loadSupervisorInformation() {
 
 
 
-    /* ==================================================
-       المتدرب مربوط
-    ================================================== */
-
+    /* ===============================================
+       اسم المشرف
+    =============================================== */
 
     const supervisorName =
         getSupervisorName(
@@ -1251,14 +1147,7 @@ function loadSupervisorInformation() {
         );
 
 
-
-    /*
-       إذا وجدنا حساب المشرف:
-       نعرض اسمه الحقيقي.
-    */
-
     if (supervisorName) {
-
 
         supervisorNameElement.textContent =
             supervisorName;
@@ -1267,11 +1156,10 @@ function loadSupervisorInformation() {
 
     else {
 
-
         /*
-           مهم جدًا:
-           لا نكتب "غير مربوط"
-           لأن الربط موجود بالفعل.
+            مهم:
+            المتدرب مربوط فعلًا،
+            لذلك لا نكتب غير مرتبط.
         */
 
         supervisorNameElement.textContent =
@@ -1281,10 +1169,9 @@ function loadSupervisorInformation() {
 
 
 
-    /* ==================================================
-       قراءة حالة نفس المشرف المرتبط
-    ================================================== */
-
+    /* ===============================================
+       حالة نفس المشرف
+    =============================================== */
 
     const presence =
         getSupervisorPresence(
@@ -1296,13 +1183,11 @@ function loadSupervisorInformation() {
         );
 
 
-
     if (
         isSupervisorPresent(
             presence
         )
     ) {
-
 
         supervisorStatusElement.textContent =
             "موجود في المكتب";
@@ -1320,7 +1205,6 @@ function loadSupervisorInformation() {
         )
     ) {
 
-
         supervisorStatusElement.textContent =
             "غير موجود في المكتب";
 
@@ -1332,7 +1216,6 @@ function loadSupervisorInformation() {
 
 
     else {
-
 
         supervisorStatusElement.textContent =
             "حالة المشرف غير محددة";
@@ -1347,12 +1230,11 @@ function loadSupervisorInformation() {
 
 
 
-/* ==================================================
-   مهام المتدرب
-================================================== */
+/* =====================================================
+   جلب جميع مهام هذا المتدرب
+===================================================== */
 
 function getMyTasks() {
-
 
     const trainee =
         getOriginalTrainee();
@@ -1371,22 +1253,16 @@ function getMyTasks() {
     ];
 
 
+    const traineeId =
+
+        trainee.id ||
+
+        trainee.traineeId ||
+
+        trainee.userId;
+
 
     return allTasks.filter(task => {
-
-
-        /* =========================
-           الربط بالـ ID
-        ========================= */
-
-        const traineeId =
-
-            trainee.id ||
-
-            trainee.traineeId ||
-
-            trainee.userId;
-
 
         const taskTraineeId =
 
@@ -1397,6 +1273,10 @@ function getMyTasks() {
             task.userId;
 
 
+
+        /* ===========================================
+           المطابقة بالـ ID
+        =========================================== */
 
         if (
             traineeId !== undefined &&
@@ -1411,9 +1291,9 @@ function getMyTasks() {
 
 
 
-        /* =========================
-           الربط بالبريد
-        ========================= */
+        /* ===========================================
+           المطابقة بالبريد
+        =========================================== */
 
         if (
             trainee.email &&
@@ -1427,7 +1307,6 @@ function getMyTasks() {
         }
 
 
-
         return false;
 
     });
@@ -1436,12 +1315,41 @@ function getMyTasks() {
 
 
 
-/* ==================================================
-   حماية النصوص
-================================================== */
+/* =====================================================
+   هل المهمة مكتملة؟
+===================================================== */
+
+function isTaskCompleted(task) {
+
+    const status =
+        normalize(task.status);
+
+
+    return (
+
+        status === "completed" ||
+
+        status === "done" ||
+
+        status === "مكتملة" ||
+
+        status === "منجز" ||
+
+        status === "منجزة" ||
+
+        status === "تم الإنجاز"
+
+    );
+
+}
+
+
+
+/* =====================================================
+   حماية النص
+===================================================== */
 
 function escapeHTML(value) {
-
 
     return String(value ?? "")
 
@@ -1474,49 +1382,48 @@ function escapeHTML(value) {
 
 
 
-/* ==================================================
+/* =====================================================
    عرض المهام
-================================================== */
+
+   مهم جدًا:
+
+   totalTasks = جميع المهام
+
+   completedTasks = المنجزة
+
+   currentTasks = غير المنجزة فقط
+===================================================== */
 
 function renderTasks() {
 
+    /* ===============================================
+       كل مهام التدريب
+    =============================================== */
 
-    const myTasks =
+    const allMyTasks =
         getMyTasks();
 
 
 
-    /* عدد جميع المهام */
+    /* ===============================================
+       إجمالي جميع المهام
+    =============================================== */
 
     totalTasksElement.textContent =
-        myTasks.length;
+        allMyTasks.length;
 
 
 
-    /* عدد المكتملة */
+    /* ===============================================
+       المهام المكتملة
+    =============================================== */
 
     const completedTasks =
-        myTasks.filter(task => {
+        allMyTasks.filter(task =>
 
+            isTaskCompleted(task)
 
-            const status =
-                normalize(
-                    task.status
-                );
-
-
-            return (
-
-                status === "completed" ||
-
-                status === "done" ||
-
-                status === "مكتملة"
-
-            );
-
-        });
-
+        );
 
 
     completedTasksElement.textContent =
@@ -1524,16 +1431,30 @@ function renderTasks() {
 
 
 
+    /* ===============================================
+       المهام الحالية
+
+       أي مهمة لم تنجز بعد
+    =============================================== */
+
+    const currentTasks =
+        allMyTasks.filter(task =>
+
+            !isTaskCompleted(task)
+
+        );
+
+
+
     tasksList.innerHTML = "";
 
 
 
-    /* ==================================================
-       لا توجد مهام
-    ================================================== */
+    /* ===============================================
+       لا توجد مهام حالية
+    =============================================== */
 
-    if (myTasks.length === 0) {
-
+    if (currentTasks.length === 0) {
 
         tasksList.innerHTML = `
 
@@ -1547,13 +1468,13 @@ function renderTasks() {
 
 
                 <h3>
-                    لا توجد مهام حاليًا
+                    لا توجد مهام حالية
                 </h3>
 
 
                 <p>
-                    عندما يضيف لك المشرف مهمة
-                    ستظهر هنا.
+                    أي مهمة جديدة يسندها لك
+                    مشرفك ستظهر هنا.
                 </p>
 
             </div>
@@ -1567,17 +1488,18 @@ function renderTasks() {
 
 
 
-    /* آخر 3 مهام */
+    /* ===============================================
+       نعرض أحدث 3 مهام حالية فقط
+    =============================================== */
 
     const latestTasks =
-        [...myTasks]
+        [...currentTasks]
             .reverse()
             .slice(0, 3);
 
 
 
     latestTasks.forEach(task => {
-
 
         const taskElement =
             document.createElement(
@@ -1587,24 +1509,6 @@ function renderTasks() {
 
         taskElement.className =
             "task-item";
-
-
-
-        const status =
-            normalize(
-                task.status
-            );
-
-
-        const completed = (
-
-            status === "completed" ||
-
-            status === "done" ||
-
-            status === "مكتملة"
-
-        );
 
 
 
@@ -1620,15 +1524,21 @@ function renderTasks() {
 
 
 
+        const description =
+
+            task.description ||
+
+            task.details ||
+
+            "مهمة مسندة إليك";
+
+
+
         taskElement.innerHTML = `
 
             <div class="task-icon">
 
-                <i class="fa-solid ${
-                    completed
-                        ? "fa-check"
-                        : "fa-list-check"
-                }"></i>
+                <i class="fa-solid fa-list-check"></i>
 
             </div>
 
@@ -1644,18 +1554,20 @@ function renderTasks() {
 
                 <span>
 
-                    ${
-                        completed
-                            ? "مكتملة"
-                            : "قيد التنفيذ"
-                    }
+                    ${escapeHTML(description)}
 
                 </span>
 
             </div>
 
-        `;
 
+            <span class="task-status">
+
+                جديدة
+
+            </span>
+
+        `;
 
 
         tasksList.appendChild(
@@ -1668,12 +1580,11 @@ function renderTasks() {
 
 
 
-/* ==================================================
-   التقارير
-================================================== */
+/* =====================================================
+   عدد التقارير
+===================================================== */
 
 function loadReportsCount() {
-
 
     const trainee =
         getOriginalTrainee();
@@ -1692,20 +1603,18 @@ function loadReportsCount() {
     ];
 
 
+    const traineeId =
+
+        trainee.id ||
+
+        trainee.traineeId ||
+
+        trainee.userId;
+
+
 
     const myReports =
         reports.filter(report => {
-
-
-            const traineeId =
-
-                trainee.id ||
-
-                trainee.traineeId ||
-
-                trainee.userId;
-
-
 
             const reportTraineeId =
 
@@ -1740,7 +1649,6 @@ function loadReportsCount() {
             }
 
 
-
             return false;
 
         });
@@ -1754,21 +1662,17 @@ function loadReportsCount() {
 
 
 
-/* ==================================================
-   تحديث لوحة المتدرب
-================================================== */
+/* =====================================================
+   تحديث الصفحة
+===================================================== */
 
 function refreshDashboard() {
 
-
     loadTraineeName();
-
 
     loadSupervisorInformation();
 
-
     renderTasks();
-
 
     loadReportsCount();
 
@@ -1776,15 +1680,18 @@ function refreshDashboard() {
 
 
 
-/* تشغيل الصفحة */
+/* =====================================================
+   تشغيل الصفحة
+===================================================== */
 
 refreshDashboard();
 
 
 
-/* ==================================================
-   إذا غير المشرف حالته من تبويب آخر
-================================================== */
+/* =====================================================
+   تحديث تلقائي إذا تغيرت البيانات
+   من تبويب آخر
+===================================================== */
 
 window.addEventListener(
     "storage",
@@ -1797,9 +1704,9 @@ window.addEventListener(
 
 
 
-/* ==================================================
-   عند الرجوع للصفحة
-================================================== */
+/* =====================================================
+   تحديث عند الرجوع للصفحة
+===================================================== */
 
 window.addEventListener(
     "focus",
@@ -1812,9 +1719,9 @@ window.addEventListener(
 
 
 
-/* ==================================================
+/* =====================================================
    تسجيل الخروج
-================================================== */
+===================================================== */
 
 document
     .getElementById(
@@ -1823,7 +1730,6 @@ document
     .addEventListener(
         "click",
         function () {
-
 
             localStorage.removeItem(
                 "trainflowCurrentUser"
@@ -1846,4 +1752,5 @@ document
 
 
 </body>
+
 </html>
