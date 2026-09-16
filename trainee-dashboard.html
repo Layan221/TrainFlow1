@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -20,355 +21,944 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     >
+
 </head>
+
 
 <body>
 
-<div class="dashboard-layout">
 
-    <!-- =========================
-         القائمة الجانبية
-    ========================== -->
+<!-- ==================================================
+     HEADER
+================================================== -->
 
-    <aside class="sidebar" id="sidebar">
+<header class="top-header">
+
+    <a href="index.html" class="brand">
+
+        <div class="brand-icon">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+        </div>
+
+        <div class="brand-text">
+
+            <strong>TrainFlow</strong>
+
+            <span>متابعة التدريب</span>
+
+        </div>
+
+    </a>
+
+
+    <div class="header-actions">
+
+        <div class="trainee-info">
+
+            <div class="trainee-avatar">
+
+                <i class="fa-regular fa-user"></i>
+
+            </div>
+
+            <div>
+
+                <strong id="headerTraineeName">
+                    المتدرب
+                </strong>
+
+                <span>
+                    متدرب
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="logout-btn"
+            id="logoutButton"
+        >
+
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            تسجيل الخروج
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==================================================
+     MAIN
+================================================== -->
+
+<main class="dashboard-container">
+
+
+    <!-- ==================================================
+         WELCOME
+    ================================================== -->
+
+    <section class="welcome-section">
 
         <div>
 
+            <span class="welcome-badge">
+                لوحة المتدرب
+            </span>
+
+            <h1>
+
+                أهلاً بك،
+
+                <span id="welcomeTraineeName">
+                    المتدرب
+                </span>
+
+            </h1>
+
+            <p>
+                تابع مهامك وسجّل تقريرك اليومي واطلع على حالة مشرفك.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         SUPERVISOR INFORMATION
+    ================================================== -->
+
+    <section class="supervisor-card">
+
+
+        <div class="supervisor-icon">
+
+            <i class="fa-solid fa-user-tie"></i>
+
+        </div>
+
+
+        <div class="supervisor-information">
+
+
+            <span class="supervisor-label">
+                مشرف التدريب
+            </span>
+
+
+            <h3 id="supervisorName">
+                جاري تحميل اسم المشرف...
+            </h3>
+
+
+            <div class="supervisor-presence">
+
+
+                <span
+                    id="supervisorStatusDot"
+                    class="status-dot"
+                ></span>
+
+
+                <strong id="supervisorStatus">
+                    جاري التحقق من حالة المشرف...
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         STATISTICS
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+
+                <i class="fa-solid fa-list-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    مهامي
+                </span>
+
+                <strong id="totalTasks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+
+                <i class="fa-solid fa-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    المهام المكتملة
+                </span>
+
+                <strong id="completedTasks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+
+                <i class="fa-regular fa-file-lines"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    تقاريري
+                </span>
+
+                <strong id="totalReports">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         QUICK ACTIONS
+    ================================================== -->
+
+    <section class="dashboard-card">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <span class="section-label">
+                    التدريب
+                </span>
+
+                <h2>
+                    ماذا تريد أن تفعل؟
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
             <a
-                href="trainee-dashboard.html"
-                class="logo"
+                href="trainee-tasks.html"
+                class="quick-action"
             >
 
-                <div class="logo-icon">
-                    <i class="fa-solid fa-layer-group"></i>
+                <div class="quick-icon blue">
+
+                    <i class="fa-solid fa-list-check"></i>
+
                 </div>
 
-                <div class="logo-text">
+
+                <div>
 
                     <strong>
-                        TrainFlow
+                        مهامي
                     </strong>
 
                     <span>
-                        متابعة التدريب
+                        عرض المهام المسندة إليك
                     </span>
 
                 </div>
+
+
+                <i class="fa-solid fa-chevron-left arrow"></i>
 
             </a>
 
 
-            <nav class="nav-menu">
 
-                <a
-                    href="#homeSection"
-                    class="nav-link active"
-                >
+            <a
+                href="daily-report.html"
+                class="quick-action"
+            >
 
-                    <i class="fa-solid fa-house"></i>
-
-                    <span>
-                        الرئيسية
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="#tasksSection"
-                    class="nav-link"
-                >
-
-                    <i class="fa-solid fa-list-check"></i>
-
-                    <span>
-                        مهامي
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="#reportSection"
-                    class="nav-link"
-                >
+                <div class="quick-icon purple">
 
                     <i class="fa-regular fa-file-lines"></i>
 
-                    <span>
-                        التقرير اليومي
-                    </span>
-
-                </a>
-
-            </nav>
-
-        </div>
-
-
-        <div class="sidebar-bottom">
-
-            <div class="sidebar-user">
-
-                <div
-                    class="user-avatar"
-                    id="sidebarAvatar"
-                >
-                    م
                 </div>
 
 
                 <div>
 
-                    <strong id="sidebarName">
-                        المتدرب
+                    <strong>
+                        التقرير اليومي
                     </strong>
 
                     <span>
-                        حساب متدرب
+                        تسجيل ما تم إنجازه اليوم
                     </span>
 
                 </div>
 
-            </div>
 
+                <i class="fa-solid fa-chevron-left arrow"></i>
 
-            <button
-                type="button"
-                class="logout-button"
-                id="logoutButton"
-            >
+            </a>
 
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-
-                تسجيل الخروج
-
-            </button>
 
         </div>
 
-    </aside>
+
+    </section>
 
 
-    <!-- =========================
-         المحتوى
-    ========================== -->
 
-    <main class="main-content">
+    <!-- ==================================================
+         MY TASKS
+    ================================================== -->
 
-        <!-- =====================
-             Header
-        ====================== -->
-
-        <header
-            class="topbar"
-            id="homeSection"
-        >
-
-            <button
-                type="button"
-                class="menu-button"
-                id="menuButton"
-                aria-label="فتح القائمة"
-            >
-
-                <i class="fa-solid fa-bars"></i>
-
-            </button>
+    <section class="dashboard-card tasks-section">
 
 
-            <div class="page-title">
+        <div class="section-header">
 
-                <span>
-                    مساحة المتدرب
+            <div>
+
+                <span class="section-label">
+                    المهام
                 </span>
 
-                <h1>
-                    مرحباً
-                    <strong id="welcomeName">
-                        بك
-                    </strong>
-                </h1>
+                <h2>
+                    مهامي الحالية
+                </h2>
 
-                <p id="todayDate"></p>
-
-            </div>
-
-
-            <!-- حالة المشرف -->
-
-            <div class="supervisor-status">
-
-                <div
-                    class="status-dot"
-                    id="supervisorDot"
-                ></div>
-
-
-                <div>
-
-                    <span>
-                        حالة المشرف
-                    </span>
-
-                    <strong id="supervisorStatus">
-                        غير متاح حالياً
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- =====================
-             بطاقات الإحصائيات
-        ====================== -->
-
-        <section class="stats-grid">
-
-            <div class="stat-card">
-
-                <div class="stat-icon blue">
-
-                    <i class="fa-solid fa-list-check"></i>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        مهامي
-                    </span>
-
-                    <strong id="totalTasks">
-                        0
-                    </strong>
-
-                </div>
+                <p>
+                    تظهر هنا المهام التي قام مشرفك بإسنادها إليك.
+                </p>
 
             </div>
 
 
-            <div class="stat-card">
-
-                <div class="stat-icon green">
-
-                    <i class="fa-solid fa-check"></i>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        المكتملة
-                    </span>
-
-                    <strong id="completedTasks">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon orange">
-
-                    <i class="fa-regular fa-clock"></i>
-
-                </div>
-
-
-                <div>
-
-                    <span>
-                        المتبقية
-                    </span>
-
-                    <strong id="pendingTasks">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================
-             المهام
-        ====================== -->
-
-        <section
-            class="content-card"
-            id="tasksSection"
-        >
-
-            <div class="section-header">
-
-                <div>
-
-                    <span class="section-label">
-                        مهامي
-                    </span>
-
-                    <h2>
-                        المهام الحالية
-                    </h2>
-
-                    <p>
-                        تظهر هنا المهام التي أضافها لك المشرف.
-                    </p>
-
-                </div>
-
-
-                <div class="task-filter">
-
-                    <button
-                        type="button"
-                        class="filter-button active"
-                        data-filter="all"
-                    >
-                        الكل
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="filter-button"
-                        data-filter="pending"
-                    >
-                        الحالية
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="filter-button"
-                        data-filter="completed"
-                    >
-                        المكتملة
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- حالة فارغة -->
-
-            <div
-                class="empty-state"
-                id="tasksEmpty"
+            <a
+                href="trainee-tasks.html"
+                class="view-all-btn"
             >
+                عرض جميع المهام
+            </a>
+
+        </div>
+
+
+        <div
+            id="tasksList"
+            class="tasks-list"
+        ></div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+/* ==================================================
+   قراءة المستخدم الحالي
+================================================== */
+
+const currentTrainee =
+    JSON.parse(
+        localStorage.getItem(
+            "trainflowCurrentUser"
+        ) || "null"
+    );
+
+
+/* ==================================================
+   حماية الصفحة
+================================================== */
+
+if (
+    !currentTrainee ||
+    currentTrainee.role !== "trainee"
+) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* ==================================================
+   عناصر الصفحة
+================================================== */
+
+const headerTraineeName =
+    document.getElementById(
+        "headerTraineeName"
+    );
+
+
+const welcomeTraineeName =
+    document.getElementById(
+        "welcomeTraineeName"
+    );
+
+
+const supervisorNameElement =
+    document.getElementById(
+        "supervisorName"
+    );
+
+
+const supervisorStatusElement =
+    document.getElementById(
+        "supervisorStatus"
+    );
+
+
+const supervisorStatusDot =
+    document.getElementById(
+        "supervisorStatusDot"
+    );
+
+
+const totalTasksElement =
+    document.getElementById(
+        "totalTasks"
+    );
+
+
+const completedTasksElement =
+    document.getElementById(
+        "completedTasks"
+    );
+
+
+const totalReportsElement =
+    document.getElementById(
+        "totalReports"
+    );
+
+
+const tasksList =
+    document.getElementById(
+        "tasksList"
+    );
+
+
+
+/* ==================================================
+   اسم المتدرب
+================================================== */
+
+headerTraineeName.textContent =
+    currentTrainee.name ||
+    "المتدرب";
+
+
+welcomeTraineeName.textContent =
+    currentTrainee.name ||
+    "المتدرب";
+
+
+
+/* ==================================================
+   قراءة جميع المتدربين
+
+   نقرأ بيانات المتدرب الأصلية أيضًا حتى لو كانت
+   جلسة تسجيل الدخول قديمة.
+================================================== */
+
+function getAllTrainees() {
+
+    const saved =
+        localStorage.getItem(
+            "trainflowTrainees"
+        );
+
+
+    if (!saved) {
+
+        return [];
+
+    }
+
+
+    try {
+
+        const trainees =
+            JSON.parse(saved);
+
+
+        return Array.isArray(trainees)
+            ? trainees
+            : [];
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "خطأ في قراءة المتدربين:",
+            error
+        );
+
+
+        return [];
+
+    }
+
+}
+
+
+
+/* ==================================================
+   إيجاد بيانات المتدرب الأصلية
+
+   هذه النقطة مهمة جدًا.
+
+   بدل الاعتماد فقط على بيانات تسجيل الدخول،
+   نرجع لقائمة المتدربين ونأخذ supervisorId منها.
+================================================== */
+
+function getOriginalTrainee() {
+
+    const trainees =
+        getAllTrainees();
+
+
+    let trainee = null;
+
+
+
+    /* البحث بالـ ID */
+
+    if (
+        currentTrainee.id
+    ) {
+
+        trainee =
+            trainees.find(
+                function (item) {
+
+                    return (
+                        String(item.id) ===
+                        String(currentTrainee.id)
+                    );
+
+                }
+            );
+
+    }
+
+
+
+    /*
+        إذا لم نجده بالـ ID
+        نحاول بالبريد.
+    */
+
+    if (
+        !trainee &&
+        currentTrainee.email
+    ) {
+
+        const currentEmail =
+            String(
+                currentTrainee.email
+            )
+            .trim()
+            .toLowerCase();
+
+
+        trainee =
+            trainees.find(
+                function (item) {
+
+                    return (
+                        String(
+                            item.email || ""
+                        )
+                        .trim()
+                        .toLowerCase()
+                        === currentEmail
+                    );
+
+                }
+            );
+
+    }
+
+
+    return trainee;
+
+}
+
+
+
+/* ==================================================
+   معلومات المشرف
+================================================== */
+
+function loadSupervisorInformation() {
+
+
+    const originalTrainee =
+        getOriginalTrainee();
+
+
+
+    /*
+        نأخذ ID المشرف من بيانات المتدرب الأصلية أولًا.
+
+        وإذا لم يوجد نحاول من جلسة الدخول.
+    */
+
+    const supervisorId =
+        originalTrainee?.supervisorId ||
+        currentTrainee.supervisorId;
+
+
+
+    const supervisorName =
+        originalTrainee?.supervisorName ||
+        currentTrainee.supervisorName;
+
+
+
+    /* ==================================================
+       اسم المشرف
+    ================================================== */
+
+    if (supervisorName) {
+
+        supervisorNameElement.textContent =
+            supervisorName;
+
+    }
+
+    else {
+
+        supervisorNameElement.textContent =
+            "غير محدد";
+
+    }
+
+
+
+    /* ==================================================
+       لا يوجد ربط
+    ================================================== */
+
+    if (!supervisorId) {
+
+        supervisorStatusElement.textContent =
+            "غير مرتبط بمشرف";
+
+        supervisorStatusDot.classList.remove(
+            "online"
+        );
+
+        supervisorStatusDot.classList.add(
+            "offline"
+        );
+
+
+        console.log(
+            "المتدرب لا يحتوي على supervisorId"
+        );
+
+
+        return;
+
+    }
+
+
+
+    /* ==================================================
+       المفتاح نفسه الموجود في لوحة المشرف
+
+       مثال:
+
+       trainflowPresence_SUP-123
+    ================================================== */
+
+    const presenceKey =
+        "trainflowPresence_" +
+        supervisorId;
+
+
+
+    const supervisorPresence =
+        localStorage.getItem(
+            presenceKey
+        );
+
+
+
+    console.log(
+        "Supervisor ID:",
+        supervisorId
+    );
+
+
+    console.log(
+        "Presence key:",
+        presenceKey
+    );
+
+
+    console.log(
+        "Presence value:",
+        supervisorPresence
+    );
+
+
+
+    /* ==================================================
+       المشرف موجود
+    ================================================== */
+
+    if (
+        supervisorPresence ===
+        "present"
+    ) {
+
+        supervisorStatusElement.textContent =
+            "موجود في المكتب";
+
+
+        supervisorStatusDot.classList.add(
+            "online"
+        );
+
+
+        supervisorStatusDot.classList.remove(
+            "offline"
+        );
+
+    }
+
+
+    /* ==================================================
+       المشرف غير موجود
+    ================================================== */
+
+    else if (
+        supervisorPresence ===
+        "away"
+    ) {
+
+        supervisorStatusElement.textContent =
+            "غير موجود في المكتب";
+
+
+        supervisorStatusDot.classList.remove(
+            "online"
+        );
+
+
+        supervisorStatusDot.classList.add(
+            "offline"
+        );
+
+    }
+
+
+    /* ==================================================
+       لا توجد حالة محفوظة
+    ================================================== */
+
+    else {
+
+        supervisorStatusElement.textContent =
+            "حالة المشرف غير محددة";
+
+
+        supervisorStatusDot.classList.remove(
+            "online"
+        );
+
+
+        supervisorStatusDot.classList.add(
+            "offline"
+        );
+
+    }
+
+}
+
+
+
+/* ==================================================
+   قراءة المهام
+================================================== */
+
+function getTasks() {
+
+    const saved =
+        localStorage.getItem(
+            "trainflowTasks"
+        );
+
+
+    if (!saved) {
+
+        return [];
+
+    }
+
+
+    try {
+
+        const tasks =
+            JSON.parse(saved);
+
+
+        return Array.isArray(tasks)
+            ? tasks
+            : [];
+
+    }
+
+    catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+
+/* ==================================================
+   مهام هذا المتدرب فقط
+================================================== */
+
+function getMyTasks() {
+
+    const tasks =
+        getTasks();
+
+
+    return tasks.filter(
+        function (task) {
+
+            return (
+                String(task.traineeId) ===
+                String(currentTrainee.id)
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   عرض المهام
+================================================== */
+
+function renderTasks() {
+
+    const myTasks =
+        getMyTasks();
+
+
+    totalTasksElement.textContent =
+        myTasks.length;
+
+
+
+    const completed =
+        myTasks.filter(
+            function (task) {
+
+                return (
+                    task.status ===
+                    "completed"
+                );
+
+            }
+        );
+
+
+    completedTasksElement.textContent =
+        completed.length;
+
+
+
+    tasksList.innerHTML = "";
+
+
+
+    if (
+        myTasks.length === 0
+    ) {
+
+        tasksList.innerHTML = `
+
+            <div class="empty-tasks">
 
                 <div class="empty-icon">
 
@@ -376,869 +966,324 @@
 
                 </div>
 
+
                 <h3>
-                    لا توجد مهام حالياً
+                    لا توجد مهام حاليًا
                 </h3>
 
+
                 <p>
-                    ستظهر هنا المهام التي يضيفها المشرف لك.
+                    عندما يضيف لك المشرف مهمة ستظهر هنا.
                 </p>
 
             </div>
 
+        `;
 
-            <!--
-                بعد ربط Supabase
-                تظهر مهام المتدرب هنا فقط
-            -->
 
-            <div
-                class="tasks-list"
-                id="tasksList"
-            ></div>
-
-        </section>
-
-
-        <!-- =====================
-             التقرير اليومي
-        ====================== -->
-
-        <section
-            class="content-card"
-            id="reportSection"
-        >
-
-            <div class="section-header report-header">
-
-                <div>
-
-                    <span class="section-label">
-                        المتابعة اليومية
-                    </span>
-
-                    <h2>
-                        التقرير اليومي
-                    </h2>
-
-                    <p>
-                        اكتب ملخصاً عن الأعمال التي أنجزتها اليوم.
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="report-required"
-                    id="reportRequiredBadge"
-                >
-
-                    <i class="fa-solid fa-circle-exclamation"></i>
-
-                    مطلوب اليوم
-
-                </div>
-
-            </div>
-
-
-            <!--
-                يظهر هذا الجزء إذا المشرف
-                فعّل التقرير للمتدرب
-            -->
-
-            <div
-                class="report-form-wrapper"
-                id="reportFormWrapper"
-            >
-
-                <form id="dailyReportForm">
-
-                    <div class="report-date">
-
-                        <i class="fa-regular fa-calendar"></i>
-
-                        <span>
-                            تاريخ التقرير:
-                        </span>
-
-                        <strong id="reportDate"></strong>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="reportWork">
-                            ماذا أنجزت اليوم؟
-                        </label>
-
-                        <textarea
-                            id="reportWork"
-                            rows="5"
-                            placeholder="اكتب الأعمال والمهام التي أنجزتها اليوم..."
-                            required
-                        ></textarea>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="reportNotes">
-                            ملاحظات إضافية
-                        </label>
-
-                        <textarea
-                            id="reportNotes"
-                            rows="3"
-                            placeholder="هل واجهت مشكلة أو لديك ملاحظة للمشرف؟"
-                        ></textarea>
-
-                    </div>
-
-
-                    <div
-                        class="message"
-                        id="reportMessage"
-                    ></div>
-
-
-                    <div class="report-submit-row">
-
-                        <span>
-                            يمكنك إرسال تقرير واحد لهذا اليوم.
-                        </span>
-
-
-                        <button
-                            type="submit"
-                            class="submit-report"
-                        >
-
-                            <i class="fa-regular fa-paper-plane"></i>
-
-                            إرسال التقرير
-
-                        </button>
-
-                    </div>
-
-                </form>
-
-            </div>
-
-
-            <!-- إذا المشرف أوقف التقارير -->
-
-            <div
-                class="report-disabled hidden"
-                id="reportDisabled"
-            >
-
-                <div class="disabled-icon">
-
-                    <i class="fa-regular fa-circle-check"></i>
-
-                </div>
-
-                <div>
-
-                    <strong>
-                        لا يوجد تقرير مطلوب اليوم
-                    </strong>
-
-                    <span>
-                        لم يطلب المشرف منك تقريراً يومياً.
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
-<!-- خلفية القائمة في الجوال -->
-
-<div
-    class="sidebar-overlay"
-    id="sidebarOverlay"
-></div>
-
-
-<!-- =========================
-     نافذة المهمة
-========================== -->
-
-<div
-    class="modal-overlay"
-    id="taskModal"
->
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <div>
-
-                <span>
-                    تفاصيل المهمة
-                </span>
-
-                <h2 id="modalTaskTitle">
-                    المهمة
-                </h2>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="close-button"
-                id="closeTaskModal"
-            >
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
-        </div>
-
-
-        <div class="task-details">
-
-            <div class="detail-block">
-
-                <span>
-                    وصف المهمة
-                </span>
-
-                <p id="modalTaskDescription">
-                    —
-                </p>
-
-            </div>
-
-
-            <div class="detail-block">
-
-                <span>
-                    تاريخ التسليم
-                </span>
-
-                <p id="modalTaskDate">
-                    —
-                </p>
-
-            </div>
-
-
-            <div
-                class="detail-block"
-                id="supervisorNoteBlock"
-            >
-
-                <span>
-                    ملاحظة المشرف
-                </span>
-
-                <p id="modalSupervisorNote">
-                    لا توجد ملاحظة.
-                </p>
-
-            </div>
-
-
-            <!-- ملاحظة المتدرب -->
-
-            <div class="form-group">
-
-                <label for="traineeTaskNote">
-                    ملاحظتك على المهمة
-                </label>
-
-                <textarea
-                    id="traineeTaskNote"
-                    rows="3"
-                    placeholder="اكتب ملاحظة للمشرف..."
-                ></textarea>
-
-            </div>
-
-
-            <div
-                class="message"
-                id="taskMessage"
-            ></div>
-
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="cancel-button"
-                    id="cancelTaskModal"
-                >
-                    إغلاق
-                </button>
-
-
-                <button
-                    type="button"
-                    class="save-note-button"
-                    id="saveTaskNote"
-                >
-
-                    <i class="fa-regular fa-comment"></i>
-
-                    حفظ الملاحظة
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="complete-button"
-                    id="completeTaskButton"
-                >
-
-                    <i class="fa-solid fa-check"></i>
-
-                    تم إنجاز المهمة
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-    /* =========================
-       تاريخ اليوم
-    ========================== */
-
-    const today =
-        new Date();
-
-
-    const arabicDate =
-        new Intl.DateTimeFormat(
-            "ar-SA",
-            {
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-            }
-        ).format(today);
-
-
-    document
-        .getElementById("todayDate")
-        .textContent = arabicDate;
-
-
-    document
-        .getElementById("reportDate")
-        .textContent = arabicDate;
-
-
-    /* =========================
-       Sidebar
-    ========================== */
-
-    const sidebar =
-        document.getElementById("sidebar");
-
-
-    const sidebarOverlay =
-        document.getElementById(
-            "sidebarOverlay"
-        );
-
-
-    document
-        .getElementById("menuButton")
-        .addEventListener(
-            "click",
-            function () {
-
-                sidebar.classList.add(
-                    "open"
-                );
-
-                sidebarOverlay.classList.add(
-                    "show"
-                );
-
-            }
-        );
-
-
-    sidebarOverlay.addEventListener(
-        "click",
-        function () {
-
-            sidebar.classList.remove(
-                "open"
-            );
-
-            sidebarOverlay.classList.remove(
-                "show"
-            );
-
-        }
-    );
-
-
-    /* =========================
-       فلترة المهام
-    ========================== */
-
-    const filterButtons =
-        document.querySelectorAll(
-            ".filter-button"
-        );
-
-
-    filterButtons.forEach(
-        function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    filterButtons.forEach(
-                        function (item) {
-
-                            item.classList.remove(
-                                "active"
-                            );
-
-                        }
-                    );
-
-
-                    button.classList.add(
-                        "active"
-                    );
-
-
-                    const filter =
-                        button.dataset.filter;
-
-
-                    /*
-                        بعد Supabase:
-                        نعرض المهام حسب:
-                        all
-                        pending
-                        completed
-                    */
-
-                    console.log(
-                        "Task filter:",
-                        filter
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =========================
-       Task Modal
-    ========================== */
-
-    const taskModal =
-        document.getElementById(
-            "taskModal"
-        );
-
-
-    document
-        .getElementById(
-            "closeTaskModal"
-        )
-        .addEventListener(
-            "click",
-            closeTaskModal
-        );
-
-
-    document
-        .getElementById(
-            "cancelTaskModal"
-        )
-        .addEventListener(
-            "click",
-            closeTaskModal
-        );
-
-
-    taskModal.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target ===
-                taskModal
-            ) {
-
-                closeTaskModal();
-
-            }
-
-        }
-    );
-
-
-    function closeTaskModal() {
-
-        taskModal.classList.remove(
-            "show"
-        );
-
-        document.body.classList.remove(
-            "no-scroll"
-        );
-
-        clearTaskMessage();
+        return;
 
     }
+
 
 
     /*
-        هذه الدالة سنستخدمها بعد
-        جلب المهمة من Supabase
+        نعرض آخر 3 مهام فقط في الرئيسية.
     */
 
-    function openTaskModal(task) {
-
-        document
-            .getElementById(
-                "modalTaskTitle"
-            )
-            .textContent =
-                task.title || "المهمة";
+    const latestTasks =
+        myTasks
+            .slice()
+            .reverse()
+            .slice(0, 3);
 
 
-        document
-            .getElementById(
-                "modalTaskDescription"
-            )
-            .textContent =
-                task.description || "—";
+
+    latestTasks.forEach(
+        function (task) {
 
 
-        document
-            .getElementById(
-                "modalTaskDate"
-            )
-            .textContent =
-                task.dueDate || "غير محدد";
+            const taskElement =
+                document.createElement(
+                    "div"
+                );
 
 
-        document
-            .getElementById(
-                "modalSupervisorNote"
-            )
-            .textContent =
-                task.supervisorNote ||
-                "لا توجد ملاحظة.";
+            taskElement.className =
+                "task-item";
 
 
-        document
-            .getElementById(
-                "traineeTaskNote"
-            )
-            .value =
-                task.traineeNote || "";
+            const isCompleted =
+                task.status ===
+                "completed";
 
 
-        taskModal.classList.add(
-            "show"
+
+            taskElement.innerHTML = `
+
+                <div class="task-icon">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                </div>
+
+
+                <div class="task-info">
+
+                    <strong>
+                        ${escapeHTML(task.title || "مهمة")}
+                    </strong>
+
+                    <span>
+                        ${
+                            isCompleted
+                            ? "مكتملة"
+                            : "قيد التنفيذ"
+                        }
+                    </span>
+
+                </div>
+
+            `;
+
+
+            tasksList.appendChild(
+                taskElement
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   التقارير
+================================================== */
+
+function loadReportsCount() {
+
+    const saved =
+        localStorage.getItem(
+            "trainflowReports"
         );
 
 
-        document.body.classList.add(
-            "no-scroll"
-        );
+    if (!saved) {
+
+        totalReportsElement.textContent =
+            "0";
+
+        return;
 
     }
 
 
-    /* =========================
-       حفظ ملاحظة المهمة
-    ========================== */
+    try {
 
-    document
-        .getElementById(
-            "saveTaskNote"
-        )
-        .addEventListener(
-            "click",
-            function () {
+        const reports =
+            JSON.parse(saved);
 
-                const note =
-                    document
-                        .getElementById(
-                            "traineeTaskNote"
+
+        if (
+            !Array.isArray(reports)
+        ) {
+
+            totalReportsElement.textContent =
+                "0";
+
+            return;
+
+        }
+
+
+        const myReports =
+            reports.filter(
+                function (report) {
+
+                    return (
+                        String(
+                            report.traineeId
                         )
-                        .value
-                        .trim();
-
-
-                if (!note) {
-
-                    showTaskError(
-                        "اكتب الملاحظة أولاً."
+                        ===
+                        String(
+                            currentTrainee.id
+                        )
                     );
 
-                    return;
-
                 }
+            );
 
 
-                showTaskInfo(
-                    "سيتم حفظ الملاحظة بعد ربط قاعدة البيانات."
-                );
+        totalReportsElement.textContent =
+            myReports.length;
 
-            }
-        );
+    }
+
+    catch (error) {
+
+        totalReportsElement.textContent =
+            "0";
+
+    }
+
+}
 
 
-    /* =========================
-       إنهاء المهمة
-    ========================== */
 
-    document
-        .getElementById(
-            "completeTaskButton"
+/* ==================================================
+   تحديث حالة المشرف عند تغير localStorage
+
+   هذا يعمل إذا كانت لوحة المشرف مفتوحة في تبويب
+   والمتدرب في تبويب آخر من نفس المتصفح.
+================================================== */
+
+window.addEventListener(
+    "storage",
+    function (event) {
+
+
+        const originalTrainee =
+            getOriginalTrainee();
+
+
+        const supervisorId =
+            originalTrainee?.supervisorId ||
+            currentTrainee.supervisorId;
+
+
+
+        if (!supervisorId) {
+
+            return;
+
+        }
+
+
+        const presenceKey =
+            "trainflowPresence_" +
+            supervisorId;
+
+
+
+        if (
+            event.key ===
+            presenceKey
+        ) {
+
+            loadSupervisorInformation();
+
+        }
+
+    }
+);
+
+
+
+/* ==================================================
+   تحديث عند الرجوع للصفحة
+
+   لو خرج المتدرب للمهام ثم رجع للوحة،
+   يعيد قراءة حالة المشرف.
+================================================== */
+
+window.addEventListener(
+    "focus",
+    function () {
+
+        loadSupervisorInformation();
+
+        renderTasks();
+
+        loadReportsCount();
+
+    }
+);
+
+
+
+/* ==================================================
+   تسجيل الخروج
+================================================== */
+
+document
+    .getElementById(
+        "logoutButton"
+    )
+    .addEventListener(
+        "click",
+        function () {
+
+
+            localStorage.removeItem(
+                "trainflowCurrentUser"
+            );
+
+
+            localStorage.removeItem(
+                "traineeLoggedIn"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+
+
+/* ==================================================
+   حماية النص
+================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
         )
-        .addEventListener(
-            "click",
-            function () {
 
-                /*
-                    بعد Supabase:
-                    نغيّر حالة المهمة إلى completed.
-
-                    ولا يستطيع المتدرب تغيير
-                    مهام أي متدرب آخر بسبب RLS.
-                */
-
-
-                showTaskInfo(
-                    "سيتم تسجيل إنجاز المهمة بعد ربط قاعدة البيانات."
-                );
-
-            }
-        );
-
-
-    /* =========================
-       التقرير اليومي
-    ========================== */
-
-    document
-        .getElementById(
-            "dailyReportForm"
+        .replaceAll(
+            "<",
+            "&lt;"
         )
-        .addEventListener(
-            "submit",
-            function (event) {
 
-                event.preventDefault();
-
-
-                clearReportMessage();
-
-
-                const work =
-                    document
-                        .getElementById(
-                            "reportWork"
-                        )
-                        .value
-                        .trim();
-
-
-                const notes =
-                    document
-                        .getElementById(
-                            "reportNotes"
-                        )
-                        .value
-                        .trim();
-
-
-                if (!work) {
-
-                    showReportError(
-                        "اكتب الأعمال التي أنجزتها اليوم."
-                    );
-
-                    return;
-
-                }
-
-
-                /*
-                    بعد Supabase:
-                    نتحقق أولاً أن المتدرب
-                    لم يرسل تقرير اليوم.
-
-                    ثم نحفظ:
-                    trainee_id
-                    report_date
-                    work
-                    notes
-                */
-
-
-                showReportInfo(
-                    "سيتم حفظ التقرير بعد ربط قاعدة البيانات."
-                );
-
-            }
-        );
-
-
-    /* =========================
-       تسجيل الخروج
-    ========================== */
-
-    document
-        .getElementById(
-            "logoutButton"
+        .replaceAll(
+            ">",
+            "&gt;"
         )
-        .addEventListener(
-            "click",
-            function () {
 
-                /*
-                    لاحقاً:
-                    await supabase.auth.signOut()
-                */
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
 
-                window.location.href =
-                    "login.html";
-
-            }
+        .replaceAll(
+            "'",
+            "&#039;"
         );
 
-
-    /* =========================
-       رسائل المهمة
-    ========================== */
-
-    function showTaskError(text) {
-
-        const message =
-            document.getElementById(
-                "taskMessage"
-            );
-
-        message.textContent = text;
-
-        message.className =
-            "message error";
-
-    }
+}
 
 
-    function showTaskInfo(text) {
 
-        const message =
-            document.getElementById(
-                "taskMessage"
-            );
+/* ==================================================
+   تشغيل الصفحة
+================================================== */
 
-        message.textContent = text;
+loadSupervisorInformation();
 
-        message.className =
-            "message info";
+renderTasks();
 
-    }
+loadReportsCount();
 
-
-    function clearTaskMessage() {
-
-        const message =
-            document.getElementById(
-                "taskMessage"
-            );
-
-        message.textContent = "";
-
-        message.className =
-            "message";
-
-    }
-
-
-    /* =========================
-       رسائل التقرير
-    ========================== */
-
-    function showReportError(text) {
-
-        const message =
-            document.getElementById(
-                "reportMessage"
-            );
-
-        message.textContent = text;
-
-        message.className =
-            "message error";
-
-    }
-
-
-    function showReportInfo(text) {
-
-        const message =
-            document.getElementById(
-                "reportMessage"
-            );
-
-        message.textContent = text;
-
-        message.className =
-            "message info";
-
-    }
-
-
-    function clearReportMessage() {
-
-        const message =
-            document.getElementById(
-                "reportMessage"
-            );
-
-        message.textContent = "";
-
-        message.className =
-            "message";
-
-    }
 
 </script>
+
 
 </body>
 
