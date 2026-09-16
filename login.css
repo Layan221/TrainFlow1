@@ -8,71 +8,84 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
 
 body {
-    position: relative;
     min-height: 100vh;
     overflow-x: hidden;
 
     font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+
     color: #182033;
 
     background:
         linear-gradient(
             135deg,
             #f8faff 0%,
-            #f5f8ff 55%,
+            #f4f8ff 55%,
             #faf8ff 100%
         );
 }
 
+
 a {
     text-decoration: none;
 }
+
 
 button,
 input {
     font-family: inherit;
 }
 
+
 button {
     cursor: pointer;
 }
+
+
+.hidden {
+    display: none !important;
+}
+
 
 
 /* =========================================
    BACKGROUND
 ========================================= */
 
-.glow {
+.circle-one {
     position: fixed;
-    z-index: -1;
-    border-radius: 50%;
-    pointer-events: none;
-}
 
-.glow-top {
     width: 520px;
     height: 520px;
 
     top: -270px;
     left: -210px;
 
-    background: rgba(83, 123, 240, 0.08);
+    border-radius: 50%;
+
+    background: rgba(83, 123, 240, 0.07);
+
+    z-index: -1;
 }
 
-.glow-bottom {
+
+.circle-two {
+    position: fixed;
+
     width: 520px;
     height: 520px;
 
-    right: -260px;
-    bottom: -260px;
+    right: -270px;
+    bottom: -280px;
 
-    background: rgba(116, 64, 237, 0.07);
+    border-radius: 50%;
+
+    background: rgba(116, 64, 237, 0.06);
+
+    z-index: -1;
 }
+
 
 
 /* =========================================
@@ -88,6 +101,7 @@ button {
     margin: auto;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -95,23 +109,28 @@ button {
 }
 
 
+
 /* =========================================
-   LOGO
+   BRAND
 ========================================= */
 
 .brand {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 
     color: #182033;
 }
+
 
 .brand-icon {
     width: 54px;
     height: 54px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -124,7 +143,8 @@ button {
             #7540ed
         );
 
-    color: white;
+    color: #ffffff;
+
     font-size: 18px;
 
     box-shadow:
@@ -132,41 +152,50 @@ button {
         rgba(83, 75, 226, 0.20);
 }
 
+
 .brand-text strong {
     display: block;
+
     color: #172033;
+
     font-size: 18px;
 }
 
+
 .brand-text span {
     display: block;
+
     margin-top: 2px;
 
     color: #98a4bc;
+
     font-size: 10px;
 }
 
 
+
 /* =========================================
-   BACK HOME
+   HOME
 ========================================= */
 
-.back-home {
+.home-button {
     min-width: 145px;
     height: 47px;
 
     padding: 0 17px;
 
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
     gap: 8px;
 
     border: 1px solid #e2e7f0;
+
     border-radius: 12px;
 
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.85);
 
     color: #68758b;
 
@@ -176,13 +205,17 @@ button {
     transition: 0.2s;
 }
 
-.back-home:hover {
-    background: white;
-    border-color: #ccd6e8;
+
+.home-button:hover {
+    background: #ffffff;
+
     color: #5369e8;
+
+    border-color: #ccd6e8;
 
     transform: translateY(-1px);
 }
+
 
 
 /* =========================================
@@ -191,6 +224,7 @@ button {
 
 .page-container {
     width: calc(100% - 90px);
+
     max-width: 1400px;
 
     margin: 35px auto 70px;
@@ -207,22 +241,25 @@ button {
 }
 
 
+
 /* =========================================
    LOGIN CARD
 ========================================= */
 
 .login-card {
     width: 100%;
+
     max-width: 520px;
 
     justify-self: center;
 
-    padding: 34px 38px 31px;
+    padding: 35px 38px;
 
     border: 1px solid #e1e6ef;
+
     border-radius: 25px;
 
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
 
     box-shadow:
         0 25px 65px
@@ -230,17 +267,26 @@ button {
 }
 
 
+
 /* =========================================
-   TOP ICON
+   HEADER
 ========================================= */
 
-.top-icon {
-    width: 56px;
-    height: 56px;
+.form-header {
+    margin-bottom: 25px;
+
+    text-align: center;
+}
+
+
+.form-icon {
+    width: 58px;
+    height: 58px;
 
     margin: 0 auto 15px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -256,21 +302,8 @@ button {
     color: white;
 
     font-size: 18px;
-
-    box-shadow:
-        0 12px 27px
-        rgba(83, 75, 226, 0.20);
 }
 
-
-/* =========================================
-   TITLE
-========================================= */
-
-.login-title {
-    margin-bottom: 25px;
-    text-align: center;
-}
 
 .welcome {
     display: block;
@@ -283,188 +316,84 @@ button {
     font-weight: 700;
 }
 
-.login-title h1 {
+
+.form-header h1 {
     margin-bottom: 7px;
 
     color: #182033;
 
     font-size: 31px;
-    line-height: 1.3;
 }
 
-.login-title p {
+
+.form-header p {
     color: #8d99ad;
 
     font-size: 12px;
-    line-height: 1.7;
+
+    line-height: 1.8;
 }
+
 
 
 /* =========================================
-   ROLE SECTION
+   ACCOUNT TYPE
 ========================================= */
 
-.role-section {
-    margin-bottom: 23px;
-}
+.account-type {
+    width: 100%;
 
-.main-label {
-    display: block;
+    margin-bottom: 25px;
 
-    margin-bottom: 9px;
+    padding: 5px;
 
-    color: #364156;
-
-    font-size: 11px;
-    font-weight: 650;
-}
-
-.role-grid {
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 10px;
+    gap: 5px;
+
+    border-radius: 13px;
+
+    background: #f1f4f9;
 }
 
 
-/* =========================================
-   ROLE BUTTON
-========================================= */
-
-.role-option {
-    position: relative;
-
-    min-height: 78px;
-
-    padding: 12px;
+.type-button {
+    height: 45px;
 
     display: flex;
-    align-items: center;
 
-    gap: 10px;
-
-    border: 1px solid #e0e6ef;
-    border-radius: 14px;
-
-    background: #fbfcff;
-
-    color: #334155;
-
-    text-align: right;
-
-    transition: 0.2s ease;
-}
-
-.role-option:hover {
-    background: white;
-    border-color: #c9d3ee;
-}
-
-.role-option.active {
-    border-color: #7183ee;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7f9ff,
-            #f4f3ff
-        );
-
-    box-shadow:
-        0 0 0 3px
-        rgba(82, 103, 232, 0.06);
-}
-
-
-/* =========================================
-   ROLE ICON
-========================================= */
-
-.role-icon {
-    width: 42px;
-    height: 42px;
-
-    flex-shrink: 0;
-
-    display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 11px;
+    gap: 8px;
 
-    font-size: 14px;
-}
+    border: none;
 
-.trainee-icon {
-    background: #deecff;
-    color: #347ae4;
-}
+    border-radius: 10px;
 
-.supervisor-icon {
-    background: #ebe5ff;
-    color: #7353df;
-}
+    background: transparent;
 
-
-/* =========================================
-   ROLE TEXT
-========================================= */
-
-.role-text {
-    flex: 1;
-    min-width: 0;
-}
-
-.role-text strong {
-    display: block;
-
-    margin-bottom: 3px;
-
-    color: #374151;
+    color: #8995a8;
 
     font-size: 11px;
-}
+    font-weight: 700;
 
-.role-text span {
-    display: block;
-
-    color: #99a4b7;
-
-    font-size: 8px;
-    line-height: 1.5;
+    transition: 0.2s;
 }
 
 
-/* =========================================
-   CHECK
-========================================= */
+.type-button.active {
+    background: #ffffff;
 
-.selected-check {
-    position: absolute;
+    color: #586de7;
 
-    top: 8px;
-    left: 8px;
-
-    width: 18px;
-    height: 18px;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #5267e8;
-
-    color: white;
-
-    font-size: 7px;
+    box-shadow:
+        0 5px 15px
+        rgba(42, 56, 100, 0.08);
 }
 
-.role-option.active .selected-check {
-    display: flex;
-}
 
 
 /* =========================================
@@ -475,7 +404,8 @@ button {
     margin-bottom: 18px;
 }
 
-.form-group > label {
+
+.form-group label {
     display: block;
 
     margin-bottom: 7px;
@@ -483,8 +413,10 @@ button {
     color: #364156;
 
     font-size: 11px;
+
     font-weight: 650;
 }
+
 
 
 /* =========================================
@@ -495,16 +427,20 @@ button {
     position: relative;
 
     width: 100%;
+
     height: 54px;
 }
 
+
 .input-box input {
     width: 100%;
+
     height: 100%;
 
     padding: 0 47px;
 
     border: 1px solid #dfe5ef;
+
     border-radius: 13px;
 
     outline: none;
@@ -518,28 +454,30 @@ button {
     transition: 0.2s;
 }
 
+
 .input-box input::placeholder {
     color: #adb7c9;
 }
 
-.input-box input:hover {
-    border-color: #cbd5e1;
-}
 
 .input-box input:focus {
     border-color: #7083ee;
 
-    background: white;
+    background: #ffffff;
 
     box-shadow:
         0 0 0 4px
         rgba(82, 103, 232, 0.07);
 }
 
+
+
+/* =========================================
+   ICON
+========================================= */
+
 .input-icon {
     position: absolute;
-
-    z-index: 2;
 
     top: 50%;
     right: 17px;
@@ -551,11 +489,73 @@ button {
     font-size: 13px;
 
     pointer-events: none;
+
+    z-index: 2;
 }
 
 
+
 /* =========================================
-   HELP TEXT
+   PASSWORD
+========================================= */
+
+.show-password {
+    position: absolute;
+
+    top: 50%;
+    left: 10px;
+
+    transform: translateY(-50%);
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #91a0ba;
+}
+
+
+.show-password:hover {
+    background: #f0f3fa;
+
+    color: #5267e8;
+}
+
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-area {
+    margin-top: 8px;
+
+    text-align: left;
+}
+
+
+.forgot-area a {
+    color: #586de7;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+
+/* =========================================
+   HELP
 ========================================= */
 
 .help-text {
@@ -571,119 +571,53 @@ button {
 }
 
 
-/* =========================================
-   PASSWORD LABEL
-========================================= */
-
-.password-label-row {
-    margin-bottom: 7px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-}
-
-.password-label-row label {
-    color: #364156;
-
-    font-size: 11px;
-    font-weight: 650;
-}
-
-.forgot-password {
-    color: #5267e8;
-
-    font-size: 9px;
-    font-weight: 600;
-}
-
-.forgot-password:hover {
-    text-decoration: underline;
-}
-
 
 /* =========================================
-   SHOW PASSWORD
-========================================= */
-
-.show-password {
-    position: absolute;
-
-    z-index: 3;
-
-    top: 50%;
-    left: 9px;
-
-    width: 35px;
-    height: 35px;
-
-    transform: translateY(-50%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 0;
-    border-radius: 9px;
-
-    background: transparent;
-
-    color: #91a0ba;
-}
-
-.show-password:hover {
-    background: #f0f3fa;
-    color: #5267e8;
-}
-
-
-/* =========================================
-   IMPORTANT - HIDE ELEMENTS
-========================================= */
-
-.hidden {
-    display: none !important;
-}
-
-
-/* =========================================
-   FORM MESSAGE
+   MESSAGE
 ========================================= */
 
 .form-message {
-    min-height: 22px;
+    min-height: 24px;
 
-    margin-top: -3px;
+    margin-bottom: 7px;
+
+    display: flex;
+
+    align-items: center;
 
     font-size: 10px;
 }
 
+
 .form-message.error {
     color: #dc2626;
 }
+
 
 .form-message.success {
     color: #159455;
 }
 
 
+
 /* =========================================
    LOGIN BUTTON
 ========================================= */
 
-.login-btn {
+.login-button {
     width: 100%;
+
     height: 55px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     gap: 10px;
 
     border: none;
+
     border-radius: 13px;
 
     background:
@@ -693,143 +627,72 @@ button {
             #7042ed
         );
 
-    color: white;
+    color: #ffffff;
 
     font-size: 13px;
+
     font-weight: 700;
 
     box-shadow:
         0 13px 27px
         rgba(83, 75, 226, 0.19);
 
-    transition: 0.2s ease;
+    transition: 0.2s;
 }
 
-.login-btn:hover {
+
+.login-button:hover {
     transform: translateY(-2px);
-
-    box-shadow:
-        0 17px 34px
-        rgba(83, 75, 226, 0.24);
 }
+
+
+.login-button:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
 
 
 /* =========================================
-   DIVIDER
+   REGISTER
 ========================================= */
 
-.divider {
-    margin: 22px 0;
+.register-area {
+    margin-top: 22px;
 
-    display: flex;
-    align-items: center;
+    padding-top: 20px;
 
-    gap: 12px;
-}
+    border-top: 1px solid #e8ebf1;
 
-.divider span {
-    height: 1px;
+    text-align: center;
 
-    flex: 1;
-
-    background: #e6eaf1;
-}
-
-.divider p {
     color: #9aa5b8;
 
     font-size: 10px;
 }
 
 
-/* =========================================
-   REGISTER SUPERVISOR
-========================================= */
+.register-area a {
+    margin-right: 4px;
 
-.register-box {
-    width: 100%;
-    min-height: 64px;
+    color: #5267e8;
 
-    padding: 10px 13px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 11px;
-
-    border: 1px solid #e0e5ef;
-    border-radius: 13px;
-
-    background: #fbfcff;
-
-    color: #334155;
-
-    transition: 0.2s;
+    font-weight: 700;
 }
 
-.register-box:hover {
-    border-color: #c9d3ee;
-
-    background: white;
-
-    transform: translateY(-1px);
-}
-
-.register-box-icon {
-    width: 40px;
-    height: 40px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background: #e8edff;
-
-    color: #5369e8;
-
-    font-size: 13px;
-}
-
-.register-box-text {
-    flex: 1;
-}
-
-.register-box-text span {
-    display: block;
-
-    margin-bottom: 2px;
-
-    color: #929db0;
-
-    font-size: 9px;
-}
-
-.register-box-text strong {
-    display: block;
-
-    color: #465cdb;
-
-    font-size: 11px;
-}
-
-.register-arrow {
-    color: #9ca8bb;
-
-    font-size: 10px;
-}
 
 
 /* =========================================
-   INFO SECTION
+   INFO
 ========================================= */
 
 .info-section {
     width: 100%;
 }
+
 
 .info-badge {
     width: fit-content;
@@ -839,6 +702,7 @@ button {
     padding: 9px 18px;
 
     border: 1px solid #dbe5f7;
+
     border-radius: 999px;
 
     background: rgba(239, 246, 255, 0.72);
@@ -846,15 +710,12 @@ button {
     color: #3971e8;
 
     font-size: 11px;
+
     font-weight: 700;
 }
 
 
-/* =========================================
-   BIG TITLE
-========================================= */
-
-.info-section > h2 {
+.info-section h2 {
     margin-bottom: 18px;
 
     color: #182033;
@@ -866,7 +727,8 @@ button {
     letter-spacing: -2px;
 }
 
-.info-section > h2 strong {
+
+.info-section h2 strong {
     display: block;
 
     background:
@@ -877,21 +739,25 @@ button {
         );
 
     -webkit-background-clip: text;
+
     background-clip: text;
 
     color: transparent;
 }
 
-.info-description {
-    max-width: 660px;
 
-    margin-bottom: 28px;
+.description {
+    max-width: 650px;
+
+    margin-bottom: 29px;
 
     color: #718096;
 
     font-size: 14px;
+
     line-height: 2;
 }
+
 
 
 /* =========================================
@@ -903,18 +769,20 @@ button {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 15px;
 }
 
+
 .feature {
     display: flex;
+
     align-items: center;
 
     gap: 9px;
 }
+
 
 .feature-icon {
     width: 43px;
@@ -923,6 +791,7 @@ button {
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -931,20 +800,27 @@ button {
     font-size: 12px;
 }
 
+
 .feature-icon.blue {
     background: #deecff;
+
     color: #357ce5;
 }
 
+
 .feature-icon.purple {
     background: #ebe5ff;
+
     color: #7353df;
 }
 
+
 .feature-icon.green {
     background: #dcf8e8;
+
     color: #1ca867;
 }
+
 
 .feature-text strong {
     display: block;
@@ -956,26 +832,28 @@ button {
     font-size: 10px;
 }
 
-.feature-text span {
-    display: block;
 
+.feature-text span {
     color: #9aa6b9;
 
     font-size: 8px;
 }
 
 
+
 /* =========================================
-   DASHBOARD PREVIEW
+   PREVIEW
 ========================================= */
 
-.dashboard-preview {
+.preview {
     width: 100%;
+
     max-width: 610px;
 
     padding: 22px;
 
     border: 1px solid #e0e6ef;
+
     border-radius: 21px;
 
     background: rgba(255, 255, 255, 0.82);
@@ -986,17 +864,15 @@ button {
 }
 
 
-/* =========================================
-   PREVIEW HEADER
-========================================= */
-
 .preview-header {
     margin-bottom: 16px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 }
+
 
 .preview-header span {
     display: block;
@@ -1008,19 +884,20 @@ button {
     font-size: 9px;
 }
 
-.preview-header strong {
-    display: block;
 
+.preview-header strong {
     color: #293247;
 
     font-size: 14px;
 }
+
 
 .preview-logo {
     width: 43px;
     height: 43px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1033,17 +910,16 @@ button {
             #7540ed
         );
 
-    color: white;
-
-    font-size: 13px;
+    color: #ffffff;
 }
+
 
 
 /* =========================================
    STATUS
 ========================================= */
 
-.supervisor-status {
+.status {
     min-height: 76px;
 
     margin-bottom: 13px;
@@ -1051,14 +927,17 @@ button {
     padding: 13px 16px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     border: 1px solid #c9f0d9;
+
     border-radius: 14px;
 
     background: #f0fdf5;
 }
+
 
 .status-text span {
     display: block;
@@ -1070,19 +949,20 @@ button {
     font-size: 8px;
 }
 
-.status-text strong {
-    display: block;
 
+.status-text strong {
     color: #169250;
 
     font-size: 10px;
 }
+
 
 .status-circle {
     width: 38px;
     height: 38px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1091,6 +971,7 @@ button {
     background: #ddf8e8;
 }
 
+
 .status-dot {
     width: 11px;
     height: 11px;
@@ -1098,97 +979,90 @@ button {
     border-radius: 50%;
 
     background: #22c66f;
-
-    box-shadow:
-        0 0 0 5px
-        rgba(34, 198, 111, 0.10);
 }
 
 
+
 /* =========================================
-   PREVIEW GRID
+   PREVIEW ITEMS
 ========================================= */
 
-.preview-grid {
+.preview-items {
     display: grid;
 
-    grid-template-columns:
-        repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
 
     gap: 12px;
 }
 
+
 .preview-item {
-    min-height: 90px;
+    min-height: 88px;
 
     padding: 14px;
 
     display: flex;
+
     align-items: center;
 
     gap: 10px;
 
     border: 1px solid #e8ecf2;
+
     border-radius: 13px;
 
     background: #fbfcfe;
 }
+
 
 .preview-item-icon {
     width: 39px;
     height: 39px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 10px;
 }
 
+
 .preview-item-icon.blue {
     background: #deecff;
+
     color: #347ae4;
 }
 
+
 .preview-item-icon.purple {
     background: #ebe5ff;
+
     color: #7353df;
 }
 
-.preview-item > span {
+
+.preview-item strong {
+    display: block;
+
+    margin-bottom: 3px;
+
     color: #4a5568;
 
     font-size: 10px;
-    font-weight: 600;
 }
+
+
+.preview-item span {
+    color: #9aa6b9;
+
+    font-size: 8px;
+}
+
 
 
 /* =========================================
    TABLET
-========================================= */
-
-@media (max-width: 1000px) {
-
-    .page-container {
-        gap: 35px;
-
-        grid-template-columns:
-            minmax(390px, 1fr)
-            minmax(420px, 1fr);
-    }
-
-    .features {
-        grid-template-columns: 1fr;
-    }
-
-    .info-section > h2 {
-        font-size: 47px;
-    }
-}
-
-
-/* =========================================
-   SMALL TABLET
 ========================================= */
 
 @media (max-width: 820px) {
@@ -1197,58 +1071,56 @@ button {
         width: calc(100% - 35px);
     }
 
+
     .page-container {
         width: calc(100% - 35px);
 
-        margin-top: 20px;
-
         display: flex;
+
         flex-direction: column;
 
         gap: 45px;
     }
 
-    .login-card {
-        order: 1;
 
+    .login-card {
         max-width: 550px;
     }
 
-    .info-section {
-        order: 2;
 
+    .info-section {
         max-width: 550px;
 
         text-align: center;
     }
 
+
     .info-badge {
         margin-left: auto;
+
         margin-right: auto;
     }
 
-    .info-description {
+
+    .description {
         margin-left: auto;
+
         margin-right: auto;
     }
 
-    .features {
-        grid-template-columns:
-            repeat(3, 1fr);
 
-        text-align: right;
-    }
-
-    .dashboard-preview {
+    .preview {
         margin: auto;
 
         text-align: right;
     }
+
 }
 
 
+
 /* =========================================
-   PHONE
+   MOBILE
 ========================================= */
 
 @media (max-width: 560px) {
@@ -1259,22 +1131,20 @@ button {
         min-height: 80px;
     }
 
+
     .brand-icon {
         width: 45px;
-        height: 45px;
 
-        border-radius: 12px;
+        height: 45px;
     }
+
 
     .brand-text strong {
         font-size: 15px;
     }
 
-    .brand-text span {
-        font-size: 8px;
-    }
 
-    .back-home {
+    .home-button {
         min-width: auto;
 
         height: 42px;
@@ -1284,11 +1154,13 @@ button {
         font-size: 9px;
     }
 
+
     .page-container {
         width: calc(100% - 24px);
 
         margin: 15px auto 40px;
     }
+
 
     .login-card {
         padding: 27px 18px;
@@ -1296,37 +1168,32 @@ button {
         border-radius: 20px;
     }
 
-    .login-title h1 {
-        font-size: 28px;
+
+    .form-header h1 {
+        font-size: 27px;
     }
 
-    .role-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .info-section > h2 {
+    .info-section h2 {
         font-size: 38px;
-
-        letter-spacing: -1px;
     }
 
-    .info-description {
-        font-size: 13px;
-    }
 
     .features {
+        grid-template-columns: 1fr;
+
         max-width: 270px;
 
-        margin: 0 auto 28px;
+        margin-left: auto;
 
+        margin-right: auto;
+
+        margin-bottom: 28px;
+    }
+
+
+    .preview-items {
         grid-template-columns: 1fr;
     }
 
-    .feature {
-        text-align: right;
-    }
-
-    .preview-grid {
-        grid-template-columns: 1fr;
-    }
 }
