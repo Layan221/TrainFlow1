@@ -3,36 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>TrainFlow | إدارة المهام</title>
 
-    <link rel="stylesheet" href="supervisor-tasks.css">
+    <link
+        rel="stylesheet"
+        href="supervisor-tasks.css"
+    >
 
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 </head>
+
 
 <body>
 
     <main class="page-container">
 
-        <!-- العودة -->
 
-        <a href="supervisor-dashboard.html" class="back-button">
+        <!-- Back -->
+
+        <a
+            href="supervisor-dashboard.html"
+            class="back-button"
+        >
             <i class="fa-solid fa-arrow-right"></i>
-            العودة للوحة المشرف
+
+            العودة إلى لوحة المشرف
         </a>
 
 
-        <!-- رأس الصفحة -->
+
+        <!-- Header -->
 
         <header class="page-header">
 
-            <div>
-                <span class="page-label">
+            <div class="header-text">
+
+                <span>
                     إدارة التدريب
                 </span>
 
@@ -41,83 +56,496 @@
                 </h1>
 
                 <p>
-                    إسناد المهام ومتابعة حالة تنفيذها
+                    إسناد المهام ومتابعة حالة تنفيذها.
                 </p>
+
             </div>
 
+
             <div class="header-icon">
+
                 <i class="fa-solid fa-list-check"></i>
+
             </div>
 
         </header>
 
 
-        <!-- اختيار المتدرب -->
 
-        <section class="trainee-card">
+        <!-- Main management page -->
 
-            <div class="section-heading">
+        <section
+            id="traineesView"
+            class="view-section active-view"
+        >
+
+
+            <!-- Top action -->
+
+            <div class="top-actions">
 
                 <div>
-                    <span>
-                        المتدرب
+
+                    <span class="section-label">
+                        المهام
                     </span>
 
                     <h2>
-                        تحديد المتدرب
+                        المتدربون
                     </h2>
+
+                    <p>
+                        اختر متدربًا لعرض المهام المسندة إليه.
+                    </p>
+
                 </div>
 
-                <div class="section-icon">
-                    <i class="fa-regular fa-user"></i>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="openAddTaskButton"
+                >
+                    <i class="fa-solid fa-plus"></i>
+
+                    إسناد مهمة جديدة
+                </button>
+
+            </div>
+
+
+
+            <!-- Search -->
+
+            <div class="search-card">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="traineeSearch"
+                        placeholder="البحث باسم المتدرب أو البريد الإلكتروني..."
+                    >
+
                 </div>
 
             </div>
 
 
-            <div class="select-wrapper">
 
-                <i class="fa-solid fa-chevron-down"></i>
+            <!-- Trainees -->
 
-                <select id="traineeSelect">
+            <section class="content-card">
 
-                    <option value="">
-                        اختر المتدرب
-                    </option>
+                <div class="card-heading">
 
-                </select>
+                    <div>
 
-            </div>
+                        <span>
+                            فريق التدريب
+                        </span>
+
+                        <h2>
+                            المتدربون المرتبطون
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="count-badge"
+                        id="traineesCount"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="trainees-list"
+                    id="traineesList"
+                >
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="traineesEmpty"
+                >
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+                    <h3>
+                        لا يوجد متدربون
+                    </h3>
+
+                    <p>
+                        لا يوجد متدربون مرتبطون بحسابك حاليًا.
+                    </p>
+
+                </div>
+
+            </section>
 
         </section>
 
 
-        <!-- إضافة مهمة -->
 
-        <section class="form-card">
+        <!-- Selected trainee tasks -->
 
-            <div class="section-heading">
+        <section
+            id="tasksView"
+            class="view-section"
+        >
+
+
+            <button
+                type="button"
+                class="inner-back-button"
+                id="backToTrainees"
+            >
+                <i class="fa-solid fa-arrow-right"></i>
+
+                العودة إلى المتدربين
+            </button>
+
+
+
+            <div class="selected-trainee-header">
+
+                <div class="selected-trainee-info">
+
+                    <div class="trainee-avatar large">
+
+                        <i class="fa-regular fa-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="section-label">
+                            مهام المتدرب
+                        </span>
+
+                        <h2 id="selectedTraineeName">
+                            اسم المتدرب
+                        </h2>
+
+                        <p id="selectedTraineeEmail">
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="addTaskForSelected"
+                >
+                    <i class="fa-solid fa-plus"></i>
+
+                    إسناد مهمة
+                </button>
+
+            </div>
+
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            إجمالي المهام
+                        </span>
+
+                        <strong id="totalTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            مهام جديدة
+                        </span>
+
+                        <strong id="newTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+
+                        <i class="fa-solid fa-spinner"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            قيد التنفيذ
+                        </span>
+
+                        <strong id="progressTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            مكتملة
+                        </span>
+
+                        <strong id="completedTasks">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Filters -->
+
+            <div class="filters-card">
+
+                <div class="filters">
+
+                    <button
+                        type="button"
+                        class="filter-button active"
+                        data-filter="all"
+                    >
+                        جميع المهام
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="new"
+                    >
+                        جديدة
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="progress"
+                    >
+                        قيد التنفيذ
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="completed"
+                    >
+                        مكتملة
+                    </button>
+
+                </div>
+
+
+                <div class="search-box task-search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="taskSearch"
+                        placeholder="البحث في المهام..."
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Tasks -->
+
+            <section class="content-card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span>
+                            قائمة المهام
+                        </span>
+
+                        <h2>
+                            المهام المسندة
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="count-badge"
+                        id="tasksCount"
+                    >
+                        0 مهمة
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="tasks-list"
+                    id="tasksList"
+                >
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="tasksEmpty"
+                >
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-folder-open"></i>
+
+                    </div>
+
+                    <h3>
+                        لا توجد مهام
+                    </h3>
+
+                    <p>
+                        لم يتم إسناد مهام لهذا المتدرب حتى الآن.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Add Task Modal -->
+
+    <div
+        class="modal-overlay"
+        id="taskModal"
+    >
+
+        <div class="modal-card">
+
+
+            <div class="modal-header">
 
                 <div>
+
                     <span>
-                        إسناد المهام
+                        إدارة المهام
                     </span>
 
                     <h2>
                         إسناد مهمة جديدة
                     </h2>
+
+                    <p>
+                        أدخل بيانات المهمة وحدد المتدرب المستهدف.
+                    </p>
+
                 </div>
 
-                <div class="section-icon">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    id="closeModal"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
 
             </div>
 
 
+
             <form id="taskForm">
 
-                <!-- عنوان المهمة -->
+
+                <div class="form-group">
+
+                    <label for="taskTrainee">
+                        المتدرب
+                    </label>
+
+                    <select
+                        id="taskTrainee"
+                        required
+                    >
+
+                        <option value="">
+                            اختر المتدرب
+                        </option>
+
+                    </select>
+
+                </div>
+
+
 
                 <div class="form-group">
 
@@ -125,14 +553,70 @@
                         عنوان المهمة
                     </label>
 
-                    <div class="input-wrapper">
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        placeholder="أدخل عنوان المهمة"
+                        required
+                    >
 
-                        <i class="fa-regular fa-clipboard"></i>
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="taskDescription">
+                        تفاصيل المهمة
+                    </label>
+
+                    <textarea
+                        id="taskDescription"
+                        placeholder="اكتب وصفًا واضحًا للمهمة المطلوبة"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="taskPriority">
+                            الأولوية
+                        </label>
+
+                        <select id="taskPriority">
+
+                            <option value="normal">
+                                عادية
+                            </option>
+
+                            <option value="high">
+                                عالية
+                            </option>
+
+                            <option value="low">
+                                منخفضة
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskDueDate">
+                            موعد التسليم
+                        </label>
 
                         <input
-                            type="text"
-                            id="taskTitle"
-                            placeholder="أدخل عنوان المهمة"
+                            type="date"
+                            id="taskDueDate"
                             required
                         >
 
@@ -141,86 +625,6 @@
                 </div>
 
 
-                <!-- وصف المهمة -->
-
-                <div class="form-group">
-
-                    <label for="taskDescription">
-                        وصف المهمة
-                    </label>
-
-                    <textarea
-                        id="taskDescription"
-                        placeholder="أدخل وصف المهمة ومتطلبات التنفيذ"
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <!-- الأولوية + التاريخ -->
-
-                <div class="two-columns">
-
-                    <div class="form-group">
-
-                        <label for="priority">
-                            الأولوية
-                        </label>
-
-                        <div class="select-wrapper">
-
-                            <i class="fa-solid fa-chevron-down"></i>
-
-                            <select id="priority" required>
-
-                                <option value="">
-                                    اختر الأولوية
-                                </option>
-
-                                <option value="low">
-                                    منخفضة
-                                </option>
-
-                                <option value="medium">
-                                    متوسطة
-                                </option>
-
-                                <option value="high">
-                                    عالية
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="dueDate">
-                            تاريخ التسليم
-                        </label>
-
-                        <div class="input-wrapper">
-
-                            <i class="fa-regular fa-calendar"></i>
-
-                            <input
-                                type="date"
-                                id="dueDate"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ملاحظات المشرف -->
 
                 <div class="form-group">
 
@@ -230,336 +634,156 @@
 
                     <textarea
                         id="supervisorNotes"
-                        class="notes-area"
-                        placeholder="أضف ملاحظات أو تعليمات إضافية"
+                        placeholder="ملاحظات إضافية تتعلق بالمهمة - اختياري"
                     ></textarea>
 
                 </div>
 
 
-                <div id="message" class="message"></div>
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelTask"
+                    >
+                        إلغاء
+                    </button>
 
 
-                <button type="submit" class="assign-button">
+                    <button
+                        type="submit"
+                        class="primary-button submit-button"
+                    >
+                        <i class="fa-solid fa-paper-plane"></i>
 
-                    <i class="fa-solid fa-plus"></i>
+                        إسناد المهمة
+                    </button>
 
-                    إسناد المهمة
-
-                </button>
+                </div>
 
             </form>
 
-        </section>
+        </div>
 
+    </div>
 
-        <!-- المهام المسندة -->
-
-        <section class="assigned-card">
-
-            <div class="assigned-header">
-
-                <div>
-
-                    <span>
-                        متابعة المهام
-                    </span>
-
-                    <h2>
-                        المهام المسندة
-                    </h2>
-
-                    <p id="selectedTraineeText">
-                        اختر متدربًا لعرض المهام المسندة إليه
-                    </p>
-
-                </div>
-
-
-                <span id="tasksCount" class="tasks-count">
-                    0
-                </span>
-
-            </div>
-
-
-            <div id="tasksList" class="tasks-list">
-            </div>
-
-
-            <!-- لا توجد مهام -->
-
-            <div id="emptyState" class="empty-state">
-
-                <div class="empty-icon">
-                    <i class="fa-regular fa-clipboard"></i>
-                </div>
-
-                <h3>
-                    لا توجد مهام لعرضها
-                </h3>
-
-                <p>
-                    اختر المتدرب لعرض المهام المسندة إليه
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
 
 
     <script>
 
-        /* =====================================
-           المستخدم الحالي
-        ===================================== */
-
-        const currentUser =
-            JSON.parse(
-                localStorage.getItem(
-                    "trainflowCurrentUser"
-                ) || "null"
-            );
+        /*
+        =============================================
+        TrainFlow - Supervisor Tasks
+        =============================================
+        */
 
 
-        if (
-            !currentUser ||
-            currentUser.role !== "supervisor"
-        ) {
+        const traineesView =
+            document.getElementById("traineesView");
 
-            window.location.href =
-                "login.html";
+        const tasksView =
+            document.getElementById("tasksView");
 
-        }
+        const traineesList =
+            document.getElementById("traineesList");
 
+        const traineesEmpty =
+            document.getElementById("traineesEmpty");
 
+        const traineesCount =
+            document.getElementById("traineesCount");
 
-        /* =====================================
-           العناصر
-        ===================================== */
+        const traineeSearch =
+            document.getElementById("traineeSearch");
 
-        const traineeSelect =
-            document.getElementById(
-                "traineeSelect"
-            );
-
-
-        const taskForm =
-            document.getElementById(
-                "taskForm"
-            );
-
-
-        const message =
-            document.getElementById(
-                "message"
-            );
-
+        const taskSearch =
+            document.getElementById("taskSearch");
 
         const tasksList =
-            document.getElementById(
-                "tasksList"
-            );
+            document.getElementById("tasksList");
 
-
-        const emptyState =
-            document.getElementById(
-                "emptyState"
-            );
-
+        const tasksEmpty =
+            document.getElementById("tasksEmpty");
 
         const tasksCount =
-            document.getElementById(
-                "tasksCount"
-            );
+            document.getElementById("tasksCount");
+
+        const taskModal =
+            document.getElementById("taskModal");
+
+        const taskForm =
+            document.getElementById("taskForm");
+
+        const taskTrainee =
+            document.getElementById("taskTrainee");
 
 
-        const selectedTraineeText =
-            document.getElementById(
-                "selectedTraineeText"
-            );
+        let selectedTraineeId = null;
+
+        let currentFilter = "all";
 
 
 
-        /* =====================================
-           المتدربون
-        ===================================== */
+        /*
+        =============================================
+        Storage helpers
+        =============================================
+        */
+
 
         function getTrainees() {
 
-            try {
-
-                const data =
-                    JSON.parse(
-                        localStorage.getItem(
-                            "trainflowTrainees"
-                        ) || "[]"
-                    );
+            const keys = [
+                "trainees",
+                "supervisorTrainees",
+                "linkedTrainees"
+            ];
 
 
-                return Array.isArray(data)
-                    ? data
-                    : [];
+            for (const key of keys) {
 
-            }
+                try {
 
-            catch (error) {
-
-                return [];
-
-            }
-
-        }
-
-
-
-        const myTrainees =
-            getTrainees().filter(
-                function (trainee) {
-
-                    return (
-                        String(
-                            trainee.supervisorId
-                        ) ===
-                        String(
-                            currentUser.id
-                        )
-                    );
-
-                }
-            );
-
-
-
-        /* =====================================
-           عرض المتدربين
-        ===================================== */
-
-        function loadTrainees() {
-
-            traineeSelect.innerHTML = `
-
-                <option value="">
-                    اختر المتدرب
-                </option>
-
-            `;
-
-
-            myTrainees.forEach(
-                function (trainee) {
-
-                    const option =
-                        document.createElement(
-                            "option"
+                    const value =
+                        JSON.parse(
+                            localStorage.getItem(key)
                         );
 
+                    if (
+                        Array.isArray(value) &&
+                        value.length
+                    ) {
+                        return value;
+                    }
 
-                    option.value =
-                        trainee.id;
-
-
-                    option.textContent =
-                        trainee.name;
-
-
-                    traineeSelect.appendChild(
-                        option
-                    );
-
+                } catch (error) {
+                    console.log(error);
                 }
-            );
-
-
-            if (
-                myTrainees.length === 0
-            ) {
-
-                const option =
-                    document.createElement(
-                        "option"
-                    );
-
-
-                option.disabled =
-                    true;
-
-
-                option.textContent =
-                    "لا يوجد متدربون";
-
-
-                traineeSelect.appendChild(
-                    option
-                );
-
-            }
-
-        }
-
-
-
-        /* =====================================
-           المتدرب المختار
-        ===================================== */
-
-        function getSelectedTrainee() {
-
-            const traineeId =
-                traineeSelect.value;
-
-
-            if (!traineeId) {
-
-                return null;
 
             }
 
 
-            return myTrainees.find(
-                function (trainee) {
-
-                    return (
-                        String(
-                            trainee.id
-                        ) ===
-                        String(
-                            traineeId
-                        )
-                    );
-
-                }
-            ) || null;
+            return [];
 
         }
 
 
-
-        /* =====================================
-           المهام
-        ===================================== */
 
         function getTasks() {
 
             try {
 
-                const data =
+                return (
                     JSON.parse(
                         localStorage.getItem(
-                            "trainflow_tasks"
-                        ) || "[]"
-                    );
+                            "trainflowTasks"
+                        )
+                    ) || []
+                );
 
-
-                return Array.isArray(data)
-                    ? data
-                    : [];
-
-            }
-
-            catch (error) {
+            } catch (error) {
 
                 return [];
 
@@ -572,7 +796,7 @@
         function saveTasks(tasks) {
 
             localStorage.setItem(
-                "trainflow_tasks",
+                "trainflowTasks",
                 JSON.stringify(tasks)
             );
 
@@ -580,43 +804,779 @@
 
 
 
-        /* =====================================
-           عند اختيار المتدرب
-        ===================================== */
+        /*
+        =============================================
+        Helpers
+        =============================================
+        */
 
-        traineeSelect.addEventListener(
-            "change",
-            function () {
 
-                clearMessage();
+        function traineeId(trainee) {
 
-                renderTasks();
+            return String(
+                trainee.id ||
+                trainee.traineeId ||
+                trainee.email ||
+                trainee.code ||
+                ""
+            );
+
+        }
+
+
+
+        function traineeName(trainee) {
+
+            return (
+                trainee.name ||
+                trainee.fullName ||
+                trainee.traineeName ||
+                "متدرب"
+            );
+
+        }
+
+
+
+        function traineeEmail(trainee) {
+
+            return (
+                trainee.email ||
+                trainee.traineeEmail ||
+                ""
+            );
+
+        }
+
+
+
+        function escapeHTML(value) {
+
+            return String(value || "")
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
+
+
+        function formatDate(date) {
+
+            if (!date) {
+                return "غير محدد";
+            }
+
+
+            const value =
+                new Date(
+                    date + "T00:00:00"
+                );
+
+
+            return value.toLocaleDateString(
+                "ar-SA",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            );
+
+        }
+
+
+
+        function statusText(status) {
+
+            if (status === "progress") {
+                return "قيد التنفيذ";
+            }
+
+            if (status === "completed") {
+                return "مكتملة";
+            }
+
+            return "جديدة";
+
+        }
+
+
+
+        function priorityText(priority) {
+
+            if (priority === "high") {
+                return "عالية";
+            }
+
+            if (priority === "low") {
+                return "منخفضة";
+            }
+
+            return "عادية";
+
+        }
+
+
+
+        /*
+        =============================================
+        Render trainees
+        =============================================
+        */
+
+
+        function renderTrainees() {
+
+            const trainees =
+                getTrainees();
+
+
+            const search =
+                traineeSearch.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const filtered =
+                trainees.filter(
+                    trainee => {
+
+                        const name =
+                            traineeName(trainee)
+                                .toLowerCase();
+
+                        const email =
+                            traineeEmail(trainee)
+                                .toLowerCase();
+
+
+                        return (
+                            name.includes(search) ||
+                            email.includes(search)
+                        );
+
+                    }
+                );
+
+
+            traineesCount.textContent =
+                filtered.length;
+
+
+            traineesList.innerHTML = "";
+
+
+            if (!filtered.length) {
+
+                traineesEmpty.style.display =
+                    "flex";
+
+                return;
 
             }
-        );
+
+
+            traineesEmpty.style.display =
+                "none";
+
+
+            const tasks =
+                getTasks();
+
+
+            filtered.forEach(
+                trainee => {
+
+                    const id =
+                        traineeId(trainee);
+
+
+                    const traineeTasks =
+                        tasks.filter(
+                            task =>
+                                String(task.traineeId) === id
+                        );
+
+
+                    const activeTasks =
+                        traineeTasks.filter(
+                            task =>
+                                task.status !== "completed"
+                        ).length;
+
+
+                    const completedTasks =
+                        traineeTasks.filter(
+                            task =>
+                                task.status === "completed"
+                        ).length;
+
+
+                    const item =
+                        document.createElement("button");
+
+
+                    item.type = "button";
+
+                    item.className =
+                        "trainee-item";
+
+
+                    item.innerHTML = `
+
+                        <div class="trainee-main">
+
+                            <div class="trainee-avatar">
+
+                                <i class="fa-regular fa-user"></i>
+
+                            </div>
+
+                            <div class="trainee-data">
+
+                                <strong>
+                                    ${escapeHTML(
+                                        traineeName(trainee)
+                                    )}
+                                </strong>
+
+                                <span>
+                                    ${escapeHTML(
+                                        traineeEmail(trainee)
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="trainee-task-summary">
+
+                            <div>
+
+                                <span>
+                                    المهام الحالية
+                                </span>
+
+                                <strong>
+                                    ${activeTasks}
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    المكتملة
+                                </span>
+
+                                <strong>
+                                    ${completedTasks}
+                                </strong>
+
+                            </div>
+
+
+                            <i
+                                class="fa-solid fa-chevron-left trainee-arrow"
+                            ></i>
+
+                        </div>
+
+                    `;
+
+
+                    item.addEventListener(
+                        "click",
+                        () => {
+
+                            openTraineeTasks(
+                                trainee
+                            );
+
+                        }
+                    );
+
+
+                    traineesList.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
 
 
 
-        /* =====================================
-           إسناد مهمة
-        ===================================== */
+        /*
+        =============================================
+        Open trainee tasks
+        =============================================
+        */
+
+
+        function openTraineeTasks(
+            trainee
+        ) {
+
+            selectedTraineeId =
+                traineeId(trainee);
+
+
+            document.getElementById(
+                "selectedTraineeName"
+            ).textContent =
+                traineeName(trainee);
+
+
+            document.getElementById(
+                "selectedTraineeEmail"
+            ).textContent =
+                traineeEmail(trainee);
+
+
+            traineesView.classList.remove(
+                "active-view"
+            );
+
+            tasksView.classList.add(
+                "active-view"
+            );
+
+
+            currentFilter = "all";
+
+
+            document
+                .querySelectorAll(
+                    ".filter-button"
+                )
+                .forEach(
+                    button => {
+
+                        button.classList.remove(
+                            "active"
+                        );
+
+                        if (
+                            button.dataset.filter ===
+                            "all"
+                        ) {
+
+                            button.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+            taskSearch.value = "";
+
+
+            renderTasks();
+
+        }
+
+
+
+        /*
+        =============================================
+        Render tasks
+        =============================================
+        */
+
+
+        function renderTasks() {
+
+            if (!selectedTraineeId) {
+                return;
+            }
+
+
+            const allTasks =
+                getTasks();
+
+
+            const traineeTasks =
+                allTasks.filter(
+                    task =>
+                        String(task.traineeId) ===
+                        String(selectedTraineeId)
+                );
+
+
+            document.getElementById(
+                "totalTasks"
+            ).textContent =
+                traineeTasks.length;
+
+
+            document.getElementById(
+                "newTasks"
+            ).textContent =
+                traineeTasks.filter(
+                    task =>
+                        !task.status ||
+                        task.status === "new"
+                ).length;
+
+
+            document.getElementById(
+                "progressTasks"
+            ).textContent =
+                traineeTasks.filter(
+                    task =>
+                        task.status === "progress"
+                ).length;
+
+
+            document.getElementById(
+                "completedTasks"
+            ).textContent =
+                traineeTasks.filter(
+                    task =>
+                        task.status === "completed"
+                ).length;
+
+
+
+            const search =
+                taskSearch.value
+                    .trim()
+                    .toLowerCase();
+
+
+
+            const filtered =
+                traineeTasks.filter(
+                    task => {
+
+                        const filterMatch =
+                            currentFilter === "all" ||
+                            (
+                                currentFilter === "new" &&
+                                (
+                                    !task.status ||
+                                    task.status === "new"
+                                )
+                            ) ||
+                            task.status === currentFilter;
+
+
+                        const searchMatch =
+                            String(
+                                task.title || ""
+                            )
+                            .toLowerCase()
+                            .includes(search);
+
+
+                        return (
+                            filterMatch &&
+                            searchMatch
+                        );
+
+                    }
+                );
+
+
+            tasksCount.textContent =
+                filtered.length +
+                " مهمة";
+
+
+            tasksList.innerHTML = "";
+
+
+            if (!filtered.length) {
+
+                tasksEmpty.style.display =
+                    "flex";
+
+                return;
+
+            }
+
+
+            tasksEmpty.style.display =
+                "none";
+
+
+            filtered
+                .slice()
+                .reverse()
+                .forEach(
+                    task => {
+
+                        const status =
+                            task.status || "new";
+
+
+                        const item =
+                            document.createElement(
+                                "article"
+                            );
+
+
+                        item.className =
+                            "task-item";
+
+
+                        item.innerHTML = `
+
+                            <div
+                                class="task-status ${status}"
+                            >
+
+                                <i class="
+                                    fa-solid
+                                    ${
+                                        status === "completed"
+                                        ? "fa-check"
+                                        : status === "progress"
+                                        ? "fa-spinner"
+                                        : "fa-list-check"
+                                    }
+                                "></i>
+
+                            </div>
+
+
+                            <div class="task-content">
+
+                                <div class="task-title-line">
+
+                                    <h3>
+                                        ${escapeHTML(
+                                            task.title
+                                        )}
+                                    </h3>
+
+
+                                    <span
+                                        class="status-badge ${status}"
+                                    >
+                                        ${statusText(
+                                            status
+                                        )}
+                                    </span>
+
+                                </div>
+
+
+                                <p>
+                                    ${escapeHTML(
+                                        task.description
+                                    )}
+                                </p>
+
+
+                                <div class="task-meta">
+
+                                    <span>
+
+                                        <i class="fa-regular fa-calendar"></i>
+
+                                        موعد التسليم:
+
+                                        ${formatDate(
+                                            task.dueDate
+                                        )}
+
+                                    </span>
+
+
+                                    <span>
+
+                                        <i class="fa-solid fa-flag"></i>
+
+                                        الأولوية:
+
+                                        ${priorityText(
+                                            task.priority
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="details-button"
+                            >
+
+                                عرض التفاصيل
+
+                                <i class="fa-solid fa-chevron-left"></i>
+
+                            </button>
+
+                        `;
+
+
+                        const detailsButton =
+                            item.querySelector(
+                                ".details-button"
+                            );
+
+
+                        detailsButton.addEventListener(
+                            "click",
+                            () => {
+
+                                localStorage.setItem(
+                                    "selectedTaskId",
+                                    task.id
+                                );
+
+
+                                window.location.href =
+                                    "task-details.html";
+
+                            }
+                        );
+
+
+                        tasksList.appendChild(
+                            item
+                        );
+
+                    }
+                );
+
+        }
+
+
+
+        /*
+        =============================================
+        Modal
+        =============================================
+        */
+
+
+        function fillTraineeSelect() {
+
+            const trainees =
+                getTrainees();
+
+
+            taskTrainee.innerHTML = `
+
+                <option value="">
+                    اختر المتدرب
+                </option>
+
+            `;
+
+
+            trainees.forEach(
+                trainee => {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+
+                    option.value =
+                        traineeId(trainee);
+
+
+                    option.textContent =
+                        traineeName(trainee);
+
+
+                    taskTrainee.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        function openTaskModal(
+            traineeIdValue = ""
+        ) {
+
+            fillTraineeSelect();
+
+
+            taskForm.reset();
+
+
+            if (traineeIdValue) {
+
+                taskTrainee.value =
+                    traineeIdValue;
+
+            }
+
+
+            taskModal.classList.add(
+                "show"
+            );
+
+
+            document.body.classList.add(
+                "modal-open"
+            );
+
+        }
+
+
+
+        function closeTaskModal() {
+
+            taskModal.classList.remove(
+                "show"
+            );
+
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+
+
+        /*
+        =============================================
+        Save task
+        =============================================
+        */
+
 
         taskForm.addEventListener(
             "submit",
-            function (event) {
+            event => {
 
                 event.preventDefault();
 
-                clearMessage();
+
+                const traineeIdValue =
+                    taskTrainee.value;
 
 
-                const trainee =
-                    getSelectedTrainee();
+                if (!traineeIdValue) {
 
-
-                if (!trainee) {
-
-                    showError(
+                    alert(
                         "يرجى اختيار المتدرب."
                     );
 
@@ -625,159 +1585,64 @@
                 }
 
 
-                const title =
-                    document
-                        .getElementById(
-                            "taskTitle"
-                        )
-                        .value
-                        .trim();
-
-
-                const description =
-                    document
-                        .getElementById(
-                            "taskDescription"
-                        )
-                        .value
-                        .trim();
-
-
-                const priority =
-                    document
-                        .getElementById(
-                            "priority"
-                        )
-                        .value;
-
-
-                const dueDate =
-                    document
-                        .getElementById(
-                            "dueDate"
-                        )
-                        .value;
-
-
-                const supervisorNotes =
-                    document
-                        .getElementById(
-                            "supervisorNotes"
-                        )
-                        .value
-                        .trim();
-
-
-
-                if (
-                    !title ||
-                    !description ||
-                    !priority ||
-                    !dueDate
-                ) {
-
-                    showError(
-                        "يرجى تعبئة جميع الحقول المطلوبة."
-                    );
-
-                    return;
-
-                }
-
-
-
-                /* التحقق من التاريخ */
-
-                const today =
-                    new Date();
-
-
-                today.setHours(
-                    0,
-                    0,
-                    0,
-                    0
-                );
-
-
-                const deadline =
-                    new Date(
-                        dueDate +
-                        "T00:00:00"
-                    );
-
-
-                if (
-                    deadline < today
-                ) {
-
-                    showError(
-                        "تاريخ التسليم لا يمكن أن يكون في الماضي."
-                    );
-
-                    return;
-
-                }
-
-
-
                 const tasks =
                     getTasks();
-
 
 
                 const newTask = {
 
                     id:
-                        "TASK-" +
+                        "task-" +
                         Date.now(),
 
                     traineeId:
-                        trainee.id,
-
-                    traineeName:
-                        trainee.name,
-
-                    traineeEmail:
-                        trainee.email || "",
-
-                    supervisorId:
-                        currentUser.id,
-
-                    supervisorName:
-                        currentUser.name ||
-                        "المشرف",
+                        traineeIdValue,
 
                     title:
-                        title,
+                        document
+                            .getElementById(
+                                "taskTitle"
+                            )
+                            .value
+                            .trim(),
 
                     description:
-                        description,
+                        document
+                            .getElementById(
+                                "taskDescription"
+                            )
+                            .value
+                            .trim(),
 
                     priority:
-                        priority,
+                        document
+                            .getElementById(
+                                "taskPriority"
+                            )
+                            .value,
 
                     dueDate:
-                        dueDate,
+                        document
+                            .getElementById(
+                                "taskDueDate"
+                            )
+                            .value,
 
                     supervisorNotes:
-                        supervisorNotes,
+                        document
+                            .getElementById(
+                                "supervisorNotes"
+                            )
+                            .value
+                            .trim(),
 
-                    traineeNotes:
-                        "",
+                    traineeNotes: "",
 
-                    status:
-                        "new",
+                    status: "new",
 
                     createdAt:
                         new Date()
-                            .toISOString(),
-
-                    startedAt:
-                        null,
-
-                    completedAt:
-                        null
+                            .toISOString()
 
                 };
 
@@ -792,140 +1657,91 @@
                 );
 
 
-                showSuccess(
+                closeTaskModal();
+
+
+                if (
+                    selectedTraineeId &&
+                    String(
+                        selectedTraineeId
+                    ) ===
+                    String(
+                        traineeIdValue
+                    )
+                ) {
+
+                    renderTasks();
+
+                }
+
+
+                renderTrainees();
+
+
+                alert(
                     "تم إسناد المهمة بنجاح."
                 );
-
-
-                /* تفريغ الحقول */
-
-                document.getElementById(
-                    "taskTitle"
-                ).value = "";
-
-
-                document.getElementById(
-                    "taskDescription"
-                ).value = "";
-
-
-                document.getElementById(
-                    "priority"
-                ).value = "";
-
-
-                document.getElementById(
-                    "dueDate"
-                ).value = "";
-
-
-                document.getElementById(
-                    "supervisorNotes"
-                ).value = "";
-
-
-                /* تحديث القائمة مباشرة */
-
-                renderTasks();
 
             }
         );
 
 
 
-        /* =====================================
-           عرض مهام المتدرب المختار
-        ===================================== */
-
-        function renderTasks() {
-
-            const trainee =
-                getSelectedTrainee();
+        /*
+        =============================================
+        Events
+        =============================================
+        */
 
 
-            tasksList.innerHTML =
-                "";
+        traineeSearch.addEventListener(
+            "input",
+            renderTrainees
+        );
 
 
-            if (!trainee) {
-
-                selectedTraineeText.textContent =
-                    "اختر متدربًا لعرض المهام المسندة إليه";
-
-
-                tasksCount.textContent =
-                    "0";
-
-
-                emptyState.style.display =
-                    "flex";
-
-
-                emptyState.querySelector(
-                    "h3"
-                ).textContent =
-                    "لا توجد مهام لعرضها";
-
-
-                emptyState.querySelector(
-                    "p"
-                ).textContent =
-                    "اختر المتدرب لعرض المهام المسندة إليه";
-
-
-                return;
-
-            }
+        taskSearch.addEventListener(
+            "input",
+            renderTasks
+        );
 
 
 
-            selectedTraineeText.textContent =
-                "المتدرب: " +
-                trainee.name;
+        document
+            .querySelectorAll(
+                ".filter-button"
+            )
+            .forEach(
+                button => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            document
+                                .querySelectorAll(
+                                    ".filter-button"
+                                )
+                                .forEach(
+                                    item =>
+                                        item.classList.remove(
+                                            "active"
+                                        )
+                                );
 
 
-
-            /*
-                نعرض فقط:
-                1- مهام المتدرب المختار
-                2- التي أسندها المشرف الحالي
-            */
-
-            const traineeTasks =
-                getTasks().filter(
-                    function (task) {
-
-                        return (
-                            String(
-                                task.traineeId
-                            ) ===
-                            String(
-                                trainee.id
-                            ) &&
-
-                            String(
-                                task.supervisorId
-                            ) ===
-                            String(
-                                currentUser.id
-                            )
-                        );
-
-                    }
-                );
+                            button.classList.add(
+                                "active"
+                            );
 
 
+                            currentFilter =
+                                button.dataset.filter;
 
-            traineeTasks.sort(
-                function (a, b) {
 
-                    return (
-                        new Date(
-                            b.createdAt
-                        ) -
-                        new Date(
-                            a.createdAt
-                        )
+                            renderTasks();
+
+                        }
                     );
 
                 }
@@ -933,405 +1749,105 @@
 
 
 
-            tasksCount.textContent =
-                traineeTasks.length;
+        document.getElementById(
+            "backToTrainees"
+        ).addEventListener(
+            "click",
+            () => {
 
+                selectedTraineeId =
+                    null;
 
 
-            if (
-                traineeTasks.length === 0
-            ) {
-
-                emptyState.style.display =
-                    "flex";
-
-
-                emptyState.querySelector(
-                    "h3"
-                ).textContent =
-                    "لا توجد مهام مسندة";
-
-
-                emptyState.querySelector(
-                    "p"
-                ).textContent =
-                    "لم يتم إسناد مهام لهذا المتدرب حتى الآن.";
-
-
-                return;
-
-            }
-
-
-
-            emptyState.style.display =
-                "none";
-
-
-
-            traineeTasks.forEach(
-                function (task) {
-
-                    const status =
-                        getStatusInfo(
-                            task.status
-                        );
-
-
-                    const priority =
-                        getPriorityInfo(
-                            task.priority
-                        );
-
-
-                    const item =
-                        document.createElement(
-                            "article"
-                        );
-
-
-                    item.className =
-                        "task-item";
-
-
-                    item.innerHTML = `
-
-                        <div class="task-main">
-
-                            <div class="task-top">
-
-                                <div>
-
-                                    <span class="task-number">
-                                        مهمة
-                                    </span>
-
-                                    <h3>
-                                        ${escapeHTML(task.title)}
-                                    </h3>
-
-                                </div>
-
-
-                                <span
-                                    class="status-badge ${status.className}"
-                                >
-                                    ${status.text}
-                                </span>
-
-                            </div>
-
-
-                            <p class="task-description">
-                                ${escapeHTML(task.description)}
-                            </p>
-
-
-                            <div class="task-information">
-
-                                <span>
-                                    <i class="fa-regular fa-calendar"></i>
-
-                                    تاريخ التسليم:
-                                    ${formatDate(task.dueDate)}
-                                </span>
-
-
-                                <span
-                                    class="priority-badge ${priority.className}"
-                                >
-                                    ${priority.text}
-                                </span>
-
-                            </div>
-
-
-                            ${
-                                task.traineeNotes
-                                ? `
-                                    <div class="trainee-note-alert">
-
-                                        <i class="fa-regular fa-comment-dots"></i>
-
-                                        توجد ملاحظة من المتدرب
-
-                                    </div>
-                                `
-                                : ""
-                            }
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            class="details-button"
-                            onclick="openTask('${task.id}')"
-                        >
-
-                            عرض التفاصيل
-
-                            <i class="fa-solid fa-chevron-left"></i>
-
-                        </button>
-
-                    `;
-
-
-                    tasksList.appendChild(
-                        item
-                    );
-
-                }
-            );
-
-        }
-
-
-
-        /* =====================================
-           فتح تفاصيل المهمة
-        ===================================== */
-
-        function openTask(taskId) {
-
-            localStorage.setItem(
-                "trainflow_selected_task",
-                taskId
-            );
-
-
-            window.location.href =
-                "task-details.html";
-
-        }
-
-
-
-        /* =====================================
-           الحالة
-        ===================================== */
-
-        function getStatusInfo(status) {
-
-            if (
-                status === "completed"
-            ) {
-
-                return {
-
-                    text:
-                        "مكتملة",
-
-                    className:
-                        "completed"
-
-                };
-
-            }
-
-
-            if (
-                status === "progress"
-            ) {
-
-                return {
-
-                    text:
-                        "قيد التنفيذ",
-
-                    className:
-                        "progress"
-
-                };
-
-            }
-
-
-            return {
-
-                text:
-                    "مهمة جديدة",
-
-                className:
-                    "new"
-
-            };
-
-        }
-
-
-
-        /* =====================================
-           الأولوية
-        ===================================== */
-
-        function getPriorityInfo(priority) {
-
-            if (
-                priority === "high"
-            ) {
-
-                return {
-
-                    text:
-                        "أولوية عالية",
-
-                    className:
-                        "high"
-
-                };
-
-            }
-
-
-            if (
-                priority === "medium"
-            ) {
-
-                return {
-
-                    text:
-                        "أولوية متوسطة",
-
-                    className:
-                        "medium"
-
-                };
-
-            }
-
-
-            return {
-
-                text:
-                    "أولوية منخفضة",
-
-                className:
-                    "low"
-
-            };
-
-        }
-
-
-
-        /* =====================================
-           التاريخ
-        ===================================== */
-
-        function formatDate(date) {
-
-            if (!date) {
-
-                return "-";
-
-            }
-
-
-            return new Date(
-                date +
-                "T00:00:00"
-            ).toLocaleDateString(
-                "ar-SA"
-            );
-
-        }
-
-
-
-        /* =====================================
-           الرسائل
-        ===================================== */
-
-        function clearMessage() {
-
-            message.textContent =
-                "";
-
-
-            message.className =
-                "message";
-
-        }
-
-
-        function showError(text) {
-
-            message.textContent =
-                text;
-
-
-            message.className =
-                "message error";
-
-        }
-
-
-        function showSuccess(text) {
-
-            message.textContent =
-                text;
-
-
-            message.className =
-                "message success";
-
-        }
-
-
-
-        /* =====================================
-           حماية النصوص
-        ===================================== */
-
-        function escapeHTML(value) {
-
-            if (!value) {
-
-                return "";
-
-            }
-
-
-            return String(value)
-
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
-
-                .replace(
-                    /</g,
-                    "&lt;"
-                )
-
-                .replace(
-                    />/g,
-                    "&gt;"
-                )
-
-                .replace(
-                    /"/g,
-                    "&quot;"
-                )
-
-                .replace(
-                    /'/g,
-                    "&#039;"
+                tasksView.classList.remove(
+                    "active-view"
                 );
 
-        }
+
+                traineesView.classList.add(
+                    "active-view"
+                );
+
+
+                renderTrainees();
+
+            }
+        );
 
 
 
-        /* =====================================
-           التشغيل
-        ===================================== */
+        document.getElementById(
+            "openAddTaskButton"
+        ).addEventListener(
+            "click",
+            () => {
 
-        loadTrainees();
+                openTaskModal();
 
-        renderTasks();
+            }
+        );
+
+
+
+        document.getElementById(
+            "addTaskForSelected"
+        ).addEventListener(
+            "click",
+            () => {
+
+                openTaskModal(
+                    selectedTraineeId
+                );
+
+            }
+        );
+
+
+
+        document.getElementById(
+            "closeModal"
+        ).addEventListener(
+            "click",
+            closeTaskModal
+        );
+
+
+
+        document.getElementById(
+            "cancelTask"
+        ).addEventListener(
+            "click",
+            closeTaskModal
+        );
+
+
+
+        taskModal.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target ===
+                    taskModal
+                ) {
+
+                    closeTaskModal();
+
+                }
+
+            }
+        );
+
+
+
+        /*
+        =============================================
+        Start
+        =============================================
+        */
+
+
+        renderTrainees();
 
     </script>
 
