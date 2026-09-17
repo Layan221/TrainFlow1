@@ -1,391 +1,17 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>TrainFlow | لوحة المتدرب</title>
-
-    <!-- ملف CSS -->
-    <link rel="stylesheet" href="trainee-dashboard.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-
-<body>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="top-header">
-
-    <!-- الشعار -->
-    <a href="index.html" class="brand">
-
-        <div class="brand-icon">
-            <i class="fa-solid fa-layer-group"></i>
-        </div>
-
-        <div class="brand-text">
-            <strong>TrainFlow</strong>
-            <span>متابعة التدريب</span>
-        </div>
-
-    </a>
-
-
-    <!-- بيانات المتدرب -->
-    <div class="header-actions">
-
-        <div class="trainee-info">
-
-            <div class="trainee-avatar">
-                <i class="fa-regular fa-user"></i>
-            </div>
-
-            <div>
-                <strong id="headerTraineeName">
-                    المتدرب
-                </strong>
-
-                <span>
-                    متدرب
-                </span>
-            </div>
-
-        </div>
-
-
-        <!-- تسجيل الخروج -->
-        <button
-            type="button"
-            class="logout-btn"
-            id="logoutButton">
-
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-
-            تسجيل الخروج
-
-        </button>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main class="dashboard-container">
-
-
-    <!-- =================================================
-         الترحيب
-    ================================================= -->
-
-    <section class="welcome-section">
-
-        <div>
-
-            <span class="welcome-badge">
-                لوحة المتدرب
-            </span>
-
-            <h1>
-                أهلاً بك،
-                <span id="welcomeTraineeName">
-                    المتدرب
-                </span>
-            </h1>
-
-            <p>
-                تابع مهامك وسجّل تقريرك اليومي
-                واطلع على حالة مشرفك.
-            </p>
-
-        </div>
-
-
-        <div class="welcome-decoration">
-            <i class="fa-solid fa-graduation-cap"></i>
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         المشرف
-    ================================================= -->
-
-    <section class="supervisor-card">
-
-        <div class="supervisor-icon">
-            <i class="fa-solid fa-user-tie"></i>
-        </div>
-
-
-        <div class="supervisor-information">
-
-            <span class="supervisor-label">
-                مشرف التدريب
-            </span>
-
-
-            <h3 id="supervisorName">
-                جاري تحميل اسم المشرف...
-            </h3>
-
-
-            <div class="supervisor-presence">
-
-                <span
-                    id="supervisorStatusDot"
-                    class="status-dot offline">
-                </span>
-
-                <strong id="supervisorStatus">
-                    جاري التحقق من الحالة...
-                </strong>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         الإحصائيات
-    ================================================= -->
-
-    <section class="stats-grid">
-
-
-        <!-- جميع المهام -->
-
-        <div class="stat-card">
-
-            <div class="stat-icon blue">
-                <i class="fa-solid fa-list-check"></i>
-            </div>
-
-            <div>
-                <span>
-                    مهامي
-                </span>
-
-                <strong id="totalTasks">
-                    0
-                </strong>
-            </div>
-
-        </div>
-
-
-
-        <!-- المهام المكتملة -->
-
-        <div class="stat-card">
-
-            <div class="stat-icon green">
-                <i class="fa-solid fa-check"></i>
-            </div>
-
-            <div>
-                <span>
-                    المهام المكتملة
-                </span>
-
-                <strong id="completedTasks">
-                    0
-                </strong>
-            </div>
-
-        </div>
-
-
-
-        <!-- التقارير -->
-
-        <div class="stat-card">
-
-            <div class="stat-icon purple">
-                <i class="fa-regular fa-file-lines"></i>
-            </div>
-
-            <div>
-                <span>
-                    تقاريري
-                </span>
-
-                <strong id="totalReports">
-                    0
-                </strong>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         ماذا تريد أن تفعل؟
-    ================================================= -->
-
-    <section class="dashboard-card">
-
-        <div class="section-header">
-
-            <div>
-
-                <span class="section-label">
-                    التدريب
-                </span>
-
-                <h2>
-                    ماذا تريد أن تفعل؟
-                </h2>
-
-                <p>
-                    يمكنك الوصول إلى جميع مهامك وتقاريرك من هنا.
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="quick-actions">
-
-
-            <!-- كل المهام -->
-
-            <a href="trainee-tasks.html"
-               class="quick-action">
-
-                <div class="quick-icon blue">
-                    <i class="fa-solid fa-list-check"></i>
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        مهامي
-                    </strong>
-
-                    <span>
-                        عرض جميع مهام التدريب
-                    </span>
-
-                </div>
-
-
-                <i class="fa-solid fa-chevron-left arrow"></i>
-
-            </a>
-
-
-
-            <!-- التقرير اليومي -->
-
-            <a href="daily-report.html"
-               class="quick-action">
-
-                <div class="quick-icon purple">
-                    <i class="fa-regular fa-file-lines"></i>
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        التقرير اليومي
-                    </strong>
-
-                    <span>
-                        تسجيل ما تم إنجازه اليوم
-                    </span>
-
-                </div>
-
-
-                <i class="fa-solid fa-chevron-left arrow"></i>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         المهام الحالية
-    ================================================= -->
-
-    <section class="dashboard-card tasks-section">
-
-        <div class="section-header">
-
-            <div>
-
-                <span class="section-label">
-                    المهام
-                </span>
-
-                <h2>
-                    مهامي الحالية
-                </h2>
-
-                <p>
-                    تظهر هنا المهام الجديدة والمهام التي لم يتم إنجازها بعد.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!--
-            هنا تظهر المهام الحالية فقط.
-            حذفنا زر "عرض جميع المهام" من هذا القسم.
-        -->
-
-        <div
-            id="tasksList"
-            class="tasks-list">
-        </div>
-
-    </section>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
+
+/* =====================================================
+   مفاتيح TrainFlow الموحدة
+===================================================== */
+
+const CURRENT_USER_KEY = "trainflow_current_user";
+const TRAINEES_KEY = "trainflow_trainees";
+const TASKS_KEY = "trainflow_tasks";
+const REPORTS_KEY = "trainflow_reports";
 
 
 /* =====================================================
-   قراءة Array من LocalStorage
+   قراءة البيانات
 ===================================================== */
 
 function readArray(key) {
@@ -409,25 +35,16 @@ function readArray(key) {
         );
 
         return [];
-
     }
-
 }
 
-
-
-/* =====================================================
-   توحيد النصوص
-===================================================== */
 
 function normalize(value) {
 
     return String(value ?? "")
         .trim()
         .toLowerCase();
-
 }
-
 
 
 /* =====================================================
@@ -436,12 +53,11 @@ function normalize(value) {
 
 let currentTrainee = null;
 
-
 try {
 
     currentTrainee = JSON.parse(
         localStorage.getItem(
-            "trainflowCurrentUser"
+            CURRENT_USER_KEY
         ) || "null"
     );
 
@@ -451,23 +67,22 @@ try {
         "خطأ في قراءة المستخدم الحالي",
         error
     );
-
 }
-
 
 
 /* =====================================================
    حماية الصفحة
 ===================================================== */
 
-if (!currentTrainee) {
+if (
+    !currentTrainee ||
+    currentTrainee.role !== "trainee"
+) {
 
     window.location.replace(
         "login.html"
     );
-
 }
-
 
 
 /* =====================================================
@@ -479,48 +94,40 @@ const headerTraineeName =
         "headerTraineeName"
     );
 
-
 const welcomeTraineeName =
     document.getElementById(
         "welcomeTraineeName"
     );
-
 
 const supervisorNameElement =
     document.getElementById(
         "supervisorName"
     );
 
-
 const supervisorStatusElement =
     document.getElementById(
         "supervisorStatus"
     );
-
 
 const supervisorStatusDot =
     document.getElementById(
         "supervisorStatusDot"
     );
 
-
 const totalTasksElement =
     document.getElementById(
         "totalTasks"
     );
-
 
 const completedTasksElement =
     document.getElementById(
         "completedTasks"
     );
 
-
 const totalReportsElement =
     document.getElementById(
         "totalReports"
     );
-
 
 const tasksList =
     document.getElementById(
@@ -528,111 +135,71 @@ const tasksList =
     );
 
 
-
 /* =====================================================
-   جلب بيانات المتدرب
+   بيانات المتدرب الأصلية
 ===================================================== */
 
 function getOriginalTrainee() {
 
-    const trainees = [
-
-        ...readArray("trainflowTrainees"),
-
-        ...readArray("trainees")
-
-    ];
+    const trainees =
+        readArray(TRAINEES_KEY);
 
 
-    let trainee = null;
-
-
-
-    /* البحث بالـ ID */
+    /* أولاً: ID */
 
     if (
-        currentTrainee &&
-        currentTrainee.id !== undefined
+        currentTrainee.id !== undefined &&
+        currentTrainee.id !== null
     ) {
 
-        trainee = trainees.find(item => {
+        const traineeById =
+            trainees.find(
+                trainee =>
 
-            const itemId =
-                item.id ||
-                item.traineeId ||
-                item.userId;
-
-
-            return (
-                itemId !== undefined &&
-                String(itemId) ===
-                String(currentTrainee.id)
+                    String(
+                        trainee.id
+                    ) ===
+                    String(
+                        currentTrainee.id
+                    )
             );
 
-        });
 
-    }
+        if (traineeById) {
 
-
-
-    /* البحث بالبريد */
-
-    if (
-        !trainee &&
-        currentTrainee?.email
-    ) {
-
-        trainee = trainees.find(item =>
-
-            normalize(item.email) ===
-            normalize(currentTrainee.email)
-
-        );
-
-    }
-
-
-
-    /* البحث بكود الربط */
-
-    if (!trainee) {
-
-        const currentCode =
-            currentTrainee?.linkCode ||
-            currentTrainee?.code ||
-            currentTrainee?.traineeCode;
-
-
-        if (currentCode) {
-
-            trainee = trainees.find(item => {
-
-                const itemCode =
-                    item.linkCode ||
-                    item.code ||
-                    item.traineeCode;
-
-
-                return (
-                    normalize(itemCode) ===
-                    normalize(currentCode)
-                );
-
-            });
-
+            return traineeById;
         }
-
     }
 
 
-    return (
-        trainee ||
-        currentTrainee ||
-        {}
-    );
+    /* ثانياً: البريد */
 
+    if (currentTrainee.email) {
+
+        const traineeByEmail =
+            trainees.find(
+                trainee =>
+
+                    normalize(
+                        trainee.email
+                    ) ===
+                    normalize(
+                        currentTrainee.email
+                    )
+            );
+
+
+        if (traineeByEmail) {
+
+            return traineeByEmail;
+        }
+    }
+
+
+    /* احتياط */
+
+    return currentTrainee;
 }
-
 
 
 /* =====================================================
@@ -648,8 +215,8 @@ function loadTraineeName() {
     const name =
         trainee.name ||
         trainee.fullName ||
-        currentTrainee?.name ||
-        currentTrainee?.fullName ||
+        currentTrainee.name ||
+        currentTrainee.fullName ||
         "المتدرب";
 
 
@@ -659,35 +226,48 @@ function loadTraineeName() {
 
     welcomeTraineeName.textContent =
         name;
-
 }
 
 
-
 /* =====================================================
-   جميع المشرفين
+   البحث عن حساب المشرف
 ===================================================== */
 
 function getAllSupervisors() {
 
-    return [
+    const possibleKeys = [
 
-        ...readArray("trainflowUsers"),
+        "trainflow_users",
+        "trainflow_supervisors",
 
-        ...readArray("trainflowSupervisors"),
+        /* احتياط للبيانات القديمة */
 
-        ...readArray("supervisors"),
-
-        ...readArray("users")
-
+        "trainflowUsers",
+        "trainflowSupervisors",
+        "supervisors",
+        "users"
     ];
 
+
+    let supervisors = [];
+
+
+    possibleKeys.forEach(
+        key => {
+
+            supervisors.push(
+                ...readArray(key)
+            );
+        }
+    );
+
+
+    return supervisors;
 }
 
 
-
 /* =====================================================
-   معرفة المشرف المرتبط
+   المشرف المرتبط
 ===================================================== */
 
 function findLinkedSupervisor() {
@@ -696,21 +276,34 @@ function findLinkedSupervisor() {
         getOriginalTrainee();
 
 
-    const supervisors =
-        getAllSupervisors();
-
-
-
     const supervisorId =
+
         trainee.supervisorId ||
+
         trainee.supervisorID ||
+
         trainee.supervisor_id ||
+
         trainee.linkedSupervisorId ||
-        trainee.assignedSupervisorId ||
-        currentTrainee?.supervisorId ||
-        currentTrainee?.supervisorID ||
+
+        currentTrainee.supervisorId ||
+
         null;
 
+
+    const supervisorEmail =
+
+        trainee.supervisorEmail ||
+
+        trainee.linkedSupervisorEmail ||
+
+        currentTrainee.supervisorEmail ||
+
+        null;
+
+
+    const supervisors =
+        getAllSupervisors();
 
 
     /* البحث بالـ ID */
@@ -718,22 +311,27 @@ function findLinkedSupervisor() {
     if (supervisorId) {
 
         const supervisor =
-            supervisors.find(user => {
+            supervisors.find(
+                user => {
 
-                const userId =
-                    user.id ||
-                    user.userId ||
-                    user.supervisorId ||
-                    user.supervisorID;
+                    const id =
+
+                        user.id ||
+
+                        user.userId ||
+
+                        user.supervisorId;
 
 
-                return (
-                    userId !== undefined &&
-                    String(userId) ===
-                    String(supervisorId)
-                );
+                    return (
 
-            });
+                        id !== undefined &&
+
+                        String(id) ===
+                        String(supervisorId)
+                    );
+                }
+            );
 
 
         if (supervisor) {
@@ -749,31 +347,43 @@ function findLinkedSupervisor() {
 
                 supervisor:
                     supervisor
-
             };
-
         }
 
+
+        /*
+            حتى لو حساب المشرف
+            غير موجود في المصفوفة،
+            الربط نفسه موجود.
+        */
+
+        return {
+
+            linked: true,
+
+            id:
+                supervisorId,
+
+            supervisor:
+                null
+        };
     }
 
 
-
-    /* البحث ببريد المشرف */
-
-    const supervisorEmail =
-        trainee.supervisorEmail ||
-        trainee.linkedSupervisorEmail ||
-        currentTrainee?.supervisorEmail;
-
+    /* البحث بالبريد */
 
     if (supervisorEmail) {
 
         const supervisor =
-            supervisors.find(user =>
+            supervisors.find(
+                user =>
 
-                normalize(user.email) ===
-                normalize(supervisorEmail)
-
+                    normalize(
+                        user.email
+                    ) ===
+                    normalize(
+                        supervisorEmail
+                    )
             );
 
 
@@ -790,31 +400,9 @@ function findLinkedSupervisor() {
 
                 supervisor:
                     supervisor
-
             };
-
         }
-
     }
-
-
-
-    /* يوجد رقم مشرف لكن لم نجد الحساب */
-
-    if (supervisorId) {
-
-        return {
-
-            linked: true,
-
-            id: supervisorId,
-
-            supervisor: null
-
-        };
-
-    }
-
 
 
     return {
@@ -824,36 +412,37 @@ function findLinkedSupervisor() {
         id: null,
 
         supervisor: null
-
     };
-
 }
-
 
 
 /* =====================================================
    اسم المشرف
 ===================================================== */
 
-function getSupervisorName(supervisor) {
+function getSupervisorName(
+    supervisor
+) {
 
     if (!supervisor) {
 
         return null;
-
     }
 
 
     return (
+
         supervisor.name ||
+
         supervisor.fullName ||
+
         supervisor.displayName ||
+
         supervisor.username ||
+
         null
     );
-
 }
-
 
 
 /* =====================================================
@@ -875,7 +464,6 @@ function getSupervisorPresence(
 
         "presence_" +
         supervisorId
-
     ];
 
 
@@ -891,35 +479,30 @@ function getSupervisorPresence(
         ) {
 
             return value;
-
         }
-
     }
-
 
 
     if (supervisor) {
 
         return (
+
             supervisor.presence ||
+
             supervisor.officeStatus ||
+
             supervisor.status ||
+
             supervisor.availability ||
+
             null
         );
-
     }
 
 
     return null;
-
 }
 
-
-
-/* =====================================================
-   هل المشرف موجود؟
-===================================================== */
 
 function isSupervisorPresent(value) {
 
@@ -941,14 +524,8 @@ function isSupervisorPresent(value) {
         "1"
 
     ].includes(status);
-
 }
 
-
-
-/* =====================================================
-   هل المشرف غير موجود؟
-===================================================== */
 
 function isSupervisorAway(value) {
 
@@ -968,13 +545,11 @@ function isSupervisorAway(value) {
         "0"
 
     ].includes(status);
-
 }
 
 
-
 /* =====================================================
-   عرض المشرف
+   عرض بيانات المشرف
 ===================================================== */
 
 function loadSupervisorInformation() {
@@ -982,9 +557,6 @@ function loadSupervisorInformation() {
     const link =
         findLinkedSupervisor();
 
-
-
-    /* غير مربوط */
 
     if (!link.linked) {
 
@@ -1001,12 +573,8 @@ function loadSupervisorInformation() {
 
 
         return;
-
     }
 
-
-
-    /* اسم المشرف */
 
     const supervisorName =
         getSupervisorName(
@@ -1021,14 +589,24 @@ function loadSupervisorInformation() {
 
     } else {
 
-        supervisorNameElement.textContent =
-            "مشرف التدريب";
+        /*
+            يوجد ربط لكن بيانات
+            حساب المشرف غير متاحة.
+        */
 
+        const trainee =
+            getOriginalTrainee();
+
+
+        supervisorNameElement.textContent =
+
+            trainee.supervisorName ||
+
+            currentTrainee.supervisorName ||
+
+            "مشرف التدريب";
     }
 
-
-
-    /* حالة المشرف */
 
     const presence =
         getSupervisorPresence(
@@ -1049,7 +627,6 @@ function loadSupervisorInformation() {
 
         supervisorStatusDot.className =
             "status-dot online";
-
     }
 
     else if (
@@ -1064,7 +641,6 @@ function loadSupervisorInformation() {
 
         supervisorStatusDot.className =
             "status-dot offline";
-
     }
 
     else {
@@ -1075,15 +651,12 @@ function loadSupervisorInformation() {
 
         supervisorStatusDot.className =
             "status-dot offline";
-
     }
-
 }
 
 
-
 /* =====================================================
-   جلب مهام المتدرب
+   مهام المتدرب
 ===================================================== */
 
 function getMyTasks() {
@@ -1092,88 +665,120 @@ function getMyTasks() {
         getOriginalTrainee();
 
 
-    const allTasks = [
-
-        ...readArray("trainflowTasks"),
-
-        ...readArray("tasks")
-
-    ];
+    const allTasks =
+        readArray(
+            TASKS_KEY
+        );
 
 
     const traineeId =
-        trainee.id ||
-        trainee.traineeId ||
-        trainee.userId;
+        trainee.id;
 
 
-    return allTasks.filter(task => {
-
-        const taskTraineeId =
-            task.traineeId ||
-            task.assignedTo ||
-            task.userId;
+    const traineeEmail =
+        trainee.email ||
+        currentTrainee.email;
 
 
+    return allTasks.filter(
+        task => {
 
-        /* المطابقة بالـ ID */
+            /*
+                الطريقة الأساسية:
+                traineeId
+            */
 
-        if (
-            traineeId !== undefined &&
-            taskTraineeId !== undefined &&
-            String(traineeId) ===
-            String(taskTraineeId)
-        ) {
+            if (
+                traineeId !== undefined &&
+                traineeId !== null &&
 
-            return true;
+                task.traineeId !== undefined &&
+                task.traineeId !== null &&
 
+                String(
+                    task.traineeId
+                ) ===
+                String(
+                    traineeId
+                )
+            ) {
+
+                return true;
+            }
+
+
+            /*
+                احتياط بالبريد
+            */
+
+            if (
+                traineeEmail &&
+                task.traineeEmail &&
+
+                normalize(
+                    task.traineeEmail
+                ) ===
+                normalize(
+                    traineeEmail
+                )
+            ) {
+
+                return true;
+            }
+
+
+            return false;
         }
-
-
-
-        /* المطابقة بالبريد */
-
-        if (
-            trainee.email &&
-            task.traineeEmail &&
-            normalize(trainee.email) ===
-            normalize(task.traineeEmail)
-        ) {
-
-            return true;
-
-        }
-
-
-        return false;
-
-    });
-
+    );
 }
 
 
-
 /* =====================================================
-   هل المهمة مكتملة؟
+   حالات المهمة
 ===================================================== */
 
 function isTaskCompleted(task) {
 
     const status =
-        normalize(task.status);
+        normalize(
+            task.status
+        );
 
 
     return (
+
         status === "completed" ||
+
         status === "done" ||
+
         status === "مكتملة" ||
-        status === "منجز" ||
+
         status === "منجزة" ||
+
         status === "تم الإنجاز"
     );
-
 }
 
+
+function isTaskProgress(task) {
+
+    const status =
+        normalize(
+            task.status
+        );
+
+
+    return (
+
+        status === "progress" ||
+
+        status === "in-progress" ||
+
+        status === "in_progress" ||
+
+        status === "قيد التنفيذ"
+    );
+}
 
 
 /* =====================================================
@@ -1182,81 +787,89 @@ function isTaskCompleted(task) {
 
 function escapeHTML(value) {
 
-    return String(value ?? "")
+    return String(
+        value ?? ""
+    )
 
-        .replaceAll("&", "&amp;")
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
 
-        .replaceAll("<", "&lt;")
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
 
-        .replaceAll(">", "&gt;")
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
 
-        .replaceAll('"', "&quot;")
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
 
-        .replaceAll("'", "&#039;");
-
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 }
 
 
-
 /* =====================================================
-   عرض المهام
+   عرض المهام الحالية
 ===================================================== */
 
 function renderTasks() {
-
-    /*
-        جميع المهام الخاصة بالمتدرب
-    */
 
     const allMyTasks =
         getMyTasks();
 
 
-
     /*
-        إجمالي المهام
+        الإحصائيات
     */
 
     totalTasksElement.textContent =
         allMyTasks.length;
 
 
-
-    /*
-        المهام المكتملة
-    */
-
-    const completedTasks =
-        allMyTasks.filter(task =>
-            isTaskCompleted(task)
+    const completed =
+        allMyTasks.filter(
+            task =>
+                isTaskCompleted(task)
         );
 
 
     completedTasksElement.textContent =
-        completedTasks.length;
-
+        completed.length;
 
 
     /*
-        المهام الحالية فقط
-
-        أي مهمة لم يتم إنجازها
+        الحالية =
+        كل شيء ما عدا المكتملة
     */
 
     const currentTasks =
-        allMyTasks.filter(task =>
-            !isTaskCompleted(task)
+        allMyTasks.filter(
+            task =>
+                !isTaskCompleted(task)
         );
 
 
+    tasksList.innerHTML =
+        "";
 
-    tasksList.innerHTML = "";
 
+    /*
+        لا توجد مهام
+    */
 
-
-    /* لا توجد مهام حالية */
-
-    if (currentTasks.length === 0) {
+    if (
+        currentTasks.length === 0
+    ) {
 
         tasksList.innerHTML = `
 
@@ -1278,93 +891,169 @@ function renderTasks() {
                 </p>
 
             </div>
-
         `;
 
 
         return;
-
     }
 
 
-
     /*
-        أحدث 3 مهام حالية
+        الأحدث أولاً
+        وأقصى شيء 3 مهام
     */
 
     const latestTasks =
+
         [...currentTasks]
-            .reverse()
-            .slice(0, 3);
 
+            .sort(
+                (a, b) => {
 
+                    return (
+                        new Date(
+                            b.createdAt || 0
+                        ) -
 
-    latestTasks.forEach(task => {
+                        new Date(
+                            a.createdAt || 0
+                        )
+                    );
+                }
+            )
 
-        const taskElement =
-            document.createElement(
-                "div"
+            .slice(
+                0,
+                3
             );
 
 
-        taskElement.className =
-            "task-item";
+    latestTasks.forEach(
+        task => {
+
+            const taskElement =
+                document.createElement(
+                    "div"
+                );
 
 
-        const title =
-            task.title ||
-            task.taskTitle ||
-            task.name ||
-            "مهمة";
+            taskElement.className =
+                "task-item";
 
 
-        const description =
-            task.description ||
-            task.details ||
-            "مهمة مسندة إليك";
+            const title =
+
+                task.title ||
+
+                task.taskTitle ||
+
+                task.name ||
+
+                "مهمة";
 
 
-        taskElement.innerHTML = `
+            const description =
 
-            <div class="task-icon">
+                task.description ||
 
-                <i class="fa-solid fa-list-check"></i>
+                task.details ||
 
-            </div>
+                "مهمة مسندة إليك";
 
 
-            <div class="task-info">
+            let statusText =
+                "جديدة";
 
-                <strong>
-                    ${escapeHTML(title)}
-                </strong>
 
-                <span>
-                    ${escapeHTML(description)}
+            let statusClass =
+                "pending";
+
+
+            if (
+                isTaskProgress(task)
+            ) {
+
+                statusText =
+                    "قيد التنفيذ";
+
+                statusClass =
+                    "progress";
+            }
+
+
+            taskElement.innerHTML = `
+
+                <div
+                    class="task-icon ${statusClass}"
+                >
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                </div>
+
+
+                <div class="task-info">
+
+                    <strong>
+                        ${escapeHTML(
+                            title
+                        )}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(
+                            description
+                        )}
+                    </span>
+
+                </div>
+
+
+                <span
+                    class="task-status ${statusClass}"
+                >
+
+                    ${statusText}
+
                 </span>
-
-            </div>
-
-
-            <span class="task-status">
-                حالية
-            </span>
-
-        `;
+            `;
 
 
-        tasksList.appendChild(
-            taskElement
-        );
+            /*
+                الضغط على المهمة
+                يفتح تفاصيلها
+            */
 
-    });
+            taskElement.style.cursor =
+                "pointer";
 
+
+            taskElement.addEventListener(
+                "click",
+                function () {
+
+                    localStorage.setItem(
+                        "trainflow_selected_task",
+                        task.id
+                    );
+
+
+                    window.location.href =
+                        "task-details.html";
+                }
+            );
+
+
+            tasksList.appendChild(
+                taskElement
+            );
+        }
+    );
 }
 
 
-
 /* =====================================================
-   عدد التقارير
+   التقارير
 ===================================================== */
 
 function loadReportsCount() {
@@ -1373,73 +1062,60 @@ function loadReportsCount() {
         getOriginalTrainee();
 
 
-    const reports = [
-
-        ...readArray("trainflowReports"),
-
-        ...readArray("reports")
-
-    ];
-
-
-    const traineeId =
-        trainee.id ||
-        trainee.traineeId ||
-        trainee.userId;
-
+    const reports =
+        readArray(
+            REPORTS_KEY
+        );
 
 
     const myReports =
-        reports.filter(report => {
+        reports.filter(
+            report => {
 
-            const reportTraineeId =
-                report.traineeId ||
-                report.userId;
+                if (
+                    trainee.id !== undefined &&
+                    report.traineeId !== undefined &&
+
+                    String(
+                        report.traineeId
+                    ) ===
+                    String(
+                        trainee.id
+                    )
+                ) {
+
+                    return true;
+                }
 
 
-            /* المطابقة بالـ ID */
+                if (
+                    trainee.email &&
+                    report.traineeEmail &&
 
-            if (
-                traineeId !== undefined &&
-                reportTraineeId !== undefined &&
-                String(traineeId) ===
-                String(reportTraineeId)
-            ) {
+                    normalize(
+                        trainee.email
+                    ) ===
+                    normalize(
+                        report.traineeEmail
+                    )
+                ) {
 
-                return true;
+                    return true;
+                }
 
+
+                return false;
             }
-
-
-            /* المطابقة بالبريد */
-
-            if (
-                trainee.email &&
-                report.traineeEmail &&
-                normalize(trainee.email) ===
-                normalize(report.traineeEmail)
-            ) {
-
-                return true;
-
-            }
-
-
-            return false;
-
-        });
-
+        );
 
 
     totalReportsElement.textContent =
         myReports.length;
-
 }
 
 
-
 /* =====================================================
-   تحديث لوحة المتدرب
+   تحديث الصفحة
 ===================================================== */
 
 function refreshDashboard() {
@@ -1451,21 +1127,18 @@ function refreshDashboard() {
     renderTasks();
 
     loadReportsCount();
-
 }
 
 
-
 /* =====================================================
-   تشغيل الصفحة
+   التشغيل
 ===================================================== */
 
 refreshDashboard();
 
 
-
 /* =====================================================
-   إذا تغيرت البيانات من صفحة ثانية
+   تحديث تلقائي عند تغير LocalStorage
 ===================================================== */
 
 window.addEventListener(
@@ -1473,14 +1146,12 @@ window.addEventListener(
     function () {
 
         refreshDashboard();
-
     }
 );
 
 
-
 /* =====================================================
-   عند الرجوع للصفحة
+   تحديث عند الرجوع للصفحة
 ===================================================== */
 
 window.addEventListener(
@@ -1488,10 +1159,21 @@ window.addEventListener(
     function () {
 
         refreshDashboard();
-
     }
 );
 
+
+/* =====================================================
+   تحديث عند الرجوع بزر Back
+===================================================== */
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        refreshDashboard();
+    }
+);
 
 
 /* =====================================================
@@ -1507,7 +1189,7 @@ document
         function () {
 
             localStorage.removeItem(
-                "trainflowCurrentUser"
+                CURRENT_USER_KEY
             );
 
 
@@ -1518,14 +1200,7 @@ document
 
             window.location.href =
                 "login.html";
-
         }
     );
 
-
 </script>
-
-
-</body>
-
-</html>
